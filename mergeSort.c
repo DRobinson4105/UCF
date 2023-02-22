@@ -1,9 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void merge(int * array, int l, int r, int m);
+// Runtime:
+// - Best: O(NlogN)
+// - Average: O(NlogN)
+// - Worst: O(NlogN)
 
-void mergeSort(int * array, int l, int r);
+// Repeatedly splits array until each subarray has a 
+// length of one and then merges and sorts the subarrays
+// array[] --> Array to be sorted
+// L --> Starting index
+// R --> Ending index
+void mergeSort(int * array, int L, int R);
+
+// Merges and sorts two subarrays of elements where first subarray is array[L..M] and second subarray is array[M+1..R]
+// M --> Midpoint between L and R
+void merge(int * array, int L, int R, int M);
 
 int main()
 {
@@ -24,62 +36,77 @@ int main()
     return 0;
 }
 
-void merge(int * array, int l, int r, int m)
+void merge(int * array, int L, int R, int M)
 {
-    int i = 0, j = 0, k = l;
+    int length1 = M - L + 1;
+    int length2 = R - M;
 
-    int n1 = m - l + 1;
-    int n2 = r - m;
+    // Create temp arrays for left and right subarrays
+    int * arrL = (int *) malloc(sizeof(int) * length1);
+    int * arrR = (int *) malloc(sizeof(int) * length2);
 
-    int L[n1];
-    int R[n2];
+    // Copy left and right subarray elements into temp arrays
+    for(int i = 0; i < length1; i++)
+        arrL[i] = array[i + L];
 
-    for(int i = 0; i < n1; i++)
-        L[i] = array[i + l];
+    for(int i = 0; i < length2; i++)
+        arrR[i] = array[M + 1 + i];
 
-    for(int i = 0; i < n2; i++)
-        R[i] = array[m + 1 + i];
-
-    while (i < n1 && j < n2)
+    int i = 0; // Initial index of first subarray
+    int j = 0; // Initial index of second subarray
+    int k = L; // Initial index of merged subarray
+    
+    // Merge temp arrays back into array[L..R]
+    while (i < length1 && j < length2)
     {
-        if (L[i] <= R[j])
+        // If arrL[i] is less than or equal to arrR[j] then add arrL[i] to the 
+        // next index in the merged subarray and move to the next value in arrL[]
+        if (arrL[i] <= arrR[j])
         {
-            array[k] = L[i];
+            array[k] = arrL[i];
             i++;
         }
         else
         {
-            array[k] = R[j];
+            array[k] = arrR[j];
             j++;
         }
         
         k++;
     }
- 
-    while (i < n1)
+    
+    // Copy any remaining elements in arrL[]
+    while (i < length1)
     {
-        array[k] = L[i];
+        array[k] = arrL[i];
         i++;
         k++;
     }
  
-    while (j < n2)
+    // Copy any remaining elements in arrR[]
+    while (j < length2)
     {
-        array[k] = R[j];
+        array[k] = arrR[j];
         j++;
         k++;
     }
+
+    // Free temp arrays
+    free(arrL);
+    free(arrR);
 }
 
-void mergeSort(int * array, int l, int r)
+void mergeSort(int * array, int L, int R)
 {
-    if(l < r)
+    if(L < R)
     {
-        int m = l + (r - l) / 2;
+        int M = L + (R - L) / 2;
 
-        mergeSort(array, l, m);
-        mergeSort(array, m + 1, r);
+        // Sort left and right halves of array
+        mergeSort(array, L, M);
+        mergeSort(array, M + 1, R);
 
-        merge(array, l, r, m);
+        // Merge both halves together
+        merge(array, L, R, M);
     }
 }

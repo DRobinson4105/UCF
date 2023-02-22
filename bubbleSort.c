@@ -1,7 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Runtime:
+// - Best: O(N)
+// - Average: O(N^2)
+// - Worst: O(N^2)
+
+// Starts with the whole array as the unsorted subarray, repeatedly moving
+// the highest value to the end and decreasing unsorted subarray length by 1
+// array[] --> Array to be sorted
+// size --> Size of array
 void bubbleSort(int * array, int size);
+
+// Swap num1 and num2 values
+void swap(int * num1, int * num2);
 
 int main()
 {
@@ -22,21 +34,21 @@ int main()
     return 0;
 }
 
-void bubbleSort(int * array, int index)
+void bubbleSort(int * array, int size)
 {
-    int temp;
-
-    if(index == 1) return;
-
-    for (int j = 0; j < index - 1; j++)
+    // Decrease size of unsorted subarray after every iteration until size is 1
+    for(int max = size; max > 1; max--)
     {
-        if (array[j] > array[j + 1])
-        {
-            temp = array[j];
-            array[j] = array[j + 1];
-            array[j + 1] = temp;
-        }
+        // Iterate through subarray array[0..max - 1], swapping values if current value is greater than next value
+        for (int j = 0; j < max - 1; j++)
+            if (array[j] > array[j + 1])
+                swap(&array[j], &array[j + 1]);
     }
+}
 
-    bubbleSort(array, index - 1);
+void swap(int * num1, int * num2)
+{
+    int temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
 }

@@ -1,11 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int * x, int * y);
+// Runtime:
+// - Best: O(NlogN)
+// - Average: O(NlogN)
+// - Worst: O(N^2)
 
+// Use the first value in an array as a pivot point, putting all values 
+// less than it to the left and all values greater than it to the right
+// Repeat process on subarrays of the values to the left and right  
+// of the pivot point until the subarray doesn't have any values
+// array[] --> Array to be sorted
+// low --> Starting index
+// high --> Ending index
 void quickSort(int * array, int low, int high);
 
+// Use array[low] as pivot point and put all values less than the pivot 
+// point to the left of it and all values greater than it to the right of it
+// Return the new pivot point index
 int partition(int * array, int low, int high);
+
+// Swap num1 and num2 values
+void swap(int * num1, int * num2);
 
 int main()
 {
@@ -26,43 +42,45 @@ int main()
     return 0;
 }
 
-void swap(int * x, int * y)
-{
-    int temp = *x;
-    *x = *y;
-    *y = temp;
-}
-
 int partition(int * array, int low, int high)
 {
-    int pivot = array[low]; // pivot
-    int i = low; 
-                 
-    for (int j = low + 1; j <= high; j++) {
-        // If current element is smaller than the pivot
-        if (array[j] < pivot) {
-            i++; // increment index of smaller element
+    int pivot = array[low]; // First element as pivot
+    int i = low; // Location for pivot point
+
+    // Traverse each element of the array and compare with pivot
+    for (int j = low + 1; j <= high; j++)
+    {    
+        // If current element smaller than pivot is found, swap it with current location for pivot
+        if (array[j] <= pivot)
+        {
+            i++;
             swap(&array[i], &array[j]);
         }
     }
+
+    // Swap the lowest value with the new pivot location
     swap(&array[i], &array[low]);
+    
+    // Return the index for the pivot point
     return i;
 }
- 
-/* The main function that implements QuickSort
-arr[] --> Array to be sorted,
-low --> Starting index,
-high --> Ending index */
+
 void quickSort(int arr[], int low, int high)
 {
-    if (low < high) {
-        /* pi is partitioning index, arr[p] is now
-        at right place */
-        int pi = partition(arr, low, high);
+    if (low < high)
+    {     
+        // Sets pivot point in right place, partioning the smaller and larger values
+        int pivot = partition(arr, low, high);
  
-        // Separately sort elements before
-        // partition and after partition
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        // Separately sort elements before pivot and after pivot
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
     }
+}
+
+void swap(int * num1, int * num2)
+{
+    int temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
 }
