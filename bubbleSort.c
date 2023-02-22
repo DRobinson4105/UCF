@@ -6,8 +6,9 @@
 // - Average: O(N^2)
 // - Worst: O(N^2)
 
-// Starts with the whole array as the unsorted subarray, repeatedly moving
-// the highest value to the end and decreasing unsorted subarray length by 1
+// Starts with the whole array as the unsorted subarray,
+// repeatedly moving the highest value to the end and
+// decreasing unsorted subarray length by 1
 // array[] --> Array to be sorted
 // size --> Size of array
 void bubbleSort(int * array, int size);

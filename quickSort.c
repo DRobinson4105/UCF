@@ -6,17 +6,20 @@
 // - Average: O(NlogN)
 // - Worst: O(N^2)
 
-// Use the first value in an array as a pivot point, putting all values 
-// less than it to the left and all values greater than it to the right
-// Repeat process on subarrays of the values to the left and right  
-// of the pivot point until the subarray doesn't have any values
+// Use the first value in an array as a pivot point,
+// putting all values less than it to the left and all
+// values greater than it to the right
+// Repeat process on subarrays of the values to the
+// left and right of the pivot point until the subarray
+// doesn't have any values
 // array[] --> Array to be sorted
 // low --> Starting index
 // high --> Ending index
 void quickSort(int * array, int low, int high);
 
-// Use array[low] as pivot point and put all values less than the pivot 
-// point to the left of it and all values greater than it to the right of it
+// Use array[low] as pivot point and put all values
+// less than the pivot point to the left of it and 
+// all values greater than it to the right of it
 // Return the new pivot point index
 int partition(int * array, int low, int high);
 

@@ -6,8 +6,9 @@
 // - Average: O(N^2)
 // - Worst: O(N^2)
 
-// Repeatedly finds lowest value in array and puts it at the front of 
-// the unsorted part of the array until only last value is left
+// Repeatedly finds lowest value in array and puts it
+// at the front of the unsorted part of the array until
+// only last value is left
 // array[] --> Array to be sorted
 // size --> Size of array
 void selectionSort(int * array, int size);

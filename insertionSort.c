@@ -7,8 +7,9 @@
 // - Worst: O(N^2)
 
 // Splits array into an unsorted part and a sorted part
-// Repeatedly takes the first value of the unsorted part of the array and puts it in the correct
-// position in the sorted array until there is no more values in the unsorted subarray
+// Repeatedly takes the first value of the unsorted part
+// of the array and puts it in the correct position in
+// the sorted array until there is no more values left
 // array[] --> Array to be sorted
 // size --> Size of array
 void insertionSort(int * array, int size);

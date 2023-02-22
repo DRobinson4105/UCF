@@ -13,7 +13,9 @@
 // R --> Ending index
 void mergeSort(int * array, int L, int R);
 
-// Merges and sorts two subarrays of elements where first subarray is array[L..M] and second subarray is array[M+1..R]
+// Merges and sorts two subarrays of elements where 
+// first subarray is array[L..M] and second subarray 
+// is array[M+1..R]
 // M --> Midpoint between L and R
 void merge(int * array, int L, int R, int M);
 
