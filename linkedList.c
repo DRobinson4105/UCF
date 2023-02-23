@@ -9,8 +9,8 @@ struct ListNode {
 };
 
 // Adds node with given value at the end of the linked list
-// node --> head->next (first node of linked list)
-void appendNode(ListNode * node, int value);
+// head --> head of linked list
+void appendNode(ListNode * head, int value);
 
 // Prints linked list with brackets as [n1, n2, ...]
 // node --> head->next (first node of linked list)
@@ -24,8 +24,7 @@ void removeNode(ListNode * head, int index);
 // node --> head->next (first node of linked list)
 void insertNode(ListNode * node, int value, int index);
 
-// Reverse order of nodes by setting each node to the
-// next value of the next node
+// Reverse order of nodes
 // node --> head->next (first node of linked list)
 ListNode * reversedList(ListNode * node);
 
@@ -99,9 +98,8 @@ int main()
     // Reversed order of nodes
     // Linked List: {4, 8, 2, 6, 3, 9, 1, 7, 10, 5}
     //     Indexes:  0  1  2  3  4  5  6  7   8  9
-    ListNode * thirdHead = (ListNode *) malloc(sizeof(ListNode));
-    thirdHead->next = reversedList(head->next);
-    printList(thirdHead->next);
+    head->next = reversedList(head->next);
+    printList(head->next);
 
     // Sort linked list
     // Linked List: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
@@ -117,26 +115,27 @@ int main()
     // Free linked lists from memory
     freeList(head);
     freeList(secondHead);
-    freeList(thirdHead);
+
+    return 0;
 }
 
-void appendNode(ListNode * node, int value)
+void appendNode(ListNode * head, int value)
 {
-    // When the function finds the last node in the list, add the new node after
-    if(node->next == NULL)
+    // When the function finds the last node in the list
+    if(head->next == NULL)
     {
+        // Adds node with the given value to the end
         ListNode * newNode = (ListNode *) malloc(sizeof(ListNode));
         newNode->val = value;
-        node->next = newNode;
+        head->next = newNode;
         return;
     }
 
-    appendNode(node->next, value);
+    appendNode(head->next, value);
 }
 
 void printList(ListNode * node)
 {
-    // Print [ before the first node
     printf("[");
 
     // Print nodes
@@ -155,7 +154,6 @@ void printList(ListNode * node)
         node = node->next;
     }
 
-    // Print ] after the last node
     printf("]\n");
 }
 
@@ -175,9 +173,10 @@ void removeNode(ListNode * node, int index)
 
 void insertNode(ListNode * node, int value, int index)
 {
-    // Once target index is found, insert the value between the last node and the current node
-    if(index == 0)
+    // Once target index is found
+    if(index == 0 || node->next == NULL)
     {
+        // Insert the value before the current node
         ListNode * new = (ListNode *) malloc(sizeof(ListNode));
         new->val = value;
         new->next = node->next;
@@ -209,9 +208,10 @@ ListNode * reversedList(ListNode * node)
 
 int getSize(ListNode * node)
 {
+    if(node == NULL) return 0;
+
     // Add one for every node
-    if(node->next == NULL)
-        return 1;
+    if(node->next == NULL) return 1;
 
     return getSize(node->next) + 1;
 }
@@ -250,6 +250,9 @@ ListNode * getNodes(ListNode * node, int start, int end)
 
 void sortList(ListNode * node)
 {
+    // If empty list was entered
+    if(node == NULL) return;
+    
     if(node->next != NULL)
     {
         int size = getSize(node);
@@ -279,7 +282,7 @@ ListNode * merge(ListNode * left, ListNode * right)
     // Create temp linked list to merge left and right lists
     ListNode * total = (ListNode *) malloc(sizeof(ListNode));
 
-    // Merge and sort all values until either left or right node has reached end of its list
+    // Merge and sort all values until either node has reached end of its list
     while(left != NULL && right != NULL)
     {
         if(left->val < right->val)

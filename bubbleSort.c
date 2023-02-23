@@ -13,7 +13,7 @@
 // size --> Size of array
 void bubbleSort(int * array, int size);
 
-// Swap num1 and num2 values
+// Swap values that num1 and num2 point to
 void swap(int * num1, int * num2);
 
 int main()

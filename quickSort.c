@@ -21,9 +21,12 @@ void quickSort(int * array, int low, int high);
 // less than the pivot point to the left of it and 
 // all values greater than it to the right of it
 // Return the new pivot point index
+// array[] --> Array to be sorted
+// low --> Starting index
+// high --> Ending index
 int partition(int * array, int low, int high);
 
-// Swap num1 and num2 values
+// Swap values that num1 and num2 point to
 void swap(int * num1, int * num2);
 
 int main()

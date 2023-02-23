@@ -16,6 +16,9 @@ void mergeSort(int * array, int L, int R);
 // Merges and sorts two subarrays of elements where 
 // first subarray is array[L..M] and second subarray 
 // is array[M+1..R]
+// array[] --> Array to be sorted
+// L --> Starting index
+// R --> Ending index
 // M --> Midpoint between L and R
 void merge(int * array, int L, int R, int M);
 
