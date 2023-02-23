@@ -8,85 +8,121 @@ struct ListNode {
     ListNode * next;
 };
 
-void addNode(ListNode * node, int value);
+// Adds node with given value at the end of the linked list
+// node --> head->next (first node of linked list)
+void appendNode(ListNode * node, int value);
 
-void printList(ListNode * node, int start);
+// Prints linked list with brackets as [n1, n2, ...]
+// node --> head->next (first node of linked list)
+void printList(ListNode * node);
 
-void removeNode(ListNode * node, int index);
+// Removes node at given index
+// node --> head->next (first node of linked list)
+void removeNode(ListNode * head, int index);
 
+// Adds node with given value at the given index
+// node --> head->next (first node of linked list)
 void insertNode(ListNode * node, int value, int index);
 
-ListNode * reverseList(ListNode * node);
+// Reverse order of nodes by setting each node to the
+// next value of the next node
+// node --> head->next (first node of linked list)
+ListNode * reversedList(ListNode * node);
 
-ListNode * initialize(int value);
+// Repeatedly splits linked list until each linked list only
+// has one node and then merges and sorts the linked lists
+// node --> head->next (first node of linked list)
+void sortList(ListNode * node);
 
-void sortList(ListNode * head);
-
+// Merges and sorts two linked lists of elements
 ListNode * merge(ListNode * left, ListNode * right);
 
-int getSize(ListNode * head, int count);
+// Returns size of linked list by recursively traversing
+// through the linked list adding one for every node
+// node --> head->next (first node of linked list)
+int getSize(ListNode * node);
 
-ListNode * getNode(ListNode * head, int index);
+// Get the value of a specific node
+// node --> head->next (first node of linked list)
+ListNode * getNode(ListNode * node, int index);
 
-ListNode * getNodes(ListNode * head, int start, int end);
+// Get a new linked list that is the indexes [start..end-1]
+// of the given linked list
+// node --> head->next (first node of linked list)
+ListNode * getNodes(ListNode * node, int start, int end);
+
+// Free memory for linked list
+void freeList(ListNode * head);
 
 int main()
 {
-    ListNode * head = NULL;
+    ListNode * head = (ListNode *) malloc(sizeof(ListNode));
 
-    head = initialize(5);
-    addNode(head, 10);
-    addNode(head, 3);
-    addNode(head, 7);
-    addNode(head, 1);
-    addNode(head, 9);
-    addNode(head, 6);
-    addNode(head, 2);
-    addNode(head, 8);
-    addNode(head, 4);
-    // printList(head, 1);
-    // removeNode(head, 2);
-    // printList(head, 1);
-    // insertNode(head, 11, 2);
-    // printList(head, 1);
-    // printf("%d\n", getSize(head, 0));
+    // Linked List: {5, 10, 11, 7, 1, 9, 6, 2, 8, 4}
+    //     Indexes:  0   1   2  3  4  5  6  7  8  9
+    appendNode(head, 5);
+    appendNode(head, 10);
+    appendNode(head, 11);
+    appendNode(head, 7);
+    appendNode(head, 1);
+    appendNode(head, 9);
+    appendNode(head, 6);
+    appendNode(head, 2);
+    appendNode(head, 8);
+    appendNode(head, 4);
 
-    // ListNode * secondHead;
-    // head = reverseList(head);
-    // printList(head, 1);
+    printList(head->next);
 
-    // printf("%d\n", getNode(head, 3)->val);
+    // Remove element at index of 2 in the linked list which is 11
+    // Linked List: {5, 10, 7, 1, 9, 6, 2, 8, 4}
+    //     Indexes:  0   1  2  3  4  5  6  7  8
+    removeNode(head->next, 2);
+    printList(head->next);
 
-    // secondHead = getNodes(head, 1, 5);
+    // Insert 3 at the index of 5 so it is between 9 and 6
+    // Linked List: {5, 10, 7, 1, 9, 3, 6, 2, 8, 4}
+    //     Indexes:  0   1  2  3  4  5  6  7  8  9
+    insertNode(head, 3, 5);
+    printList(head->next);
 
-    // printList(secondHead, 1);
+    // Size: 10
+    printf("Size: %d\n", getSize(head->next));
+    
+    // Get subset of linked list of indexes 1 through 5
+    // Linked List: {10, 7, 1, 9, 3}
+    //     Indexes:      0  1  2  3  4
+    ListNode * secondHead = (ListNode *) malloc(sizeof(ListNode));
+    secondHead->next = getNodes(head->next, 1, 5);
+    printList(secondHead->next);
+    printf("Size: %d\n", getSize(secondHead->next));
 
-    printList(head, 1);
+    // Reversed order of nodes
+    // Linked List: {4, 8, 2, 6, 3, 9, 1, 7, 10, 5}
+    //     Indexes:  0  1  2  3  4  5  6  7   8  9
+    ListNode * thirdHead = (ListNode *) malloc(sizeof(ListNode));
+    thirdHead->next = reversedList(head->next);
+    printList(thirdHead->next);
 
-    sortList(head);
+    // Sort linked list
+    // Linked List: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    //     Indexes:  0  1  2  3  4  5  6  7  8   9
+    sortList(head->next);
+    printList(head->next);
 
-    printList(head, 1);
+    // Get node at 4th index of linked list which has a value of 5
+    // Linked List: {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+    //     Indexes:  0  1  2  3 (4)  5  6  7  8   9
+    printf("list[4] = %d\n", getNode(head->next, 4)->val);
+
+    // Free linked lists from memory
+    freeList(head);
+    freeList(secondHead);
+    freeList(thirdHead);
 }
 
-ListNode * initialize(int value)
+void appendNode(ListNode * node, int value)
 {
-    ListNode * new = (ListNode *) malloc(sizeof(ListNode));
-    new->val = value;
-    return new;
-}
-
-void addNode(ListNode * node, int value)
-{
-    if(node == NULL)
-    {
-        printf("running\n");
-        node = (ListNode *) malloc(sizeof(ListNode));
-        node->val = value;
-        node->next = NULL;
-        printf("finished\n");
-        return;
-    }
-
+    // When the function finds the last node in the list, add the new node after
     if(node->next == NULL)
     {
         ListNode * newNode = (ListNode *) malloc(sizeof(ListNode));
@@ -95,36 +131,52 @@ void addNode(ListNode * node, int value)
         return;
     }
 
-    addNode(node->next, value);
+    appendNode(node->next, value);
 }
 
-void printList(ListNode * node, int start)
+void printList(ListNode * node)
 {
-    if(start == 1) printf("[");
-    if(node->next == NULL)
+    // Print [ before the first node
+    printf("[");
+
+    // Print nodes
+    while(node)
     {
-        printf("%d]\n", node->val);
-        return;
+        if(node->next == NULL)
+        {
+            // Print [ after the last node
+            printf("%d", node->val);
+            break;
+        }
+
+        // Commas between nodes
+        printf("%d, ", node->val);
+
+        node = node->next;
     }
 
-    printf("%d, ", node->val);
-    printList(node->next, 0);
+    // Print ] after the last node
+    printf("]\n");
 }
 
 void removeNode(ListNode * node, int index)
 {
-    if(index == 1)
+    // Once target node is found, replace it with the next node
+    if(index == 0)
     {
-        node->next = node->next->next;
+        ListNode * nextNode = node->next;
+        *node = *nextNode;
         return;
     }
 
+    // Move to next node
     removeNode(node->next, index - 1);
 }
 
 void insertNode(ListNode * node, int value, int index)
 {
-    if(index == 1)
+    // Once target index is found, insert the value between the last node and the current node
+    if(index == 0)
     {
         ListNode * new = (ListNode *) malloc(sizeof(ListNode));
         new->val = value;
@@ -133,120 +185,146 @@ void insertNode(ListNode * node, int value, int index)
         return;
     }
 
+    // Move to next node
     insertNode(node->next, value, index - 1);
 }
 
-ListNode * reverseList(ListNode * node)
+ListNode * reversedList(ListNode * node)
 {
-    ListNode * newNode = (ListNode *) malloc(sizeof(ListNode));
-
-    newNode->val = node->val;
-    // printf("Value: %d\n", newNode->val);
-
+    // Return last node to be first node of reversed list
     if(node->next == NULL)
     {
-        // toString(newNode, 1);
-        return newNode;
+        ListNode * lastNode = (ListNode *) malloc(sizeof(ListNode));
+        lastNode->val = node->val;
+        return lastNode;
     }
+
+    // Add each value in the reverse order
+    ListNode * nextNode = reversedList(node->next);
+    appendNode(nextNode, node->val);
     
-    ListNode * nextNode = reverseList(node->next);
-    addNode(nextNode, newNode->val);
+    // Return first node
     return nextNode;
 }
 
-void sortList(ListNode * head)
+int getSize(ListNode * node)
 {
-    if(head->next != NULL)
+    // Add one for every node
+    if(node->next == NULL)
+        return 1;
+
+    return getSize(node->next) + 1;
+}
+
+ListNode * getNode(ListNode * node, int index)
+{
+    // Return the node when node is the correct index in the list
+    if(index == 0)
+        return node;
+
+    return getNode(node->next, index - 1);
+}
+
+ListNode * getNodes(ListNode * node, int start, int end)
+{
+    // Once start of sublist has been found
+    if(start == 0)
     {
-        int size = getSize(head, 0);
+        // Create head for new list
+        ListNode * newHead = (ListNode *) malloc(sizeof(ListNode));
+        
+        // Add every value from start to end
+        for(int i = 0; i <= end; i++)
+        {
+            appendNode(newHead, node->val);
+            node = node->next;
+        }
+
+        // Return values without blank head
+        return newHead->next;
+    }
+
+    // Move to next node in list
+    return getNodes(node->next, start - 1, end - 1);
+}
+
+void sortList(ListNode * node)
+{
+    if(node->next != NULL)
+    {
+        int size = getSize(node);
         int mid = size / 2;
         
-        ListNode * left = getNodes(head, 0, mid);
-        ListNode * right = getNodes(head, mid, size);
+        // Sort left and right halves of list
+        ListNode * left = getNodes(node, 0, mid - 1);
+        ListNode * right = getNodes(node, mid, size - 1);
         sortList(left);
         sortList(right);
 
-        *head = *merge(left, right);
-    }
-}
+        // Merge both halves together
+        *node = *merge(left, right);
 
-int getSize(ListNode * head, int count)
-{
-    if(head->next != NULL)
-    {
-        return getSize(head->next, count + 1);
+        // Free both halves from memory
+        freeList(left);
+        freeList(right);
     }
-    return count + 1;
-}
-
-int get(ListNode * head, int index)
-{
-    if(index == 0)
-    {
-        return head->val;
-    }
-    return getNode(head->next, index - 1);
-}
-
-ListNode * getNodes(ListNode * head, int start, int end)
-{
-    if(start == 0)
-    {
-        ListNode * newHead = initialize(head->val);
-        head = head->next;
-        for(int i = 0; i < end - 1; i++)
-        {
-            addNode(newHead, head->val);
-            head = head->next;
-        }
-        return newHead;
-    }
-    return getNodes(head->next, start - 1, end - 1);
 }
 
 ListNode * merge(ListNode * left, ListNode * right)
 {
+    // Skip process if left or right is empty
     if(left == NULL) return right;
     if(right == NULL) return left;
-    ListNode * total;
-    if(left->val < right->val)
-    {
-        total = initialize(left->val);
-        left = left->next;
-    }
-    else
-    {
-        total = initialize(right->val);
-        right = right->next;       
-    }
 
+    // Create temp linked list to merge left and right lists
+    ListNode * total = (ListNode *) malloc(sizeof(ListNode));
+
+    // Merge and sort all values until either left or right node has reached end of its list
     while(left != NULL && right != NULL)
     {
         if(left->val < right->val)
         {
-            addNode(total, left->val);
+            appendNode(total, left->val);
             left = left->next;
         }
         else
         {
-            addNode(total, right->val);
+            appendNode(total, right->val);
             right = right->next;
         }
     }
 
+    // Copy any remaining elements in the left list
     while(left != NULL)
     {
-        addNode(total, left->val);
-        
+        appendNode(total, left->val);
         left = left->next;
     }
 
+    // Copy any remaining elements in the right list
     while(right != NULL)
     {
-        addNode(total, right->val);
-        
+        appendNode(total, right->val);
         right = right->next;
     }
 
-    return total;
+    // Return merged list without blank head
+    return total->next;
+}
+
+void freeList(ListNode * head)
+{
+    // If list is empty
+    if(head == NULL) return;
+
+    // Free last node
+    if(head->next == NULL)
+    {
+        free(head);
+        return;
+    }
+
+    // Free nodes in reverse order
+    freeList(head->next);
+    free(head);
 }
