@@ -51,7 +51,7 @@ int main()
 {
     ArrayList * list = initialize(10);
 
-    // Linked List: {5, 10, 11, 7, 1, 9, 6, 2, 8, 4}
+    // ArrayList: {5, 10, 11, 7, 1, 9, 6, 2, 8, 4}
     //     Indexes:  0   1   2  3  4  5  6  7  8  9
     append(list, 5);
     append(list, 10);
