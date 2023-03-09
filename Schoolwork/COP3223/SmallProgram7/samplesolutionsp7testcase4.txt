@@ -1,0 +1,10 @@
+----------------------------------------------------------------------
+Testing Test Case 4
+----------------------------------------------------------------------
+Enter a string: Output String with no blanks: Wakanda
+Enter string to be pluralize: Word pluralize: apologies
+Enter a string with no spaces: sdjhag$^&sd&d has
+9 letters
+0 digits
+4 punctuation characters
+Enter the string: Enter the substring you would like to look for: Substring zzaa doesn't exist!

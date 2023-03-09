@@ -1,0 +1,261 @@
+Enter a size for the dynamic array: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Array is full...Need to doubleIt...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+myarray[3].fname = Adam
+myarray[3].lname = Goldberg
+myarray[3].show =  The Goldbergs
+
+myarray[4].fname = Terrence
+myarray[4].lname = Shaffer
+myarray[4].show =  The Good Place
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Remove was selected...
+Select an index of record to remove...
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+myarray[3].fname = Terrence
+myarray[3].lname = Shaffer
+myarray[3].show =  The Good Place
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+myarray[3].fname = Terrence
+myarray[3].lname = Shaffer
+myarray[3].show =  The Good Place
+
+myarray[4].fname = Harry
+myarray[4].lname = Potter
+myarray[4].show =  Stranger Things
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+myarray[3].fname = Terrence
+myarray[3].lname = Shaffer
+myarray[3].show =  The Good Place
+
+myarray[4].fname = Harry
+myarray[4].lname = Potter
+myarray[4].show =  Stranger Things
+
+myarray[5].fname = Gary
+myarray[5].lname = Foley
+myarray[5].show =  The Flight Attendant
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Remove was selected...
+Select an index of record to remove...
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+myarray[3].fname = Terrence
+myarray[3].lname = Shaffer
+myarray[3].show =  The Good Place
+
+myarray[4].fname = Harry
+myarray[4].lname = Potter
+myarray[4].show =  Stranger Things
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Insert was selected...
+Enter the first name: Enter the last name: Enter favorite show: What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Display was selected...
+---------------------------------
+myarray[0].fname = Kasey
+myarray[0].lname = Moss
+myarray[0].show =  The Lucy Show
+
+myarray[1].fname = Estrella
+myarray[1].lname = Holder
+myarray[1].show =  Loki
+
+myarray[2].fname = Zara
+myarray[2].lname = Forbes
+myarray[2].show =  Modern Family
+
+myarray[3].fname = Terrence
+myarray[3].lname = Shaffer
+myarray[3].show =  The Good Place
+
+myarray[4].fname = Harry
+myarray[4].lname = Potter
+myarray[4].show =  Stranger Things
+
+myarray[5].fname = Tiffany
+myarray[5].lname = Rivera
+myarray[5].show =  Full House
+
+---------------------------------
+What would you like to do?
+1: Insert a record
+2: Display records
+3: Remove record
+4: Exit
+Enter an option: Exiting...

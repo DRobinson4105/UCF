@@ -1,0 +1,10 @@
+----------------------------------------------------------------------
+Testing Test Case 3
+----------------------------------------------------------------------
+Enter a string: Output String with no blanks: IronHeart
+Enter string to be pluralize: Word pluralize: leashes
+Enter a string with no spaces: At&78*7Podfs^ has
+7 letters
+3 digits
+3 punctuation characters
+Enter the string: Enter the substring you would like to look for: Substring stri exists!

@@ -1,0 +1,35 @@
+----------------------------------------------------------------------
+Testing Test Case 1
+----------------------------------------------------------------------
+How big would you like the square to be?: Invalid Input. Please try again.
+How big would you like the square to be?: *****
+*   *
+*   *
+*   *
+*****
+Welcome to the Elevator Ride.
+Which floor would you like to go to? Welcome to the first floor.
+Which floor would you like to go to? Welcome to the second floor.
+Which floor would you like to go to? Welcome to the third floor.
+Which floor would you like to go to? Welcome to the fourth floor.
+Which floor would you like to go to? Welcome to the sixth floor.
+Which floor would you like to go to? Welcome to the seventh floor.
+Which floor would you like to go to? Welcome to the eighth floor.
+Which floor would you like to go to? Welcome to the ninth floor.
+Which floor would you like to go to? Welcome to the tenth floor.
+Which floor would you like to go to? Welcome to the eleventh floor.
+Which floor would you like to go to? Welcome to the twelfth floor.
+Which floor would you like to go to? Welcome to the first floor.
+Which floor would you like to go to? That is not a valid option.
+Which floor would you like to go to? That is not a valid option.
+Which floor would you like to go to? Elevator door is now open. Please exit now.
+How many steps would you like in the pyramid? -
+--
+---
+----
+-----
+----
+---
+--
+-
+How many students are in the class: Enter the student's test score: Enter the student's test score: Enter the student's test score: Enter the student's test score: Enter the student's test score: The class average on the field trip exam was a 85.8800%

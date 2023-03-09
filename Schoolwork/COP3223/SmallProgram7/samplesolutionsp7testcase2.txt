@@ -1,0 +1,10 @@
+----------------------------------------------------------------------
+Testing Test Case 2
+----------------------------------------------------------------------
+Enter a string: Output String with no blanks: StarWars
+Enter string to be pluralize: Word pluralize: dogs
+Enter a string with no spaces: 3425hasdf?%d$tTA;b has
+10 letters
+4 digits
+4 punctuation characters
+Enter the string: Enter the substring you would like to look for: Substring too doesn't exist!

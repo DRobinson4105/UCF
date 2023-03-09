@@ -1,0 +1,60 @@
+----------------------------------------------------------------------
+Testing Test Case 5
+----------------------------------------------------------------------
+How big would you like the square to be?: ***********************
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+*                     *
+***********************
+Welcome to the Elevator Ride.
+Which floor would you like to go to? Welcome to the seventh floor.
+Which floor would you like to go to? Elevator door is now open. Please exit now.
+How many steps would you like in the pyramid? Invalid Input. Please try again.
+How many steps would you like in the pyramid? Invalid Input. Please try again.
+How many steps would you like in the pyramid? -
+--
+---
+----
+-----
+------
+-------
+--------
+---------
+----------
+-----------
+------------
+-------------
+--------------
+-------------
+------------
+-----------
+----------
+---------
+--------
+-------
+------
+-----
+----
+---
+--
+-
+How many students are in the class: Invalid input. Please try again.
+How many students are in the class: Enter the student's test score: Enter the student's test score: Enter the student's test score: Enter the student's test score: Enter the student's test score: The class average on the field trip exam was a 58.1200%

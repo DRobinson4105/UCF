@@ -1,0 +1,10 @@
+----------------------------------------------------------------------
+Testing Test Case 1
+----------------------------------------------------------------------
+Enter a string: Output String with no blanks: WandaVision
+Enter string to be pluralize: Word pluralize: bunnies
+Enter a string with no spaces: ab12c,3?ad.!!xO has
+7 letters
+3 digits
+5 punctuation characters
+Enter the string: Enter the substring you would like to look for: Substring key exists!
