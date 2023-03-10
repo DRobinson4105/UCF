@@ -1,3 +1,5 @@
+// Done
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -14,6 +16,9 @@ int main()
 
         int ** grid = (int **) malloc(sizeof(int *) * numRows);
         int * heights = (int *) calloc(numColumns, sizeof(int));
+        int * invertedHeights = (int *) calloc(numColumns, sizeof(int));
+	int inverted = 0;
+
         for(int i = 0; i < numRows; i++)
         {
             grid[i] = (int *) calloc(numColumns, sizeof(int));
@@ -36,20 +41,25 @@ int main()
             heights[col] = numRows - curr - 1;
         }
 
+        for(int i = 0; i < numColumns; i++)
+            invertedHeights[i] = numColumns - heights[i];
+
         for(int i = 0; i < numColumns - 1; i++)
         {
-            if (heights[i + 1] - heights[i] > maxClimb)
+            if (inverted == 0 && heights[i + 1] - heights[i] > maxClimb)
             {
                 count++;
-                for(int j = 0; j < numColumns; j++)
-                {
-                    heights[j] = numRows - heights[j];
-                }
+              	inverted = 1;
+            }
+	        else if (inverted == 1 && invertedHeights[i + 1] - invertedHeights[i] > maxClimb)
+            {
+                count++;
+                inverted = 0;
             }
         }
-
+        
         printf("World #%d: %d\n", world + 1, count);
     }
-    
+
     return 0;
 }
