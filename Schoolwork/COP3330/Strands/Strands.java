@@ -2,8 +2,6 @@
 // COP 3330, Spring 2023
 // da034737
 
-import java.util.Scanner;
-
 public class Strands
 {
     // Prints the character array removing any spaces at the end of the array
