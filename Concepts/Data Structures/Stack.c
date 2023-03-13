@@ -2,77 +2,95 @@
 #include <stdio.h>
 
 typedef struct Node Node;
+typedef struct Stack Stack;
 
 struct Node {
-    int data;
-    Node * next;
+    int data; // Data that node holds
+    Node * next; // Next node in a list or null if last node
 };
 
-Node * top;
+struct Stack {
+    Node * top; // Top node in stack
+};
 
-Node * createNode(int data)
+// Dynamically allocate memory for node, initializing it with the given value
+// Return the pointer to that node
+Node * createNode(int value)
 {
     // Create the node dynamically
-    Node * res = (Node *) malloc(sizeof(Node));
+    Node * newNode = (Node *) malloc(sizeof(Node));
 
-    // Initialize the data in the node
-    res->data = data;
+    // Initialize data and next parts of node
+    newNode->data = value;
+    newNode->next = NULL;
 
-    // Intialize the next pointer
-    res->next = NULL;
-
-    return res;
+    // Return pointer to node
+    return newNode;
 }
 
-void push(int data)
+// Add a new value to top of stack
+Node * push(Stack * stack, int value)
 {
     // Create the node dynamically
-    Node * newNode = createNode(data);
-
-    // If the stack is empty
-    if (isEmpty(top))
-        return newNode;
+    Node * newNode = createNode(value);
 
     // Add new node to top of stack
-    newNode->next = top;
-    top = newNode;
+    newNode->next = stack->top;
 
     // Save the new top
-    top = newNode;
+    stack->top = newNode;
 }
 
-Node * pop()
+// Remove the top value in stack
+Node * pop(Stack * stack)
 {
     // If the stack is empty
-    if (isEmpty(top))
-        return NULL;
+    if (isEmpty(stack)) return;
 
     // Save pointer of top node
-    Node * deletedNode = top;
+    Node * deletedNode = stack->top;
 
-    // Move pointer down to next node
-    top = top->next;
+    // Shift top of stack to next node
+    stack->top = stack->top->next;
 
-    return deletedNode;
+    // Free dynamic memory for removed node
+    free(deletedNode);
 }
 
-Node * peek()
+// Return the value that is at the top of the stack
+int peek(Stack * stack)
 {
-    return top;
+    // If the queue is empty
+    if (isEmpty(stack))
+        return -1;
+
+    // Return next value in queue
+    return stack->top->data;
 }
 
-int isEmpty()
+// Free memory for all nodes in stack
+void deleteStack(Stack * stack)
 {
-    return top == NULL;
+    // While queue is not empty
+    while (!isEmpty(stack))
+        pop(stack);
 }
 
-void printStack()
+// Check if a stack is empty
+int isEmpty(Stack * stack)
 {
-    while (top->next != NULL)
+    return stack->top == NULL;
+}
+
+// Print all values in stack starting at the top
+void printStack(Stack * stack)
+{
+    Node * curr = stack->top;
+    
+    // Print each value in the stack
+    while (curr != NULL)
     {
-        printf("%d ", top->data);
-        top = top->next;
+        printf("%d ", curr->data);
+        curr = curr->next;
     }
-
-    printf("%d\n", top->data);
 }

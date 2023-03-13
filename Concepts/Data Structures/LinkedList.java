@@ -12,13 +12,14 @@ class Node
 
 public class LinkedList
 {
-    private Node head;
-    private Node tail;
-    private int size;
+    private Node head; // First node in list
+    private Node tail; // Last node in list
+    private int size; // Number of nodes in list
 
     public static final int EMPTY_LINKED_LIST_ERROR = Integer.MIN_VALUE;
 
     // Runtime: O(1)
+    // Add a new value at the beginning of the list
     public void insertHead(int data)
     {
         // Create a new node and have it point to the current head 
@@ -35,6 +36,7 @@ public class LinkedList
     }
 
     // Runtime: O(1)
+    // Remove first value in list
     public int removeHead()
     {
         // If the list is empty
@@ -57,6 +59,7 @@ public class LinkedList
     }
 
     // Runtime: O(1)
+    // Add a new value at the end of the list
     public void insertTail(int data)
     {
         size++;
@@ -74,6 +77,7 @@ public class LinkedList
     }
 
     // Runtime: O(N)
+    // Remove last value in list
     public int removeTail()
     {
         // If the list is empty
@@ -82,6 +86,7 @@ public class LinkedList
 
         // Hold onto the value from the current tail of the list
         int retval = tail.data;
+        size--;
 
         // If the list only has one node
         if (head == tail)
@@ -104,28 +109,42 @@ public class LinkedList
         return retval;
     }
 
+    // Check if a linked list is empty
     public boolean isEmpty()
     {
         return head == null;
     }
 
-    public void print()
+    // Get node at specific index in linked list
+    public Node get(int index)
     {
-        if (head == null) return;
+        // If index is invalid
+        if (index < 0 || index >= size)
+            return null;
+
+        // Find node at given index in list
+        Node curr = head;
+        for (int i = 0; i < index; i++)
+            curr = curr.next;
         
-        for(Node current = head; current != null; current = current.next)
-            System.out.print(current.data + ((current.next != null) ? " " : "\n"));
+        // Return node
+        return curr;
     }
 
-    public static void main(String[] args)
+    // String format for linked list n1 -> n2 -> ...
+    public String toString()
     {
-        LinkedList list = new LinkedList();
+        String s = "";
 
-        list.insertTail(1);
-        list.insertTail(2);
-        list.insertTail(3);
-        list.insertTail(4);
+        for(Node current = head; current != null; current = current.next)
+            s += current.data + ((current.next != null) ? " -> " : "");
 
-        list.print();
+        return s;
+    }
+
+    // Returns number of nodes in list
+    public int size()
+    {
+        return size;
     }
 }

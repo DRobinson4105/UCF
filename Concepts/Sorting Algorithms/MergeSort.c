@@ -6,13 +6,6 @@
 // - Average: O(NlogN)
 // - Worst: O(NlogN)
 
-// Repeatedly splits array until each subarray has a 
-// length of one and then merges and sorts the subarrays
-// array[] --> Array to be sorted
-// L --> Starting index
-// R --> Ending index
-void mergeSort(int * array, int L, int R);
-
 // Merges and sorts two subarrays of elements where 
 // first subarray is array[L..M] and second subarray 
 // is array[M+1..R]
@@ -20,27 +13,6 @@ void mergeSort(int * array, int L, int R);
 // L --> Starting index
 // R --> Ending index
 // M --> Midpoint between L and R
-void merge(int * array, int L, int R, int M);
-
-int main()
-{
-    int size;
-    int * array;
-
-    scanf("%d", &size);
-
-    array = (int *) malloc(sizeof(int) * size);
-
-    for(int i = 0; i < size; i++) scanf("%d", &array[i]);
-
-    mergeSort(array, 0, size - 1);
-
-    for(int i = 0; i < size; i++) printf("%d ", array[i]);
-    printf("\n");
-
-    return 0;
-}
-
 void merge(int * array, int L, int R, int M)
 {
     int length1 = M - L + 1;
@@ -101,6 +73,11 @@ void merge(int * array, int L, int R, int M)
     free(arrR);
 }
 
+// Repeatedly splits array until each subarray has a 
+// length of one and then merges and sorts the subarrays
+// array[] --> Array to be sorted
+// L --> Starting index
+// R --> Ending index
 void mergeSort(int * array, int L, int R)
 {
     if(L < R)
@@ -114,4 +91,23 @@ void mergeSort(int * array, int L, int R)
         // Merge both halves together
         merge(array, L, R, M);
     }
+}
+
+int main()
+{
+    int size;
+    int * array;
+
+    scanf("%d", &size);
+
+    array = (int *) malloc(sizeof(int) * size);
+
+    for(int i = 0; i < size; i++) scanf("%d", &array[i]);
+
+    mergeSort(array, 0, size - 1);
+
+    for(int i = 0; i < size; i++) printf("%d ", array[i]);
+    printf("\n");
+
+    return 0;
 }

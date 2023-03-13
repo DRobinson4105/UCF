@@ -2,69 +2,107 @@
 #include <stdlib.h>
 
 typedef struct Node Node;
+typedef struct Queue Queue;
 
 struct Node {
-    int data;
-    Node * next;
+    int data; // Data that node holds
+    Node * next; // Next node in a list or null if last node
 };
 
-Node * front, * rear;
+struct Queue {
+    Node * front; // Next node in queue
+    Node * rear; // Last node in queue
+};
 
-Node * createNode(int data)
+// Dynamically allocate memory for node, initializing it with the given value
+// Return the pointer to that node
+Node * createNode(int value)
 {
     // Create the node dynamically
-    Node * res = (Node *) malloc(sizeof(Node));
+    Node * newNode = (Node *) malloc(sizeof(Node));
 
-    // Initialize the data in the node
-    res->data = data;
+    // Initialize data and next parts of node
+    newNode->data = value;
+    newNode->next = NULL;
 
-    // Intialize the next pointer
-    res->next = NULL;
-
-    return res;
+    // Return pointer to node
+    return newNode;
 }
 
-void enQueue(int data)
+// Return the value that is next in queue
+int peek(Queue * queue)
 {
-    // Create the node dynamically
-    Node * newNode = createNode(data);
+    // If the queue is empty
+    if (isEmpty(queue))
+        return -1;
+
+    // Return next value in queue
+    return queue->front->data;
+}
+
+// Remove the next value in queue
+void dequeue(Queue * queue)
+{
+    // If the queue is empty
+    if (isEmpty(queue)) return;
+
+    // Save pointer of front node
+    Node * deletedNode = queue->front;
+
+    // Shift front of queue to next node
+    queue->front = queue->front->next;
+
+    // If there was only node in the queue
+    if (isEmpty(queue))
+        queue->rear = NULL;
+
+    // Free dynamic memory for removed node
+    free(deletedNode);
+}
+
+// Add a new value to end of queue
+void enqueue(Queue * queue, int value)
+{
+    // Create node with inputed value
+    Node * newNode = createNode(value);
 
     // If the queue is empty
-    if (rear == NULL)
+    if (isEmpty(queue))
     {
-        front = rear = newNode;
+        queue->front = queue->rear = newNode;
         return;
     }
 
-    // Add the new node to the end of the queue
-    rear->next = newNode;
-    rear = newNode;
+    // Add new node to end of queue
+    queue->rear->next = newNode;
+
+    // Move the rear pointer to the new end of queue
+    queue->rear = queue->rear->next;
 }
 
-Node * deQueue()
+// Free memory for all nodes in queue
+void deleteQueue(Queue * queue)
 {
-    // If the queue is empty
-    if (front == NULL) return;
-
-    // Save pointer of front node
-    Node * deletedNode = front;
-
-    // Shift front pointer
-    front = front->next;
-
-    // Set rear to NULL if queue becomes empty
-    if(isEmpty())
-        rear = NULL;
-
-    return deletedNode;
+    // While queue is not empty
+    while (!isEmpty(queue))
+        dequeue(queue);
 }
 
-Node * peek()
+// Check if a queue is empty
+int isEmpty(Queue * queue)
 {
-    return front;
+    return queue->front == NULL;
 }
 
-int isEmpty()
+// Print all values in queue starting at the front
+void printQueue(Queue * queue)
 {
-    return front == NULL;
+    Node * curr = queue->front;
+    
+    // Print each value in the queue
+    while (curr != NULL)
+    {
+        printf("%d ", curr->data);
+        curr = curr->next;
+    }
 }

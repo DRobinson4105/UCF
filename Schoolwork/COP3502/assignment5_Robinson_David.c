@@ -7,8 +7,8 @@ typedef struct Part Part;
 typedef struct Component Component;
 
 struct Node {
-    int data;
-    Node * next;
+    int data; // Data that node holds
+    Node * next; // Next node in a list or null if last node
 };
 
 struct Queue {
@@ -163,7 +163,7 @@ int main()
 
 Node * createNode(int value)
 {
-    // Allocate dynamic memory for new node
+    // Create the node dynamically
     Node * newNode = (Node *) malloc(sizeof(Node));
 
     // Initialize data and next parts of node
@@ -178,10 +178,7 @@ int peek(Queue * queue)
 {
     // If the queue is empty
     if (queue->front == NULL)
-    {
-        printf("Empty list\n");
         return -1;
-    }
 
     // Return next value in queue
     return queue->front->data;
@@ -190,11 +187,7 @@ int peek(Queue * queue)
 void dequeue(Queue * queue)
 {
     // If the queue is empty
-    if (queue->front == NULL)
-    {
-        printf("Empty list\n"); // debugging
-        return;
-    }
+    if (queue->front == NULL) return;
 
     // Keep pointer to first value in queue
     Node * temp = queue->front;
@@ -227,10 +220,7 @@ void enqueue(Queue * queue, int value)
 
 int isEmpty(Queue * queue)
 {
-    if (queue->front == NULL)
-        return 1;
-    else
-        return 0;
+    return queue->front == NULL;
 }
 
 void freeComponents(Component * components, int num_components)

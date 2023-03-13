@@ -1,8 +1,8 @@
 public class ArrayList
 {
-    private int [] array;
-    private int size;
-    private int capacity;
+    private int [] array; // Array of elements in list
+    private int size; // Number of elements in list
+    private int capacity; // Max elements in list
 
     // Starting capacity of array if not provided
     public static int DEFAULT_SIZE = 5;
@@ -132,7 +132,6 @@ public class ArrayList
         int[] arrL = new int[length1];
         int[] arrR = new int[length2];
     
-    
         // Copy left and right subarray elements into temp arrays
         for(int i = 0; i < length1; i++)
             arrL[i] = array[i + L];
@@ -150,23 +149,15 @@ public class ArrayList
             // If arrL[i] is less than or equal to arrR[j] then add arrL[i] to the 
             // next index in the merged subarray and move to the next value in arrL[]
             if (arrL[i] <= arrR[j])
-            {
-                array[k] = arrL[i];
-                i++;
-            }
+                array[k++] = arrL[i++];
             else
-            {
-                array[k] = arrR[j];
-                j++;
-            }
-            
-            k++;
+                array[k++] = arrR[j++];
         }
         
         // Copy any remaining elements in arrL[]
         while (i < length1)
         {
-            array[k] = arrL[i];
+            array[k++] = arrL[i++];
             i++;
             k++;
         }
@@ -174,9 +165,7 @@ public class ArrayList
         // Copy any remaining elements in arrR[]
         while (j < length2)
         {
-            array[k] = arrR[j];
-            j++;
-            k++;
+            array[k++] = arrR[j++];
         }
     }
 
@@ -192,12 +181,8 @@ public class ArrayList
         String s = "[";
 
         for(int i = 0; i < size; i++)
-        {
-            s += array[i];
-            if(i < size - 1)
-                s += ", ";
-        }
+            s += array[i] + ((i < size - 1) ? ", " : "]");
 
-        return s + "]";
+        return s;
     }
 }

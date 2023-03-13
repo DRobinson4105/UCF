@@ -2,111 +2,140 @@
 #include <stdio.h>
 
 typedef struct Node Node;
+typedef struct LinkedList LinkedList;
 
 struct Node {
-    int data;
-    Node * next;
+    int data; // Data that node holds
+    Node * next; // Next node in a list or null if last node
 };
 
-Node * head, * tail;
+struct LinkedList {
+    Node * head; // First node in list
+    Node * tail; // Last node in list
+};
 
-Node * createNode(int data)
+// Dynamically allocate memory for node, initializing it with the given value
+// Return the pointer to that node
+Node * createNode(int value)
 {
     // Create the node dynamically
-    Node * res = (Node *) malloc(sizeof(Node));
+    Node * newNode = (Node *) malloc(sizeof(Node));
 
-    // Initialize the data in the node
-    res->data = data;
+    // Initialize data and next parts of node
+    newNode->data = value;
+    newNode->next = NULL;
 
-    // Intialize the next pointer
-    res->next = NULL;
-
-    return res;
+    // Return pointer to node
+    return newNode;
 }
 
-void insertHead(int data)
+// Add a new value at the beginning of the list
+void insertHead(LinkedList * list, int value)
 {
     // Create the node dynamically
-    Node * newNode = createNode(data);
+    Node * newNode = createNode(value);
+
+    // If the list is empty
+    if (isEmpty(list))
+    {
+        list->head = list->tail = newNode;
+        return;
+    }
 
     // Have the new head point to the old head
-    newNode->next = head;
+    newNode->next = list->head;
 
-    // Save the new head
-    head = newNode;
+    // Save the new head of list
+    list->head = newNode;
 }
 
-void insertTail(int data)
+// Add a new value at the end of the list
+void insertTail(LinkedList * list, int value)
 {
     // Create the node dynamically
-    Node * newNode = createNode(data);
+    Node * newNode = createNode(value);
 
     // If the list is empty
-    if (tail == NULL)
-        return newNode;
+    if (isEmpty(list))
+    {
+        list->head = list->tail = newNode;
+        return;
+    }
 
     // Have the old tail point to the new tail
-    tail->next = newNode;
+    list->tail->next = newNode;
 
     // Save the new tail
-    tail = newNode;
+    list->tail = newNode;
 }
 
-void removeHead(Node * head)
+// Remove first value in list
+void removeHead(LinkedList * list)
 {
     // If the list is empty
-    if (isEmpty(head))
-        return NULL;
-
-    // Get the pointer to the new head of the list
-    Node * newHead = head->next;
-
-    // Delete the old head
-    free(head);
-
-    // Save the new head
-    head = newHead;
-}
-
-void removeTail(Node * head)
-{
-    // If the list is empty
-    if (isEmpty(head))
-        return NULL;
+    if (isEmpty(list)) return;
 
     // If the list only has one node
-    if (head->next == NULL)
+    if (list->head->next == NULL)
     {
-        free(head);
-        return NULL;
+        free(list->head);
+        list->head = list->tail = NULL;
+        return;
+    }
+
+    // Save pointer of old head
+    Node * deletedNode = list->head;
+
+    // Save the new head
+    list->head = list->head->next;
+
+    // Delete the old head
+    free(deletedNode);
+}
+
+// Remove last value in list
+void removeTail(LinkedList * list)
+{
+    // If the list is empty
+    if (isEmpty(list->head)) return;
+
+    // If the list only has one node
+    if (list->head->next == NULL)
+    {
+        free(list->head);
+        list->head = list->tail = NULL;
+        return;
     }
 
     // Get the pointer to the second to last node
-    Node * cur = head;
+    Node * curr = list->head;
 
-    while (cur->next->next != NULL)
-        cur = cur->next;
+    while (curr->next->next != NULL)
+        curr = curr->next;
 
     // Delete the old tail
-    free(cur->next);
-    cur->next = NULL;
+    free(curr->next);
+    curr->next = NULL;
 
     // Save the new tail
-    tail = cur;
+    list->tail = curr;
 }
 
-void deleteList(Node * head)
+// Free memory for all nodes in linked list
+void deleteList(LinkedList * list)
 {
     // While list is not empty
-    while (!isEmpty(head))
-        removeHead(head);
+    while (!isEmpty(list))
+        removeHead(list->head);
 }
 
-int isEmpty(Node * head)
+// Check if a linked list is empty
+int isEmpty(LinkedList * list)
 {
-    return head == NULL;
+    return list->head == NULL;
 }
 
+// Print all values in a linked list
 void printList(Node * head)
 {
     while (head->next != NULL)
@@ -116,4 +145,27 @@ void printList(Node * head)
     }
 
     printf("%d\n", head->data);
+}
+
+// Get node at specific index in linked list
+Node * get(LinkedList * list, int index)
+{
+    // If index is invalid
+    if (index < 0)
+        return NULL;
+
+    // Find node at given index in list
+    Node * curr = list->head;
+
+    for (int i = 0; i < index; i++)
+    {
+        curr = curr->next;
+
+        // If index was higher than highest index in list
+        if (curr == NULL)
+            return NULL;
+    }
+        
+    // Return node
+    return curr;
 }
