@@ -21,12 +21,10 @@ public class TestCase01
 
 	public static void main(String [] args)
 	{
-		boolean expectedResult;
-
-		checkTest(9, new int[] {3, 5, 3, 9, 6}, 1, expectedResult = true);
-		checkTest(9, new int[] {3, 5, 3, 9, 6}, 2, expectedResult = true);
-		checkTest(9, new int[] {3, 5, 3, 9, 6}, 3, expectedResult = false);
-		checkTest(9, new int[] {3, 5, 3, 9, 6}, -1, expectedResult = true);
+		checkTest(9, new int[] {3, 5, 3, 9, 6}, 1, true);
+		checkTest(9, new int[] {3, 5, 3, 9, 6}, 2, true);
+		checkTest(9, new int[] {3, 5, 3, 9, 6}, 3, false);
+		checkTest(9, new int[] {3, 5, 3, 9, 6}, -1, true);
 
 		// What kinds of things haven't we checked for here?
 	}

@@ -21,13 +21,11 @@ public class TestCase02
 
 	public static void main(String [] args)
 	{
-		int expectedResult;
-
-		checkTest(new int[] {1, 2, 3, 7, 10, 146, 2944198}, expectedResult = 10);
-		checkTest(new int[] {10, 294198, 7, 146, 1, 3, 2}, expectedResult = 10);
-		checkTest(new int[] {7, 7, 2, 7, 2, 7, 2, 2, 2}, expectedResult = 7);
-		checkTest(new int[] {2, 7, 2, 7, 2, 7, 2, 2, 2}, expectedResult = 7);
-		checkTest(new int[] {2, 7, 2, 2, 2, 7, 2, 2, 2}, expectedResult = 2);
+		checkTest(new int[] {1, 2, 3, 7, 10, 146, 2944198}, 10);
+		checkTest(new int[] {10, 294198, 7, 146, 1, 3, 2}, 10);
+		checkTest(new int[] {7, 7, 2, 7, 2, 7, 2, 2, 2}, 7);
+		checkTest(new int[] {2, 7, 2, 7, 2, 7, 2, 2, 2}, 7);
+		checkTest(new int[] {2, 7, 2, 2, 2, 7, 2, 2, 2}, 2);
 
 		// What kinds of things haven't we checked for here?
 	}

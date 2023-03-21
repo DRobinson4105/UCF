@@ -9,10 +9,6 @@
 //
 // For detailed compilation and testing instructions, see the assignment PDF.
 
-
-import java.io.*;
-import java.util.*;
-
 public class TestCase01
 {
 	public static void main(String [] args)
