@@ -4,8 +4,11 @@
 
 public class Garland
 {
-    private Node head; // Reference to the top-left node in this garland
-    private int size; // The number of strings currently in this garland
+    // Reference to the top-left node in this garland
+    private Node head;
+
+    // The number of strings currently in this garland
+    private int size;
 
     // Takes a string and creates a linked list representation of that string with
     // each character being a node in the linked list, returning the head of it
@@ -36,10 +39,10 @@ public class Garland
     {
         int size = 0;
 
-        // Find size of linked list by traversing through and keeping a counter
+        // Find size of linked list by traversing through and incrementing a counter
         Node curr = head;
 
-        while(curr != null)
+        while (curr != null)
         {
             size++;
             curr = curr.down;
@@ -48,7 +51,8 @@ public class Garland
         // Create new character array to hold all of the characters from the linked list
         char[] charArray = new char[size];
 
-        // Iterate through the array saving each character in the current index and then traversing to next node
+        // Iterate through the array saving each character in
+        // the current index and then traversing to next node
         curr = head;
 
         for (int i = 0; i < size; i++)
@@ -72,7 +76,7 @@ public class Garland
         {
             // Set the garland head to the head of the first string
             head = stringToLinkedList(strings[0]);
-
+            
             // Iterate through the array of strings adding each string to the garland
             Node curr = head;
 
@@ -116,6 +120,7 @@ public class Garland
 
         // Find head of last string in garland
         Node curr = head;
+
         while (curr.next != null)
             curr = curr.next;
 
@@ -147,10 +152,11 @@ public class Garland
         return linkedListToString(getNode(index));
     }
 
-    // Removes the string at the given index from the garland and returns true if string was removed
+    // Removes the string at the given index from the 
+    // garland and returns true if string was removed
     public boolean removeString(int index)
     {
-        // If given index was invalid
+        // If given index was invalid so the string was not removed
         if (index < 0 || index >= size)
             return false;
         
@@ -164,32 +170,39 @@ public class Garland
 
         // Find head of the linked list at the given index
         Node curr = head;
+        
         for (int i = 0; i < index - 1; i++)
             curr = curr.next;
 
         // Remove the string at the given index
         curr.next = curr.next.next;
         size--;
+
+        // The string was removed
         return true;
     }
 
     // Prints the string at the given index in the garland
     public boolean printString(int index)
     {
-        // If given index was invalid
+        // If given index was invalid so the string was not printed
         if (index < 0 || index >= size)
         {
             System.out.println("(invalid index)");
+
             return false;
         }
 
         // Find head of the linked list at the given index
         Node curr = head;
+
         for (int i = 0; i < index; i++)
             curr = curr.next;
 
+        // Print the found string
         printString(curr);
 
+        // The string was printed
         return true;
     }
 
@@ -213,7 +226,8 @@ public class Garland
         }
     }
 
-    // Prints all of the characters in the linked list given starting with the head and moving down
+    // Prints all of the characters in the linked list 
+    // given starting with the head and moving down
     public static void printString(Node head)
     {
         Node curr = head;
