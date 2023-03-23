@@ -96,7 +96,7 @@ int main()
         // Add all broken components revealed to array
         for (int j = 0; j < components[i].num_comp_rev; j++)
         {
-            scanf("%d", &components[i].comp_rev[j]);
+            scanf(" %d", &components[i].comp_rev[j]);
             components[i].comp_rev[j]--; // use zero index
         }
     }
@@ -104,49 +104,47 @@ int main()
     for (int i = 0; i < num_components; i++)
     {
         // If the part is already fixed
-        if (components[i].known == 1)
-            continue;
+        if (components[i].known == 1) continue;
         
         // Add current component to queue
         enqueue(component_list, i);
+		components[i].known = 1;
 
         // While there is a revealed component that needs to be fixed
         while (!isEmpty(component_list))
         {
+
             // Save indexes for current component and the part needed for that component
             int current_component = peek(component_list);
             int required_part = components[current_component].part_req;
-
-            // If the part is already fixed
-            if (components[current_component].known == 1)
+			
+			// If the part needed for the current component is not owned
+            if (parts[required_part].count == 0)
             {
-                dequeue(component_list);
-                continue;
-            }
+				// Buy the part
+                total_cost += parts[required_part].price;
+                parts[required_part].count++;
+                parts[parts[required_part].extra_part].count++;
 
-            components[current_component].known = 1;
-
-            // Check if the crew has the part needed
-            if (parts[required_part].count > 0)
-            {
-                // Use the part
-                parts[required_part].count--;
+				// Move component to end of queue
+                enqueue(component_list, current_component);
             }
             else
             {
-                // Buy the part
-                total_cost += parts[required_part].price;
-                
-                // Add the extra part
-                parts[parts[required_part].extra_part].count++;
+				// Use the part to fix component
+                parts[required_part].count--;
+
+				// Find any revealed broken components and add them to queue
+				for (int j = 0; j < components[current_component].num_comp_rev; j++)
+				{
+					if (components[components[current_component].comp_rev[j]].known == 0)
+						enqueue(component_list, components[current_component].comp_rev[j]);
+
+					components[components[current_component].comp_rev[j]].known = 1;
+				}
             }
 
-            // Remove current component from queue
             dequeue(component_list);
-
-            // Add any revealed broken components
-            for (int j = 0; j < components[current_component].num_comp_rev; j++)
-                enqueue(component_list, components[current_component].comp_rev[j]);
         }
     }
 
@@ -187,7 +185,7 @@ int peek(Queue * queue)
 void dequeue(Queue * queue)
 {
     // If the queue is empty
-    if (queue->front == NULL) return;
+    if (isEmpty(queue)) return;
 
     // Keep pointer to first value in queue
     Node * temp = queue->front;
@@ -205,7 +203,7 @@ void enqueue(Queue * queue, int value)
     Node * newNode = createNode(value);
 
     // If the queue is empty
-    if (queue->front == NULL)
+    if (isEmpty(queue))
     {
         queue->front = queue->rear = newNode;
         return;
