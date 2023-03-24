@@ -15,6 +15,26 @@ struct Stack {
 
 // Dynamically allocate memory for node, initializing it with the given value
 // Return the pointer to that node
+Node * createNode(int value);
+
+// Add a new value to top of stack
+void push(Stack * stack, int value);
+
+// Remove the top value in stack
+Node * pop(Stack * stack);
+
+// Return the value that is at the top of the stack
+int peek(Stack * stack);
+
+// Free memory for all nodes in stack
+void freeStack(Stack * stack);
+
+// Check if a stack is empty
+int isEmpty(Stack * stack);
+
+// Print all values in stack starting at the top
+void printStack(Stack * stack);
+
 Node * createNode(int value)
 {
     // Create the node dynamically
@@ -28,8 +48,7 @@ Node * createNode(int value)
     return newNode;
 }
 
-// Add a new value to top of stack
-Node * push(Stack * stack, int value)
+void push(Stack * stack, int value)
 {
     // Create the node dynamically
     Node * newNode = createNode(value);
@@ -41,7 +60,6 @@ Node * push(Stack * stack, int value)
     stack->top = newNode;
 }
 
-// Remove the top value in stack
 Node * pop(Stack * stack)
 {
     // If the stack is empty
@@ -57,7 +75,6 @@ Node * pop(Stack * stack)
     free(deletedNode);
 }
 
-// Return the value that is at the top of the stack
 int peek(Stack * stack)
 {
     // If the queue is empty
@@ -68,21 +85,18 @@ int peek(Stack * stack)
     return stack->top->data;
 }
 
-// Free memory for all nodes in stack
-void deleteStack(Stack * stack)
+void freeStack(Stack * stack)
 {
     // While queue is not empty
     while (!isEmpty(stack))
         pop(stack);
 }
 
-// Check if a stack is empty
 int isEmpty(Stack * stack)
 {
     return stack->top == NULL;
 }
 
-// Print all values in stack starting at the top
 void printStack(Stack * stack)
 {
     Node * curr = stack->top;
