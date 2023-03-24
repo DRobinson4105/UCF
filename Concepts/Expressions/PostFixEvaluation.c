@@ -57,7 +57,6 @@ int main()
                 push(stack, num1 / num2);
         }
 
-        printf("Top: %lf\n", stack->top->data);
     }
 
     printf("%lf\n", stack->top->data);
