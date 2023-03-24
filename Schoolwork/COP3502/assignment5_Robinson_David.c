@@ -82,7 +82,8 @@ int main()
     // Fill array of components
     for (int i = 0; i < num_components; i++)
     {
-        // Get the part needed for the component and the number of broken components revealed from user
+        // Get the part needed for the component and the 
+		// number of broken components revealed from user
         scanf("%d %d", &components[i].part_req, &components[i].num_comp_rev);
 
         components[i].part_req--; // use zero index
