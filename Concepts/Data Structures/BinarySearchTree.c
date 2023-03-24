@@ -4,9 +4,9 @@
 typedef struct Node Node;
 
 struct Node {
-    int data;
-    Node * left;
-    Node * right;
+    int data; // Data that node holds
+    Node * left; // Pointer to left branch
+    Node * right; // Pointer to right branch
 };
 
 // Dynamically allocate memory for node, initializing it with the given value
