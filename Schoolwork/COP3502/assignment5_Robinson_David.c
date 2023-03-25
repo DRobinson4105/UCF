@@ -50,7 +50,8 @@ void freeComponents(Component * components, int num_components);
 
 int main()
 {
-    int num_parts, num_components, total_cost = 0;
+    int num_parts, num_components;
+    long long int total_cost = 0;
     Part * parts;
     Component * components;
     Queue * component_list = (Queue *) malloc(sizeof(Queue));
@@ -155,7 +156,7 @@ int main()
     free(component_list);
 
     // Print total cost of parts needed
-    printf("%d\n", total_cost);
+    printf("%lld\n", total_cost);
 
     return 0;
 }

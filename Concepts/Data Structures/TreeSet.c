@@ -13,38 +13,20 @@ struct Node {
 // Return the pointer to that node
 Node * createNode(int value);
 
-// Insert value into BST and return the new root of the BST
+// Insert value into set and return the new root of the set
 Node * insertNode(Node * root, int value);
 
-// Remove value from BST and return the new root of the BST
+// Remove value from set and return the new root of the set
 Node * removeNode(Node * root, int value);
 
-// Print BST in Post Order
-void printPostOrderTree(Node * root);
+// Print set in order
+void printSet(Node * root);
 
-// Print BST in order
-void printInOrderTree(Node * root);
+// Returns number of nodes in set
+int sizeofSet(Node * root);
 
-// Print BST in Pre Order
-void printPreOrderTree(Node * root);
-
-// Find lowest value node in BST
-Node * minValueNode(Node * root);
-
-// Find highest value node in BST
-Node * maxValueNode(Node * root);
-
-// Returns number of nodes in BST
-int sizeofBST(Node * root);
-
-// Frees all dynamic memory used for BST
-void freeBST(Node * root);
-
-// Returns a pointer to the node with the given value or NULL if node could not be found
-Node * findNode(Node * root, int value);
-
-// Return the max depth of BST from the given root
-int getMaxDepth(Node * root);
+// Frees all dynamic memory used for set
+void freeSet(Node * root);
 
 int main()
 {
@@ -57,12 +39,7 @@ int main()
     root = insertNode(root, 4);
     root = insertNode(root, 5);
 
-    printf("---In---\n");
-    printInOrderTree(root);
-    printf("---Post---\n");
-    printPostOrderTree(root);
-    printf("---Pre---\n");
-    printPreOrderTree(root);
+    printSet(root);
 
     printf("Size: %d\n", sizeofBST(root));
 
@@ -70,16 +47,11 @@ int main()
     root = removeNode(root, 2);
     root = removeNode(root, 6);
 
-    printf("---In---\n");
-    printInOrderTree(root);
-    printf("---Post---\n");
-    printPostOrderTree(root);
-    printf("---Pre---\n");
-    printPreOrderTree(root);
+    printSet(root);
 
     printf("Size: %d\n", sizeofBST(root));
 
-    freeBST(root);
+    freeSet(root);
 
     return 0;
 }
@@ -142,6 +114,7 @@ Node * removeNode(Node * root, int value)
         }
 
         // If the node has two children
+
         // Find which branch has the higher depth
         // Find closest value to root in that branch and replace the root with it
         Node * temp;
@@ -171,22 +144,7 @@ Node * removeNode(Node * root, int value)
     return root;
 }
 
-void printPostOrderTree(Node * root)
-{
-    // Reached end of a branch
-    if (root == NULL) return;
-
-    // Print left branch
-    printPostOrderTree(root->left);
-
-    // Print right branch
-    printPostOrderTree(root->right);
-
-    // Print root
-    printf("%d\n", root->data);
-}
-
-void printInOrderTree(Node * root)
+void printSet(Node * root)
 {
     // Reached end of a branch
     if (root == NULL) return;
@@ -201,45 +159,14 @@ void printInOrderTree(Node * root)
     printInOrderTree(root->right);
 }
 
-void printPreOrderTree(Node * root)
-{
-    // Reached end of a branch
-    if (root == NULL) return;
-
-    // Print root
-    printf("%d\n", root->data);
-
-    // Print left branch
-    printInOrderTree(root->left);
-
-    // Print right branch
-    printInOrderTree(root->right);
-}
-
-Node * minValueNode(Node * root)
-{
-    if (root->left == NULL)
-        return root;
-    
-    return minValueNode(root->left);
-}
-
-Node * maxValueNode(Node * root)
-{
-    if (root->right == NULL)
-        return root;
-    
-    return maxValueNode(root->right);
-}
-
-int sizeofBST(Node * root)
+int sizeofSet(Node * root)
 {
     if (root == NULL) return 0;
 
     return 1 + sizeofBST(root->left) + sizeofBST(root->right);
 }
 
-void freeBST(Node * root)
+void freeSet(Node * root)
 {
     if (root == NULL) return;
 
@@ -247,39 +174,4 @@ void freeBST(Node * root)
     freeBST(root->right);
 
     free(root);
-}
-
-Node * findNode(Node * root, int value)
-{
-    // If value was not found
-    if (root == NULL) return NULL;
-
-    // If value is in left branch
-    if (value < root->data)
-        return findNode(root->left, value);
-
-    // If value is in right branch
-    if (value > root->data)
-        return findNode(root->right, value);
-
-    // If value was found
-    return root;
-}
-
-int getMaxDepth(Node * root)
-{
-    // If end of branch was reached
-    if (root == NULL) return 0;
-
-    // Get the max depth of the left branch
-    int left = getMaxDepth(root->left);
-
-    // Get the max depth of the right branch
-    int right = getMaxDepth(root->right);
-
-    // Return the higher depth + one for the root node
-    if (left > right)
-        return 1 + left;
-
-    return 1 + right;
 }
