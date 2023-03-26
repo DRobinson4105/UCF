@@ -6,6 +6,7 @@
 #define MAX_STRING_LENGTH 20
 #define DEFAULT_STARTING_SIZE 100
 #define NOT_FOUND_ERROR INT_MIN
+#define LIST_LIMIT 5
 
 typedef struct Node Node;
 typedef struct HashTable HashTable;
@@ -33,7 +34,7 @@ int sfold(char * key, int tableSize);
 HashTable * initialize(int startingSize);
 
 // Insert a new node into the hash table with the given key and value
-void insert(HashTable * table, char * key, int value);
+HashTable * insert(HashTable * table, char * key, int value);
 
 // Find the node in the hash table with the given key and return the node's value
 int search(HashTable * table, char * key);
@@ -47,6 +48,12 @@ void freeHashTable(HashTable * table);
 
 // Free all heap memory used by linked list
 void freeLinkedList(Node * head);
+
+// Resizes a hash table and recalculating each of the indexes of the nodes
+HashTable * resize(HashTable * table, int newSize);
+
+// Returns number of nodes in linked list
+int getListSize(Node * head);
 
 int main()
 {
@@ -74,7 +81,7 @@ int main()
                 printf("Value: ");
                 scanf("%d", &value);
 
-                insert(table, key, value);
+                table = insert(table, key, value);
                 printf("%s has been added\n\n", key);
 
                 break;
@@ -149,16 +156,23 @@ HashTable * initialize(int startingSize)
     return table;
 }
 
-void insert(HashTable * table, char * key, int value)
+HashTable * insert(HashTable * table, char * key, int value)
 {
     // Find index in hash table
     int hashIndex = sfold(key, table->size);
     
     Node * newNode = createNode(key, value);
 
-    // Put the new node at the head of the list at that index
+    // Put the new node at the head of the linked list at that index
     newNode->next = table->items[hashIndex];
     table->items[hashIndex] = newNode;
+
+    // Return a new hash table with double the indexes if the 
+    // linked list at the hashIndex has 5 or more nodes
+    if (getListSize(table->items[hashIndex]) >= LIST_LIMIT)
+        return resize(table, table->size * 2);
+
+    return table;
 }
 
 int search(HashTable * table, char * key)
@@ -212,7 +226,7 @@ int delete(HashTable * table, char * key)
         {
             Node * deletedNode = curr->next;
 
-            // Remove next node from list
+            // Remove next node from linked list
             curr->next = curr->next->next;
 
             // Free that node
@@ -242,4 +256,39 @@ void freeLinkedList(Node * head)
     freeLinkedList(head->next);
 
     free(head);
+}
+
+HashTable * resize(HashTable * table, int newSize)
+{
+    HashTable * newTable = initialize(newSize);
+
+    Node * curr;
+
+    // For each linked list in the hash table
+    for (int i = 0; i < table->size; i++)
+    {
+        // Set curr to the head of the current linked list
+        curr = table->items[i];
+        
+        // Add each node from the linked list to the new hash table
+        while (curr != NULL)
+        {
+            insert(newTable, curr->key, curr->value);
+
+            curr = curr->next;
+        }
+    }
+
+    // Free heap memory for old table
+    freeHashTable(table);
+
+    // Return new table
+    return newTable;
+}
+
+int getListSize(Node * head)
+{
+    if (head == NULL) return 0;
+
+    return 1 + getListSize(head->next);
 }
