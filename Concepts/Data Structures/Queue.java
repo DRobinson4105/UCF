@@ -1,15 +1,3 @@
-class Node
-{
-    public int data;
-    public Node next;
-
-    Node(int data)
-    {
-        this.data = data;
-        this.next = null;
-    }
-}
-
 public class Queue
 {
     private Node front; // Next node in queue
