@@ -143,7 +143,7 @@ int sfold(char * key, int tableSize)
     }
 
     // Returns the sum modded by the given table size
-    return abs(sum) % tableSize;
+    return llabs(sum) % tableSize;
 }
 
 HashTable * initialize(int startingSize)
