@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+#include <ctype.h>
 
 #define MAX_STRING_LENGTH 20
 #define DEFAULT_STARTING_SIZE 100
@@ -73,7 +74,7 @@ int main()
 
         scanf(" %c", &option);
 
-        switch (option)
+        switch (toupper(option))
         {
             case 'I':
                 printf("Key: ");
