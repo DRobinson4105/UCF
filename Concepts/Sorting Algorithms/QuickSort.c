@@ -53,16 +53,16 @@ int partition(int * array, int low, int high)
 // array[] --> Array to be sorted
 // low --> Starting index
 // high --> Ending index
-void quickSort(int arr[], int low, int high)
+void quickSort(int * array, int low, int high)
 {
     if (low < high)
     {     
         // Sets pivot point in right place, partioning the smaller and larger values
-        int pivot = partition(arr, low, high);
+        int pivot = partition(array, low, high);
  
         // Separately sort elements before pivot and after pivot
-        quickSort(arr, low, pivot - 1);
-        quickSort(arr, pivot + 1, high);
+        quickSort(array, low, pivot - 1);
+        quickSort(array, pivot + 1, high);
     }
 }
 
