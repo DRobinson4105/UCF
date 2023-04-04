@@ -29,7 +29,8 @@ int partition(int * array, int low, int high)
     // Traverse each element of the array and compare with pivot
     for (int j = low + 1; j <= high; j++)
     {    
-        // If current element smaller than pivot is found, swap it with current location for pivot
+        // If current element smaller than pivot is found, 
+        // swap it with current location for pivot
         if (array[j] <= pivot)
         {
             i++;
@@ -53,17 +54,17 @@ int partition(int * array, int low, int high)
 // array[] --> Array to be sorted
 // low --> Starting index
 // high --> Ending index
-void quickSort(int * array, int low, int high)
+void quickSort(int arr[], int low, int high)
 {
-    if (low < high)
-    {     
-        // Sets pivot point in right place, partioning the smaller and larger values
-        int pivot = partition(array, low, high);
+    // Don't sort anything if subarray has a size of 1 or 0
+    if (low > high) return;
+        
+    // Sets pivot point in right place, partioning the smaller and larger values
+    int pivot = partition(arr, low, high);
  
-        // Separately sort elements before pivot and after pivot
-        quickSort(array, low, pivot - 1);
-        quickSort(array, pivot + 1, high);
-    }
+    // Separately sort elements before pivot and after pivot
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
 }
 
 int main()

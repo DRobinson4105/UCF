@@ -24,7 +24,8 @@ void bubbleSort(int * array, int size)
     // Decrease size of unsorted subarray after every iteration until size is 1
     for(int max = size; max > 1; max--)
     {
-        // Iterate through subarray array[0..max - 1], swapping values if current value is greater than next value
+        // Iterate through subarray array[0..max - 1], swapping 
+        // values if current value is greater than next value
         for (int j = 0; j < max - 1; j++)
             if (array[j] > array[j + 1])
                 swap(&array[j], &array[j + 1]);
