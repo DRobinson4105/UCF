@@ -3,8 +3,8 @@
 // IS AN ACT OF ACADEMIC MISCONDUCT AND ALSO CONSTITUTES COPYRIGHT INFRINGEMENT.
 // =============================================================================
 
-// YOUR NAME HERE
-// YOUR NID HERE
+// David Robinson
+// 5514685
 
 // =============================================================================
 //          BlackBoxOfChaos ~ Sean Szumlanski ~ COP 3330 ~ Spring 2023
@@ -20,27 +20,27 @@
 // quadrant holds a value. A quadrant might also have a latch that leads to a
 // deeper compartment within the box.
 
-class Quadrant
+class Quadrant<Type>
 {
-	int value;
-	Compartment latch;
+	Type value;
+	Compartment<Type> latch;
 
-	Quadrant(int value)
+	Quadrant(Type value)
 	{
 		this.value = value;
 	}
 
-	public int getValue()
+	public Type getValue()
 	{
 		return value;
 	}
 
-	public void setLatch(Compartment c)
+	public void setLatch(Compartment<Type> c)
 	{
 		this.latch = c;
 	}
 
-	public Compartment getLatch()
+	public Compartment<Type> getLatch()
 	{
 		return latch;
 	}
@@ -51,15 +51,15 @@ class Quadrant
 	}
 }
 
-class Compartment
+class Compartment<Type>
 {
 	// Each compartment within the black box of chaos is divided into four
 	// quadrants, one for each cardinal direction: north, south, east, and west.
 
-	Quadrant north;
-	Quadrant south;
-	Quadrant east;
-	Quadrant west;
+	Quadrant<Type> north;
+	Quadrant<Type> south;
+	Quadrant<Type> east;
+	Quadrant<Type> west;
 
 	private static final String [] directions
 		= new String[] {"north", "south", "east", "west"};
@@ -68,14 +68,14 @@ class Compartment
 	// within, mostly because some of these methods need access to that box's
 	// ChaoticSpiral in order to function properly.
 
-	private BlackBoxOfChaos box;
+	private BlackBoxOfChaos<Type> box;
 
 	// A record of how many levels deep this compartment is within the box.
 
 	private int depth;
 
 
-	Compartment(BlackBoxOfChaos box, int depth)
+	Compartment(BlackBoxOfChaos<Type> box, int depth)
 	{
 		this.box = box;
 		this.depth = depth;
@@ -99,14 +99,14 @@ class Compartment
 	// causing the black box to lose the compartment that the overwritten latch
 	// led to previously.
 
-	public void emplace(int value)
+	public void emplace(Type value)
 	{
 		// If this compartment is full, we need to move on to the next
 		// compartment in the box.
 
 		if (!this.hasSpace())
 		{
-			Compartment nextCompartment = this.findOrCreateNextCompartment();
+			Compartment<Type> nextCompartment = this.findOrCreateNextCompartment();
 			nextCompartment.emplace(value);
 		}
 
@@ -116,7 +116,7 @@ class Compartment
 		// which we process these quadrants is one of the few non-chaotic
 		// behaviors within a BlackBoxOfChaos.
 
-		Quadrant newQuadrant = new Quadrant(value);
+		Quadrant<Type> newQuadrant = new Quadrant<>(value);
 
 		if (north == null)
 			north = newQuadrant;
@@ -153,10 +153,10 @@ class Compartment
 	//    Alternatively, this process might result in the box having multiple
 	//    compartments branching off of this one.
 
-	private Compartment findOrCreateNextCompartment()
+	private Compartment<Type> findOrCreateNextCompartment()
 	{
 		// First, try to find an adjacent compartment via the latches.
-		Compartment foundCompartment = searchLatches();
+		Compartment<Type> foundCompartment = searchLatches();
 		if (foundCompartment != null)
 			return foundCompartment;
 
@@ -169,9 +169,9 @@ class Compartment
 	// will permanently lose access to all the values in the compartment that
 	// latch led to.
 
-	private Compartment createNewCompartment()
+	private Compartment<Type> createNewCompartment()
 	{
-		Compartment newCompartment = new Compartment(this.box, this.depth + 1);
+		Compartment<Type> newCompartment = new Compartment<>(this.box, this.depth + 1);
 
 		int direction = box.getChaoticSpiral().getChaoticInteger() % 4;
 
@@ -225,7 +225,7 @@ class Compartment
 
 		// Attempt to move on to the next compartment.
 
-		Compartment nextCompartment = searchLatches();
+		Compartment<Type> nextCompartment = searchLatches();
 
 		if (nextCompartment != null)
 			nextCompartment.printContents();
@@ -235,7 +235,7 @@ class Compartment
 	// next compartment. If so, return a reference to that compartment. If not,
 	// return null.
 
-	private Compartment searchLatches()
+	private Compartment<Type> searchLatches()
 	{
 		int numTries = (box.getChaoticSpiral().getChaoticInteger() + 1) * 4;
 
@@ -260,14 +260,14 @@ class Compartment
 	}
 }
 
-public class BlackBoxOfChaos
+public class BlackBoxOfChaos<Type>
 {
 	// Number of elements that have been inserted into thsi box.
 	private int size;
 	public int getSize() { return size; }
 
 	// Reference to the first compartment (which holds values) within the box.
-	private Compartment firstCompartment;
+	private Compartment<Type> firstCompartment;
 
 	// Reference to the chaotic spiral governing the box's behaviors.
 	private ChaoticSpiral chaoticSpiral;
@@ -306,7 +306,7 @@ public class BlackBoxOfChaos
 
 		// Create the first compartment in the black box of chaos and initialize
 		// all remaining fields.
-		this.firstCompartment = new Compartment(this, 0);
+		this.firstCompartment = new Compartment<>(this, 0);
 		this.size = 0;
 		this.isFunctional = true;
 	}
@@ -319,7 +319,7 @@ public class BlackBoxOfChaos
 	// non-null, unless the box is inactive (in which case we throw a
 	// ChaosException).
 
-	public void emplace(int value)
+	public void emplace(Type value)
 	{
 		if (!isFunctional)
 		{
@@ -354,17 +354,17 @@ public class BlackBoxOfChaos
 
 	public static double difficultyRating()
 	{
-		return -1.0;
+		return 4;
 	}
 
 	public static double hoursSpent()
 	{
-		return -1.0;
+		return 1;
 	}
 
 	public static void main(String [] args)
 	{
-		BlackBoxOfChaos box = new BlackBoxOfChaos(10, 2984834, 1787519, 844421);
+		BlackBoxOfChaos<Integer> box = new BlackBoxOfChaos<>(10, 2984834, 1787519, 844421);
 
 		for (int i = 0; i < 20; i++)
 			box.emplace(i);
