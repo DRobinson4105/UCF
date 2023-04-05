@@ -36,10 +36,10 @@ void freeStack(Stack * stack);
 int main()
 {
     // Number of possible quarters
-    int numQuarters = 0;
+    long long int numQuarters = 0;
 
     // Total distance from each room to the main entrance
-    int sumCorridors = 0;
+    long long int sumCorridors = 0;
 
     // To keep track of current room from the input
     int currRoom;
@@ -75,7 +75,7 @@ int main()
         scanf("%d", &currRoom);
     }
 
-    printf("%d %d\n", numQuarters, sumCorridors);
+    printf("%lld %lld\n", numQuarters, sumCorridors);
 
     freeStack(rooms);
     
