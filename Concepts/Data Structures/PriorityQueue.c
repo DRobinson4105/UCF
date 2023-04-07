@@ -190,9 +190,6 @@ void printHeap(Heap * pq)
 void * freeHeap(Heap * pq)
 {
     if (pq == NULL) return NULL;
-    
-    while (pq->size > 0)
-        dequeue(pq);
 
     free(pq->arr);
     free(pq);
