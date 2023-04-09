@@ -65,7 +65,7 @@ void merge(int * array, int low, int high, int mid)
 void mergeSort(int * array, int low, int high)
 {
     // If size of subarray is 0 or 1, do nothing
-    if(low > high) return;
+    if(low >= high) return;
 
     int mid  = (low + high) / 2; // Midpoint of subarray
 
