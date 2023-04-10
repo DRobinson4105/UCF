@@ -10,77 +10,134 @@
 #define LEFT(index)    (((index)*2)+1)
 #define RIGHT(index)   (((index)*2)+2)
 
-// Default size of the heap
-#define DEFAULT_CAP 10
+// Max size of the heap
+#define DEFAULT_CAP 200000
 
-// The alias for the heap
 typedef struct Shipment Shipment;
 typedef struct Heap Heap;
 
 struct Shipment {
-    int arrival;
-    int expiration;
-    int mass;
+    int arrival; // arrival time
+    int expiration; // expiration time
+    double mass; // shipment mass
 };
 struct Heap {
-    Shipment * array;
-    int size, cap;
+    Shipment * array; // array to hold elements in heap
+    int size; // current number of elements in heap
+    int cap; // max number of elements in heap 
 };
 
-// Prototypes
-int        higherPriorityThan(Shipment first, Shipment second);
-Heap *     createHeap();
-void       deleteHeap(Heap * hp);
-void       swap(Heap * hp, int index1, int index2);
-void       percolateUp(Heap * hp, int index);
-void       percolateDown(Heap * hp, int index);
-void       append(Heap * hp, Shipment value);
-void       enqueue(Heap * hp, Shipment value);
-void       dequeue(Heap * hp); 
-Shipment   front(Heap * hp);
-int        isEmpty(Heap * hp);
-void       delete(Heap * hp, int index);
-void       merge(Shipment * array, int low, int mid, int high);
-void       mergeSort(Shipment * array, int low, int high);
+// Allocate memory for heap and initalize it
+// Return pointer to heap
+Heap * createHeap();
+
+// Delete all the memory in the heap
+void freeHeap(Heap * hp);
+
+// Swap values at index1 and index2 in the heap
+void swap(Heap * hp, int index1, int index2);
+
+// Move values up the heap while higher priority than parent
+void percolateUp(Heap * hp, int index);
+
+// Move values down the heap while a child has higher priority
+void percolateDown(Heap * hp, int index);
+
+// Append a value to the end of a heap
+void append(Heap * hp, Shipment value);
+
+// Add a value to the heap
+// Insert at end and percolate up
+void enqueue(Heap * hp, Shipment value);
+
+// Remove the highest priority element from a heap
+// Move last value to the top and percolate down
+void dequeue(Heap * hp);
+
+// Function to get the highest priority element of the heap which is at the zeroth index
+Shipment front(Heap * hp);
+
+// Function to check if a heap is empty
+int isEmpty(Heap * hp);
+
+// Merges and sorts two subarrays of elements where 
+// first subarray is array[low..mid] and second subarray 
+// is array[mid+1..high]
+void merge(Shipment * array, int low, int mid, int high);
+
+// Repeatedly splits array until each subarray has a 
+// length of 1 or 0 and then merges and sorts the subarrays
+void mergeSort(Shipment * array, int low, int high);
+
+// Remove the shipments that would be consumed between the given old and new times
+// Return 1 if the update was successful
+// Return 0 if there was not enough food at the current consumption rate
 int update(Heap * hp, int oldTime, int newTime, double consumeRate);
+
+// Check if the guessed consumption rate works for the given array of shipments
 int canDo(Shipment * array, int numShipments, double consumeRate, int start, int end);
-void printHeap(Heap * hp);
 
 int main()
 {
-    Shipment * shipments;
-    Shipment currShipment;
-    int numShipments;
-    int start, end;
+    Shipment * shipments; // array of shipments from input
+    int numShipments; // number of shipments
+    int start, end; // starting and ending eating time of the crew
+    double lowerBound, upperBound, mid; // used for binary search
+    int totalMass = 0;
 
     scanf("%d", &numShipments);
 
+    // Allocate heap memory for given number of shipments
     shipments = (Shipment *) malloc(sizeof(Shipment) * numShipments);
 
+    // Get input for all shipments
     for (int i = 0; i < numShipments; i++)
     {
-        scanf("%d %d %d", &currShipment.arrival, &currShipment.expiration, &currShipment.mass);
-        shipments[i] = currShipment;
+        scanf("%d %d %lf", &shipments[i].arrival, &shipments[i].expiration, &shipments[i].mass);
+        totalMass += shipments[i].mass;
     }
 
     scanf("%d %d", &start, &end);
 
+    // Clamp all shipments to start and end eating time
     for (int i = 0; i < numShipments; i++)
     {
+        // If shipment would be invalid by expiring before start or arriving after end
         if (shipments[i].expiration <= start || shipments[i].arrival >= end)
         {
+            totalMass -= shipments[i].mass;
             i--;
             numShipments--;
             continue;
         }
 
+        // If shipment is valid but expires after end
         if (shipments[i].expiration > end)
             shipments[i].expiration = end;
+        
+        // If shipment is valid but arrives before start
+        if (shipments[i].arrival < start)
+            shipments[i].arrival = start;
     }
 
+    // Sort shipments based on arrival time
     mergeSort(shipments, 0, numShipments - 1);
 
-    printf("%d\n", canDo(shipments, numShipments, 0.3, start, end));
+    lowerBound = 0;
+    upperBound = totalMass / (end - start);
+
+    // Binary search until valid bound has an absolute error of 10^-5
+    while (upperBound - lowerBound > 0.00001)
+    {
+        mid = (lowerBound + upperBound) / 2;
+
+        if (canDo(shipments, numShipments, mid, start, end))
+            lowerBound = mid;
+        else
+            upperBound = mid;
+    }
+
+    printf("%lf\n", upperBound);
 
     return 0;
 }
@@ -105,11 +162,10 @@ void merge(Shipment * array, int low, int mid, int high)
     int j = 0; // Initial index of second subarray
     int k = low; // Initial index of merged subarray
     
-    // Merge temp arrays back into array[L..R]
+    // Merge temp arrays back into array[low..high]
     while (i < length1 && j < length2)
     {
-        // If arrL[i] is less than or equal to arrR[j] then add arrL[i] to the 
-        // next index in the merged subarray and move to the next value in arrL[]
+        // Add the lower arrival time to merged array
         if (arrL[i].arrival <= arrR[j].arrival)
             array[k++] = arrL[i++];
         else
@@ -134,7 +190,8 @@ void mergeSort(Shipment * array, int low, int high)
     // If size of subarray is 0 or 1, do nothing
     if(low >= high) return;
 
-    int mid = (low + high) / 2; // Midpoint of subarray
+    // Midpoint of subarray
+    int mid = (low + high) / 2;
 
     // Sort left and right halves of array
     mergeSort(array, low, mid);
@@ -144,78 +201,57 @@ void mergeSort(Shipment * array, int low, int high)
     merge(array, low, mid, high);
 }
 
-// Functions
-// Function to check if the first value is higher priority than the second
-// Return 1 if the first is higher priority
-// Return 0 otherwise
-// This function will be dependent on the type of heap
-int higherPriorityThan(Shipment first, Shipment second) {
-    if (first.expiration < second.expiration) return 1;
-    return 0;
-}
-
-// Function to create a heap
 Heap * createHeap() {
-    // Allocate
-    Heap * res = (Heap *) malloc(sizeof(Heap));
+    // Allocate dynamic memory for heap
+    Heap * newHeap = (Heap *) malloc(sizeof(Heap));
 
-    // Intialize (array list)
-    res->size = 0;
-    res->cap = DEFAULT_CAP;
-    res->array = (Shipment *) malloc(
-                 sizeof(Shipment) * res->cap);
+    // Intialize all parts of heap
+    newHeap->size = 0;
+    newHeap->cap = DEFAULT_CAP;
+    newHeap->array = (Shipment *) malloc(sizeof(Shipment) * DEFAULT_CAP);
     
     // Return
-    return res;
+    return newHeap;
 }
 
-// Function to delete all the memory in the heap
-void deleteHeap(Heap * hp) {
-    // TODO: Potentially free the values in the 
-    //       heap's array
-
-    // Free the array itself
+void freeHeap(Heap * hp) 
+{
     free(hp->array);
-
-    // Free the heap
     free(hp);
 }
 
-// Function to swap values in the heap
 void swap(Heap * hp, int index1, int index2) {
     Shipment tmp = hp->array[index1];
     hp->array[index1] = hp->array[index2];
     hp->array[index2] = tmp;
 }
 
-// Function to move values up the heap while higher priority than parent
 void percolateUp(Heap * hp, int index) {
     // Loop while the index has a parent
     while (index != 0) {
-        // Find the parent
+        // Index of parent
         int parIndex = PARENT(index);
 
-        // Check if we are higher priority than
-        // parent
-        if (higherPriorityThan(hp->array[index], 
-                               hp->array[parIndex])) {
+        // Check if current element is higher priority than parent
+        if (hp->array[index].expiration < hp->array[parIndex].expiration)
+        {
             // Swap to the parent
             swap(hp, index, parIndex);
-        
-            // The value is now in the parent's location
             index = parIndex;
-        } else {
-            // The node can stop moving up
+        } 
+        
+        // Done percolating
+        else
             return;
-        }
     }
 }
 
-// Function to move values down the heap while a child has higher priority
-void percolateDown(Heap * hp, int index) {
-    int swapped = 0;
+void percolateDown(Heap * hp, int index)
+{
+    int swapped = 1;
     // Loop until there are no more swaps
-    do {
+    while (swapped)
+    {
         // Set that there are no swaps for the current iteration
         swapped = 0;
 
@@ -224,28 +260,26 @@ void percolateDown(Heap * hp, int index) {
 
         // Check if a left child is better than best
         int leftIndex = LEFT(index);
-        if (leftIndex < hp->size && 
-            higherPriorityThan(hp->array[leftIndex], hp->array[bestIndex])) {
+        if (leftIndex < hp->size &&
+            hp->array[leftIndex].expiration < hp->array[bestIndex].expiration)
             bestIndex = leftIndex;
-        }
 
         // Check if a right child is better than best
         int rightIndex = RIGHT(index);
-        if (rightIndex < hp->size && 
-            higherPriorityThan(hp->array[rightIndex], hp->array[bestIndex])) {
+        if (rightIndex < hp->size &&
+            hp->array[rightIndex].expiration < hp->array[bestIndex].expiration)
             bestIndex = rightIndex;
-        }
 
         // Check if a swap is needed
-        if (bestIndex != index) {
+        if (bestIndex != index)
+        {
             swap(hp, bestIndex, index);
             swapped = 1;
             index = bestIndex;
         }
-    } while (swapped);
+    }
 }
 
-// Function to append a value to the end of an array list (heap)
 void append(Heap * hp, Shipment value) {
     // Check if the array was full
     if (hp->size == hp->cap)
@@ -261,106 +295,96 @@ void append(Heap * hp, Shipment value) {
     hp->size++;
 }
 
-void delete(Heap * hp, int index)
-{
-    if (hp == NULL || isEmpty(hp)) return;
-
-    for (int i = index; i < hp->size - 1; i++)
-        hp->array[i] = hp->array[i + 1];
-
-    hp->size--;
-}
-
-// Add a value to the heap
-// Insert at end and percolate up
 void enqueue(Heap * hp, Shipment value) {
     append(hp, value);
     percolateUp(hp, hp->size - 1);
 }
 
-// Function to remove the highest priority element from a heap
-// Move last value to the top and percolate down
 void dequeue(Heap * hp) {
     swap(hp, 0, hp->size - 1);
     hp->size--;
     percolateDown(hp, 0);
 }
 
-// Function to get the highest priority element of the heap (root)
 Shipment front(Heap * hp) {
     return hp->array[0];
 }
  
-// Function to check if a heap is empty
 int isEmpty(Heap * hp) {
     return (hp->size == 0);
 }
 
 int update(Heap * hp, int oldTime, int newTime, double consumeRate)
 {
-    int curTime = oldTime;
     double consumptionTime, finishTime;
-    while (!isEmpty(hp))
+
+    // Keep track of the current time
+    int curTime = oldTime;
+
+    // Loop while there is some value in the heap
+    while (!isEmpty(hp) && curTime < newTime)
     {
+        // Determine the time required to finish consuming the current shipment 
         consumptionTime = hp->array[0].mass / consumeRate;
+
+        // Determine the time when the shipment would finish consumption
         finishTime = consumptionTime + curTime;
 
+
+        // Check if we cannot finish the shipment before spoiling
         if (finishTime > hp->array[0].expiration)
             finishTime = hp->array[0].expiration;
 
+        // Check if we can finish the shipment before the end of the update
         if (finishTime <= newTime)
         {
+            // Update time and remove from heap
             curTime = finishTime;
             dequeue(hp);
         }
         else
         {
+            // Update the remaining mass of the shipment and stop the simulation
             hp->array[0].mass -= consumeRate * (newTime - curTime);
             return 1;
         }
     }
 
-    return 0;
+    // If the shipments fed the crew until the new time
+    return (curTime == newTime);
 }
 
 int canDo(Shipment * array, int numShipments, double consumeRate, int start, int end)
 {
+    // Create a heap used as a priority queue
     Heap * pq = createHeap();
 
+    // Add first shipment to priority queue
     enqueue(pq, array[0]);
 
     int curTime = start;
-    int newTime;
     int completedUpdate;
-
+    
+    // Loop through the remaining shipments
     for (int i = 1; i < numShipments; i++)
     {
-        newTime = front(pq).expiration;
-        completedUpdate = update(pq, curTime, newTime, consumeRate);
-        curTime = newTime;
+        // Update the heap based on the arrival of the current shipment
+        completedUpdate = update(pq, curTime, array[i].arrival, consumeRate);
+        curTime = array[i].arrival;
 
+        // If the crew starved during the update
         if (!completedUpdate) return 0;
 
+        // Add current shipment to priority queue
         enqueue(pq, array[i]);
     }
 
+    // Update to end of crew eating time
     completedUpdate = update(pq, curTime, end, consumeRate);
 
-    deleteHeap(pq);
+    // Free heap memory
+    freeHeap(pq);
 
+    // Return based on the validity of the last update
     return completedUpdate;
-}
-
-void printHeap(Heap * hp)
-{
-    if (hp == NULL){
-        printf("????");
-        return;
-    }
-    printf("Heap:\n");
-    for (int i = 0; i < hp->size; i++)
-    {
-        printf("%d: %d %d %d\n", i + 1, hp->array[i].arrival, hp->array[i].expiration, hp->array[i].mass);
-    }
-    printf("\n");
 }
