@@ -1,36 +1,27 @@
-#include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+
         unordered_map<int, int> usedValues;
-		vector<int> ans;
+
+		// Check if each number is part of the two sum
 		for (int i = 0; i < nums.size(); i++)
 		{
-			if (usedValues.count(target - nums[i]) > 0)
-			{
-				ans.push_back(usedValues.find(target - nums[i])->second);
-				ans.push_back(i);
-				break;
-			}
-			else
+			// If the current number's compliment does not exist in the vector
+			if (usedValues.count(target - nums[i]) == 0)
 				usedValues.insert({nums[i], i});
+
+			// Found the current number's compliment
+			else
+				return {usedValues.find(target - nums[i])->second, i};
 		}
-        return ans;
+
+        return {};
     }
 };
-
-int main() {
-	Solution s;
-    vector<int> nums;
-    nums.push_back(3);
-    nums.push_back(2);
-    nums.push_back(4);
-	nums = s.twoSum(nums, 9);
-	cout << nums[0] << " " << nums[1] << endl;
-    return 0;
-}
