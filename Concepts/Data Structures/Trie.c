@@ -1,45 +1,89 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 typedef struct Node Node;
 
 struct Node {
-    int data;
-    Node ** children;
+    int flag; // Count of insertions
+    Node * children[26]; // 26 children for 26 letters
 };
 
-// Dynamically allocate memory for node, initializing it with the given value
-// Return the pointer to that node
-Node * createNode(int value);
+Node * createNode()
+{
+    Node * node = (Node *) malloc(sizeof(Node));
+
+    // Node is
+    node->flag = 0;
+
+    // Set child pointers
+    for (int i = 0; i < 26; i++)
+        node->children[i] = NULL;
+
+    return node;
+}
+
+Node * insert(Node * root, char * str)
+{
+    if (root == NULL)
+        root = createNode();
+
+    // Loop to end of string
+    Node * cur = root;
+    int index;
+
+    while (str[0] != '\0')
+    {
+        // Find the child index based on the letter
+        int index = str[0] - 'a';
+
+        // Create the child if it does not exist
+        if (cur->children[index] == NULL)
+            cur->children[index] = createNode();
+
+        // Try moving to next child
+        cur = cur->children[index];
+
+        str++;
+    }
+
+    // At location to insert value
+    cur->flag++;
+
+    // Return the resulting root
+    return root;
+}
+
+int countNodes(Node * root)
+{
+    if (root == NULL) return 0;
+
+    int count = 1;
+    
+    for (int i = 0; i < 26; i++)
+        count += countNodes(root->children[i]);
+
+    return count;
+}
+
+void deleteTrie(Node * root)
+{
+    if (root == NULL) return;
+
+    for (int i = 0; i < 26; i++)
+        deleteTrie(root->children[i]);
+
+    free(root);
+}
 
 int main()
 {
-    return 0;
-}
+    Node * root = NULL;
+    root = insert(root, "alice");
+    root = insert(root, "ali");
+    root = insert(root, "andy");
+    root = insert(root, "bobby");
 
-Node * createNode(int value)
-{
-    // Create the node dynamically
-    Node * newNode = (Node *) malloc(sizeof(Node));
+    printf("Count: %d\n", countNodes(root));
 
-    // Initialize parts of node
-    newNode->data = value;
-    newNode->children = (Node **) malloc(sizeof(Node *) * 26);
-
-    // Return pointer to node
-    return newNode;
-}
-
-int search(Node * root, char * key)
-{
-    Node * curr = root;
-    int len = strlen(key);
-
-    for (int i = 0; i < len && curr != NULL; i++)
-        curr = curr->children[key[i] - 48];
-
-    if (curr == NULL) return -1;
-
-    return curr->data;
+    deleteTrie(root);
 }
