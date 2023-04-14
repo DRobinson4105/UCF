@@ -15,9 +15,12 @@ class Solution {
 public:
     bool hasPathSumHelper(TreeNode* root, int targetSum, int currSum) {
         if (root == NULL) return false;
+
         currSum += root->val;
+
         if (currSum == targetSum && root->left == NULL && root->right == NULL)
             return true;
+            
         return hasPathSumHelper(root->left, targetSum, currSum) || 
                 hasPathSumHelper(root->right, targetSum, currSum);
     }

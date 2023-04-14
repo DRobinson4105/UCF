@@ -15,7 +15,7 @@ class Solution {
 public:
     vector<int> nums;
 
-    void inorderTraverse(TreeNode * root){
+    void inorderTraverse(TreeNode * root) {
         if (root == NULL) return;
 
         inorderTraverse(root->left);

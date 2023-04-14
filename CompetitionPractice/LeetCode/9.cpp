@@ -9,16 +9,14 @@ public:
 
         double opposite = x;
         int numDigits = 0;
-        while ((int) opposite > 0)
-        {
+        while ((int) opposite > 0) {
             opposite /= 10;
             numDigits++;
         }
 
         opposite *= 10;
 
-        for (int i = 0; i < numDigits / 2; i++)
-        {
+        for (int i = 0; i < numDigits / 2; i++) {
             if (ONESPLACE(opposite) != ONESPLACE(x))
                 return false;
 

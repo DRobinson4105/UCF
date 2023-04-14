@@ -14,18 +14,15 @@ public:
 
         storage.push(s[0]);
     
-        for (int i = 1; i < stringlen; i++)
-        {
+        for (int i = 1; i < stringlen; i++) {
             if (s[i] == '(' || s[i] == '[' || s[i] == '{')
-            {
                 storage.push(s[i]);
-                continue;
+            else {
+                if (storage.empty() || (s[i] == ')' && storage.top() != '(') || (s[i] == ']' && storage.top() != '[') || (s[i] == '}' && storage.top() != '{'))
+                    return false;
+                
+                storage.pop();
             }
-
-            if (storage.empty() || (s[i] == ')' && storage.top() != '(') || (s[i] == ']' && storage.top() != '[') || (s[i] == '}' && storage.top() != '{'))
-                return false;
-            
-            storage.pop();
         }
 
         if (storage.empty())

@@ -1,3 +1,5 @@
+#include <iostream>
+
 using namespace std;
 
 struct ListNode {
@@ -16,15 +18,11 @@ public:
 
         ListNode * cur = head;
 
-        while (cur && cur->next)
-        {
+        while (cur && cur->next) {
             if(cur->next->val == cur->val)
-            {
                 cur->next = (cur->next->next == NULL) ? NULL: cur->next->next;
-                continue;
-            }
-
-            cur = cur->next;
+            else
+                cur = cur->next;
         }
 
         return head;

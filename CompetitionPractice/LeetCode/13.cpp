@@ -7,10 +7,8 @@ public:
     int romanToInt(string s) {
         int sum = 0;
         int stringlen = s.length();
-        for (int i = 0; i < stringlen; i++)
-        {
-            switch(s[i])
-            {
+        for (int i = 0; i < stringlen; i++) {
+            switch(s[i]) {
                 case 'M':
                     sum += 1000;
                     break;
@@ -20,14 +18,12 @@ public:
                     break;
 
                 case 'C':
-                    if (i < stringlen - 1 && s[i + 1] == 'M')
-                    {
+                    if (i < stringlen - 1 && s[i + 1] == 'M') {
                         sum += 900;
                         i++;
                         break;
                     }
-                    if (i < stringlen - 1 && s[i + 1] == 'D')
-                    {
+                    if (i < stringlen - 1 && s[i + 1] == 'D') {
                         sum += 400;
                         i++;
                         break;
@@ -40,14 +36,12 @@ public:
                     break;
 
                 case 'X':
-                    if (i < stringlen - 1 && s[i + 1] == 'C')
-                    {
+                    if (i < stringlen - 1 && s[i + 1] == 'C') {
                         sum += 90;
                         i++;
                         break;
                     }
-                    if (i < stringlen - 1 && s[i + 1] == 'L')
-                    {
+                    if (i < stringlen - 1 && s[i + 1] == 'L') {
                         sum += 40;
                         i++;
                         break;
@@ -60,14 +54,12 @@ public:
                     break;
 
                 case 'I':
-                    if (i < stringlen - 1 && s[i + 1] == 'X')
-                    {
+                    if (i < stringlen - 1 && s[i + 1] == 'X') {
                         sum += 9;
                         i++;
                         break;
                     }
-                    if (i < stringlen - 1 && s[i + 1] == 'V')
-                    {
+                    if (i < stringlen - 1 && s[i + 1] == 'V') {
                         sum += 4;
                         i++;
                         break;

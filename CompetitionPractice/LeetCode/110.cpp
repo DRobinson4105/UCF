@@ -26,7 +26,9 @@ public:
     }
     bool isBalanced(TreeNode* root) {
         if (root == NULL) return true;
+
         int balanceFactor = maxDepth(root->left) - maxDepth(root->right);
+        
         if (abs(balanceFactor) > 1) return false;
         if (!isBalanced(root->left)) return false;
         if (!isBalanced(root->right)) return false;

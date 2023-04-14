@@ -11,8 +11,7 @@ public:
         unordered_map<int, int> usedValues;
 
 		// Check if each number is part of the two sum
-		for (int i = 0; i < nums.size(); i++)
-		{
+		for (int i = 0; i < nums.size(); i++) {
 			// If the current number's compliment does not exist in the vector
 			if (usedValues.count(target - nums[i]) == 0)
 				usedValues.insert({nums[i], i});

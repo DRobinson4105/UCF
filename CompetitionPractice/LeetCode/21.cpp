@@ -11,16 +11,7 @@ struct ListNode {
 };
 
 class Solution {
-public:
-    ListNode* createNode(int val)
-    {
-        ListNode* newNode = (ListNode*) malloc(sizeof(ListNode));
-        newNode->val = val;
-        newNode->next = nullptr;
-
-        return newNode;
-    }
-    
+public:    
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         if (list1 == NULL)
             return list2;
@@ -28,14 +19,12 @@ public:
             return list1;
 
         ListNode * newList;
-        if (list1->val < list2->val)
-        {
-            newList = createNode(list1->val);
+        if (list1->val < list2->val) {
+            newList = new ListNode(list1->val);
             list1 = list1->next;
         }
-        else
-        {
-            newList = createNode(list2->val);
+        else {
+            newList = new ListNode(list2->val);
             list2 = list2->next;
         }
         
@@ -43,30 +32,26 @@ public:
 
         while (list1 && list2)
         {
-            if (list1->val < list2->val)
-            {
-                newList->next = createNode(list1->val);
+            if (list1->val < list2->val) {
+                newList->next = new ListNode(list1->val);
                 list1 = list1->next;
             }
-            else
-            {
-                newList->next = createNode(list2->val);
+            else {
+                newList->next = new ListNode(list2->val);
                 list2 = list2->next;
             }
 
             newList = newList->next;
         }
 
-        while (list1)
-        {
-            newList->next = createNode(list1->val);
+        while (list1) {
+            newList->next = new ListNode(list1->val);
             list1 = list1->next;
             newList = newList->next;
         }
 
-        while (list2)
-        {
-            newList->next = createNode(list2->val);
+        while (list2) {
+            newList->next = new ListNode(list2->val);
             list2 = list2->next;
             newList = newList->next;
         }

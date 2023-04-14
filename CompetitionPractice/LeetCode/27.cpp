@@ -8,8 +8,7 @@ public:
         int cur = 0;
         int numSize = nums.size();
 
-        for (int i = 0; i < numSize; i++)
-        {
+        for (int i = 0; i < numSize; i++) {
             if (nums[i] == val) continue;
 
             nums[cur] = nums[i];

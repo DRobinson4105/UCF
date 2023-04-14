@@ -4,12 +4,9 @@ using namespace std;
 
 class Solution {
 public:
-    int binarySearch(vector<int>& nums, int low, int high, int target)
-    {
-        if (low >= high)
-        {
-            if (nums[low] < target)
-            {
+    int binarySearch(vector<int>& nums, int low, int high, int target) {
+        if (low >= high) {
+            if (nums[low] < target) {
                 nums.insert(nums.begin() + low + 1, target);
                 return low + 1;
             }

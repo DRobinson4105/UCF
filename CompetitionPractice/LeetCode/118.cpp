@@ -4,12 +4,10 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> addRow(vector<vector<int>> triangle, int row)
-    {
+    vector<int> addRow(vector<vector<int>> triangle, int row) {
         vector<int> rowVec;
 
-        for (int i = 0; i < row; i++)
-        {
+        for (int i = 0; i < row; i++) {
             if (i == 0 || i == row - 1)
                 rowVec.push_back(1);
             else

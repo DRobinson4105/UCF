@@ -6,8 +6,7 @@ public:
         double lo = 0;
         double hi = x;
 
-        while ((int)hi != (int)lo)
-        {
+        while ((int)hi != (int)lo) {
             double mid = lo + (hi - lo) / 2;
 
             if (mid * mid > x)
