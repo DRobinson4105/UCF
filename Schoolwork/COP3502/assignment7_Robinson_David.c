@@ -127,7 +127,7 @@ int main()
     upperBound = totalMass / (end - start);
 
     // Binary search until valid bound has an absolute error of 10^-5
-    while (upperBound - lowerBound > 0.00001)
+    while (upperBound - lowerBound > 1e-5)
     {
         mid = (lowerBound + upperBound) / 2;
 
