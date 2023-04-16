@@ -3,36 +3,40 @@
 using namespace std;
 
 /*
-Add the two binary numbers from left to right, keeping
-a carry flag and adding the result to a string
+Starting at last numbers in a and b, add numbers and add 
+result to answer, carrying 1 to the next number if needed
 
-1. Add 0's to the beginning of the smaller string until the strings are the same size
-2. From right to left, check values in strings
-    - If both values are 1:
-        - If carry is 0, add 0 to beginning of result
-        - If carry is 1, add 1 to beginning of result
-    - If one value is 1:
-        - If carry is 0, 
+1. Loop until both strings have been completed and there is nothing left to carry over
+    - Take the carry from last loop and add last digit in both strings to it
+    - Add the sum to answer
+    - If the sum is greater than 1, subtract 2 from itand carry over 1 to next number
 */
 
 class Solution {
- public:
-  string addBinary(string a, string b) {
-    string ans;
-    int carry = 0;
-    int i = a.length() - 1;
-    int j = b.length() - 1;
+    public:
+    string addBinary(string a, string b) {
+        string ans;
+        int carry = 0;
 
-    while (i >= 0 || j >= 0 || carry) {
-      if (i >= 0)
-        carry += a[i--] - '0';
-      if (j >= 0)
-        carry += b[j--] - '0';
-      ans += carry % 2 + '0';
-      carry /= 2;
+        // Initialize i and j to be the last indexes of the strings
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+
+        // Add each value to the answer
+        while (i >= 0 || j >= 0 || carry) {
+            // Add value of a[i] to carry and decrement i
+            if (i >= 0)
+                carry += a[i--] - '0';
+            
+            // Add value of b[j] to carry and decrement j
+            if (j >= 0)
+                carry += b[j--] - '0';
+
+            ans += carry % 2 + '0';
+            carry /= 2;
+        }
+
+        reverse(begin(ans), end(ans));
+        return ans;
     }
-
-    reverse(begin(ans), end(ans));
-    return ans;
-  }
 };
