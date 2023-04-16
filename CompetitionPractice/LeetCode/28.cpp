@@ -2,6 +2,14 @@
 
 using namespace std;
 
+/*
+Check each possible location for needle
+
+1. Loop through possible starting locations for needle
+    - If found, return the starting index
+2. Return -1 since it was not found
+*/
+
 class Solution {
 public:
     int strStr(string haystack, string needle) {

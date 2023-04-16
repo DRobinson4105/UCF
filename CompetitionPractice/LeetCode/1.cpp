@@ -4,6 +4,17 @@
 
 using namespace std;
 
+/*
+Use hashmap to keep track of used values until the compliment of a used value is found
+
+1. Create an empty unordered map to store the elements of the array
+2. Loop through the array and for each element, calculate
+the complement of the current element (target - element)
+	- If the complement exists in the unordered map, return the indices of the two elements
+	- Otherwise, add the current element to the unordered map
+3. If no such pair is found, return an empty vector
+*/
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {

@@ -2,50 +2,37 @@
 
 using namespace std;
 
+/*
+Add the two binary numbers from left to right, keeping
+a carry flag and adding the result to a string
+
+1. Add 0's to the beginning of the smaller string until the strings are the same size
+2. From right to left, check values in strings
+    - If both values are 1:
+        - If carry is 0, add 0 to beginning of result
+        - If carry is 1, add 1 to beginning of result
+    - If one value is 1:
+        - If carry is 0, 
+*/
+
 class Solution {
-public:
-    string addBinary(string a, string b) {    
-        if(b.size() > a.size()) swap(a,b);
-        
-        int aLength = a.size();
-        int bLength = b.size();
+ public:
+  string addBinary(string a, string b) {
+    string ans;
+    int carry = 0;
+    int i = a.length() - 1;
+    int j = b.length() - 1;
 
-        while(bLength < aLength) {
-            b = "0" + b;
-            bLength++;
-        }
-
-        int carry = 0;
-        string res = "";
-
-        for(int i = bLength; i >= 0 ; --i) {
-            if(b[i] == '1' && a[i]=='1') {
-                if(carry == 0) res = "0" + res;
-
-                else res = "1" + res;
-                    
-                carry = 1;
-            }
-
-            else if(b[i] =='0' && a[i] =='0') {
-                if(carry == 0) res = "0" + res;
-                 
-                else
-                {
-                    res = "1" + res;
-                    carry = 0;
-                }
-
-            }
-
-            else if((b[i]=='0' && a[i]=='1') || (b[i]=='1' && a[i] == '0')) { 
-                if(carry == 0) res = "1" + res;
-                else res = "0" + res;
-            }
-        }
-        
-        if(carry == 1) res = "1" + res;
-        
-        return res;
+    while (i >= 0 || j >= 0 || carry) {
+      if (i >= 0)
+        carry += a[i--] - '0';
+      if (j >= 0)
+        carry += b[j--] - '0';
+      ans += carry % 2 + '0';
+      carry /= 2;
     }
+
+    reverse(begin(ans), end(ans));
+    return ans;
+  }
 };
