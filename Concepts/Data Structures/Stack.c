@@ -24,7 +24,7 @@ void push(Stack * stack, int value);
 Node * pop(Stack * stack);
 
 // Return the value that is at the top of the stack
-int peek(Stack * stack);
+int top(Stack * stack);
 
 // Free memory for all nodes in stack
 void freeStack(Stack * stack);
@@ -75,19 +75,19 @@ Node * pop(Stack * stack)
     free(deletedNode);
 }
 
-int peek(Stack * stack)
+int top(Stack * stack)
 {
-    // If the queue is empty
+    // If the stack is empty
     if (isEmpty(stack))
         return -1;
 
-    // Return next value in queue
+    // Return top value in stack
     return stack->top->data;
 }
 
 void freeStack(Stack * stack)
 {
-    // While queue is not empty
+    // While stack is not empty
     while (!isEmpty(stack))
         pop(stack);
 }
