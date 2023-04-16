@@ -19,8 +19,6 @@
 
 import java.util.*;
 
-import javax.swing.text.Position;
-
 public class PotionMaster
 {
 	public static Map<String, Set<String>> potionToReagentsMap(List<PotionInfo> potionsManual)
