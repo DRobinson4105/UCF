@@ -2,6 +2,13 @@
 
 using namespace std;
 
+/*
+Binary Tree Inorder Traversal:
+1) Left Branch
+2) Current Node
+3) Right Branch
+*/
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -16,12 +23,15 @@ public:
     vector<int> nums;
 
     void inorderTraverse(TreeNode * root) {
-        if (root == NULL) return;
+        if (root == nullptr) return;
 
+        // Left Branch
         inorderTraverse(root->left);
 
+        // Current Node
         nums.push_back(root->val);
 
+        // Right Branch
         inorderTraverse(root->right);
     }
 
