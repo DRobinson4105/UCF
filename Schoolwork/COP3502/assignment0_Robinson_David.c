@@ -24,7 +24,6 @@ int main() {
     int charIndex;
 
     for(int i = 0; i < numShipLines; i++) {
-
         
         fgets(shipLine, SHIP_LINE_LENGTH, stdin); // takes in the whole ship line as a single string
         
