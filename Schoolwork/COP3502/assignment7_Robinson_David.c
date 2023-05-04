@@ -317,7 +317,6 @@ int update(Heap * hp, int oldTime, int newTime, double consumeRate) {
         // Determine the time when the shipment would finish consumption
         finishTime = consumptionTime + curTime;
 
-
         // Check if we cannot finish the shipment before spoiling
         if (finishTime > hp->array[0].expiration)
             finishTime = hp->array[0].expiration;
