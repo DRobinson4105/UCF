@@ -3,8 +3,16 @@
 using namespace std;
 
 /*
-Repeatedly add middle value in vector to BST in correct spot
+Binary search the vector to repeatedly find the
+middle value of a subvector and add it to the BST
+
+1. Return a binary search function that starts with the subvector including all values
+	- Make the root's value be the middle value in the sub vector
+	- Recursively call the function on the left and right
+	  subvectors to find the left and right children of root
+	- Return root
 */
+
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -15,6 +23,7 @@ struct TreeNode {
 };
 
 class Solution {
+public:
     TreeNode* sortedArrayToBSTHelper(vector<int>& nums, int begin, int end) {
       // If subvector is empty
       if (begin > end) return nullptr;
@@ -29,8 +38,7 @@ class Solution {
         
       return root;
     }
-
-public:
+	
     TreeNode* sortedArrayToBST(vector<int>& nums) {
       return sortedArrayToBSTHelper(nums, 0, nums.size() - 1);
     }

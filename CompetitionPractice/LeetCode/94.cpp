@@ -3,10 +3,11 @@
 using namespace std;
 
 /*
-Binary Tree Inorder Traversal:
-1) Left Branch
-2) Current Node
-3) Right Branch
+Recursive binary tree inorder traversal
+
+1. Recursively call function on left branch (add all values in left branch to vector)
+2. Add root value to vector
+3. Recursively call function on right branch (add all values in right branch to vector)
 */
 
 struct TreeNode {

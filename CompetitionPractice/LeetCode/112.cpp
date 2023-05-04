@@ -1,6 +1,11 @@
-#include <iostream>
+/*
+Recursively traverse down each branch of root subtracting the current value from
+the target sum and return true if a leaf node ends up with a target sum of 0
 
-using namespace std;
+1. Subtract root value from target sum
+2. If root is a leaf node and target sum is 0, return true
+3. Otherwise, return true if the recursive call of the left or right child is true
+*/
 
 struct TreeNode {
     int val;
@@ -13,19 +18,17 @@ struct TreeNode {
 
 class Solution {
 public:
-    bool hasPathSumHelper(TreeNode* root, int targetSum, int currSum) {
-        if (root == NULL) return false;
-
-        currSum += root->val;
-
-        if (currSum == targetSum && root->left == NULL && root->right == NULL)
-            return true;
-            
-        return hasPathSumHelper(root->left, targetSum, currSum) || 
-                hasPathSumHelper(root->right, targetSum, currSum);
-    }
     
     bool hasPathSum(TreeNode* root, int targetSum) {
-        return hasPathSumHelper(root, targetSum, 0);
+        if (root == nullptr) return false;
+
+        targetSum -= root->val;
+
+        // If current node is a leaf and target sum has been reached
+        if (targetSum == 0 && root->left == nullptr && root->right == nullptr)
+            return true;
+        
+        // If either of the children have the path sum
+        return hasPathSum(root->left, targetSum) || hasPathSum(root->right, targetSum);
     }
 };

@@ -1,14 +1,3 @@
-#include <stdlib.h>
-
-using namespace std;
-
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
 /*
 Compare heads of lists to repeatedly add the lowest value to the sorted list
 
@@ -19,16 +8,24 @@ to new list until one of the linked lists is empty
 4. Add any remaining values in list2 to new list
 */
 
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
 class Solution {
 public:    
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         // If either of the lists are empty
-        if (list1 == NULL)
+        if (list1 == nullptr)
             return list2;
-        if (list2 == NULL)
+        if (list2 == nullptr)
             return list1;
 
-        ListNode * newList;
+        ListNode* newList;
 
         // Add lowest value to new list
         if (list1->val < list2->val) {

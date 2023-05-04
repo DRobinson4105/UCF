@@ -1,5 +1,3 @@
-using namespace std;
-
 /*
 Use a binary search to approximate the square root of x
 

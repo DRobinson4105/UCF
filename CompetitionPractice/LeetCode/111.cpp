@@ -1,6 +1,18 @@
-#include <iostream>
+#include <queue>
 
 using namespace std;
+
+/*
+Get the depth from the root of the tree to the closest leaf using a BFS
+
+1. Start a queue with the root node and the minDepth at 1
+2. While the queue is not empty
+    - Iterate through current nodes in queue
+        - If current node is a leaf node, return the minDepth
+        - Add any children of current node to queue
+        - Pop current node from queue
+3. Return the minDepth
+*/
 
 struct TreeNode {
     int val;
@@ -14,17 +26,37 @@ struct TreeNode {
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if (root == NULL) return 0;
-        if (root->left == NULL && root->right == NULL) return 1;
+        if (root == nullptr) return 0;
 
-        int leftDepth = minDepth(root->left);
-        int rightDepth = minDepth(root->right);
+        // Start queue with root
+        queue<TreeNode*> nodes;
+        nodes.push(root);
         
-        if (leftDepth >= 1 && (leftDepth <= rightDepth || rightDepth == 0))
-            return 1 + leftDepth;
-        if (rightDepth >= 1 && (rightDepth < leftDepth || leftDepth == 0))
-            return 1 + rightDepth;
+        int minDepth = 1;
 
-        return 0;
+        while (!nodes.empty()) {
+            // Save size of starting queue
+            int curSize = nodes.size();
+
+            for (int i = 0; i < curSize; i++) {
+                TreeNode* cur = nodes.front();
+                nodes.pop();
+
+                // If current node is a leaf
+                if (cur->left == nullptr && cur->right == nullptr)
+                    return minDepth;
+
+                // Add left and right children to queue
+                if (cur->left != nullptr)
+                    nodes.push(cur->left);
+                
+                if (cur->right != nullptr)
+                    nodes.push(cur->right);
+            }
+
+            minDepth++;
+        }
+
+        return minDepth;
     }
 };

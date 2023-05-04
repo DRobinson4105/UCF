@@ -1,8 +1,11 @@
-#include <iostream>
-
 /*
 Recursively compare each side of the tree and
 make sure every set of opposite nodes are equal
+
+1. Create new function that takes in root's left (root1) and right child (root2)
+    - Return true if both nodes are null
+    - Return false if either node is null or values are not equal
+    - Return true if recursive calls on opposite children are both true
 */
 
 struct TreeNode {
@@ -18,10 +21,10 @@ class Solution {
 public:
     bool compare(TreeNode * root1, TreeNode * root2) {
         // If both nodes are null
-        if (root1 == NULL && root2 == NULL) return true;
+        if (root1 == nullptr && root2 == nullptr) return true;
         
         // If one node is null and one is not
-        if (root1 == NULL || root2 == NULL) return false;
+        if (root1 == nullptr || root2 == nullptr) return false;
 
         // If the two current nodes are not the same
         if (root1->val != root2->val) return false;
@@ -31,6 +34,6 @@ public:
     }
 
     bool isSymmetric(TreeNode* root) {
-        return (root == NULL) ? true : compare(root->left, root->right);
+        return (root == nullptr) ? true : compare(root->left, root->right);
     }
 };

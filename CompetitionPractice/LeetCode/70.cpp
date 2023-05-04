@@ -1,5 +1,12 @@
 /*
 Solve nth term in a fibonacci sequence
+
+1. Start with n1 at 1, n2 at 2 and track a sum starting at 0
+2. Until nth term:
+    - Add n1 and n2 to sum
+    - Set n1 to n2
+    - Set n2 to sum
+3. Sum will be the nth term
 */
 
 class Solution {

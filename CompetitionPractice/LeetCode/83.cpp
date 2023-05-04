@@ -1,10 +1,11 @@
-#include <iostream>
-
-using namespace std;
-
 /*
 Since linked list is sorted, all duplicate elements will be consecutive
 For each set of two nodes, remove the second node if the two nodes are equal
+
+1. While there is a next node in the list:
+    - If the current node and next node are equal, remove the next node
+    - Otherwise, traverse to next node
+2. Return the head of the list
 */
 
 struct ListNode {
@@ -19,14 +20,14 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
         
-        if (head == NULL) return NULL;
+        if (head == nullptr) return nullptr;
 
-        ListNode * cur = head;
+        ListNode* cur = head;
 
         while (cur && cur->next) {
             // Remove next node if curr node and next node are equal
             if(cur->next->val == cur->val)
-                cur->next = (cur->next->next == NULL) ? NULL: cur->next->next;
+                cur->next = (cur->next->next == nullptr) ? nullptr: cur->next->next;
             else
                 cur = cur->next;
         }

@@ -1,7 +1,5 @@
 #define ONESPLACE(num) ((int)(num - ((int)num/10) * 10))
 
-using namespace std;
-
 /*
 Compare the number to the same number with all digits moved to the 
 right side of decimal point except for ones place to compare each digit
@@ -13,6 +11,7 @@ last are shifted to right of decimal point (123 -> 1.23)
     - Shift the two numbers to the next digit
 3. Once loop completes, return true
 */
+
 class Solution {
 public:
     bool isPalindrome(int x) {

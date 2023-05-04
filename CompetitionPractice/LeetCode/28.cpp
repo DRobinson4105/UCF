@@ -17,9 +17,11 @@ public:
         int stringLength = haystack.length();
         int iterations = stringLength - needleLength;
 
-        for (int i = 0; i <= iterations; i++)
+        for (int i = 0; i <= iterations; i++) {
+            // If needle is found in haystack
             if (needle.compare(haystack.substr(i, needleLength)) == 0)
                 return i;
+        }
 
         return -1;
     }

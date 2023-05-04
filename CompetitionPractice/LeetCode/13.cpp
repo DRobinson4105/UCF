@@ -11,6 +11,7 @@ Iterate through string and add the current roman numeral to a sum
     - Add to sum
 2. Return sum
 */
+
 class Solution {
 public:
     int romanToInt(string s) {
@@ -42,6 +43,7 @@ public:
                         i++;
                         break;
                     }
+
                     sum += 100;
                     break;
 
@@ -63,6 +65,7 @@ public:
                         i++;
                         break;
                     }
+
                     sum += 10;
                     break;
 
@@ -84,11 +87,12 @@ public:
                         i++;
                         break;
                     }
+
                     sum += 1;
                     break;
             }
         }
-
+        
         return sum;
     }
 };
