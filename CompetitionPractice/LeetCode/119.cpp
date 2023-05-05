@@ -3,34 +3,41 @@
 
 using namespace std;
 
+/*
+Build the nth row of the pascal's triangle using binomial coefficients
+
+1. Loop through each index in that row
+    - If the index is the first or last in that
+      row, set that value in the current row to 1
+    - Otherwise, set the value to the binomial coefficient (size of row, index in row)
+*/
+
 class Solution {
 public:
-    long double fact(int num) {
+    int binomialCoefficient(int k, int n) {
         long double res = 1;
+        int num = n - k;
 
+        // Divide answer by (n-k)!
         for (int i = 2; i <= num; i++)
+            res /= i;
+
+        // Multiply answer by n!/k!
+        for (int i = k + 1; i <= n; i++)
             res *= i;
 
-        return res;
-    }
-
-    int doubleFact(long double startingVal, int num1, int num2) {
-        long double res = 1 / startingVal;
-
-        for (int i = num1 + 1; i <= num2; i++)
-            res *= i;
-
-        return (int)round(res);
+        return round(res);
     }
 
     vector<int> getRow(int rowIndex) {
         vector<int> row;
 
         for (int k = 0; k <= rowIndex; k++) {
+            // If index is first or last in row
             if (k == 0 || k == rowIndex)
                 row.push_back(1);
             else
-                row.push_back(doubleFact(fact(rowIndex - k), k, rowIndex));
+                row.push_back(binomialCoefficient(k, rowIndex));
         }
 
         return row;
