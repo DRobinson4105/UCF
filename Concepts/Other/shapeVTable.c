@@ -141,6 +141,7 @@ Triangle* initTriangle(int base, int height) {
 }
 
 // Delete Functions
+
 void deleteShape(Shape* shape) {
     free(shape);
 }
