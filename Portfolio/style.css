@@ -131,10 +131,6 @@ section {
 }
 
 .social-media {
-    position: absolute;
-    top: 50%;
-    transform: translate(-85%, -50%);
-    margin: 1%;
     background: #fff;
     box-shadow: rgba(0, 0, 255, 0.2) 0 7px 29px 0;
     padding: .5rem;
@@ -142,8 +138,12 @@ section {
     border-radius: 25px;
     box-shadow: 0 0 1.5rem var(--main-color);
     transition: 0.5s;
-    width: 10%;
     justify-content: right;
+    position: absolute;
+    top: 35%;
+    left: 0; 
+    width:200px;
+    transform: translate(-140px, 0px);
 }
 
 .social-media h3 {
@@ -160,7 +160,7 @@ section {
 }
 
 .social-media:hover {
-    transform: translate(-50%, -50%);
+    transform: translate(-50px, 0%);
 }
 
 .link {
