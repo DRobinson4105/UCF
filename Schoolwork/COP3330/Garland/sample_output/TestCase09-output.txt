@@ -1,2 +1,0 @@
-head: null
-size: 0
