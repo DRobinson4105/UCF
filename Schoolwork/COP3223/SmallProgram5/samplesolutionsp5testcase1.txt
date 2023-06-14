@@ -1,0 +1,126 @@
+----------------------------------------------------------------------
+Testing Test Case 1
+----------------------------------------------------------------------
+Amount Due: Amount Paid: Change
+0 dollars
+0 quarters
+1 dimes
+0 nickels
+1 pennies
+Welcome to Bob's Burgers! Our burger of the day is Say Cheese Burger!
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding regular to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding special to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding special to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding fries to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding fries to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding fries to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding soft drink to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Adding soft drink to your order.
+Please enter your order by selecting the option number. Otherwise type 0 and your order receipt will be printed.
+-----------------------
+1: Regular	$5.00
+2: Special	$5.95
+3: Cheese	$5.50
+4: Fries	$2.00
+5: Salad	$2.50
+6: Soft Drink	$2.00
+-----------------------
+What will you add to your order: Order is now placed. Printing receipt.
+Here is the grade distribution.
+A: 109
+B: 102
+C: 88
+D: 98
+F: 103
+Before calling incrementUpdate
+val = 0
+Updating val now...
+Would you like to update ...
+Enter 0 if you would like to update again. Anything else will exit the update.
+Option: Updating val now...
+Would you like to update ...
+Enter 0 if you would like to update again. Anything else will exit the update.
+Option: Updating val now...
+Would you like to update ...
+Enter 0 if you would like to update again. Anything else will exit the update.
+Option: Updating val now...
+Would you like to update ...
+Enter 0 if you would like to update again. Anything else will exit the update.
+Option: Updating val now...
+Would you like to update ...
+Enter 0 if you would like to update again. Anything else will exit the update.
+Option: val is now done updating...
+After calling incrementUpdate
+val = 5

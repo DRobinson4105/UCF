@@ -1,0 +1,302 @@
+Welcome to the Hangman Game!
+************************************************************************
+Here are the rules.
+I will provide you a set of * characters for each round.
+Each * represents a letter in the English Alphabet.
+You must figure out each letter of the missing word.
+For every correct letter guessed, I will reveal its place in the word.
+Each mistake will result in a strike.
+6 strikes will result in a loss that round.
+Are you ready? Here we go!
+************************************************************************
+Welcome to the Round!
+The size of the word has 4 letters.
+
+You currently have 0 strike(s).
+Letter(s) you have guessed:
+
+****
+
+Enter your guess: A
+
+The letter a is NOT in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: a
+
+****
+
+Enter your guess: G
+
+The letter g is in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: ag
+
+***g
+
+Enter your guess: f
+
+The letter f is in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: agf
+
+f**g
+
+Enter your guess: 0
+
+You did not enter a letter from the alphabet.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: agf
+
+f**g
+
+Enter your guess: !
+
+You did not enter a letter from the alphabet.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: agf
+
+f**g
+
+Enter your guess: o
+
+The letter o is in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: agfo
+
+f*og
+
+Enter your guess: r
+
+Congratulations! You won! The word was frog.
+************************************************************************
+Would you like to play another round?
+1: Yes
+2: No
+Choice: 1
+
+************************************************************************
+Welcome to the Round!
+The size of the word has 6 letters.
+
+You currently have 0 strike(s).
+Letter(s) you have guessed:
+
+******
+
+Enter your guess: a
+
+The letter a is NOT in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: a
+
+******
+
+Enter your guess: e
+
+The letter e is in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: ae
+
+****e*
+
+Enter your guess: i
+
+The letter i is in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: aei
+
+*i**e*
+
+Enter your guess: o
+
+The letter o is NOT in the word.
+
+You currently have 2 strike(s).
+Letter(s) you have guessed: aeio
+
+*i**e*
+
+Enter your guess: u
+
+The letter u is NOT in the word.
+
+You currently have 3 strike(s).
+Letter(s) you have guessed: aeiou
+
+*i**e*
+
+Enter your guess: q
+
+The letter q is NOT in the word.
+
+You currently have 4 strike(s).
+Letter(s) you have guessed: aeiouq
+
+*i**e*
+
+Enter your guess: w
+
+The letter w is in the word.
+
+You currently have 4 strike(s).
+Letter(s) you have guessed: aeiouqw
+
+wi**e*
+
+Enter your guess: r
+
+The letter r is in the word.
+
+You currently have 4 strike(s).
+Letter(s) you have guessed: aeiouqwr
+
+wi**er
+
+Enter your guess: t
+
+The letter t is in the word.
+
+You currently have 4 strike(s).
+Letter(s) you have guessed: aeiouqwrt
+
+wi*ter
+
+Enter your guess: y
+
+The letter y is NOT in the word.
+
+You currently have 5 strike(s).
+Letter(s) you have guessed: aeiouqwrty
+
+wi*ter
+
+Enter your guess: p
+
+The letter p is NOT in the word.
+************************************************************************
+Sorry you did not win the round. The word was winter.
+************************************************************************
+Would you like to play another round?
+1: Yes
+2: No
+Choice: 1
+
+************************************************************************
+Welcome to the Round!
+The size of the word has 9 letters.
+
+You currently have 0 strike(s).
+Letter(s) you have guessed:
+
+*********
+
+Enter your guess: a
+
+The letter a is in the word.
+
+You currently have 0 strike(s).
+Letter(s) you have guessed: a
+
+**a***a**
+
+Enter your guess: e
+
+The letter e is in the word.
+
+You currently have 0 strike(s).
+Letter(s) you have guessed: ae
+
+**a***a*e
+
+Enter your guess: i
+
+The letter i is in the word.
+
+You currently have 0 strike(s).
+Letter(s) you have guessed: aei
+
+**ai**a*e
+
+Enter your guess: o
+
+The letter o is NOT in the word.
+
+You currently have 1 strike(s).
+Letter(s) you have guessed: aeio
+
+**ai**a*e
+
+Enter your guess: u
+
+The letter u is NOT in the word.
+
+You currently have 2 strike(s).
+Letter(s) you have guessed: aeiou
+
+**ai**a*e
+
+Enter your guess: s
+
+The letter s is in the word.
+
+You currently have 2 strike(s).
+Letter(s) you have guessed: aeious
+
+s*ai**ase
+
+Enter your guess: b
+
+The letter b is NOT in the word.
+
+You currently have 3 strike(s).
+Letter(s) you have guessed: aeiousb
+
+s*ai**ase
+
+Enter your guess: c
+
+The letter c is in the word.
+
+You currently have 3 strike(s).
+Letter(s) you have guessed: aeiousbc
+
+s*ai*case
+
+Enter your guess: T
+
+The letter t is in the word.
+
+You currently have 3 strike(s).
+Letter(s) you have guessed: aeiousbct
+
+stai*case
+
+Enter your guess: 5
+
+You did not enter a letter from the alphabet.
+
+You currently have 3 strike(s).
+Letter(s) you have guessed: aeiousbct
+
+stai*case
+
+Enter your guess: r
+
+Congratulations! You won! The word was staircase.
+************************************************************************
+Would you like to play another round?
+1: Yes
+2: No
+Choice: 2
+
+************************************************************************
+Thank you for playing today!

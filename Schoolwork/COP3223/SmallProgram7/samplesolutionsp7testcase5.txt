@@ -1,0 +1,10 @@
+----------------------------------------------------------------------
+Testing Test Case 5
+----------------------------------------------------------------------
+Enter a string: Output String with no blanks: Language
+Enter string to be pluralize: Word pluralize: referees
+Enter a string with no spaces: xxoO06Dd@#$dD1Ii;: has
+10 letters
+3 digits
+5 punctuation characters
+Enter the string: Enter the substring you would like to look for: Substring avasc exists!

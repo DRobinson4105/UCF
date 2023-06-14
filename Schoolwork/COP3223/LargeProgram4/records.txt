@@ -1,0 +1,44 @@
+One Piece Pirates
+------------------------------------------
+ID:          1
+Name:        Zoro
+Age:         21
+Crew:        Straw Hat Pirates
+Devil Fruit: None
+------------------------------------------
+ID:          2
+Name:        Law
+Age:         26
+Crew:        The Heart Pirates
+Devil Fruit: Op-Op
+------------------------------------------
+ID:          3
+Name:        Arlong
+Age:         41
+Crew:        Arlong Pirates
+Devil Fruit: None
+------------------------------------------
+ID:          4
+Name:        Bon Clay
+Age:         32
+Crew:        Baroque Works
+Devil Fruit: Clone-Clone
+------------------------------------------
+ID:          5
+Name:        Doflamingo
+Age:         41
+Crew:        Donquixote Pirates
+Devil Fruit: String-String
+------------------------------------------
+ID:          6
+Name:        Bryant
+Age:         17
+Crew:        Chink
+Devil Fruit: Fat Ass-Fat Ass Fruit
+------------------------------------------
+ID:          7
+Name:        Matthew
+Age:         2341
+Crew:        d
+Devil Fruit: d
+------------------------------------------
