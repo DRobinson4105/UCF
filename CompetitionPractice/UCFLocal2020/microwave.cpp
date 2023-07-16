@@ -60,4 +60,6 @@ int main() {
     if (bestInput.first != 0)
         cout << bestInput.first;
     cout << bestInput.second << endl;
+
+    return 0;
 }
