@@ -3,38 +3,36 @@
 
 using namespace std;
 
-void calcPermutations(vector<bool> used, vector<int> array, vector<vector<int> >& result, vector<int> perm, int curr, int size) {
-    if (curr == size) {
+void getPermutations(
+    vector<vector<int> >& result, vector<bool>& used, 
+    vector<int>& array, vector<int>& perm, int curr, int size
+) {
+    if (curr == size)
         result.push_back(perm);
+    else {
+        for (int i = 0; i < size; i++) {
+            if (used[i]) continue;
+
+            used[i] = true;
+            perm[curr] = array[i];
+            getPermutations(result, used, array, perm, curr + 1, size);
+            used[i] = false;
+        }
     }
-
-    for (int i = 0; i < size; i++) {
-        if (used[i]) continue;
-
-        used[i] = true;
-        perm[curr] = array[i];
-        calcPermutations(used, array, result, perm, curr + 1, size);
-        used[i] = false;
-    }
-}
-
-vector<vector<int> > permutations(vector<int> array) {
-    int size = array.size();
-    vector<bool> used(size);
-    vector<int> perm(size);
-    vector<vector<int> > result;
-    calcPermutations(used, array, result, perm, 0, size);
-    return result;
 }
 
 int main() {
-    vector<int> array(4);
+    int size = 8;
+    vector<int> array(size);
+    vector<bool> used(size, false);
+    vector<int> perm(size);
+    vector<vector<int> > result;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < size; i++) {
         array[i] = i + 1;
     }
 
-    vector<vector<int> > result = permutations(array);
+    getPermutations(result, used, array, perm, 0, size);
 
     for (int i = 0; i < result.size(); i++) {
         for (int j = 0; j < result[i].size(); j++) {

@@ -11,21 +11,25 @@ int set(int mask, int pos) {
     return mask | (1 << pos);
 }
 
-void calcSubsets(vector<int> array, vector<vector<int> >& result, int index, int size) {
-    int total = 1 << size;
-    for (int mask = 0; mask < total; mask++) {
+vector<vector<int>> findSubsets(vector<int> array) {
+    int numElements = array.size();
+    int numSubsets = 1 << numElements;
+    vector<vector<int>> subsets(numSubsets);
+
+    for (int mask = 0; mask < numSubsets; mask++) {
         vector<int> subset;
-        for (int k = 0; k < size; k++) {
-            if (on(mask, k)) {
+
+        for (int k = 0; k < numElements; k++)
+            if (on(mask, k))
                 subset.push_back(array[k]);
-            }
-        }
-        result.push_back(subset);
+
+        subsets[mask] = subset;
     }
+
+    return subsets;
 }
 
 vector<vector<int> > subsets(vector<int>& array) {
-    vector<vector<int> > result;
     calcSubsets(array, result, 0, array.size());
     return result;
 }
