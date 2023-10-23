@@ -1,0 +1,492 @@
+Compile of pa02 succeded.
+-> Case #1 - in10A.txt -  8 bit checksum
+-> Case #1 - in10A.txt - 16 bit checksum
+-> Case #1 - in10A.txt - 32 bit checksum
+4,25c4
+< AAAAAAAAAA
+< X
+< 130
+< 0
+< 0
+< 0
+< AAAA
+< 65 65 65 65
+< 195
+< 0
+< 0
+< 0
+< AAAA
+< 130 130 130 130
+< 306
+< 1
+< 0
+< 1
+< AA
+< X
+< 196 195 141 218
+< 32 bit checksum is c4c38dda for all   12 chars
+---
+> 32 bit checksum is c3c38cda for all   12 chars
+-> Case #2 - in17A.txt -  8 bit checksum
+-> Case #2 - in17A.txt - 16 bit checksum
+-> Case #2 - in17A.txt - 32 bit checksum
+4,36d3
+< AAAAAAAAAAAAAAAAA
+< XX
+< 130
+< 0
+< 0
+< 0
+< AAAA
+< 65 65 65 65
+< 195
+< 0
+< 0
+< 0
+< AAAA
+< 130 130 130 130
+< 260
+< 1
+< 1
+< 1
+< AAAA
+< 196 196 196 195
+< 69
+< 0
+< 0
+< 0
+< AAAA
+< 5 5 5 4
+< 180
+< 0
+< 0
+< 0
+< A
+< XX
+< 70 15 93 92
+-> Case #3 - in18A.txt -  8 bit checksum
+-> Case #3 - in18A.txt - 16 bit checksum
+-> Case #3 - in18A.txt - 32 bit checksum
+4,36d3
+< AAAAAAAAAAAAAAAAAA
+< X
+< 130
+< 0
+< 0
+< 0
+< AAAA
+< 65 65 65 65
+< 195
+< 0
+< 0
+< 0
+< AAAA
+< 130 130 130 130
+< 260
+< 1
+< 1
+< 1
+< AAAA
+< 196 196 196 195
+< 69
+< 0
+< 0
+< 0
+< AAAA
+< 5 5 5 4
+< 180
+< 0
+< 0
+< 0
+< AA
+< X
+< 70 70 15 92
+-> Case #4 - inRF2.txt -  8 bit checksum
+-> Case #4 - inRF2.txt - 16 bit checksum
+5c5
+< 16 bit checksum is     b5ba for all  102 chars
+---
+> 16 bit checksum is     b1ba for all  102 chars
+-> Case #4 - inRF2.txt - 32 bit checksum
+5,164c5
+< The highest forms of understanding we can achieve are laughter and human compassion. Richard Feynman
+< XXX
+< 64
+< 0
+< 0
+< 0
+< The 
+< 84 104 101 32
+< 240
+< 0
+< 1
+< 1
+< high
+< 189 210 204 136
+< 200
+< 0
+< 0
+< 0
+< est 
+< 34 69 64 168
+< 130
+< 0
+< 1
+< 1
+< form
+< 137 181 178 21
+< 225
+< 0
+< 0
+< 0
+< s of
+< 252 213 33 123
+< 323
+< 1
+< 0
+< 0
+<  und
+< 28 74 144 223
+< 199
+< 0
+< 0
+< 1
+< erst
+< 130 188 3 83
+< 293
+< 1
+< 0
+< 0
+< andi
+< 227 42 104 188
+< 170
+< 0
+< 0
+< 0
+< ng w
+< 81 145 136 51
+< 245
+< 0
+< 1
+< 0
+< e ca
+< 182 178 235 148
+< 346
+< 1
+< 0
+< 0
+< n ac
+< 36 210 77 247
+< 227
+< 0
+< 1
+< 0
+< hiev
+< 140 60 178 109
+< 337
+< 1
+< 0
+< 0
+< e ar
+< 241 92 20 223
+< 161
+< 0
+< 0
+< 0
+< e la
+< 86 124 128 64
+< 296
+< 1
+< 1
+< 1
+< ught
+< 204 228 233 180
+< 118
+< 0
+< 0
+< 0
+< er a
+< 49 86 9 21
+< 229
+< 0
+< 0
+< 1
+< nd h
+< 160 186 41 125
+< 345
+< 1
+< 0
+< 0
+< uman
+< 21 39 139 235
+< 197
+< 0
+< 1
+< 0
+<  com
+< 53 139 250 88
+< 318
+< 1
+< 0
+< 1
+< pass
+< 166 236 110 203
+< 295
+< 1
+< 1
+< 0
+< ion.
+< 15 92 221 249
+< 191
+< 0
+< 0
+< 1
+<  Ric
+< 48 174 70 92
+< 292
+< 1
+< 1
+< 0
+< hard
+< 152 16 185 192
+< 178
+< 0
+< 0
+< 0
+<  Fey
+< 184 86 30 57
+< 277
+< 1
+< 0
+< 1
+< nman
+< 39 195 128 167
+< 343
+< 1
+< 1
+< 0
+< 
+< XXX
+< 49 28 217 255
+< 32 bit checksum is 311cd9ff for all  104 chars
+---
+> 32 bit checksum is 321cd7ff for all  104 chars
+-> Case #5 - inWC2.txt -  8 bit checksum
+-> Case #5 - inWC2.txt - 16 bit checksum
+5c5
+< 16 bit checksum is     5f9d for all  134 chars
+---
+> 16 bit checksum is     5d9d for all  134 chars
+-> Case #5 - inWC2.txt - 32 bit checksum
+5,212c5
+< A love for tradition has never weakened a nation, indeed it has strengthened nations in their hour of peril.    Sir Winston Churchill
+< XX
+< 222
+< 0
+< 0
+< 0
+< A lo
+< 65 32 108 111
+< 315
+< 1
+< 0
+< 0
+< ve f
+< 183 133 141 213
+< 189
+< 0
+< 0
+< 1
+< or t
+< 39 247 173 73
+< 283
+< 1
+< 0
+< 0
+< radi
+< 153 88 18 178
+< 142
+< 0
+< 0
+< 1
+< tion
+< 14 193 129 32
+< 262
+< 1
+< 1
+< 0
+<  has
+< 46 42 227 147
+< 127
+< 0
+< 0
+< 1
+<  nev
+< 79 152 72 9
+< 247
+< 0
+< 0
+< 0
+< er w
+< 180 10 104 128
+< 330
+< 1
+< 1
+< 0
+< eake
+< 25 108 212 229
+< 37
+< 0
+< 0
+< 1
+< ned 
+< 136 209 56 5
+< 199
+< 0
+< 1
+< 1
+< a na
+< 234 242 166 102
+< 322
+< 1
+< 0
+< 0
+< tion
+< 94 91 22 212
+< 176
+< 0
+< 0
+< 0
+< , in
+< 138 123 127 66
+< 266
+< 1
+< 1
+< 1
+< deed
+< 239 225 229 166
+< 230
+< 0
+< 0
+< 0
+<  it 
+< 15 74 89 198
+< 262
+< 1
+< 1
+< 1
+< has 
+< 120 172 205 230
+< 176
+< 0
+< 0
+< 0
+< stre
+< 235 32 63 75
+< 283
+< 1
+< 1
+< 0
+< ngth
+< 89 136 180 179
+< 123
+< 0
+< 0
+< 1
+< ened
+< 191 246 25 23
+< 255
+< 0
+< 0
+< 0
+<  nat
+< 223 100 122 139
+< 369
+< 1
+< 1
+< 1
+< ions
+< 73 212 233 254
+< 62
+< 0
+< 0
+< 0
+<  in 
+< 105 61 87 30
+< 240
+< 0
+< 1
+< 1
+< thei
+< 222 166 188 135
+< 357
+< 1
+< 0
+< 0
+< r ho
+< 80 198 37 246
+< 212
+< 0
+< 0
+< 0
+< ur o
+< 197 56 69 101
+< 303
+< 1
+< 1
+< 0
+< f pe
+< 43 89 182 202
+< 294
+< 1
+< 0
+< 1
+< ril.
+< 158 194 35 248
+< 56
+< 0
+< 0
+< 1
+<     
+< 191 226 67 24
+< 88
+< 0
+< 1
+< 0
+< Sir 
+< 18 76 181 56
+< 286
+< 1
+< 0
+< 1
+< Wins
+< 106 181 36 171
+< 235
+< 0
+< 1
+< 0
+< ton 
+< 222 37 146 203
+< 175
+< 0
+< 0
+< 0
+< Chur
+< 33 141 7 61
+< 277
+< 1
+< 0
+< 1
+< chil
+< 133 245 113 169
+< 89
+< 0
+< 1
+< 0
+< l
+< XX
+< 241 0 201 1
+< 32 bit checksum is f100c901 for all  136 chars
+---
+> 32 bit checksum is ef00c701 for all  136 chars
+Checksum testing completed
