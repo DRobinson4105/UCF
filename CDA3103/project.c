@@ -197,7 +197,7 @@ int ALU_operations(unsigned data1,unsigned data2,unsigned extended_value,unsigne
         case 7:
             switch (funct) {
                 // addition
-                case 0x02: ALUControl = 0; break;
+                case 0x20: ALUControl = 0; break;
                 // subtraction
                 case 0x22: ALUControl = 1; break;
                 // and
