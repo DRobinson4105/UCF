@@ -149,6 +149,19 @@ int instruction_decode(unsigned op, struct_controls *controls) {
 	        controls->RegWrite = 0;
             break;
 
+        // load upper word immediate
+        case 0x0F:
+            controls->RegDst = 0;
+            controls->Jump = 0;
+            controls->Branch = 0;
+            controls->MemRead = 0;
+            controls->MemtoReg = 0;
+            controls->ALUOp = 9;
+            controls->MemWrite = 0;
+            controls->ALUSrc = 1;
+            controls->RegWrite = 1;
+            break;
+
         // branch if equal
         case 0x04:
 	        controls->RegDst = 2;
@@ -211,6 +224,11 @@ int ALU_operations(unsigned data1,unsigned data2,unsigned extended_value,unsigne
                 default: return 1;
             }
         case 8: return 0;
+        case 9:
+            data1 = data2 & 0x0000FFFF;
+            extended_value = (extended_value & 0x0000FFFF) << 16;
+            ALUControl = 5;
+            break;
         default: ALUControl = ALUOp; break;
     }
 
