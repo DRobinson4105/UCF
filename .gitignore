@@ -4,3 +4,6 @@
 *.class
 *.asc
 spimcore
+in
+out
+test.*
