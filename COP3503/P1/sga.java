@@ -1,11 +1,11 @@
-import java.util.Scanner;
-import java.util.HashMap;
+import java.util.*;
+import java.io.*;
 
 public class sga {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = scan.nextInt();
+        int n = Integer.parseInt(stdin.readLine());
         Long total = 0L; // total number of pairs
         String[] names = new String[n];
         
@@ -14,16 +14,14 @@ public class sga {
         // Tracks the count of each words
         HashMap<String, Integer> freq = new HashMap<String, Integer>();
 
-        scan.nextLine();
-
         for (int i = 0; i < n; i++) {
-            String s = scan.nextLine();
+            String s = stdin.readLine();
             names[i] = s;
 
             firstLetters[s.charAt(0) - 'A']++;
 
-            Integer val = freq.get(s);
-            if (val != null) freq.put(s, val + 1);
+            Integer count = freq.get(s);
+            if (count != null) freq.put(s, count + 1);
             else freq.put(s, 1);
         }
         
@@ -32,6 +30,5 @@ public class sga {
             total += firstLetters[names[i].charAt(0) - 'A'] - freq.get(names[i]);
 
         System.out.println(total);
-        scan.close();
     }
 }
