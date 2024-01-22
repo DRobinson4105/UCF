@@ -15,7 +15,8 @@ public class sga {
         HashMap<String, Integer> freq = new HashMap<String, Integer>();
 
         for (int i = 0; i < n; i++) {
-            String s = stdin.readLine();
+            StringTokenizer st = new StringTokenizer(stdin.readLine());
+            String s = st.nextToken();
             names[i] = s;
 
             firstLetters[s.charAt(0) - 'A']++;

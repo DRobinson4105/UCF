@@ -15,35 +15,36 @@ public class dyslectionary {
 
     public static void main(String[] args) throws IOException {
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        PriorityQueue<String> pq = new PriorityQueue<String>();
+        List<String> strings = new ArrayList<String>();
         String curr;
-        int highest;
         boolean notFirst = false;
         
         do {
-            highest = 0; // track the length of the largest string
+            int highest = 0; // track the length of the largest string
             if (notFirst) System.out.println(); // space out the answers
             notFirst = true;
 
-            // reverse the strings and add them to a priority
-            // queue to sort them in a reversed order
+            // add the strings to list and track the length of the largest string
             while ((curr = stdin.readLine()) != null && curr.length() > 0) {
-                pq.add(reverse(curr));
+                strings.add(curr);
                 highest = Math.max(highest, curr.length());
-            }    
+            }
+
+            // sort the strings based off of their reversed characters
+            Collections.sort(strings, (String s1, String s2) -> {
+                return reverse(s1).compareTo(reverse(s2));
+            });
 
             // print the strings
-            while (!pq.isEmpty()) {
-                String top = pq.peek(); pq.remove();
-
+            for (String s : strings) {
                 // add enoguh spaces before each string so they all have the same length
-                int diff = highest - top.length();
+                int diff = highest - s.length();
                 while (diff-- > 0)
                     System.out.print(" ");
-                
-                // reverse the string back and print it
-                System.out.println(reverse(top));
+
+                System.out.println(s);
             }
+            strings.clear();
         } while (curr != null);
     }
 }
