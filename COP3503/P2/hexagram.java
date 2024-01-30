@@ -12,15 +12,15 @@ The six rows in the hexagram:
  */
 
 public class hexagram {
-    private static int compute(int res[], int nums[], boolean used[], int curr, int target) {
+    private static int compute(int perm[], int nums[], boolean used[], int curr, int target) {
         // Check if the hexagram is now invalid
         if (
-            (curr == 5 && res[1] + res[2] + res[3] + res[4] != target) ||
-            (curr == 8 && res[0] + res[2] + res[5] + res[7] != target) ||
-            (curr == 11 && res[0] + res[3] + res[6] + res[10] != target) ||
-            (curr == 11 && res[7] + res[8] + res[9] + res[10] != target) ||
-            (curr == 12 && res[1] + res[5] + res[8] + res[11] != target) ||
-            (curr == 12 && res[4] + res[6] + res[9] + res[11] != target)
+            (curr == 5 && perm[1] + perm[2] + perm[3] + perm[4] != target) ||
+            (curr == 8 && perm[0] + perm[2] + perm[5] + perm[7] != target) ||
+            (curr == 11 && perm[0] + perm[3] + perm[6] + perm[10] != target) ||
+            (curr == 11 && perm[7] + perm[8] + perm[9] + perm[10] != target) ||
+            (curr == 12 && perm[1] + perm[5] + perm[8] + perm[11] != target) ||
+            (curr == 12 && perm[4] + perm[6] + perm[9] + perm[11] != target)
         ) return 0;
         
         // Check if hexagram is complete
@@ -32,8 +32,8 @@ public class hexagram {
         for (int i = 0; i < 12; i++) {
             if (used[i]) continue;
             used[i] = true;
-            res[curr] = nums[i];
-            total += compute(res, nums, used, curr + 1, target);
+            perm[curr] = nums[i];
+            total += compute(perm, nums, used, curr + 1, target);
             used[i] = false;
         }
 
@@ -44,7 +44,7 @@ public class hexagram {
         Scanner scan = new Scanner(System.in);
         int nums[] = new int[12];
         boolean used[] = new boolean[12];
-        int res[] = new int[12];
+        int perm[] = new int[12];
 
         while ((nums[0] = scan.nextInt()) != 0) {
             int target = nums[0];
@@ -65,7 +65,7 @@ public class hexagram {
             
             // Divide result by 12 to remove reflections and rotations
             // since there is 12 ways to display a hexagrams
-            System.out.println(compute(res, nums, used, 0, target) / 12);
+            System.out.println(compute(perm, nums, used, 0, target) / 12);
         }
     }
 }
