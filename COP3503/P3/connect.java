@@ -1,7 +1,6 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
+import static java.lang.Math.*;
 
 class DS {
     int arr[];
@@ -26,7 +25,8 @@ class DS {
 
         // add new connectivity (sum of both sizes^2) and subtract old connectivity for the two
         // old sets (size of each set^2) from the numerator
-        num += Math.pow(arr[p1] + arr[p2], 2) - Math.pow(arr[p1], 2) - Math.pow(arr[p2], 2);
+        num += (long)(arr[p1] + arr[p2]) * (arr[p1] + arr[p2]) - 
+            (long)arr[p1] * arr[p1] - (long)arr[p2] * arr[p2];
 
         // decrement the denominator since there is now one less disjoint set
         den--;
