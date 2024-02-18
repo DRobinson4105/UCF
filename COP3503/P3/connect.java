@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-import static java.lang.Math.*;
 
 class DS {
     int arr[];
