@@ -1,4 +1,7 @@
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 class DS {
     int arr[];
@@ -21,15 +24,15 @@ class DS {
         
         if (p1 == p2) return;
 
-        arr[p1] += arr[p2];
-        arr[p2] = p1;
-        
         // add new connectivity (sum of both sizes^2) and subtract old connectivity for the two
         // old sets (size of each set^2) from the numerator
         num += Math.pow(arr[p1] + arr[p2], 2) - Math.pow(arr[p1], 2) - Math.pow(arr[p2], 2);
 
         // decrement the denominator since there is now one less disjoint set
         den--;
+
+        arr[p1] += arr[p2];
+        arr[p2] = p1;
     }
 }
 
@@ -39,29 +42,35 @@ public class connect {
         return euclids(b, a % b);
     }
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(stdin.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        int n = scan.nextInt(), m = scan.nextInt();
+        int n = Integer.parseInt(st.nextToken()), m = Integer.parseInt(st.nextToken());
 
         DS ds = new DS(n);
 
         for (int i = 0; i < m; i++) {
-            int op = scan.nextInt();
+            st = new StringTokenizer(stdin.readLine());
+            int op = Integer.parseInt(st.nextToken());
+
             switch (op) {
                 case 1:
                     // connect the two computers
-                    ds.merge(scan.nextInt() - 1, scan.nextInt() - 1);
+                    ds.merge(Integer.parseInt(st.nextToken()) - 1, 
+                        Integer.parseInt(st.nextToken()) - 1);
                     break;
                 case 2:
                     // find the greatest common factor to simplify the
                     // fraction and print out the simplified fraction
                     long gcf = euclids(ds.num, ds.den);
-                    System.out.println((ds.num / gcf) + "/" + (ds.den / gcf));
+                    sb.append(ds.num / gcf); sb.append("/");
+                    sb.append(ds.den / gcf); sb.append("\n");
                     break;
             }
         }
 
-        scan.close();
+        System.out.print(sb);
     }
 }
