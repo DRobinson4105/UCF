@@ -28,7 +28,7 @@ public class drones {
 
             for (int j = 0; j < 8; j++) {
                 String str = st.nextToken();
-                
+
                 if (str.equals("XX")) {
                     // no fly zone
                     noFlyZones[(i << 3) + j] = true;
@@ -57,7 +57,7 @@ public class drones {
                 System.out.println(distances[curr]);
                 return;
             }
-            
+
             // if this position has already been checked
             if (visited[curr]) continue;
             visited[curr] = true;
@@ -72,7 +72,7 @@ public class drones {
                     // if current drone has already reached its destination
                     if (pos == ((answer >> (i * 6)) & 63)) {
                         next = (next << 6) + pos;
-                        continue;   
+                        continue;
                     }
 
                     // get next column and row from current position
@@ -82,7 +82,7 @@ public class drones {
                     // if next position is invalid, keep old position
                     if (nr == -1 || nr == 8 || nc == -1 || nc == 8) {
                         next = (next << 6) + pos;
-                        continue;   
+                        continue;
                     }
 
                     // if next position is a no fly zone for this drone, keep old position
@@ -90,18 +90,17 @@ public class drones {
                         next = (next << 6) + pos;
                         continue;
                     }
-                    
+
                     // use new position
                     next = (next << 6) + nPos;
                 }
 
                 // if the next position has not been visited yet or if this path is better than the
-                //  best path to the next position
+                // best path to the next position
                 if (distances[next] == 0 || distances[next] > distances[curr] + 1) {
                     distances[next] = distances[curr] + 1;
                     queue.add(next);
                 }
-
             }
         }
 
