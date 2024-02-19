@@ -6,4 +6,6 @@
 spimcore
 in
 out
+in.*
+out.*
 test.*
