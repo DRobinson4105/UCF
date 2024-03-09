@@ -64,6 +64,26 @@ public class codes {
             adj[v2].add(e.rev = rev);
         }
 
+        public void remove(int v1, int v2) {
+            boolean stop = true;
+            for (int i = 0; i < adj[v1].size(); i++) {
+                if (adj[v1].get(i).v2 == v2) {
+                    stop = false;
+                    adj[v1].remove(i);
+                    break;
+                }
+            }
+
+            if (stop) return;
+
+            for (int i = 0; i < adj[v2].size(); i++) {
+                if (adj[v2].get(i).v2 == v1) {
+                    adj[v2].remove(i);
+                    return;
+                }
+            }
+        }
+
         // Runs other level BFS.
         public boolean bfs() {
 
@@ -184,69 +204,14 @@ public class codes {
         }
     }
 
-    static boolean stopped = false;
-    static int n, m;
-    static Dinic netFlow;
-    static Map<Integer, Set<Integer>> map = new HashMap<>();
-    static List<String> drugs = new ArrayList<>(), codes = new ArrayList<>();
-    static List<Integer> result = new ArrayList<>();
-
-
-    static void solve(int curr) {
-        // if answer has already been found
-        if (stopped) return;
-
-        // if answer was just found
-        if (curr == n) {
-            stopped = true;
-            for (int idx : result)
-                System.out.println(codes.get(idx));
-
-            return;
-        }
-
-        // store old edges from current drug, which are the codes that are a substring of the drug
-        // and clear the edges from the map so that each of the valid codes can be tested as the
-        // only outgoing edge from the current drug
-        ArrayList<Edge> old = netFlow.adj[curr];
-        netFlow.adj[curr] = new ArrayList<>();
-
-        // add back the edge from source to this drug
-        Edge e = new Edge(n + m, curr, 1, 0);
-        Edge rev = new Edge(curr, n + m, 0, 0);
-        e.rev = rev; rev.rev = e;
-        netFlow.adj[curr].add(rev);
-
-        for (int i = 0; i < m; i++) {
-            // current code cannot be used
-            if (!map.get(curr).contains(i) || result.contains(i)) continue;
-
-            // add an edge from the current drug to the current code and add code to the result
-            e = new Edge(curr, i, 1, 0);
-            rev = new Edge(i, curr, 0, 0);
-            e.rev = rev; rev.rev = e;
-            netFlow.adj[curr].add(e);
-            result.set(curr, i);
-
-            solve(curr+1);
-
-            // remove the edge from the graph and the code from the result since the next code will
-            // be tested
-            result.set(curr, -1);
-            netFlow.adj[curr].removeLast();
-        }
-
-        // bring back all of the old edges
-        netFlow.adj[curr] = old;
-    }
-
     public static void main(String[] args) throws IOException {
         FastScanner scan = new FastScanner(System.in);
-        drugs = new ArrayList<>();
-        codes = new ArrayList<>();
-        map = new HashMap<>();
+        List<String> drugs = new ArrayList<>();
+        List<String> codes = new ArrayList<>();
+        Map<Integer, Set<Integer>> map = new HashMap<>();
+        Dinic netFlow;
 
-        n = scan.nextInt(); m = scan.nextInt();
+        int n = scan.nextInt(); int m = scan.nextInt();
         int source = n + m, sink = n + m + 1;
         netFlow = new Dinic(n + m);
 
@@ -287,8 +252,43 @@ public class codes {
         int flow = netFlow.flow();
         if (flow == n) {
             System.out.println("yes");
-            for (int i = 0; i < n; i++) result.add(-1);
-            solve(0);
+            Set<Integer> used = new HashSet<>();
+            List<Integer> result = new ArrayList<>();
+
+            for (int i = 0; i < n; i++) {
+                @SuppressWarnings("unchecked")
+                ArrayList<Edge>[] old = new ArrayList[n + m + 2];
+
+                // store original graph so that changes made are not brought to next iteration
+                for (int j = 0; j < n + m + 2; j++)
+                    old[j] = new ArrayList<>(netFlow.adj[j]);
+
+                // remove all edges from current drug to codes
+                for (int j = n; j < source; j++)
+                    netFlow.remove(i, j);
+
+                // try adding an edge to each code sorted in lexicographical order and test max
+                // flow for each code, stopping when a flow of n is found. That code will be used
+                // for the current drug so add it to the used set and resulting list.
+                for (int j = 0; j < m; j++) {
+                    if (!map.get(i).contains(j) || used.contains(j)) continue;
+
+                    netFlow.add(i, j + n, 1, 0);
+                    flow = netFlow.flow();
+                    netFlow.remove(i, j + n);
+
+                    if (flow == n) {
+                        used.add(j);
+                        result.add(j);
+                        break;
+                    }
+                }
+
+                // clear all changes made to the graph
+                netFlow.adj = old;
+            }
+
+            for (int idx : result) System.out.println(codes.get(idx));
         } else {
             System.out.println("no");
         }
