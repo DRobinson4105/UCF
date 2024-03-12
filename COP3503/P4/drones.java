@@ -1,33 +1,59 @@
-import java.util.*;
-import java.io.*;
-import static java.lang.Math.*;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class drones {
+    static class FastScanner {
+        BufferedReader br;
+        StringTokenizer st;
+
+        public FastScanner(InputStream is) {
+            br = new BufferedReader(new InputStreamReader(is));
+            st = new StringTokenizer("");
+        }
+
+        public String next() throws IOException {
+            if (st.hasMoreTokens()) return st.nextToken();
+            
+            st = new StringTokenizer(br.readLine());
+            return next();
+        }
+
+        public int nextInt() throws IOException {
+            return Integer.parseInt(next());
+        }
+
+        public long nextLong() throws IOException {
+            return Long.parseLong(next());
+        }
+
+        public double nextDouble() throws IOException {
+            return Double.parseDouble(next());
+        }
+    }
+
     static int dx[] = {1, -1, 0, 0};
     static int dy[] = {0, 0, 1, -1};
 
     public static void main(String[] args) throws IOException {
-        BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
+        FastScanner scan = new FastScanner(System.in);
         LinkedList<Integer> queue = new LinkedList<>();
         int distances[] = new int[1 << 24];
-        boolean visited[] = new boolean[1 << 24];
 
-        for (int i = 1 << 24 - 1; i >= 0; i--) {
-            distances[i] = 0;
-            visited[i] = false;
-        }
+        for (int i = (1 << 24) - 1; i >= 0; i--)
+            distances[i] = -1;
     
-        int n = Integer.parseInt(stdin.readLine());
+        int n = scan.nextInt();
         int curr = 0;
         boolean noFlyZones[] = new boolean[64];
         int answer = 0;
 
         for (int i = 0; i < 8; i++) {
-            st = new StringTokenizer(stdin.readLine());
-
             for (int j = 0; j < 8; j++) {
-                String str = st.nextToken();
+                String str = scan.next();
 
                 if (str.equals("XX")) {
                     // no fly zone
@@ -49,6 +75,7 @@ public class drones {
         }
 
         queue.add(curr);
+        distances[curr] = 0;
         while (!queue.isEmpty()) {
             curr = queue.poll();
 
@@ -57,10 +84,6 @@ public class drones {
                 System.out.println(distances[curr]);
                 return;
             }
-
-            // if this position has already been checked
-            if (visited[curr]) continue;
-            visited[curr] = true;
 
             // each direction
             for (int k = 0; k < 4; k++) {
@@ -97,7 +120,7 @@ public class drones {
 
                 // if the next position has not been visited yet or if this path is better than the
                 // best path to the next position
-                if (distances[next] == 0 || distances[next] > distances[curr] + 1) {
+                if (distances[next] == -1 || distances[next] > distances[curr] + 1) {
                     distances[next] = distances[curr] + 1;
                     queue.add(next);
                 }
