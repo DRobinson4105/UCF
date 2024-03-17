@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
@@ -37,19 +38,55 @@ public class drones {
 
     static int dx[] = {1, -1, 0, 0};
     static int dy[] = {0, 0, 1, -1};
+    static int n, answer = 0;
+    static long noFlyZones = 0;
+
+    static boolean outOfBounds(int r, int c) {
+        return r == -1 || r == 8 || c == -1 || c == 8;
+    }
+
+    static int[] getNextStates(int state) {
+        int[] states = new int[4];
+
+        // for each direction
+        for (int k = 0; k < 4; k++) {
+            int nextState = 0;
+            // update each drone
+            for (int i = 0; i < n; i++) {
+                int pos = (state >> (i * 6)) & 63;
+
+                // get next column and row from current position
+                int nr = (pos >> 3) + dx[k], nc = (pos & 7) + dy[k];
+                int nPos = (nr << 3) + nc;
+
+                // if current drone has already reached its destination or next position is out
+                // of bounds or a no fly zone, use old position
+                if (pos == ((answer >> (i * 6)) & 63) || outOfBounds(nr, nc) || 
+                (nPos != ((answer >> (i * 6)) & 63) && ((noFlyZones >> (nr * 8 + nc)) & 1) == 1)) {
+                    nextState |= pos << (i * 6);
+                }
+                
+                // otherwise, use new position
+                else {
+                    nextState |= nPos << (i * 6);
+                }
+            }
+
+            states[k] = nextState;
+        }
+
+        return states;
+    }
 
     public static void main(String[] args) throws IOException {
         FastScanner scan = new FastScanner(System.in);
         LinkedList<Integer> queue = new LinkedList<>();
         int distances[] = new int[1 << 24];
 
-        for (int i = (1 << 24) - 1; i >= 0; i--)
-            distances[i] = -1;
+        Arrays.fill(distances, -1);
     
-        int n = scan.nextInt();
+        n = scan.nextInt();
         int curr = 0;
-        boolean noFlyZones[] = new boolean[64];
-        int answer = 0;
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -57,7 +94,7 @@ public class drones {
 
                 if (str.equals("XX")) {
                     // no fly zone
-                    noFlyZones[(i << 3) + j] = true;
+                    noFlyZones |= (long)1 << ((i << 3) + j);
                 } else if (str.startsWith("D")) {
                     // set drone's position
                     int drone = str.charAt(1) - '0' - 1;
@@ -68,14 +105,15 @@ public class drones {
                     answer = answer | ((i << 3) + j) << (drone * 6);
 
                     // destinations are treated as no fly zones for all drones except for the drone
-                    // delivering to it, which is handled before checking no fly zone
-                    noFlyZones[(i << 3) + j] = true;
+                    // delivering to it, which is handled while checking a no fly zone
+                    noFlyZones |= (long)1 << ((i << 3) + j);
                 }
             }
         }
 
         queue.add(curr);
         distances[curr] = 0;
+
         while (!queue.isEmpty()) {
             curr = queue.poll();
 
@@ -85,39 +123,9 @@ public class drones {
                 return;
             }
 
-            // each direction
-            for (int k = 0; k < 4; k++) {
-                int next = 0;
-                // update each drone
-                for (int i = n - 1; i >= 0; i--) {
-                    int pos = (curr >> (i * 6)) & 63;
+            int[] nextStates = getNextStates(curr);
 
-                    // if current drone has already reached its destination
-                    if (pos == ((answer >> (i * 6)) & 63)) {
-                        next = (next << 6) + pos;
-                        continue;
-                    }
-
-                    // get next column and row from current position
-                    int nr = ((pos >> 3) & 7) + dx[k], nc = (pos & 7) + dy[k];
-                    int nPos = (nr << 3) + nc;
-
-                    // if next position is invalid, keep old position
-                    if (nr == -1 || nr == 8 || nc == -1 || nc == 8) {
-                        next = (next << 6) + pos;
-                        continue;
-                    }
-
-                    // if next position is a no fly zone for this drone, keep old position
-                    if (nPos != ((answer >> (i * 6)) & 63) && noFlyZones[(nr << 3) + nc]) {
-                        next = (next << 6) + pos;
-                        continue;
-                    }
-
-                    // use new position
-                    next = (next << 6) + nPos;
-                }
-
+            for (int next : nextStates) {
                 // if the next position has not been visited yet or if this path is better than the
                 // best path to the next position
                 if (distances[next] == -1 || distances[next] > distances[curr] + 1) {
