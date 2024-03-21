@@ -7,6 +7,24 @@
 import java.io.*;
 import java.util.*;
 
+/*
+ * Part 1:
+ * Build a network flow graph with source to each drug, each code to sink, and each drug to each
+ * code that is a substring of that drug. Each edge will have a capacity of one and the maximum
+ * flow will show how many drugs can have unique codes so a maximum flow of n means that every drug
+ * has a unique code.
+ * 
+ * Part 2-3:
+ * If there is a maximum flow of n, then every drug can have a unique code. To guarantee a mapping
+ * of each drug to a specific code, we need to ensure that a graph constructed with drugs only
+ * connected to their mapped code will still have a maximum flow of n. To find the first
+ * lexicographical mapping, we will first sort the codes so that the first valid code will be the
+ * first lexicograpgical one. Then, we will iterate through the drugs and find the first code that
+ * when the drug is not pointing to any other code, there is still a max flow of n. Once that code
+ * is found, keep the graph with the drug only pointing to that code since that code will be used
+ * and move on to the next drug.
+ */
+
 public class codes {
     // An edge connects v1 to v2 with a capacity of cap, flow of flow.
     static class Edge {
@@ -208,7 +226,6 @@ public class codes {
         FastScanner scan = new FastScanner(System.in);
         List<String> drugs = new ArrayList<>();
         List<String> codes = new ArrayList<>();
-        Map<Integer, Set<Integer>> map = new HashMap<>();
         Dinic netFlow;
 
         int n = scan.nextInt(); int m = scan.nextInt();
@@ -219,7 +236,6 @@ public class codes {
         for (int i = 0; i < n; i++) {
             String str = scan.next();
             drugs.add(str);
-            map.put(i, new HashSet<>());
         }
 
         for (int i = 0; i < m; i++) {
@@ -238,7 +254,6 @@ public class codes {
                 // if current code is a substring of the current drug, add an edge from the drug to
                 // the code
                 if (drugs.get(i).contains(codes.get(j))) {
-                    map.get(i).add(j);
                     netFlow.add(i, j + n, 1, 0);
                 }
             }
@@ -249,46 +264,35 @@ public class codes {
             netFlow.add(i + n, sink, 1, 0);
         }
 
-        int flow = netFlow.flow();
-        if (flow == n) {
+        if (netFlow.flow() == n) {
             System.out.println("yes");
-            Set<Integer> used = new HashSet<>();
-            List<Integer> result = new ArrayList<>();
 
             for (int i = 0; i < n; i++) {
-                @SuppressWarnings("unchecked")
-                ArrayList<Edge>[] old = new ArrayList[n + m + 2];
-
-                // store original graph so that changes made are not brought to next iteration
-                for (int j = 0; j < n + m + 2; j++)
-                    old[j] = new ArrayList<>(netFlow.adj[j]);
 
                 // remove all edges from current drug to codes
                 for (int j = n; j < source; j++)
                     netFlow.remove(i, j);
 
-                // try adding an edge to each code sorted in lexicographical order and test max
-                // flow for each code, stopping when a flow of n is found. That code will be used
-                // for the current drug so add it to the used set and resulting list.
+                // loop through codes
                 for (int j = 0; j < m; j++) {
-                    if (!map.get(i).contains(j) || used.contains(j)) continue;
+                    // if code can't be used for drug
+                    if (!drugs.get(i).contains(codes.get(j))) continue;
 
+                    // test drug with code
                     netFlow.add(i, j + n, 1, 0);
-                    flow = netFlow.flow();
-                    netFlow.remove(i, j + n);
 
-                    if (flow == n) {
-                        used.add(j);
-                        result.add(j);
+                    // if current drug can be used with current code with every other drug having a
+                    // unique code, use it and move on to the next drug
+                    if (netFlow.flow() == n) {
+                        System.out.println(codes.get(j));
                         break;
                     }
-                }
 
-                // clear all changes made to the graph
-                netFlow.adj = old;
+                    // this code is not the one to use for this drug so remove the edge
+                    netFlow.remove(i, j + n);
+                }
             }
 
-            for (int idx : result) System.out.println(codes.get(idx));
         } else {
             System.out.println("no");
         }
