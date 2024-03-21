@@ -82,26 +82,6 @@ public class codes {
             adj[v2].add(e.rev = rev);
         }
 
-        public void remove(int v1, int v2) {
-            boolean stop = true;
-            for (int i = 0; i < adj[v1].size(); i++) {
-                if (adj[v1].get(i).v2 == v2) {
-                    stop = false;
-                    adj[v1].remove(i);
-                    break;
-                }
-            }
-
-            if (stop) return;
-
-            for (int i = 0; i < adj[v2].size(); i++) {
-                if (adj[v2].get(i).v2 == v1) {
-                    adj[v2].remove(i);
-                    return;
-                }
-            }
-        }
-
         // Runs other level BFS.
         public boolean bfs() {
 
@@ -226,11 +206,11 @@ public class codes {
         FastScanner scan = new FastScanner(System.in);
         List<String> drugs = new ArrayList<>();
         List<String> codes = new ArrayList<>();
-        Dinic netFlow;
+        Dinic dinic;
 
         int n = scan.nextInt(); int m = scan.nextInt();
         int source = n + m, sink = n + m + 1;
-        netFlow = new Dinic(n + m);
+        dinic = new Dinic(n + m);
 
         // get input
         for (int i = 0; i < n; i++) {
@@ -248,51 +228,50 @@ public class codes {
 
         for (int i = 0; i < n; i++) {
             // add edge from source to each drug
-            netFlow.add(source, i, 1, 0);
+            dinic.add(source, i, 1, 0);
 
             for (int j = 0; j < m; j++) {
                 // if current code is a substring of the current drug, add an edge from the drug to
                 // the code
-                if (drugs.get(i).contains(codes.get(j))) {
-                    netFlow.add(i, j + n, 1, 0);
-                }
+                if (drugs.get(i).contains(codes.get(j)))
+                    dinic.add(i, j + n, 1, 0);
             }
         }
 
         // add edge from each code to sink
-        for (int i = 0; i < m; i++) {
-            netFlow.add(i + n, sink, 1, 0);
-        }
+        for (int i = 0; i < m; i++)
+            dinic.add(i + n, sink, 1, 0);
 
-        if (netFlow.flow() == n) {
+        if (dinic.flow() == n) {
             System.out.println("yes");
 
             for (int i = 0; i < n; i++) {
-
                 // remove all edges from current drug to codes
-                for (int j = n; j < source; j++)
-                    netFlow.remove(i, j);
+                for (Edge edge : dinic.adj[i]) edge.cap = 0;
 
                 // loop through codes
                 for (int j = 0; j < m; j++) {
+                    int idx = -1;
+                    for (int k = 0; k < dinic.adj[i].size() && idx == -1; k++)
+                        if (dinic.adj[i].get(k).v2 == (j + n)) idx = k;
+
                     // if code can't be used for drug
-                    if (!drugs.get(i).contains(codes.get(j))) continue;
+                    if (idx == -1) continue;
 
                     // test drug with code
-                    netFlow.add(i, j + n, 1, 0);
+                    dinic.adj[i].get(idx).cap = 1;
 
                     // if current drug can be used with current code with every other drug having a
                     // unique code, use it and move on to the next drug
-                    if (netFlow.flow() == n) {
+                    if (dinic.flow() == n) {
                         System.out.println(codes.get(j));
                         break;
                     }
 
                     // this code is not the one to use for this drug so remove the edge
-                    netFlow.remove(i, j + n);
+                    dinic.adj[i].get(idx).cap = 0;
                 }
             }
-
         } else {
             System.out.println("no");
         }
