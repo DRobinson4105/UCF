@@ -133,7 +133,6 @@ public class codes {
                     e.rev.flow = -e.flow;
 
                     // Add to the total flow.
-                    // System.out.println(e.v1 + " " + e.v2);
                     flow += cur;
                 }
 
@@ -209,7 +208,6 @@ public class codes {
         Dinic dinic;
 
         int n = scan.nextInt(); int m = scan.nextInt();
-        int source = n + m, sink = n + m + 1;
         dinic = new Dinic(n + m);
 
         // get input
@@ -228,7 +226,7 @@ public class codes {
 
         for (int i = 0; i < n; i++) {
             // add edge from source to each drug
-            dinic.add(source, i, 1, 0);
+            dinic.add(dinic.s, i, 1, 0);
 
             for (int j = 0; j < m; j++) {
                 // if current code is a substring of the current drug, add an edge from the drug to
@@ -240,10 +238,11 @@ public class codes {
 
         // add edge from each code to sink
         for (int i = 0; i < m; i++)
-            dinic.add(i + n, sink, 1, 0);
+            dinic.add(i + n, dinic.t, 1, 0);
 
         if (dinic.flow() == n) {
             System.out.println("yes");
+            StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < n; i++) {
                 // remove all edges from current drug to codes
@@ -264,7 +263,7 @@ public class codes {
                     // if current drug can be used with current code with every other drug having a
                     // unique code, use it and move on to the next drug
                     if (dinic.flow() == n) {
-                        System.out.println(codes.get(j));
+                        sb.append(codes.get(j)); sb.append("\n");
                         break;
                     }
 
@@ -272,6 +271,8 @@ public class codes {
                     dinic.adj[i].get(idx).cap = 0;
                 }
             }
+
+            System.out.print(sb);
         } else {
             System.out.println("no");
         }
