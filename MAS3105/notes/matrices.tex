@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\section*{Matrices}
+
+A matrix is in \textbf{echelon form} if:
+\begin{enumerate}
+    \item All nonzero rows are above any rows of all zeros
+    \item Each leading entry of a row is in a column to the right of the leading entry of the row
+    above it
+    \item All entries in a column below a leading entry are zeros
+\end{enumerate}
+
+\noindent
+A matrix is in \textbf{reduced echelon form} if:
+\begin{enumerate}
+    \item It is in echelon form
+    \item The leading entry in each nonzero row is 1
+\end{enumerate}
+
+\noindent
+A linear system is consistent if and only if the rightmost column of the augmented matrix is not a
+pivot column. That is, if and only if an echelon form of the augmented matrix has no row of the
+form $\begin{bmatrix} 0 & \cdots & 0 & b \end{bmatrix}$ with $b$ being nonzero.
+
+\end{document}
