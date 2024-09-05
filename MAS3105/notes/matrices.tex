@@ -3,7 +3,8 @@
 \usepackage{amssymb}
 
 \begin{document}
-
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
 \section*{Matrices}
 
 A matrix is in \textbf{echelon form} if:
@@ -49,5 +50,15 @@ A linear equation in the form $Ax=0$ where:
     \item If the matrix $\textbf{A}$ has more columns than rows ($n > m$), the system often has infinitely many solutions
     \item If $\textbf{A}$ has $n$ pivot columns, the columns of $\textbf{A}$ are linearly independent, since every variable is a basic variable
 \end{enumerate}
+
+If T: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is a linear transformation, then there exists a unique matrix $A$ such that the following equation is true.
+\[T(\textbf{x})=A\textbf{x}\text{ for all } \textbf{x} \text{ in } \mathbb{R}^n\]
+In fact, $A$ is the $m\times n$ matrix whose jth column is the vector $T(\textbf{e}_j)$ where $\textbf{e}_j$ is the jth column of the identity matrix in $\mathbb{R}^n$, as shown in the equation, $A=\begin{bmatrix}
+    T(e_1) & \cdots & T(e_n)
+\end{bmatrix}$
+
+The mapping T: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is said to be one-to-one if each \textbf{b} in $\mathbb{R}^m$ is the image of at most one \textbf{x} in $\mathbb{R}^n$.
+
+The mapping T: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is said to be onto $\mathbb{R}^m$ if each \textbf{b} in $\mathbb{R}^m$ is the image of at least one \textbf{x} in $\mathbb{R}^n$.
 
 \end{document}
