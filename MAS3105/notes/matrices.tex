@@ -4,8 +4,8 @@
 
 \begin{document}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-\section*{Matrices}
+
+\section*{Linear Equations in Linear Algebra}
 
 A matrix is in \textbf{echelon form} if:
 \begin{enumerate}
@@ -22,43 +22,10 @@ A matrix is in \textbf{reduced echelon form} if:
     \item The leading entry in each nonzero row is 1
 \end{enumerate}
 
-\noindent
-A linear system is consistent if and only if the rightmost column of the augmented matrix is not a
-pivot column. That is, if and only if an echelon form of the augmented matrix has no row of the
-form $\begin{bmatrix} 0 & \cdots & 0 & b \end{bmatrix}$ with $b$ being nonzero.
-
-
-Let $A$ be an $m \times n$ matrix. Then the following statements are logically equivalent. That is, for a particular $A$, either they are all true statements or they are all false.
-\begin{enumerate}
-    \item For each $\textbf{b}$ in $\mathbb{R}^m$, the equation $A\mathbf{x}=\mathbf{b}$ has a solution
-    \item Each $\textbf{b}$ in $\mathbb{R}^m$ is a linear combination of the columns of $A$
-    \item The columns of $A$ span $\mathbb{R}^m$
-    \item $A$ has a pivot position in every row
-\end{enumerate}
-
-\section*{Homogeneous Equation}
-A linear equation in the form $Ax=0$ where:
-\begin{itemize}
-    \item $\textbf{A}$ is an $m\times n$ matrix
-    \item $\textbf{x}$ is a vector in $\mathbb{R}^n$
-    \item $\textbf{0}$ is the zero vector in $\mathbb{R}^m$
-\end{itemize}
-
 \subsection*{Properties}
 \begin{enumerate}
-    \item The homogeneous equation always has at least one solution (the trivial solution), where $\textbf{x}=\textbf{0}$
-    \item If the matrix $\textbf{A}$ has more columns than rows ($n > m$), the system often has infinitely many solutions
-    \item If $\textbf{A}$ has $n$ pivot columns, the columns of $\textbf{A}$ are linearly independent, since every variable is a basic variable
+    \item A linear system is consistent if the rightmost column of echelon form of the augmented matrix is not a pivot column.
+    \item Two matrices are row equivalent if there exists a sequence of elementary row operations that transforms one matrix into the other.
+    \item The two fundamental questions are about whether the solution exists and whether there is only one solution.
 \end{enumerate}
-
-If T: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is a linear transformation, then there exists a unique matrix $A$ such that the following equation is true.
-\[T(\textbf{x})=A\textbf{x}\text{ for all } \textbf{x} \text{ in } \mathbb{R}^n\]
-In fact, $A$ is the $m\times n$ matrix whose jth column is the vector $T(\textbf{e}_j)$ where $\textbf{e}_j$ is the jth column of the identity matrix in $\mathbb{R}^n$, as shown in the equation, $A=\begin{bmatrix}
-    T(e_1) & \cdots & T(e_n)
-\end{bmatrix}$
-
-The mapping T: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is said to be one-to-one if each \textbf{b} in $\mathbb{R}^m$ is the image of at most one \textbf{x} in $\mathbb{R}^n$.
-
-The mapping T: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is said to be onto $\mathbb{R}^m$ if each \textbf{b} in $\mathbb{R}^m$ is the image of at least one \textbf{x} in $\mathbb{R}^n$.
-
 \end{document}
