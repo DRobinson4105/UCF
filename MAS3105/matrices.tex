@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+\setlength{\parindent}{0pt}
+
+\section*{Linear Equations in Linear Algebra}
+
+A matrix is in \textbf{echelon form} if:
+\begin{enumerate}
+    \item All nonzero rows are above any rows of all zeros
+    \item Each leading entry of a row is in a column to the right of the leading entry of the row
+    above it
+    \item All entries in a column below a leading entry are zeros
+\end{enumerate}
+
+\noindent
+A matrix is in \textbf{reduced echelon form} if:
+\begin{enumerate}
+    \item It is in echelon form
+    \item The leading entry in each nonzero row is 1
+\end{enumerate}
+
+\subsection*{Properties}
+\begin{itemize}
+    \item Two matrices are row equivalent if there exists a sequence of elementary row operations that transforms one matrix into the other
+    \item Each matrix is row equivalent to only one reduced echelon matrix
+    \item The echelon form of a matrix is not unique, but the reduced echelon form is unique
+\end{itemize}
+
+\subsection*{Existence and Uniqueness Theorem}
+A linear system is consistent if the rightmost column of echelon form of the augmented matrix is not a pivot column.
+
+\subsection*{Row Reduction Algorithm}
+The row reduction algorithm leads directly to an explicit description of the solution set of a linear system when the algorithm is applied to the augmented matrix of the system, leading to a general solution of a system.
+\begin{enumerate}
+    \item Forward Phase (reducing a matrix to echelon form)
+    \begin{enumerate}
+        \item Begin with the leftmost nonzero column. This is a pivot column. The pivot position is at the top
+        \item Select a nonzero entry in the pivot column as a pivot. If necessary, interchange rows to move this entry into the pivot position
+        \item Use row replacement operations to create zeros in all positions below the pivot
+        \item Ignore the row containing the pivot position and all rows above it
+        \item Repeat until there are no more nonzero rows to modify    
+    \end{enumerate}
+    \item Backward Phase (reducing a matrix to reduced echelon form)
+    \begin{enumerate}
+        \item Beginning with the rightmost pivot and working upward and to the left, create zeros above each pivot. If a pivot is not 1, make it 1 by a scaling operation
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
