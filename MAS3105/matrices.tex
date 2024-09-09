@@ -62,7 +62,37 @@ general solution of a system.
     vectors that can be reached by scaling and adding the two vectors
     \item If the system consisting of vectors $\mathbf{v}_1$, $\mathbf{v}_2$, and $\mathbf{b}$ is
     consistent, then $\mathbf{b}$ is in $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$
+    \item A matrix can only span $\mathbb{R}^n$ if it has pivot positions in $n$ rows
 \end{itemize}
+
+\subsection*{Matrix Equation $A\mathbf{x}=b$}
+$A\mathbf{x}=b$ can be represented as a vector or matrix equation.
+\[\begin{split}
+    ax_1+bx_2+cx_3=d \\
+    ex_1+fx_2+gx_3=h
+\end{split}\]
+
+Vector Equation:
+\[x_1\begin{bmatrix} a \\ e \end{bmatrix} + x_2\begin{bmatrix} b \\ f \end{bmatrix} + x_3
+\begin{bmatrix} c \\ h \end{bmatrix} = \begin{bmatrix} d \\ h \end{bmatrix}\]
+Matrix Equation:
+\[\begin{bmatrix} a & b & c \\ e & f & g \end{bmatrix}
+\begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} d \\ h \end{bmatrix}\]
+Augmented Matrix:
+\[\begin{bmatrix}
+    a & b & c & d \\
+    e & f & g & h
+\end{bmatrix}\]
+
+Let $A$ be an $m \times n$ matrix. Then the following statements are logically equivalent. That is,
+for a particular $A$, either they are all true statements or they are all false.
+\begin{enumerate}
+    \item For each $\textbf{b}$ in $\mathbb{R}^m$, the equation $A\mathbf{x}=\mathbf{b}$ has a
+    solution
+    \item Each $\textbf{b}$ in $\mathbb{R}^m$ is a linear combination of the columns of $A$
+    \item The columns of $A$ span $\mathbb{R}^m$
+    \item $A$ has a pivot position in every row
+\end{enumerate}
 
 \subsection*{Other}
 \begin{itemize}
