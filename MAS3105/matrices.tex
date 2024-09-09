@@ -24,32 +24,51 @@ A matrix is in \textbf{reduced echelon form} if:
 
 \subsection*{Properties}
 \begin{itemize}
-    \item Two matrices are row equivalent if there exists a sequence of elementary row operations that transforms one matrix into the other
+    \item Two matrices are row equivalent if there exists a sequence of elementary row operations
+    that transforms one matrix into the other
     \item Each matrix is row equivalent to only one reduced echelon matrix
     \item The echelon form of a matrix is not unique, but the reduced echelon form is unique
 \end{itemize}
 
 \subsection*{Existence and Uniqueness Theorem}
-A linear system is consistent if the rightmost column of echelon form of the augmented matrix is not a pivot column.
+A linear system is consistent if the rightmost column of echelon form of the augmented matrix is
+not a pivot column.
 
 \subsection*{Row Reduction Algorithm}
-The row reduction algorithm leads directly to an explicit description of the solution set of a linear system when the algorithm is applied to the augmented matrix of the system, leading to a general solution of a system.
+The row reduction algorithm leads directly to an explicit description of the solution set of a
+linear system when the algorithm is applied to the augmented matrix of the system, leading to a
+general solution of a system.
 \begin{enumerate}
     \item Forward Phase (reducing a matrix to echelon form)
     \begin{enumerate}
-        \item Begin with the leftmost nonzero column. This is a pivot column. The pivot position is at the top
-        \item Select a nonzero entry in the pivot column as a pivot. If necessary, interchange rows to move this entry into the pivot position
+        \item Begin with the leftmost nonzero column. This is a pivot column. The pivot position is
+        at the top
+        \item Select a nonzero entry in the pivot column as a pivot. If necessary, interchange rows
+        to move this entry into the pivot position
         \item Use row replacement operations to create zeros in all positions below the pivot
         \item Ignore the row containing the pivot position and all rows above it
         \item Repeat until there are no more nonzero rows to modify    
     \end{enumerate}
     \item Backward Phase (reducing a matrix to reduced echelon form)
     \begin{enumerate}
-        \item Beginning with the rightmost pivot and working upward and to the left, create zeros above each pivot. If a pivot is not 1, make it 1 by a scaling operation
+        \item Beginning with the rightmost pivot and working upward and to the left, create zeros
+        above each pivot. If a pivot is not 1, make it 1 by a scaling operation
     \end{enumerate}
 \end{enumerate}
 
-\subsection*{Span}
-The span of two vectors, $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$, represents all vectors that can be reached by scaling and adding the two vectors.
+\subsection*{Span (Linear Combination)}
+\begin{itemize}
+    \item The span of two vectors, $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$, represents all
+    vectors that can be reached by scaling and adding the two vectors
+    \item If the system consisting of vectors $\mathbf{v}_1$, $\mathbf{v}_2$, and $\mathbf{b}$ is
+    consistent, then $\mathbf{b}$ is in $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$
+\end{itemize}
+
+\subsection*{Other}
+\begin{itemize}
+    \item Any list of five real numbers is a vector in $\mathbb{R}^n$
+    \item $\{\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}$ consists of the vectors, $\mathbf{a}_1$,
+    $\mathbf{a}_2$, and $\mathbf{a}_3$
+\end{itemize}
 
 \end{document}
