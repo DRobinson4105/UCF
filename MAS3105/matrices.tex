@@ -9,25 +9,25 @@
 
 A matrix is in \textbf{echelon form} if:
 \begin{enumerate}
-    \item All nonzero rows are above any rows of all zeros
+    \item All nonzero rows are above any rows of all zeros.
     \item Each leading entry of a row is in a column to the right of the leading entry of the row
-    above it
-    \item All entries in a column below a leading entry are zeros
+    above it.
+    \item All entries in a column below a leading entry are zeros.
 \end{enumerate}
 
 \noindent
 A matrix is in \textbf{reduced echelon form} if:
 \begin{enumerate}
-    \item It is in echelon form
-    \item The leading entry in each nonzero row is 1
+    \item It is in echelon form.
+    \item The leading entry in each nonzero row is 1.
 \end{enumerate}
 
 \subsection*{Properties}
 \begin{itemize}
     \item Two matrices are row equivalent if there exists a sequence of elementary row operations
-    that transforms one matrix into the other
-    \item Each matrix is row equivalent to only one reduced echelon matrix
-    \item The echelon form of a matrix is not unique, but the reduced echelon form is unique
+    that transforms one matrix into the other.
+    \item Each matrix is row equivalent to only one reduced echelon matrix.
+    \item The echelon form of a matrix is not unique, but the reduced echelon form is unique.
 \end{itemize}
 
 \subsection*{Existence and Uniqueness Theorem}
@@ -42,27 +42,27 @@ general solution of a system.
     \item Forward Phase (reducing a matrix to echelon form)
     \begin{enumerate}
         \item Begin with the leftmost nonzero column. This is a pivot column. The pivot position is
-        at the top
+        at the top.
         \item Select a nonzero entry in the pivot column as a pivot. If necessary, interchange rows
-        to move this entry into the pivot position
-        \item Use row replacement operations to create zeros in all positions below the pivot
-        \item Ignore the row containing the pivot position and all rows above it
-        \item Repeat until there are no more nonzero rows to modify    
+        to move this entry into the pivot position.
+        \item Use row replacement operations to create zeros in all positions below the pivot.
+        \item Ignore the row containing the pivot position and all rows above it.
+        \item Repeat until there are no more nonzero rows to modify.
     \end{enumerate}
     \item Backward Phase (reducing a matrix to reduced echelon form)
     \begin{enumerate}
         \item Beginning with the rightmost pivot and working upward and to the left, create zeros
-        above each pivot. If a pivot is not 1, make it 1 by a scaling operation
+        above each pivot. If a pivot is not 1, make it 1 by a scaling operation.
     \end{enumerate}
 \end{enumerate}
 
 \subsection*{Span (Linear Combination)}
 \begin{itemize}
     \item The span of two vectors, $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$, represents all
-    vectors that can be reached by scaling and adding the two vectors
+    vectors that can be reached by scaling and adding the two vectors.
     \item If the system consisting of vectors $\mathbf{v}_1$, $\mathbf{v}_2$, and $\mathbf{b}$ is
-    consistent, then $\mathbf{b}$ is in $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$
-    \item A matrix can only span $\mathbb{R}^n$ if it has pivot positions in $n$ rows
+    consistent, then $\mathbf{b}$ is in $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\}$.
+    \item A matrix can only span $\mathbb{R}^n$ if it has pivot positions in $n$ rows.
 \end{itemize}
 
 \subsection*{Matrix Equation $A\mathbf{x}=b$}
@@ -88,13 +88,50 @@ Let $A$ be an $m \times n$ matrix. Then the following statements are logically e
 for a particular $A$, either they are all true statements or they are all false.
 \begin{enumerate}
     \item For each $\textbf{b}$ in $\mathbb{R}^m$, the equation $A\mathbf{x}=\mathbf{b}$ has a
-    solution
-    \item Each $\textbf{b}$ in $\mathbb{R}^m$ is a linear combination of the columns of $A$
-    \item The columns of $A$ span $\mathbb{R}^m$
-    \item $A$ has a pivot position in every row
+    solution.
+    \item Each $\textbf{b}$ in $\mathbb{R}^m$ is a linear combination of the columns of $A$.
+    \item The columns of $A$ span $\mathbb{R}^m$.
+    \item $A$ has a pivot position in every row.
 \end{enumerate}
 
-\subsection*{Other}
+\subsection*{Homogeneous Equation}
+A homogeneous equation is a linear equation in the form $Ax=0$
+
+\begin{enumerate}
+    \item The homogeneous equation always has at least one solution (the trivial solution), where
+    $\textbf{x}=\textbf{0}$.
+    \item The homogeneous equation has a nontrivial solution if the equation has at least one free
+    variable.
+    \item If the matrix $\textbf{A}$ has more columns than rows ($n > m$), the system often has
+    infinitely many solutions.
+    \item If $\textbf{A}$ has $n$ pivot columns, the columns of $\textbf{A}$ are linearly
+    independent, since every variable is a basic variable.
+\end{enumerate}
+
+\subsection*{Parametric Vector Equation}
+The equation can be represented in parametric vector form if there is a free variable so that all
+of the other variables are represented in terms of the free variable. For example, if $x_3$ is a
+free variable in $\mathbb{R}^3$, 
+$x=\begin{bmatrix} c \\ d \end{bmatrix} + x_3
+\begin{bmatrix} a \\ b \\ 1\end{bmatrix}$, 
+where $x_1=ax_3 + c$ and $x_2=bx_3 + d$.\\
+
+If $\begin{bmatrix}
+    x_1 \\ x_2 \\ x_3
+\end{bmatrix} = \begin{bmatrix}
+    a + bx_3 \\ c + dx_3 \\ e + fx_3
+\end{bmatrix}$, the equation geometrically describes a line through $\begin{bmatrix}
+    a \\ c \\ e
+\end{bmatrix}$ parallel to $\begin{bmatrix}
+    b \\ d \\ f
+\end{bmatrix}$
+
+The solution set of $A\mathbf{x}=\mathbf{b}$ is the set of all vectors of the form
+$\mathbf{w}=\mathbf{p}+\mathbf{v}_h$, where $\mathbf{v}_h$ is any solution of the equation
+$A\mathbf{x}=\mathbf{0}$, only when the equation $A\mathbf{x}=\mathbf{b}$ is consistent for some
+given $\mathbf{b}$, and there exists a vector $\mathbf{p}$ such that $\mathbf{p}$ is a solution.
+
+\section*{Other}
 \begin{itemize}
     \item Any list of five real numbers is a vector in $\mathbb{R}^n$
     \item $\{\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}$ consists of the vectors, $\mathbf{a}_1$,
