@@ -5,19 +5,20 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 \section*{Electric Field Lines}
-Electric field lines are continuous lines which have the same direction as the electric field
+Electric field lines are continuous curves which have the same direction as the electric field
 
 \begin{itemize}
-    \item Electric field lines are continuous curves tangent to the electric field vectors
-    \item Closely spaced field lines indicate a greater field strength
-    \item Electric field lines start on positive charges and end on negative charges
-    \item Electric field lines never cross
+    \item Electric field lines are continuous curves tangent to the electric field vectors.
+    \item Closely spaced field lines indicate a greater field strength.
+    \item Electric field lines start on positive charges and end on negative charges.
+    \item Electric field lines never cross.
 \end{itemize}
 
+\subsection*{Electric Field Produced by a Continuous Distribution of Charge}
 \[\vec{E}(\vec{r})=\int \frac{kdq}{r^2}\hat{r}\]
 where $dq$ is a small element of charge at each point in a electric field produced by a continuous
 distribution of charge and $r$ is the distance from that small point in the electric field to the
-point
+point.
 
 \subsection*{Linear Charge Density}
 \begin{itemize}
@@ -27,45 +28,48 @@ point
     length
 \end{itemize}
 
-\[E=\frac{\lambda}{2\pi\epsilon_0 r}\]
+If the chraged line is infinitely long:
+\[E=\frac{2k\lambda}{r}\]
 
 \subsection*{Surface Charge Density}
 \begin{itemize}
     \item The surface charge density of a two-dimensional distribution of charge across a surface
-    of area $A$ is defined as $\eta = \frac{Q}{A}$
+    of area $A$ is defined as $\eta = \frac{Q}{A}$.
     \item Surface charge density, which has units of $C/m^2$, is the amount of charge per square
-    meter
+    meter.
 \end{itemize}
+
+\section*{Capacitors}
+
+\[E=\frac{V}{d}\]
+
+\begin{itemize}
+    \item The electric field inside an ideal parallel plate capacitor is uniform and directed from
+    the postiively charged plate to the negatively charged plate.
+    \item If you know the surface charge density $\sigma=\frac{Q}{A}$ on the plates, the electric
+    field can also be calculated using: $E=\frac{\sigma}{\epsilon_0}$.
+    \item Inside the capacitor, the net field points toward the negative plate.
+\end{itemize}
+
+\[\vec{E}_{capacitor}=\begin{cases}
+\big(\frac{Q}{\epsilon_0 A}\text{, from positive to negative}\big) & \text{inside} \\ 
+\vec{0} & \text{outside}
+\end{cases}\]
 
 \section*{Electric Dipoles}
 Dipole moment $p=q\times d$ where $d$ is a vector directed from negative charge to the positive one
-and $q$ is the magnitude of charge
+and $q$ is the magnitude of charge.
 
 \[E=\frac{2kp}{r^3}\]
 
 where $\epsilon_0=8.854\times 10^-12\: C^2 / N\cdot m^2$ is the vacuum permittivity
 
-When the dipole moment $\vec{p}$ is at an angle $\theta$ to the field, causing the dipole to
-experience a torque, $\tau = r\times F$. Each charge experiences force $F=qE$. The net force on the
+When the dipole moment $\vec{p}$ is at an angle $\theta$ to the field, it causes the dipole to
+experience a torque, $\tau = r\times F = p\times E$. Each charge experiences force $F=qE$. The net
+force on the
 dipole is zero because the forces are of opposite directions so dipole will not move as a whole in
 electric field.
 \[|\tau | = pE\sin (\theta)\] where $\theta$ is the angle between the dipole moment and the
-electric field
+electric field.
 
-\section*{Capacitors}
-
-\[E=\frac{V}{D}\]
-
-Where:
-\begin{itemize}
-    \item $E$ is the elctric field strength
-    \item $V$ is the potential difference across the plates
-    \item $d$ is the distance between the plates
-\end{itemize}
-
-\subsection*{Key Points}
-\begin{itemize}
-    \item The electric field inside an ideal parallel plate capacitor is uniform and directed from the postiively charged plate to the negatively charged plate
-    \item If you know the surface charge density $\sigma=\frac{Q}{A}$ on the plates, the electric field can also be calculated using: $E=\frac{\sigma}{\epsilon_0}$
-\end{itemize}
 \end{document}
