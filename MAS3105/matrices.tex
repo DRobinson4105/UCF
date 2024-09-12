@@ -147,11 +147,35 @@ transformation to be linear, then:
     \item $T(\mathbf{0})=0$.
     \item $T(c\mathbf{u}+d\mathbf{v})=cT(\mathbf{u})+dT(\mathbf{v})$
 \end{itemize}
-\subsection*{Properties}
+
+\subsection*{Key Points}
 \begin{itemize}
     \item If $A$ is a $m\times n$ matrix and $T$ is a transformation defined by
-    $T(\mathbf{x})=A\mathbf{x}$, then the domain of $T$ is $\mathbb{R}^n$
+    $T(\mathbf{x})=A\mathbf{x}$, then the domain of $T$ is $\mathbb{R}^n$ and the range of $T$ is
+    the solution set.
+    \item A mapping $T$: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is one-to-one if each vector in
+    $\mathbb{R}^n$ maps onto a unqiue vector in $\mathbb{R}^m$. Also, $T$ is one-to-one if and only
+    if the columns of $A$ are linearly independent.
+    \item A mapping $T$: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is onto $\mathbb{R}^m$ if every
+    vector in $\mathbb{R}^m$ is mapped onto by some vector $\mathbf{x}$ in $\mathbb{R}^n$. Also,
+    $T$ is onto $\mathbb{R}^m$ if there are $n$ pivot columns.
 \end{itemize}
+
+Standard matrix of $T$ to rotate points about the origin by $\theta$:
+$A=\begin{bmatrix}
+    \cos\theta & -\sin\theta \\
+    \sin\theta & \cos\theta
+\end{bmatrix}$
+
+If $T$: $\mathbb{R}^n\rightarrow\mathbb{R}^m$ is a linear transformation, then there exists a
+unique matrix $A$ such that the following equation is true.
+\[T(\mathbf{x})=A\mathbf{x}\text{ for all }\mathbf{x}\text{ in }\mathbb{R}^n\]
+In fact, $A$ is the $m\times n$ matrix whose jth column is the vector, $T(e_j)$, where $e_j$ is the
+jth column of the identity matrix in $\mathbb{R}^n$, as shown in the following equation.
+\[A=\begin{bmatrix}
+    T(e_1) & \cdots & T(e_n) 
+\end{bmatrix}\]
+
 \section*{Other}
 \begin{itemize}
     \item Any list of five real numbers is a vector in $\mathbb{R}^n$
