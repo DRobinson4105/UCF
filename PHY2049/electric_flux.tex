@@ -1,12 +1,54 @@
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage{bigints}
 
 \begin{document}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
 
 \section*{Electric Flux}
-Electric flux, $\Phi$, of the electric field, $E$, through the surface, $A$, as: 
+Electric flux, $\Phi$, of the electric field, $E$, through the surface, $A$, as:
+\[\Phi=E\cdot A=EA\cos\theta\]
 
+If the surface is curved, then we can
+\begin{enumerate}
+    \item Divide the surface into small regions with area $dA$.
+    \item $d\Phi=E\cdot dA$
+    \item Obtain the total flux by integrating over the surface $A$, $\Phi=\bigintsss E\cdot dA$
+\end{enumerate}
+
+\subsection*{Electric Field in a Sphere}
+If there is a positive point charge $q$, through a spehere of radius $R$ centered at the charge, the electric field is $E=\frac{kq}{r^2}$ at any distance $r >= R$. \\
+
+In a solid sphere of radius $R$ with the uniformly distributed charge $Q$, find $E(r)$ at a point inside the sphere by:
+\begin{itemize}
+    \item $Q_{enc} = \frac{r^3}{R^3}Q$
+    \item So for $r < R$, $E(r)=\frac{kQ \times r^3 / R^3}{r^2}=\frac{kQr}{R^3}$
+\end{itemize}
+
+\subsection*{Gauss's Law}
+Electric flux through any closed surface always equals:
+\[\bigintsss E \cdot dA = \frac{Q_{enc}}{\epsilon_0}\] where $Q_{enc}$ is the enclosed charge
+
+% \begin{center}
+%     \begin{tabular}{|c | c | c | c|} 
+%         \hline
+%          & Sphere (or point) & Cylindrical (or line) & Planar \\ [0.5ex] 
+%         \hline
+%         Charge Density & Depends only on radial distance from central point & Depends only on perpendicular distance from line & Depends only on perpendicular distance from plane \\ 
+%         \hline
+%         Gaussian Surface & Centered at point of symmetry & Centered at axis of symmetry & Cylinder with axis perpendicular to plane \\
+%         \hline
+%         Electric Field & $E$ constant at surface $E \parallel A - \cos\theta = 1$ & $E$ constant at curved surface and \\
+%         \hline
+%     \end{tabular}
+% \end{center}
+
+\subsection*{Electric Flux of Multiple Charges}
+In the case of multiple charges through any closed surface:
+\begin{itemize}
+    \item The contribution to the total flux for any charge $q_i$ inside the surface is $q_i/\epsilon_0$.
+    \item The contribution to the total flux for any charge outside the surface is zero.
+    \item $\Phi = Q_{in} / \epsilon_0$ where $Q_{in}$ is the sum of the charges inside the surface
+\end{itemize}
 
 \end{document}
