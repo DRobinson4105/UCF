@@ -176,11 +176,38 @@ jth column of the identity matrix in $\mathbb{R}^n$, as shown in the following e
     T(e_1) & \cdots & T(e_n) 
 \end{bmatrix}\]
 
-\section*{Other}
+\section*{Matrix Multiplication}
+
+\[
+\begin{bmatrix}
+    a & b \\
+    c & d \\
+    e & f
+\end{bmatrix}
+\times
+\begin{bmatrix}
+    g & h \\
+    i & j
+\end{bmatrix}
+=
+\begin{bmatrix}
+    ag+bi & ah+bj \\
+    cg+di & ch+dj \\
+    eg+fi & eh+fj
+\end{bmatrix}
+\]
+
+The $(i, j)$ entry in $AB$ is
+\[\sum_{k=1}^n a_{\text{ik}}b_{\text{kj}}\quad \text{or} \quad a_{\text{i1}}b_{\text{1j}}+\cdots + a_{\text{in}}b_{\text{nj}}\]
+
+\[(AB)^T=B^T A^T\]
+\subsubsection*{Key Points}
 \begin{itemize}
-    \item Any list of five real numbers is a vector in $\mathbb{R}^n$
-    \item $\{\mathbf{a}_1, \mathbf{a}_2, \mathbf{a}_3\}$ consists of the vectors, $\mathbf{a}_1$,
-    $\mathbf{a}_2$, and $\mathbf{a}_3$
+    \item Matrix multiplication is only allowed for matrices where the number of columns in the first matrix equal the number of rows in the second matrix.
+    \item If $A$ is a $a\times b$ matrix and $B$ is a $b \times c$ matrix, then $AB$ is a $a \times c$ matrix.
+    \item Given a square $n\times n$ matrix $A$, there are infinite matrices for $B$ in $AB=BA$ because any multiple of $I_n$ will satisfy the equation.
 \end{itemize}
+
+
 
 \end{document}
