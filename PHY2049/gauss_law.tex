@@ -26,4 +26,51 @@ Electric flux, $\Phi$, is the amount of the electric field $E$ that passes throu
 Electric field only flows in one direction so $E_\perp=E\cos\theta$ is the only part of $E$ that passes through a surface with angle $\theta$ between the orientation of that surface and the electric field.
 \[\Phi = E_\perp A = EA\cos\theta\]
 
+\subsection*{Nonuniform Electric Field}
+A surface in a nonuniform electric field can be split into small pieces where the electric flux of each area can be represented by $\delta\Phi_i = \vec{E}_i\cdot\delta\vec{A}_i$
+The total electric flux through a surface can then be represented by
+\[\Phi_e =\bigintssss \vec{E}\cdot d\vec{A}\]
+
+\begin{enumerate}
+    \item If the electric field is everywhere tangent to a surface, the electric flux through the surface is $\Phi_e = 0$.
+    \item If the electric field is everywhere perpendicular to a surface and has the same magnitude $E$ at every point, the electric flux through the surface is $\Phi_e = EA$.
+\end{enumerate}
+
+\subsection*{Calculating Electric Flux through a Closed Surface}
+\begin{enumerate}
+    \item Choose a Gaussian surface made up of pieces that are everywhere tangent to the electric field or everywhere perpendicular to the electric field.
+    \item Use the previous rules to evaluate the surface integrals over these surfaces, then add the results.
+\end{enumerate}
+\textbf{The net electric flux is zero through a closed surface that does not contain any net charge.}
+
+\section*{Gauss's Law}
+The flux through any closed surface surrounding charges that sum to $Q_{in}$ is
+\[\Phi_e = \bigintssss \vec{E}\cdot d\vec{A} = \frac{Q_{in}}{\epsilon_0}\]
+
+\subsection*{Calculating Electric Flux in a spherical Gaussian surface inside a uniform sphere of charge}
+Where $R$ is the radius of the sphere of charge and $r$ is the radius of the Gaussian surface
+\[\Phi_e = E\times 4\pi r^2 = \frac{Q_{in}}{\epsilon_0}\]
+
+Because the charge distribution is uniform, the volume charge density is
+\[\rho = \frac{Q}{V_R} = \frac{Q}{\frac{4}{3}\pi R^3}\]
+
+\[Q_{in} = \rho V_r=\frac{Q}{\frac{4}{3}\pi R^3}\times\frac{4}{3}\pi r^3=Q\frac{r^3}{R^3}\]
+
+Using $Q_{in}$ back into Gauss's law results in
+\[E\times 4\pi r^2 = \frac{Qr^3 / R^3}{\epsilon_0}\rightarrow E=\frac{Qr}{4\pi\epsilon_0 R^3}\]
+
+\section*{Conductors in Electrostatic Equilibrium}
+If a charged conductor is in electrostatic equilibrium, then there is no current through the conductor and the charges are all stationary. The electric field is zero at all points inside a conductor in electrostatic equilibrium. Since the electric field is zero at all points inside the conductor, the electric flux and net charge is also zero.\newline
+
+If there's no net charge in the interior of a conductor in electrostatic equilibrium, then all the excess charge on a charged conductor resides on the surface of the conductor.
+\[\vec{E}_{\text{surface}}=\frac{\eta}{\epsilon_0}\text{ and is perpendicular to surface}\]
+
+\subsection*{Screening}
+The electric field can be excluded from a region of space in a parallel-plate capacitor by surrounding it with a conducting box. The conducting box will be polarized and induce surface charges and the internal electric field will be $\vec{E}=0$.
+
+\subsection*{Additional Notes}
+\begin{enumerate}
+    \item The electric flux of a point charge through a spherical surface is independent of the radius of the sphere as $E$ will decrease in proportion to $1/r^2$ but $A$ will increase in proportion to $r^2$.
+\end{enumerate}
+
 \end{document}
