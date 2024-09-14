@@ -200,7 +200,7 @@ jth column of the identity matrix in $\mathbb{R}^n$, as shown in the following e
 The $(i, j)$ entry in $AB$ is
 \[\sum_{k=1}^n a_{\text{ik}}b_{\text{kj}}\quad \text{or} \quad a_{\text{i1}}b_{\text{1j}}+\cdots + a_{\text{in}}b_{\text{nj}}\]
 
-\[(AB)^T=B^T A^T\]
+\[{(AB)}^T=B^T A^T\]
 \subsubsection*{Key Points}
 \begin{itemize}
     \item Matrix multiplication is only allowed for matrices where the number of columns in the first matrix equal the number of rows in the second matrix.
@@ -208,6 +208,28 @@ The $(i, j)$ entry in $AB$ is
     \item Given a square $n\times n$ matrix $A$, there are infinite matrices for $B$ in $AB=BA$ because any multiple of $I_n$ will satisfy the equation.
 \end{itemize}
 
+\section*{Inverse Matrices}
+\[A\times A^{-1}=I\]
+where $A$ is an invertible matrix, $A^{-1}$ is the inverse of $A$, and $I$ is the identity matrix with the same shape as $A$.
+Calculating the inverse of a $2\times 2$ square matrix.
 
+\subsubsection*{Calculating the Inverse of a Matrix}
+\begin{enumerate}
+    \item Start with a square matrix $A$.
+    \item Reduce the matrix $\begin{bmatrix} A & I \end{bmatrix}$ (where I is the identity matrix with the same shape as A) to reduced echelon form which will result in $\begin{bmatrix} I & A^{-1} \end{bmatrix}$.
+\end{enumerate}
 
+If $A$ is an invertible $n\times n$ matrix, then for each $\mathbf{b}$ in $\mathbb{R}^n$, the equation $A\mathbf{x}=\mathbf{b}$ has the unique solution $\mathbf{x}=A^{-1}\mathbf{b}$.
+
+\subsubsection*{Key Points}
+\begin{itemize}
+    \item The inverse of $AB$ is $B^{-1}A^{-1}$.
+    \item If $A$ is an invertible $n\times n$ matrix, then the equation $A\mathbf{x}=\mathbf{b}$ is consistent for each $\mathbf{b}$ in $\mathbb{R}^n$ because $A^{-1}\mathbf{b}$ exists for all $\mathbf{b}$ in $\mathbb{R}^n$ and $\mathbf{x}=A^{-1}\mathbf{b}$.
+    \item The columns of an $n\times n$ matrix $A$ are linearly independent when $A$ is invertible because the equation $A\mathbf{x}=0$ has the unique solution $\mathbf{x}=0$.
+\end{itemize}
+
+\section*{Other}
+\begin{enumerate}
+    \item It is not possible that $CA=I_4$ for some $4\times 2$ matrix $C$ when $A$ is a $2\times 4$ matrix because if it were true, then $CA\mathbf{x}$ would equal $\mathbf{x}$ for all $\mathbf{x}$ in $\mathbb{R}^4$. Since the columns of $A$ are linearly dependent as there are more columns than rows, $A\mathbf{x}=0$ for some nonzero vector $\mathbf{x}$, so $\mathbf{x}=I\mathbf{x}\neq CA\mathbf{x}=0$.
+\end{enumerate}
 \end{document}
