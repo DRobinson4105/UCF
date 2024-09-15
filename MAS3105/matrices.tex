@@ -2,8 +2,13 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\begin{document}
+\title{Matrix and Linear Algebra}
+\author{David Robinson}
+\date{}
 \setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
 
 \section*{Linear Equations in Linear Algebra}
 
@@ -221,11 +226,25 @@ Calculating the inverse of a $2\times 2$ square matrix.
 
 If $A$ is an invertible $n\times n$ matrix, then for each $\mathbf{b}$ in $\mathbb{R}^n$, the equation $A\mathbf{x}=\mathbf{b}$ has the unique solution $\mathbf{x}=A^{-1}\mathbf{b}$.
 
+\subsection*{Invertible Matrix Theorem}
+The following statements are either all true or all false
+\begin{enumerate}
+    \item $A$ is an invertible matrix.
+    \item $A$ has $n$ pivot positions.
+    \item The columns of $A$ form a linearly independent set.
+    \item The columns of $A$ span $\mathbb{R}^n$.
+    \item There are $n\times n$ matrices $C$ and $D$ such that $CA=I$ and $AD=I$.
+\end{enumerate}
+
+The deteminant of a standard $n\times n$ matrix is $ad-bc$.
+
 \subsubsection*{Key Points}
 \begin{itemize}
-    \item The inverse of $AB$ is $B^{-1}A^{-1}$.
+    \item $(AB)^{-1}$ is $B^{-1}A^{-1}$.
     \item If $A$ is an invertible $n\times n$ matrix, then the equation $A\mathbf{x}=\mathbf{b}$ is consistent for each $\mathbf{b}$ in $\mathbb{R}^n$ because $A^{-1}\mathbf{b}$ exists for all $\mathbf{b}$ in $\mathbb{R}^n$ and $\mathbf{x}=A^{-1}\mathbf{b}$.
     \item The columns of an $n\times n$ matrix $A$ are linearly independent when $A$ is invertible because the equation $A\mathbf{x}=0$ has the unique solution $\mathbf{x}=0$.
+    \item The product of invertible matrices is also invertible.
+    \item If $A$ and $B$ are $n\times n$ matrices and $AB$ is invertible, then $B$ is also invertible
 \end{itemize}
 
 \section*{Other}
