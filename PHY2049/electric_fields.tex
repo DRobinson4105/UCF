@@ -1,11 +1,46 @@
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage{bigints}
+
+\title{Chapter 23 Electric Fields}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
 
 \begin{document}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-\section*{Electric Field Lines}
-Electric field lines are continuous curves which have the same direction as the electric field
+\maketitle
+
+\section*{Electric Field Models}
+
+\begin{enumerate}
+    \item A point charge (small charged objects):
+    \[\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{q}{r^2}\hat{r}\]
+    \item An infinitely long line of charge (wires):
+    \[\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{2|\lambda |}{r}\]
+    \item An infinitely wide plane of charge (electrodes):
+    \[\vec{E}=\frac{\eta}{2\epsilon_0}\begin{cases}
+        \text{away from plane if charge } + \\
+        \text{toward plane if charge } -
+    \end{cases}\]
+    \item A sphere of charge (electrodes):
+    \[\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{Q}{r^2}\hat{R}\text{ for }r > R\]
+\end{enumerate}
+
+\section*{The Electric Field of Point Charges}
+
+\subsection*{The Electric Field of a Dipole}
+
+Two equal but opposite charges separated by a small distance form an electric dipole. The dipole
+moment $\vec{p}=qs$, where $q$ is the positive charge and $s$ is the distance between the charges,
+determines the orientation of the dipole and electric field strength. \newline
+
+The electric field on a point on the axis between the two charges:
+\[\vec{E}_{\text{dipole}}=-\frac{1}{4\pi\epsilon_0}\frac{2\vec{p}}{r^3} \text{ (on the axis)}\]
+where $r$ is the distance measured from the center of the dipole.
+\[\vec{E}_{\text{dipole}}=-\frac{1}{4\pi\epsilon_0}\frac{\vec{p}}{r^3} 
+\text{ (in the bisecting plane)}\]
+
+\subsection*{Electric Field Lines}
 
 \begin{itemize}
     \item Electric field lines are continuous curves tangent to the electric field vectors.
@@ -14,62 +49,50 @@ Electric field lines are continuous curves which have the same direction as the 
     \item Electric field lines never cross.
 \end{itemize}
 
-\subsection*{Electric Field Produced by a Continuous Distribution of Charge}
-\[\vec{E}(\vec{r})=\int \frac{kdq}{r^2}\hat{r}\]
-where $dq$ is a small element of charge at each point in a electric field produced by a continuous
-distribution of charge and $r$ is the distance from that small point in the electric field to the
-point.
+\section*{The Electric Field of a Continuous Charge Distribution}
 
-\subsection*{Linear Charge Density}
+\subsection*{Charge Density}
 \begin{itemize}
     \item The linear charge density of an object of length $L$ and charge $Q$ is defined as
-    $\lambda=\frac{Q}{L}$
+    $\lambda=\frac{Q}{L}$.
+    \[Q=\bigintssss_0^L\lambda dx\]
     \item Linear charge density, which has units of $C/m$, is the amount of charge per meter of
-    length
-\end{itemize}
-
-If the chraged line is infinitely long:
-\[E=\frac{2k\lambda}{r}\]
-
-\subsection*{Surface Charge Density}
-\begin{itemize}
-    \item The surface charge density of a two-dimensional distribution of charge across a surface
-    of area $A$ is defined as $\eta = \frac{Q}{A}$.
+    length.
+    \item The surface charge density of a surface with area $A$ and charge $Q$ is defined as
+    $\eta=\frac{Q}{A}$.
     \item Surface charge density, which has units of $C/m^2$, is the amount of charge per square
+    meter.
+    \item The volume charge density of an object with volume $V$ and charge $Q$ is defined as
+    $\rho=\frac{Q}{V}$.
+    \item Volume charge density, which has units of $C/m^3$, is the amount of charge per cubic
     meter.
 \end{itemize}
 
-\section*{Capacitors}
+\section*{The Parallel-Plate Capacitor}
 
-\[E=\frac{V}{d}\]
+A parallel-plate capacitors is the arrangement of two electrodes (metal plates) face-to-face and
+charged equally but oppositely.
+\subsection*{Properties}
 
+\[\vec{E}_\text{capacitor}=\begin{cases}
+    \Big(\frac{Q}{\epsilon_0 A}\text{, from positive to negative}\Big) & \text{inside} \\
+    \vec{0} & \text{outside}
+\end{cases}\]
 \begin{itemize}
-    \item The electric field inside an ideal parallel plate capacitor is uniform and directed from
-    the postiively charged plate to the negatively charged plate.
-    \item If you know the surface charge density $\sigma=\frac{Q}{A}$ on the plates, the electric
-    field can also be calculated using: $E=\frac{\sigma}{\epsilon_0}=\frac{Q}{\epsilon_0 A}$.
-    \item Inside the capacitor, the net field points toward the negative plate.
+    \item Capacitors are charged by transferring electrons from one plate to the other.
+    \item Capacitors have a uniform electric field between the electrodes, meaning that the
+    electric field from the electrodes is the same in strength and direction.
 \end{itemize}
 
-\[\vec{E}_{capacitor}=\begin{cases}
-\big(\frac{Q}{\epsilon_0 A}\text{, from positive to negative}\big) & \text{inside} \\ 
-\vec{0} & \text{outside}
-\end{cases}\]
-
-\section*{Electric Dipoles}
-Dipole moment $p=q\times d$ where $d$ is a vector directed from negative charge to the positive one
-and $q$ is the magnitude of charge.
-
-\[E=\frac{2kp}{r^3}\]
-
-where $\epsilon_0=8.854\times 10^-12\: C^2 / N\cdot m^2$ is the vacuum permittivity
-
+\section*{Motion of a Dipole in an Electric Field}
 When the dipole moment $\vec{p}$ is at an angle $\theta$ to the field, it causes the dipole to
 experience a torque, $\tau = r\times F = p\times E$. Each charge experiences force $F=qE$. The net
 force on the
 dipole is zero because the forces are of opposite directions so dipole will not move as a whole in
 electric field.
-\[|\tau | = pE\sin (\theta)\] where $\theta$ is the angle between the dipole moment and the
+
+\[|\tau | = pE\sin \theta\] where $\theta$ is the angle between the dipole moment and the
 electric field.
+
 
 \end{document}
