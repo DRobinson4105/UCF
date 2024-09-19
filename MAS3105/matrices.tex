@@ -182,6 +182,7 @@ jth column of the identity matrix in $\mathbb{R}^n$, as shown in the following e
 \end{bmatrix}\]
 
 \section*{Matrix Multiplication}
+The definition of matrix multiplication states that if $A$ is an $m\times n$ matrix and $B$ is an $n\times p$ matrix with columns $\mathbf{b}_1, \cdots , \mathbf{b}_p$, then $AB=\begin{bmatrix} A\mathbf{b}_1 & \cdots & A\mathbf{b}_p \end{bmatrix}$.
 
 \[
 \begin{bmatrix}
@@ -211,6 +212,7 @@ The $(i, j)$ entry in $AB$ is
     \item Matrix multiplication is only allowed for matrices where the number of columns in the first matrix equal the number of rows in the second matrix.
     \item If $A$ is a $a\times b$ matrix and $B$ is a $b \times c$ matrix, then $AB$ is a $a \times c$ matrix.
     \item Given a square $n\times n$ matrix $A$, there are infinite matrices for $B$ in $AB=BA$ because any multiple of $I_n$ will satisfy the equation.
+    \item The definition of $AB$ states that each column of $AB$ is a linear combination of the columns of A using weights from the corresponding column of $B$.
 \end{itemize}
 
 \section*{Inverse Matrices}
@@ -223,6 +225,8 @@ Calculating the inverse of a $2\times 2$ square matrix.
     \item Start with a square matrix $A$.
     \item Reduce the matrix $\begin{bmatrix} A & I \end{bmatrix}$ (where I is the identity matrix with the same shape as A) to reduced echelon form which will result in $\begin{bmatrix} I & A^{-1} \end{bmatrix}$.
 \end{enumerate}
+
+If $A$ is a $2\times 2$ matrix, then $A^{-1}=\frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$. \\
 
 If $A$ is an invertible $n\times n$ matrix, then for each $\mathbf{b}$ in $\mathbb{R}^n$, the equation $A\mathbf{x}=\mathbf{b}$ has the unique solution $\mathbf{x}=A^{-1}\mathbf{b}$.
 
