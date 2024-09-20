@@ -267,6 +267,25 @@ The deteminant of a standard $n\times n$ matrix is $ad-bc$.
     invertible
 \end{itemize}
 
+\section*{LU Factorization}
+For a $3x3$ matrix, LU Factorization looks like
+\[\begin{bmatrix}
+    \# & \# & \# \\ \# & \# & \# \\ \# & \# & \#
+\end{bmatrix}=\begin{bmatrix}
+    1 & 0 & 0 \\ \# & 1 & 0 \\ \# & \# & 1
+\end{bmatrix}\begin{bmatrix}
+    \# & \# & \# \\ 0 & \# & \# \\ 0 & 0 & \#
+\end{bmatrix}\] where \# is any number.
+\begin{enumerate}
+    \item Start with a matrix $A$.
+    \item Reduce $A$ to echelon form $U$.
+    \item Before reducing each column for $U$, place that column with 0's above the current pivot
+    position into $L$.
+    \item At each pivot column in $L$, divide the column by the pivot point
+\end{enumerate}
+
+If $A$ is a $n\times m$ matrix, $L$ is a $n\times n$ matrix and $U$ is a $n\times m$ matrix.
+
 \section*{Other}
 \begin{enumerate}
     \item It is not possible that $CA=I_4$ for some $4\times 2$ matrix $C$ when $A$ is a
