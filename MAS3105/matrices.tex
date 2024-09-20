@@ -182,7 +182,9 @@ jth column of the identity matrix in $\mathbb{R}^n$, as shown in the following e
 \end{bmatrix}\]
 
 \section*{Matrix Multiplication}
-The definition of matrix multiplication states that if $A$ is an $m\times n$ matrix and $B$ is an $n\times p$ matrix with columns $\mathbf{b}_1, \cdots , \mathbf{b}_p$, then $AB=\begin{bmatrix} A\mathbf{b}_1 & \cdots & A\mathbf{b}_p \end{bmatrix}$.
+The definition of matrix multiplication states that if $A$ is an $m\times n$ matrix and $B$ is an
+$n\times p$ matrix with columns $\mathbf{b}_1, \cdots , \mathbf{b}_p$, then
+$AB=\begin{bmatrix} A\mathbf{b}_1 & \cdots & A\mathbf{b}_p \end{bmatrix}$.
 
 \[
 \begin{bmatrix}
@@ -204,31 +206,41 @@ The definition of matrix multiplication states that if $A$ is an $m\times n$ mat
 \]
 
 The $(i, j)$ entry in $AB$ is
-\[\sum_{k=1}^n a_{\text{ik}}b_{\text{kj}}\quad \text{or} \quad a_{\text{i1}}b_{\text{1j}}+\cdots + a_{\text{in}}b_{\text{nj}}\]
+\[\sum_{k=1}^n a_{\text{ik}}b_{\text{kj}}\quad \text{or} \quad a_{\text{i1}}b_{\text{1j}}+\cdots +
+a_{\text{in}}b_{\text{nj}}\]
 
 \[{(AB)}^T=B^T A^T\]
 \subsubsection*{Key Points}
 \begin{itemize}
-    \item Matrix multiplication is only allowed for matrices where the number of columns in the first matrix equal the number of rows in the second matrix.
-    \item If $A$ is a $a\times b$ matrix and $B$ is a $b \times c$ matrix, then $AB$ is a $a \times c$ matrix.
-    \item Given a square $n\times n$ matrix $A$, there are infinite matrices for $B$ in $AB=BA$ because any multiple of $I_n$ will satisfy the equation.
-    \item The definition of $AB$ states that each column of $AB$ is a linear combination of the columns of A using weights from the corresponding column of $B$.
+    \item Matrix multiplication is only allowed for matrices where the number of columns in the
+    first matrix equal the number of rows in the second matrix.
+    \item If $A$ is a $a\times b$ matrix and $B$ is a $b \times c$ matrix, then $AB$ is a
+    $a \times c$ matrix.
+    \item Given a square $n\times n$ matrix $A$, there are infinite matrices for $B$ in $AB=BA$
+    because any multiple of $I_n$ will satisfy the equation.
+    \item The definition of $AB$ states that each column of $AB$ is a linear combination of the
+    columns of A using weights from the corresponding column of $B$.
 \end{itemize}
 
 \section*{Inverse Matrices}
 \[A\times A^{-1}=I\]
-where $A$ is an invertible matrix, $A^{-1}$ is the inverse of $A$, and $I$ is the identity matrix with the same shape as $A$.
+where $A$ is an invertible matrix, $A^{-1}$ is the inverse of $A$, and $I$ is the identity matrix
+with the same shape as $A$.
 Calculating the inverse of a $2\times 2$ square matrix.
 
 \subsubsection*{Calculating the Inverse of a Matrix}
 \begin{enumerate}
     \item Start with a square matrix $A$.
-    \item Reduce the matrix $\begin{bmatrix} A & I \end{bmatrix}$ (where I is the identity matrix with the same shape as A) to reduced echelon form which will result in $\begin{bmatrix} I & A^{-1} \end{bmatrix}$.
+    \item Reduce the matrix $\begin{bmatrix} A & I \end{bmatrix}$ (where I is the identity matrix
+    with the same shape as A) to reduced echelon form which will result in
+    $\begin{bmatrix} I & A^{-1} \end{bmatrix}$.
 \end{enumerate}
 
-If $A$ is a $2\times 2$ matrix, then $A^{-1}=\frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$. \\
+If $A$ is a $2\times 2$ matrix, then
+$A^{-1}=\frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$. \\
 
-If $A$ is an invertible $n\times n$ matrix, then for each $\mathbf{b}$ in $\mathbb{R}^n$, the equation $A\mathbf{x}=\mathbf{b}$ has the unique solution $\mathbf{x}=A^{-1}\mathbf{b}$.
+If $A$ is an invertible $n\times n$ matrix, then for each $\mathbf{b}$ in $\mathbb{R}^n$, the
+equation $A\mathbf{x}=\mathbf{b}$ has the unique solution $\mathbf{x}=A^{-1}\mathbf{b}$.
 
 \subsection*{Invertible Matrix Theorem}
 The following statements are either all true or all false
@@ -245,14 +257,22 @@ The deteminant of a standard $n\times n$ matrix is $ad-bc$.
 \subsubsection*{Key Points}
 \begin{itemize}
     \item $(AB)^{-1}$ is $B^{-1}A^{-1}$.
-    \item If $A$ is an invertible $n\times n$ matrix, then the equation $A\mathbf{x}=\mathbf{b}$ is consistent for each $\mathbf{b}$ in $\mathbb{R}^n$ because $A^{-1}\mathbf{b}$ exists for all $\mathbf{b}$ in $\mathbb{R}^n$ and $\mathbf{x}=A^{-1}\mathbf{b}$.
-    \item The columns of an $n\times n$ matrix $A$ are linearly independent when $A$ is invertible because the equation $A\mathbf{x}=0$ has the unique solution $\mathbf{x}=0$.
+    \item If $A$ is an invertible $n\times n$ matrix, then the equation $A\mathbf{x}=\mathbf{b}$ is
+    consistent for each $\mathbf{b}$ in $\mathbb{R}^n$ because $A^{-1}\mathbf{b}$ exists for all
+    $\mathbf{b}$ in $\mathbb{R}^n$ and $\mathbf{x}=A^{-1}\mathbf{b}$.
+    \item The columns of an $n\times n$ matrix $A$ are linearly independent when $A$ is invertible
+    because the equation $A\mathbf{x}=0$ has the unique solution $\mathbf{x}=0$.
     \item The product of invertible matrices is also invertible.
-    \item If $A$ and $B$ are $n\times n$ matrices and $AB$ is invertible, then $B$ is also invertible
+    \item If $A$ and $B$ are $n\times n$ matrices and $AB$ is invertible, then $B$ is also
+    invertible
 \end{itemize}
 
 \section*{Other}
 \begin{enumerate}
-    \item It is not possible that $CA=I_4$ for some $4\times 2$ matrix $C$ when $A$ is a $2\times 4$ matrix because if it were true, then $CA\mathbf{x}$ would equal $\mathbf{x}$ for all $\mathbf{x}$ in $\mathbb{R}^4$. Since the columns of $A$ are linearly dependent as there are more columns than rows, $A\mathbf{x}=0$ for some nonzero vector $\mathbf{x}$, so $\mathbf{x}=I\mathbf{x}\neq CA\mathbf{x}=0$.
+    \item It is not possible that $CA=I_4$ for some $4\times 2$ matrix $C$ when $A$ is a
+    $2\times 4$ matrix because if it were true, then $CA\mathbf{x}$ would equal $\mathbf{x}$ for
+    all $\mathbf{x}$ in $\mathbb{R}^4$. Since the columns of $A$ are linearly dependent as there
+    are more columns than rows, $A\mathbf{x}=0$ for some nonzero vector $\mathbf{x}$, so
+    $\mathbf{x}=I\mathbf{x}\neq CA\mathbf{x}=0$.
 \end{enumerate}
 \end{document}
