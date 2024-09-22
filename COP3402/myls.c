@@ -1,23 +1,21 @@
 #include <fcntl.h>
 #include <unistd.h>
-// #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
 #include <sys/stat.h>
 #include <inttypes.h>
 
-// returns the number of entries in a directory
-int dir_size(const char *path);
-
 int main(int argc, char **argv) {
-    // if directory path is not provided
+    char *path;
+
+    // if directory path is not provided, set it to the current working directory
     if (argc < 2) {
-        fprintf(stderr, "USAGE: %s path\n", argv[0]);
-        exit(1);
+        path = ".";
+    } else {
+        path = argv[1];
     }
 
-    char *path = argv[1];
     struct stat statbuf;
 
     if (stat(path, &statbuf) == -1) {
@@ -36,13 +34,13 @@ int main(int argc, char **argv) {
 
     // loop through entries in provided directory path
     while ((curdir = readdir(dirp)) != NULL) {
-        char filepath[1024];
+        char filepath[FILENAME_MAX];
 
         // concatenate provided directory path with entry name
         snprintf(filepath, sizeof(filepath), "%s/%s", path, curdir->d_name);
         
         if (stat(filepath, &statbuf) == -1) {
-            perror("stat error");
+            perror("stat");
             continue;
         }
 
@@ -83,11 +81,23 @@ int main(int argc, char **argv) {
 
         // if the current entry is a directory, the size is the number of entries
         if ((statbuf.st_mode & S_IFMT) == S_IFDIR) {
-            // count the number of entries in 
-            int size = dir_size(filepath);
+            // count the number of entries in the directory
+            DIR *dirp = opendir(filepath);
 
-            if (size == -1) {
-                perror("dir");
+            if (dirp == NULL) {
+                perror("opendir");
+                exit(EXIT_FAILURE);
+            }
+
+            struct dirent *cur;
+            int size = 0;
+
+            while ((cur = readdir(dirp)) != NULL) {
+                size++;
+            }
+
+            if (closedir(dirp)) {
+                perror("closedir");
                 exit(EXIT_FAILURE);
             }
 
@@ -107,14 +117,14 @@ int main(int argc, char **argv) {
 
             const int BUFSIZE = 16;
             char buf[BUFSIZE];
-            int bytes = read(fd, buf, BUFSIZE);
-            if (bytes == -1) {
+            int numBytes = read(fd, buf, BUFSIZE);
+            if (numBytes == -1) {
                 perror("read");
                 exit(EXIT_FAILURE);
             }
 
             // replace any non-printable or non-ASCII characters with spaces
-            for (int i = 0; i < bytes; i++) {
+            for (int i = 0; i < numBytes; i++) {
                 printf("%c", buf[i] < 32 || buf[i] > 126 ? ' ' : buf[i]);
             }
         }
@@ -126,24 +136,4 @@ int main(int argc, char **argv) {
         perror("closedir");
         exit(EXIT_FAILURE);
     }
-}
-
-int dir_size(const char *path) {
-    DIR *dirp = opendir(path);
-    if (dirp == NULL) {
-        return -1;
-    }
-
-    struct dirent *cur;
-    int size = 0;
-
-    while ((cur = readdir(dirp)) != NULL) {
-        size++;
-    }
-
-    if (closedir(dirp)) {
-        return -1;
-    }
-
-    return size;
 }
