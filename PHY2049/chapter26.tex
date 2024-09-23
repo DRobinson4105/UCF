@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bigints}
+
+\title{Chapter 26 Potential and Field}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Connecting Potential and Field}
+Potential decreases along the field direction.
+\[\Delta V=V_f - V_i = -\int_{s_i}^{s_f} E_s ds=-\int_i^f \vec{E}\cdot d\vec{s}\] where $s$ is the position along a line from point $i$ to point $f$.
+\newline
+
+The potential difference between two points separated by a very small distance $\Delta s$ is
+\[\Delta V=-E_s \Delta s\]
+
+\section*{Finding the Electric Field from the Potential}
+
+In terms of the potential, the component of the electric field in the $s$-direction is $E_s = -\Delta V / \Delta s$. In limit $\Delta s\rightarrow 0$,
+\[E_s = -\frac{dV}{ds}\]
+
+\[\vec{E}=E_x\hat{i} + E_y\hat{j} + E_z\hat{k}=-(\frac{\partial V}{\partial x}\hat{i}+\frac{\partial V}{\partial y}\hat{j}+\frac{\partial V}{\partial z}\hat{k})\text{ so }\vec{E}=-\nabla V\]
+
+\subsection*{Kirchhoff's Loop Law}
+The sum of all the potential differences encountered while moving around a loop or closed path is zero.
+\[\Delta V_\text{loop}=\sum_i (\Delta V)_i=0\]
+\section*{A Conductor in Electrostatic Equilibrium}
+
+When a conductor is in electrostatic equilibrium, the entire conductor is at the same potential since the electric field is zero. Two conductors that come into contact form a single conductor, so they exchange charge as needed to reach a common potential.
+\newline
+
+When multiple charged metal spheres are connected by a wire, they now act like one conductor, resulting in the same potential at the surface of all spheres, but electric field increases when more of the surface is closer together so the smaller sphere will have a higher electric field.
+\section*{Sources of Electric Potential}
+\section*{Capacitance and Capacitors}
+\section*{The Energy Stored in a Capacitor}
+\section*{Diaelectrics}
+
+\end{document}
