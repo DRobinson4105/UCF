@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{bigints}
+\usepackage{amssymb}
 
 \title{Chapter 26 Potential and Field}
 \author{David Robinson}
@@ -11,8 +12,10 @@
 \maketitle
 
 \section*{Connecting Potential and Field}
+
 Potential decreases along the field direction.
-\[\Delta V=V_f - V_i = -\int_{s_i}^{s_f} E_s ds=-\int_i^f \vec{E}\cdot d\vec{s}\] where $s$ is the position along a line from point $i$ to point $f$.
+\[\Delta V=V_f - V_i = -\int_{s_i}^{s_f} E_s ds=-\int_i^f \vec{E}\cdot d\vec{s}\] where $s$ is the
+position along a line from point $i$ to point $f$.
 \newline
 
 The potential difference between two points separated by a very small distance $\Delta s$ is
@@ -20,23 +23,146 @@ The potential difference between two points separated by a very small distance $
 
 \section*{Finding the Electric Field from the Potential}
 
-In terms of the potential, the component of the electric field in the $s$-direction is $E_s = -\Delta V / \Delta s$. In limit $\Delta s\rightarrow 0$,
+In terms of the potential, the component of the electric field in the $s$-direction is
+$E_s = -\Delta V / \Delta s$. In limit $\Delta s\rightarrow 0$,
 \[E_s = -\frac{dV}{ds}\]
 
-\[\vec{E}=E_x\hat{i} + E_y\hat{j} + E_z\hat{k}=-(\frac{\partial V}{\partial x}\hat{i}+\frac{\partial V}{\partial y}\hat{j}+\frac{\partial V}{\partial z}\hat{k})\text{ so }\vec{E}=-\nabla V\]
+\[\vec{E}=E_x\hat{i} + E_y\hat{j} + E_z\hat{k}=-(\frac{\partial V}{\partial x}\hat{i}+
+\frac{\partial V}{\partial y}\hat{j}+\frac{\partial V}{\partial z}\hat{k})\text{ so }
+\vec{E}=-\nabla V\]
 
 \subsection*{Kirchhoff's Loop Law}
-The sum of all the potential differences encountered while moving around a loop or closed path is zero.
+The sum of all the potential differences encountered while moving around a loop or closed path is
+zero.
 \[\Delta V_\text{loop}=\sum_i (\Delta V)_i=0\]
 \section*{A Conductor in Electrostatic Equilibrium}
 
-When a conductor is in electrostatic equilibrium, the entire conductor is at the same potential since the electric field is zero. Two conductors that come into contact form a single conductor, so they exchange charge as needed to reach a common potential.
+When a conductor is in electrostatic equilibrium, the entire conductor is at the same potential
+since the electric field is zero. Two conductors that come into contact form a single conductor, so
+they exchange charge as needed to reach a common potential.
 \newline
 
-When multiple charged metal spheres are connected by a wire, they now act like one conductor, resulting in the same potential at the surface of all spheres, but electric field increases when more of the surface is closer together so the smaller sphere will have a higher electric field.
+When multiple charged metal spheres are connected by a wire, they now act like one conductor,
+resulting in the same potential at the surface of all spheres, but electric field increases when
+more of the surface is closer together so the smaller sphere will have a higher electric field.
 \section*{Sources of Electric Potential}
+
+An electric potential difference is created by separating positive and negative charges.
+
+\subsection*{Batteries}
+A battery uses chemical reactions to separate charges where electrolytes are sandwiched between two
+electrodes made of different metals. Chemical reactions in the electrolytes transport ions from one
+electrode to the other.
+\begin{itemize}
+    \item The work done per charge is called the \textbf{emf} of the battery,
+    $\varepsilon = W_\text{chem}/q$, with units $J/C=V$.
+    \item The charge separation creates a potential difference $\Delta V_\text{bat}$, the
+    \textbf{terminal voltage}, between the electrodes, where an ideal battery has
+    $\Delta V_\text{bat}=\varepsilon$.
+    \item The rating of a battery (1.5 V, 9 V, etc.) is the battery's \textbf{emf}.
+\end{itemize}
+
+\subsection*{Batteries in Series}
+The potential difference of multiple batteries in series is sum of each battery's potential
+difference.
+\[\Delta V_\text{series}=\sum_{i=1}^{n}\Delta V_i\]
+
 \section*{Capacitance and Capacitors}
+
+\[C=\frac{Q}{\Delta V_C}\] is called the capacitance of two electrodes that from a capacitor with
+the unit, \textbf{farad} or \textbf{F}.
+\newline
+
+Using previous equations for a parallel-plate capacitor, $\Delta V_C=Ed$ and
+$E_C=\frac{Q}{\epsilon_0 A}$,
+\[Q=\frac{\epsilon_0 A}{d}\Delta V_C\]
+
+therefore
+\[C=\frac{Q}{\Delta V_C}=\frac{\epsilon_0 A}{d}\quad (\text{parallel-plate capacitor})\]
+
+\subsection*{Capacitors in Parallel}
+
+Multiple capacitors in parallel each have the same potential difference $\Delta V_C$ between the
+two electrodes.
+
+\[C_\text{eq}=C_1 + C_2 + C_3 + \cdots\quad (\text{parallel capacitors})\]
+since total charge of the capacitors would be the sum of the charges of each capacitor
+\[Q_\text{eq}=Q_1 + Q_2 + Q_3 + \cdots\quad (\text{parallel capacitors})\]
+
+\subsection*{Capacitors in Series}
+
+Since the battery cannot remove charge from or add charge to the intermediate set of wire and
+electrodes, they will stay at a net charge of 0. Therefore, the battery transfers $Q$ through all
+of the capacitors and the charge on the capacitors are equivalent.
+
+\[\frac{1}{C_\text{eq}}=\frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + \cdots\]
+since the potential difference across each capacitor is $\Delta V_i = Q/C_i$.
+\[\Delta V_C=\Delta V_1 + \Delta V_2 + \Delta V_3 + \cdots\]
+
+\subsection*{Key Notes}
+\begin{itemize}
+    \item Parallel capacitors all have the same potential difference $\Delta V_C$ while series
+    capacitors all have the same amount of charge $\pm Q$.
+    \item The equivalent capacitance of a parallel combination of capacitors is \textbf{larger}
+    than any single capacitor in the group while the equivalent capacitance of a series combination
+    of capacitors is \textbf{smaller} than any single capacitor in the group.
+\end{itemize}
+
 \section*{The Energy Stored in a Capacitor}
+
+In a system of a battery and capacitor, if the positive electrode already has a charge $q$ and an
+additional charge $dq$ is in the process of being transferred, the potential energy is increasing
+by
+\[dU = dq\Delta V=\frac{q\: dq}{C}\]
+
+Therefore, the total energy transferred from the battery to the capacitor can be found from
+integrating from $q=0$ to $q=Q$.
+\[U_C=\frac{1}{C}\int_{0}^{Q}q\: dq=\frac{Q^2}{2C}=\frac{1}{2}C(\Delta V_C)^2\]
+
+A capacitor's energy is stored in the electric field between the electrodes. Since $Ad$ is the
+volume in which the energy is stored, the energy density $u_E$ of the electric field is
+\[u_E=\frac{\text{energy stored}}{\text{volume in which it is stored}}=\frac{U_C}{Ad}=
+\frac{\epsilon_0}{2}E^2\]
 \section*{Diaelectrics}
+
+An insulator in an electric field is called a \textbf{dielectric}. If an insulator fills the volume
+between the two electrodes in a parallel-plate capacitor, the charge would stay the same since
+there is nowhere else for the charge to go but the potential difference would decrease, resulting
+in the capacitance to increase.
+\newline
+
+The polarized insulator can be represented as two sheets of charge with surface charge densities
+$\pm \eta_\text{induced}$. that create an induced electric field
+\[\vec{E}_\text{induced}\begin{cases}
+    \Big(\frac{\eta_\text{induced}}{\epsilon_0}\text{, from positive to negative}\Big) &
+    \text{inside the insulator} \\
+    \vec{0} & \text{outside the insulator}
+\end{cases}\]
+
+The capacitor has its own surface charge density $\eta_0$ and electric field $\vec{E}_0$ and when
+the dielectric is placed, it responds with an induced surface charge density $\eta_\text{induced}$
+and induced electric field $\vec{E}_\text{induced}$ so $\vec{E}_\text{induced}$ points opposite to
+$\vec{E}_0$. The net electric field between the capacitor plates is the vector sum of these two
+fields
+\[\vec{E}=\vec{E}_0 + \vec{E}_\text{induced} = (E_0-E_\text{induced}
+\text{, from positive to negative})\]
+
+The presence of the dielectric weakens the electric field, from $E_0$ to $E_0 - E_\text{induced}$
+but the field still points from the positive capacitor plate to the negative capacitor plate.
+\newline
+
+The \textbf{dielectric constant} is $\kappa = \frac{E_0}{E}$, which is the factor by which a
+dielectric weakens an electric field.
+\newline
+
+The electric field is still uniform so the potential difference across the capacitor is
+\[\Delta V_C=Ed=\frac{E_0 d}{\kappa}=\frac{(\Delta V_C)_0}{\kappa}\]
+
+Therefore, the new capacitance is
+\[C=\frac{Q}{\Delta V_C}=\frac{Q_0}{(\Delta V_C)_0 / \kappa}=\kappa \frac{Q_0}{(\Delta V_C)_0}=
+\kappa C_0\]
+
+The induced surface charge density is
+\[\eta_\text{induced}=\eta_0 \Big(1-\frac{1}{\kappa}\Big)\]
 
 \end{document}
