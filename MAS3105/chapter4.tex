@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Chapter 4 Vector Spaces}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Vector Spaces and Subspaces}
+A \textbf{vector space} is a nonempty set $V$ of objects, called vectors, on which are defined two operations, called addition and mulitplication by scalars (real numbers), subject to the ten rules listed below. The rules must hold for all vectors $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ in $V$ and for all scalars $c$ and $d$.
+
+\begin{enumerate}
+    \item The sum of $\mathbf{u}$ and $\mathbf{v}$, denoted by $\mathbf{u}+\mathbf{v}$, is in $V$.
+    \item $\mathbf{u}+\mathbf{v}=\mathbf{v}+\mathbf{u}$.
+    \item $(\mathbf{u}+\mathbf{v})+\mathbf{w}=\mathbf{u}+(\mathbf{v}+\mathbf{w})$.
+    \item There is a \textbf{zero} vector $\mathbf{0}$ in $V$ such that $\mathbf{u}+\mathbf{0}=\mathbf{u}$.
+    \item For each $\mathbf{u}$ in $V$, there is a vector $-\mathbf{u}$ in $V$ such that $\mathbf{u}+(-\mathbf{u})=\mathbf{0}$.
+    \item The scalar multiple of $\mathbf{u}$ by $c$, denoted by $c\mathbf{u}$, is in $V$.
+    \item $c(\mathbf{u}+\mathbf{v})=c\mathbf{u}+c\mathbf{v}$.
+    \item $(c+d)\mathbf{u}=c\mathbf{u}+d\mathbf{u}$.
+    \item $c(d\mathbf{u})=(cd)\mathbf{u}$.
+    \item $1\mathbf{u}=\mathbf{u}$.
+\end{enumerate}
+
+A \textbf{subspace} of a vector space $V$ is a subset $H$ of $V$ that has three properties:
+\begin{enumerate}
+    \item The zero vector of $V$ is in $H$.
+    \item $H$ is closed under vector addition. That is, for each $\mathbf{u}$ and $\mathbf{v}$ in $H$, the sum $\mathbf{u}+\mathbf{v}$ is in $H$.
+    \item $H$ is closed under multiplication by scalars. That is, for each $\mathbf{u}$ in $H$ and each scalar $c$, the vector $c\mathbf{u}$ is in $H$.
+\end{enumerate}
+
+\subsubsection*{Theorem 1}
+If $\mathbf{v}_1,\ldots, \mathbf{v}_p$ are in a vector space $V$, then $\text{Span}\{\mathbf{v}_1,\ldots, \mathbf{v}_p\}$ is a subspace of $V$.
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item If $\mathbf{v}$ is in $\mathbb{R}^3$, $H=\text{Span}\{\mathbf{v}\}$ is a subsppace of $\mathbb{R}^3$.
+\end{enumerate}
+\end{document}
