@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bigints}
+\usepackage{amssymb}
+
+\title{Chapter 27 Current and Resistance}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{The Electron Current}
+Current is the flow of charge through a conductor.
+
+\subsection*{Charge Carriers}
+The drift speed is the net motion of the individual electrons through a conductor, which is
+typically $v_d = 10^{-4} m/s$. The number of electrons $N_e$ of electrons that pass through the
+cross section during the time interval $\Delta t$ is
+\[N_e=i_e \Delta t\] where $i_e$ is the electron current which is the number of electrons per
+second that passes through a cross section of a conductor.
+
+\vspace{1em}
+
+The electrons travel distance $\Delta x = v_d \Delta t$, forming a cylinder of charge with volume
+$V = A\Delta x$. If the electron density is $n_e$ electrons per cubic meter, then the total number
+of electrons in the cylinder is
+\[N_e = n_e V = n_e A \Delta x = n_e A v_d \Delta t\] resulting in \[i_e = n_e Av_d\]
+
+\subsubsection*{Electron density in metals}
+
+\begin{center}
+\begin{tabular}{|c c|} 
+    \hline
+    Metal & Electron density ($m^{-3}$) \\ [0.5ex]
+    \hline
+    Aluminum & $18\times 10^{28}$ \\
+    \hline
+    Iron & $17\times 10^{28}$ \\
+    \hline
+    Copper & $8.5\times 10^{28}$ \\
+    \hline
+    Gold & $5.9\times 10^{28}$ \\
+    \hline
+    Silver & $5.8\times 10^{28}$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\pagebreak
+
+\section*{Creating a Current}
+An electron current is a net motion of charges sustained by an internal electric field.
+\vspace{1em}
+
+At the moment a positive charged wire and a negative charged wire are connected, the surface charge
+density varies from positive at the positive capacitor plate through zero at the midpoint to
+negative at the negative plate. The varying surface charge distribution creates an internal
+electric field inside the wire, causing a current.
+\[i_e=\frac{n_e e \tau A}{m} E\] where $\tau$ is the mean time between collisions.
+
+\section*{Current and Current Density}
+If $Q$ is the total amount of charge that has moved past a point in the wire, we define the current
+$I$ in the wire to be the rate of charge flow
+\[I\equiv \frac{dQ}{dt} A=\text{ampere}=C/s\]
+ 
+For a steady current, the current $I$ during the time interval $\Delta t$ is
+\[I=\frac{Q}{\Delta t}=\frac{eN_e}{\Delta t}=ei_e\]
+
+The current density $J$ in a wire is the current per square meter of cross section
+\[J=\text{current density}\equiv \frac{I}{A} = n_e e v_d\]
+\subsection*{Key Points}
+\begin{itemize}
+    \item The current $I$ is opposite of the direction of motion of the electrons in a metal.
+    \item The current into a junction between wires must equal the current out of it.
+\end{itemize}
+
+\pagebreak
+
+\section*{Conductivity and Resistivity}
+$J=n_e e v_d$ and $v_d = e\tau E / m$, resulting in the current density being
+\[J=\frac{n_e e^2 \tau}{m}E\]
+
+Since $n_e e^2 \tau / m$ depends only on the conducting material, the conductivity $\sigma$ of a
+material is
+\[\sigma = \frac{n_e e^2 \tau}{m}\]
+
+Using conductivity,\
+\[J=\sigma E\]
+
+\begin{center}
+\begin{tabular}{|c c c|} 
+    \hline
+    Metal & Resistivity ($\Omega m$) & Conductivity ($\Omega^{-1} m^{-1}$) \\ [0.5ex]
+    \hline
+    Aluminum & $2.8\times 10^{-8}$ & $3.5\times 10^7$ \\
+    \hline
+    Iron & $9.7\times 10^{-8}$ & $1.0\times 10^7$ \\
+    \hline
+    Copper & $1.7 \times 10^{-8}$ & $6.0\times 10^7$ \\
+    \hline
+    Gold & $2.4\times 10^{-8}$ & $4.1\times 10^7$ \\
+    \hline
+    Silver & $1.6\times 10^{-8}$ & $6.2\times 10^7$ \\
+    \hline
+\end{tabular}
+\end{center}
+where the resistivity $\rho = 1/\sigma$ is the inverse of the conductivity.
+
+\vspace{1em}
+
+Metals become better conductors at lower temperatures since they have higher conductivity and lower
+resistivity. The complete loss of resistance at low temperatures is called superconductivity.
+
+\section*{Resistance and Ohm's Law}
+Since $E=\Delta V / L$,
+\[I=\frac{A}{\rho L}\Delta V\] showing that the current is directly proportional to the potential
+difference between the ends of a conductor.
+
+\vspace{1em}
+
+The resistance is $r=\rho L / A$, which results in current the current through a conductor being
+\[I=\frac{\Delta V}{R}\quad\text{(Ohm's Law)}\]
+
+\begin{enumerate}
+    \item The potential difference $\Delta V_\text{wire}$ from the battery causes an electric field
+    $E=\Delta V_\text{wire} L$ in the wire.
+    \item The electric field establishes a current $I=JA=\sigma AE$ in the wire.
+    \item The magnitude of the current is determined jointly by the battery and the wire's
+    resistance to be $I=\Delta V_\text{wire}/R$.
+\end{enumerate}
+
+\end{document}
