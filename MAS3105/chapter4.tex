@@ -116,7 +116,7 @@ assigns to each vector $\mathbf{x}$ in $V$ a unique vector $T(\mathbf{x})$ in $W
 
 \subsubsection*{Theorem 4}
 An indexed set $\{v_1, \ldots, v_p\}$ of two or more vectors, with $v_1 \neq 0$, is linear
-dependent if and only if some $v_j$ (with $j > 1$) is a linear comibnation of the preceding
+dependent if and only if some $v_j$ (with $j > 1$) is a linear combination of the preceding
 vectors, $v_1, \ldots, v_{j-1}$.
 
 \subsection*{Bases}
@@ -128,6 +128,14 @@ Let $H$ be a subspace of a vector space $V$. A set of vectors $\mathcal{B}$ in $
     \text{ that is,}
 \end{align*}
 \[H = \text{Span } \mathcal{B}\]
+
+If $B=\{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ is a basis for a vector space $V$
+\begin{itemize}
+    \item By the definition of a basis, $\mathbf{b}_1, \ldots, \mathbf{b}_n$ are in $V$.
+    \item By the Unique Representation Theorem, for each $\mathbf{x}$ in $V$, there exists a unique set of scalars $c_1, \ldots, c_n$ such that $\mathbf{x}=c_1\mathbf{b}_1 + \cdots + c_n\mathbf{b}_n$.
+    \item $\mathbf{b}_k=c_1\mathbf{b}_1 + \cdots + c_n\mathbf{b}_n$ for some unique set of scalars $c_1, \ldots, c_n$.
+    \item Thus, the coordinate vector ${[\mathbf{b}_k]}_\mathcal{B}$ of $\mathbf{b}_k$ is $\mathbf{e}_k$, or the kth column of the $n\times n$ identity matrix.
+\end{itemize}
 
 \subsubsection*{Theorem 5 --- The Spanning Set Theorem}
 Let $S=\{v_1, \ldots, v_p\}$ be a set in a vector space $V$, and let
@@ -148,14 +156,32 @@ $B$.
 
 \section*{Coordinate Systems}
 \subsubsection*{Theorem 8 --- The Unique Representation Theorem}
-Let $\mathcal{B}=\{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for a vector space $V$. Then for each $\mathbf{x}$ in $V$, there exists a unique set of scalars $c_1, \ldots, c_n$ such that
+Let $\mathcal{B}=\{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for a vector space $V$. Then
+for each $\mathbf{x}$ in $V$, there exists a unique set of scalars $c_1, \ldots, c_n$ such that
 \[\mathbf{x}=c_1\mathbf{b}_1 + \cdots + c_n\mathbf{b}_n\]
 
 \section*{Coordinates}
-Suppose $\mathcal{B}=\{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ is a basis for a vector space $V$ and $\mathbf{x}$ is in $V$. The coordinates of x relative to the basis $\mathcal{B}$ (or the $\mathcal{B}$-coordinates of x) are the weights $c_1, \dots, c_n$ such that $\mathbf{x}=c_1\mathbf{b}_1 + \cdots + c_n\mathbf{b}_n$.
+Suppose $\mathcal{B}=\{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ is a basis for a vector space $V$ and
+$\mathbf{x}$ is in $V$. The coordinates of x relative to the basis $\mathcal{B}$ (or the
+$\mathcal{B}$-coordinates of x) are the weights $c_1, \dots, c_n$ such that
+$\mathbf{x}=c_1\mathbf{b}_1 + \cdots + c_n\mathbf{b}_n$.
 
 \subsubsection*{Theorem 9}
-Let $\mathcal{B} = \{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for a vector space $V$. Then the coordinate mapping $\mathbf{x} \mapsto \left[ \mathbf{x} \right]_{\mathcal{B}}$ is a one-to-one linear transformation from $V$ onto $\mathbb{R}^n$. 
+Let $\mathcal{B} = \{\mathbf{b}_1, \ldots, \mathbf{b}_n\}$ be a basis for a vector space $V$. Then
+the coordinate mapping $\mathbf{x} \mapsto {\left[ \mathbf{x} \right]}_{\mathcal{B}}$ is a
+one-to-one linear transformation from $V$ onto $\mathbb{R}^n$. 
+\[\mathcal{B}{\left[ \mathbf{x} \right]}_{\mathcal{B}}=\mathbf{x}\]
+
+\subsection*{Key Points}
+\begin{itemize}
+    \item If $B=\left[ \mathbf{b}_1, \ldots, \mathbf{b}_n\right]$, then the change-of-coordinates
+    matrix from $B$ to the standard basis in $\mathbb{R}^2$ is
+    $\begin{bmatrix} \mathbf{b}_1 & \cdots & \mathbf{b}_n\end{bmatrix}$.
+    \item If a set of coordinate vectors of each polynomial has a pivot position in each row, by
+    isomorphism between $\mathbb{R}^3$ and $\mathbb{P}_2$, the set of polynomials spans
+    $\mathbb{P}_2$. 
+\end{itemize}
+
 \section*{Extra Notes}
 \begin{enumerate}
     \item $\sin x \cos x = \frac{1}{2} \sin 2x$
