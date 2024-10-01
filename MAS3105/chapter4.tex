@@ -40,4 +40,41 @@ If $\mathbf{v}_1,\ldots, \mathbf{v}_p$ are in a vector space $V$, then $\text{Sp
 \begin{enumerate}
     \item If $\mathbf{v}$ is in $\mathbb{R}^3$, $H=\text{Span}\{\mathbf{v}\}$ is a subsppace of $\mathbb{R}^3$.
 \end{enumerate}
+
+\pagebreak
+
+\section*{Null Spaces, Column Spaces, Row Spaces, and Linear Transformations}
+\subsection*{Null Spaces}
+The \textbf{null space} of an $m\times n$ matrix $A$, written as $\text{Nul } A$, is the set of all solutions of the homogeneous equation $A\mathbf{x}=\mathbf{0}$. In set notation,
+\[\text{Nul } A = \{\mathbf{x} : \mathbf{x} \text{ is in } \mathbb{R}^n \text{ and } A\mathbf{x}=\mathbf{0}\}\]
+
+To find the vectors that span the null space:
+\begin{enumerate}
+    \item Row reduce the augmented matrix $\begin{bmatrix}A & 0\end{bmatrix}$ to reduced echelon form.
+    \item Write the solution in terms of the free variables.
+    \item The column vectors that are multiplied by the free variables in the previous step form the spanning set for $\text{Nul } A$.
+\end{enumerate}
+
+\subsubsection*{Theorem 2}
+The null space of an $m\times n$ matrix $A$ is a subspace of $\mathbb{R}^n$. Equivalently, the set of all solutions to a system $A\mathbf{x}=\mathbf{0}$ of $m$ homogeneous linear equations in $n$ unknowns is a subspace of $\mathbb{R}^n$.
+
+\vspace{1em}
+
+\subsection*{Column Spaces}
+The \textbf{column space} of an $m\times n$ matrix $A$, written as $\text{Col } A$, is the set of all linear combinations of the columns of $A$. If $A=\begin{bmatrix}a_1 & \cdots & a_n\end{bmatrix}$, then
+\[\text{Col } A = \text{Span}\{a_1, \ldots, a_n\}\]
+
+\subsubsection*{Theorem 3}
+The column space of an $m\times n$ matrix $A$ is a subspace of $\mathbb{R}^m$.
+
+\subsection*{Row Spaces}
+The \textbf{row space} of an $m\times n$ matrix $A$, written as $\text{Row } A$, is the set of all linear combinations of the rows of $A$. If $A=\begin{bmatrix}r_1 \\ \cdots \\ r_n\end{bmatrix}$, then
+\[\text{Row } A = \text{Span}\{r_1, \ldots, r_n\}\]
+
+\subsection*{Linear Transformations}
+A \textbf{linear transformation} $T$ from a vector space $V$ into a vector space $W$ is a rule that assigns to each vector $\mathbf{x}$ in $V$ a unique vector $T(\mathbf{x})$ in $W$, such that
+\begin{align*}
+    (i) &\quad T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v}) \quad \text{for all } \mathbf{u}, \mathbf{v} \text{ in } V, \\
+    (ii) &\quad T(c \mathbf{u}) = c T(\mathbf{u}) \quad \text{for all } \mathbf{u} \text{ in } V \text{ and all scalars } c.
+\end{align*}
 \end{document}
