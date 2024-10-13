@@ -20,27 +20,36 @@ Because energy is conserved, a charge that moves around a closed path has $\Delt
 
 \section*{Energy and Power}
 The rate at which the battery supplies energy to the charges is
-\[P=\Delta V_R\times I=I^2 \times R=\frac{{(\Delta V_R)}^2}{R}\] where $P$ is the power in watts, $V$ is the voltage, $I$ is the current, and $R$ is the resistance.
+\[P=\Delta V_R\times I=I^2 \times R=\frac{{(\Delta V_R)}^2}{R}\] where $P$ is the power in watts,
+$V$ is the voltage, $I$ is the current, and $R$ is the resistance.
 
 \section*{Series Resistors}
 
 \[R_\text{eq}=R_1 + R_2 + C_3 + \cdots\quad (\text{sequential resistors})\]
-\[\Delta V_\text{eq}=\Delta V_1 + \Delta V_2 + \Delta V_3 + \cdots\quad (\text{sequential resistors})\]
+\[\Delta V_\text{eq}=\Delta V_1 + \Delta V_2 + \Delta V_3 + \cdots\quad
+(\text{sequential resistors})\]
 
 \section*{Real Batteries}
 Real batteries provide a slight resistance called an internal resistance.
 
 \vspace{1em}
 
-When a connection of very low or zero resistance is made between two points in a circuit that are normally separated by a higher resistance, a short circuit is formed which shorts out the battery. If the battery were ideal, shorting it with zero resistance would cause the current to be $I=\varepsilon / 0=\inf$. The current cannot really become infinite since the battery has an internal resistance $r$.
+When a connection of very low or zero resistance is made between two points in a circuit that are
+normally separated by a higher resistance, a short circuit is formed which shorts out the battery.
+If the battery were ideal, shorting it with zero resistance would cause the current to be
+$I=\varepsilon / 0=\inf$. The current cannot really become infinite since the battery has an
+internal resistance $r$.
 \[I_\text{short}=\frac{\varepsilon}{r}\]
 
 \section*{Parallel Resistors}
 
-\[\frac{1}{R_\text{eq}}=\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \cdots\quad (\text{parallel resistors})\]
+\[\frac{1}{R_\text{eq}}=\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \cdots\quad
+(\text{parallel resistors})\]
 
 \section*{Grounded Circuits}
-A circuit connected to the earth is sadi to be grounded, and the wire is called the ground wire. There isn't a second wire so there is no current in the wire, it is just used as a common reference point for the potential but does not in any way change how the circuit functions.
+A circuit connected to the earth is sadi to be grounded, and the wire is called the ground wire.
+There isn't a second wire so there is no current in the wire, it is just used as a common reference
+point for the potential but does not in any way change how the circuit functions.
 
 \section*{RC Circuits}
 Circuits with resistors and capacitors are called RC circuits.
@@ -49,12 +58,14 @@ If we use $\tau=RC$ as the time constant for how much the capacitor has been dis
 \[Q=Q_0 e^{-t/\tau}\]
 \[\Delta V_C=\Delta V_0 e^{-t/\tau}\]
 
-There's no specific time at which the capacitor has been completely discharged, because $\Delta V$ approaches zero asymptotically, but the voltage and current will drop below 1\% of their initial values at some point.
+There's no specific time at which the capacitor has been completely discharged, because $\Delta V$
+approaches zero asymptotically, but the voltage and current will drop below 1\% of their initial
+values at some point.
 
 \vspace{1em}
 
 The same time constant can be used for charging a capacitor,
 \[\Delta V=\varepsilon(1-e^{-t/\tau})\]
-\[I=I_0 e^{-t/\tau}\quad\text((capacitor charging))\]
+\[I=I_0 e^{-t/\tau}\quad\text{(capacitor charging)}\]
 
 \end{document}
