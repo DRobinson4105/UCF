@@ -1,0 +1,40 @@
+\documentclass{article}
+
+\title{Midterm Notes}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{File systems}
+\textbf{What makes the unix file system "hierarchical"?}
+
+It organizes files and directories in a tree-like structure, where there is a root directory and each directory can contain subdirectories and files, forming a parent-child relationship.
+
+\vspace{1em}
+\textbf{What is the difference between absolute vs. relative paths?}
+
+Absolute paths start from the root directory while relative paths start from the working directory.
+
+\vspace{1em}
+\textbf{How are parent directories referenced in the file system?}
+
+Parent directories are referenced using \texttt{..} in the filepath.
+
+\section*{Navigation}
+\textbf{What is the working directory and how do you display it?}
+
+The working directory is the directory that a program is currently in and can be displayed with the \texttt{pwd} command.
+
+\vspace{1em}
+\textbf{What is the unix standard command to rename a file?}
+
+The unix command to rename a file is \texttt{mv old-file-name new-file-name}.
+
+\vspace{1em}
+\textbf{What is tab-completion?}
+
+Tab completion is a feature that automatically completes commands and file/directory names when Tab is pressed.
+\end{document}
