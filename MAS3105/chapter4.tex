@@ -44,13 +44,9 @@ A \textbf{subspace} of a vector space $V$ is a subset $H$ of $V$ that has three 
 If $\mathbf{v}_1,\ldots, \mathbf{v}_p$ are in a vector space $V$, then
 $\text{Span}\{\mathbf{v}_1,\ldots, \mathbf{v}_p\}$ is a subspace of $V$.
 
-\subsection*{Key Points}
-\begin{enumerate}
-    \item If $\mathbf{v}$ is in $\mathbb{R}^3$, $H=\text{Span}\{\mathbf{v}\}$ is a subspace of
-    $\mathbb{R}^3$.
-\end{enumerate}
+\vspace{1em}
 
-\pagebreak
+If $\mathbf{v}$ is in $\mathbb{R}^3$, $H=\text{Span}\{\mathbf{v}\}$ is a subspace of $\mathbb{R}^3$.
 
 \section*{Null Spaces, Column Spaces, Row Spaces, and Linear Transformations}
 \subsection*{Null Spaces}
@@ -89,6 +85,8 @@ To find the vectors that span the column space:
 
 \subsubsection*{Theorem 3}
 The column space of an $m\times n$ matrix $A$ is a subspace of $\mathbb{R}^m$.
+
+\pagebreak
 
 \subsection*{Row Spaces}
 The \textbf{row space} of an $m\times n$ matrix $A$, written as $\text{Row } A$, is the set of all
@@ -186,9 +184,19 @@ one-to-one linear transformation from $V$ onto $\mathbb{R}^n$.
     $\mathbb{P}_2$. 
 \end{itemize}
 
+\subsection*{Isomorphism}
+Let $V$ and $W$ be vector spaces. A linear mapping $T: V\rightarrow W$ that is one-to-one and onto
+is called an \textbf{isomorphism} from $V$ to $W$.
+\begin{itemize}
+    \item Isomorphisms are invertible.
+    \item If $T$ is an isomorphism from $V$ to $W$, then $T^{-1}$ is an isomorphism from $W$ to
+    $V$.
+    \item If there are is an isomorphism from $V$ to $W$, then the spaces $V$ and $W$ are
+    \textbf{isomorphic}.
+\end{itemize}
 \section*{The Dimension of a Vector Space}
 If a vector space $V$ is spanned by a finite set, then $V$ is said to be
-\textbf{finite-dimensional}, and the \textbf{dimension} of $V$, written as $\textbf{dim }V$, is the
+\textbf{finite-dimensional}, and the \textbf{dimension} of $V$, written as $\dim V$, is the
 number of vectors in a basis for $V$. The dimension of the zero vector space $\{\mathbf{0}\}$ is
 defined to be zero. If $V$ is not spanned by a finite set, then $V$ is said to be
 \textbf{infinite-dimensional}.
@@ -240,14 +248,39 @@ The dimension of the:
     \item $\text{Row }A$ is the number of pivot rows in $A$.
 \end{itemize}
 
-\subsection*{Other Points}
-\begin{itemize}
-    \item If $\mathbb{P}_n$ is the space of all polynomials of degree at most $n$, its dimension is
-    $n+1$.
-\end{itemize}
+\subsubsection*{Theorem 15 --- Change-of-coordinates matrix from $\mathcal{B}$ to $\mathcal{C}$}
+Let $\mathcal{B}=\{\mathbf{b}_1,\ldots, \mathbf{b}_n\}$ and $\mathcal{C}=\{\mathbf{c}_1, \ldots,
+\mathbf{c}_n\}$ be bases of a vector space $V$. Then there is a unique $n\times n$ matrix
+$\underset{\mathcal{C}\leftarrow\mathcal{B}}{P}$ such that
+\[{[\mathbf{x}]}_\mathcal{C}=
+\underset{\mathcal{C}\leftarrow\mathcal{B}}{P}{[\mathbf{x}]}_\mathcal{B}\]
+The columns of $\underset{\mathcal{C}\leftarrow\mathcal{B}}{P}$ are the $\mathcal{C}$-coordinate
+vectors in the basis $\mathcal{B}$.
+
+That is,
+\[\underset{\mathcal{C}\leftarrow\mathcal{B}}{P}=\begin{bmatrix}
+    {[\mathbf{b}_1]}_\mathcal{C} & {[\mathbf{b}_2]}_\mathcal{C} & \cdots &
+    {[\mathbf{b}_n]}_\mathcal{C}
+\end{bmatrix}\]
+
+The columns of $\underset{C\leftarrow B}{P}$ are linearly independent because they are the
+coordinate vectors of the linearly independent set $B$.
+
+\vspace{1em}
+
+Let $B=\{b_1, b_2\}$ and $C=\{c_1, c_2\}$ be bases for $\mathbb{R}^2$.
+To find the change-of-coordinates matrix from $B$ to $C$.
+\begin{enumerate}
+    \item Reduce the matrix $\begin{bmatrix}c_1 & c_2 & b_1 & b_2\end{bmatrix}$ to reduced echelon
+    form.
+    \item The last two columns form the change-of-coordinates matrix from $B$ to $C$,
+    $\underset{C\leftarrow B}{P}$.
+\end{enumerate}
 
 \section*{Extra Notes}
 \begin{enumerate}
     \item $\sin x \cos x = \frac{1}{2} \sin 2x$
+    \item If $\mathbb{P}_n$ is the space of all polynomials of degree at most $n$, its dimension is
+    $n+1$.
 \end{enumerate}
 \end{document}
