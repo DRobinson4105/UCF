@@ -1,0 +1,149 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bigints}
+\usepackage{amssymb}
+
+\title{Chapter 29 The Magnetic Field}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Magnetism}
+\begin{enumerate}
+    \item Magnets have two poles, and thus are magnetic dipoles
+    \item Materials that are attracted to magnets are called magnetic materials
+\end{enumerate}
+
+\section*{The Discovery of the Magnetic Field}
+Magnetic forces cause a compass needle to beocme aligned parallel to a magnetic field, with the
+north pole of the compass showing the direction of the magnetic field at that point.
+
+\section*{The Source of the Magnetic Field: Moving Charges}
+Moving charges are the source of the magnetic field.
+
+\[\vec{B}_\text{point charge}=\Big(\frac{\mu_0}{4\pi}\frac{qv\sin \theta}{r^2},
+\text{direction given by the right-hand rule}\Big)\]
+where $r$ is the distance from the charge and $\theta$ is the angle between $\vec{v}$ and
+$\vec{r}$.
+
+\vspace{1em}
+
+The permeability constant is $\mu_0 = 1.26\times 10^{-6} \text{ T m / A}$.
+
+\vspace{1em}
+
+The Earth's magnetic field $5\times 10^{-5} \text{ T}$.
+
+\subsection*{Superposition}
+If there are $n$ moving point charges, the net magnetic field is given by the vector sum
+\[\vec{B}_\text{total}=\vec{B}_1+\vec{B}_2 + \cdots + \vec{B}_n\]
+
+\pagebreak
+
+\section*{The Magnetic Field of a Current}
+
+\subsection*{Key Magnetic Fields}
+\begin{enumerate}
+    \item An infinite wire: \[B=\frac{\mu_0}{2\pi}\frac{I}{r}\]
+    \item A current loop: \[B_\text{center}=\frac{\mu_0}{2}\frac{NI}{R}\]
+    \item A solenoid: \[B=\mu_0 nI\quad(\text{where }n=N/L)\]
+\end{enumerate}
+
+\[\vec{B}_\text{current segment}=\frac{\mu_0}{4\pi}\frac{I\Delta \vec{s}\times \hat{r}}{r^2}
+\quad\text{(magnetic field of a very short segment of current)}\]
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item A circular loop of wire with a circulating current is called a current loop.
+\end{enumerate}
+
+\section*{Magnetic Dipoles}
+The on-axis magnetic field of a current loop is
+\[B_\text{loop}=\frac{\mu_0}{2}\frac{IR^2}{{(z^2+R^2)}^{3/2}}=\frac{\mu_0}{2\pi}\frac{(\pi R^2)I}
+{{(z^2+R^2)}^{3/2}}=\frac{\mu_0}{2\pi}\frac{AI}{{(z^2+R^2)}^{3/2}}\]
+where $A=\pi R^2$ is the area of the loop. 
+
+\vspace{1em}
+
+The magnetic dipole $\vec{m}$ of a current loop enclosing area $A$ is 
+\[\vec{m}=(AI\text{, from the south pole to the north pole})\: A\: m^2\]
+
+\[\vec{B}_\text{dipole}=\frac{\mu_0}{2\pi}\frac{\vec{m}}{z^3}\quad
+\text{(on the axis of a magnetic dipole)}\]
+
+\pagebreak
+
+\section*{Ampere's Law and Solenoids}
+\subsection*{Line Integrals}
+\begin{enumerate}
+    \item If the magnetic field is everywhere perpendicular to a line, then \[\int_i^f\vec{B}
+    \cdot d\vec{s}=0\]
+    \item If the magnetic field is everywhere tangent to a line, then \[\int_i^f\vec{B}\cdot d
+    \vec{s}=Bl\]
+\end{enumerate}
+
+\subsection*{Ampere's Law}
+Since the magnetic field strength of a current-carrying wire is $B=\mu_0 I / 2\pi r$, the line
+integral for a wire in a circle can be simplified to
+\[\oint \vec{B}\cdot d \vec{s} = Bl = \frac{\mu_0 I}{2\pi r}\times 2\pi r=\mu_0 I\]
+
+\subsection*{The Magnetic Field of a Solenoid}
+The magnetic field of a solenoid is uniform at every point in the solenoid and is parallel to the
+axis, whereas the field outside the loops is very close to zero.
+
+\pagebreak
+\section*{The Magnetic Force on a Moving Charge}
+\subsection*{Magnetic Force}
+A magnetic field exerts a force on a moving charge and is perpendicular to the direction of the
+charge's velocity and the magnetic field. Since the magnetic foerce is always perpendicular to the
+particle's displacement, it does no work.
+
+\[\vec{F}_\text{on q}=q\vec{v}\times \vec{B}=(qvB\sin\alpha\text{, direction of right-hand rule})\]
+where $\alpha$ is the angle between $\vec{v}$ and $\vec{B}$.
+
+\subsection*{Cyclotron Motion}
+Since the force for circular motion is $F=qvB=ma_r=\frac{mv^2}{r}$, the radius of the cyclotron
+orbit is $r_\text{cyc}=\frac{mv}{qB}$.
+\vspace{1em}
+
+Since the frequency for cicular motion is $f=v/2\pi r$, the cyclotron freqency is
+\[f_\text{cyc}=\frac{qB}{2\pi m}\]
+
+\subsection*{The Hall Effect}
+For a flat, current-carrying conductor, the magnetic field would be perpendicular to the top
+surface of it. As positive charges and negative charges pass through it, the magnetic force will
+cause a buildup of positive charges on one side and negative on the other. This causes the sides to
+act like the charge on the plates of a capacitor, creating a potential difference $\Delta V$
+between the two surfaces and an electric field $E=\Delta V/\omega$ between them.
+\vspace{1em}
+
+This potential differnce is called the Hall voltage
+\[\Delta V_H=\omega v_d B\]
+$v_d$ is the drift speed of the charge-carriers, $v_d=\frac{I}{\omega t n e}$ where $A=\omega t$ is
+the cross-section area of the conductor.
+\[\Delta V_H=\frac{IB}{tne}\]
+
+\section*{Magnetic Forces on Current-Carrying Wires}
+\[\vec{F}_\text{wire}=I\vec{l}\times \vec{B}=(IlB\sin\alpha\text{, direction of right-hand rule})\]
+\[F_\text{parallel wires}=I_1 l B_2 = I_1 l \frac{\mu_0 I_2}{2\pi d}=\frac{\mu_0 l \: I_1 I_2}
+{2\pi d}\]
+Parallel wires carrying currents in the same direction attract each others, while parallel wires
+carrying currents in opposite directions repel each other.
+
+\section*{Forces and Torques on Current Loops}
+Magnetic poles attract or repel because the moving charges in one current exert attractive or
+repulsive magnetic forces on the moving charges in the other current.
+\[\vec{\tau}=\vec{m}\times\vec{B}\]
+
+\section*{Magnetic Properties of Matter}
+\begin{enumerate}
+    \item Electrons are microscopic magnets due to their spin.
+    \item A ferromagnetic (iron-like) material in which the spins are aligned is organized into
+    magnetic domains.
+    \item The individual domains align with an external magnetic field to produce an induced
+    magnetic dipole moment for the entire object.
+\end{enumerate}
+\end{document}
