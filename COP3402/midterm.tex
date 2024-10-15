@@ -249,7 +249,10 @@ switch (pid = fork()) {
         exit(EXIT_FAILURE);
         break;
     case 0:
-        execlp("ls", "ls", NULL);
+        if (execlp("ls", "ls", NULL) == -1) {
+            perror("execlp");
+            exit(EXIT_FAILURE);
+        }
         break;
     default:
         break;
