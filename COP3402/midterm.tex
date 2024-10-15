@@ -1,4 +1,8 @@
 \documentclass{article}
+\usepackage{xcolor}
+
+\newcommand{\inlinecode}[1]{\colorbox{gray!20}{\texttt{\strut #1}}}
+
 
 \title{Midterm Notes}
 \author{David Robinson}
@@ -9,32 +13,114 @@
 \maketitle
 
 \section*{File systems}
-\textbf{What makes the unix file system "hierarchical"?}
+\textbf{What makes the unix file system ``hierarchical''?}
+\vspace{0.5em}
 
 It organizes files and directories in a tree-like structure, where there is a root directory and each directory can contain subdirectories and files, forming a parent-child relationship.
 
 \vspace{1em}
-\textbf{What is the difference between absolute vs. relative paths?}
+\textbf{What is the difference between absolute vs.\ relative paths?}
+\vspace{0.5em}
 
 Absolute paths start from the root directory while relative paths start from the working directory.
 
 \vspace{1em}
 \textbf{How are parent directories referenced in the file system?}
+\vspace{0.5em}
 
-Parent directories are referenced using \texttt{..} in the filepath.
+Parent directories are referenced using \inlinecode{..} in the filepath.
 
 \section*{Navigation}
 \textbf{What is the working directory and how do you display it?}
+\vspace{0.5em}
 
-The working directory is the directory that a program is currently in and can be displayed with the \texttt{pwd} command.
+The working directory is the directory that a program is currently in and can be displayed with the \inlinecode{pwd} command.
 
 \vspace{1em}
 \textbf{What is the unix standard command to rename a file?}
+\vspace{0.5em}
 
-The unix command to rename a file is \texttt{mv old-file-name new-file-name}.
+The unix command to rename a file is \inlinecode{mv old-file-name new-file-name}.
 
 \vspace{1em}
 \textbf{What is tab-completion?}
+\vspace{0.5em}
 
 Tab completion is a feature that automatically completes commands and file/directory names when Tab is pressed.
+
+\vspace{1em}
+\textbf{What unix standard will show you the text of a file?}
+\vspace{0.5em}
+
+\texttt{cat filename} will show the text of a file.
+
+\vspace{1em}
+\textbf{What does grep do?}
+\vspace{0.5em}
+
+\inlinecode{grep} searches through text for a phrase. For example, \inlinecode{grep ``this phrase'' filename} will search for ``this phrase'' in the file.
+
+\vspace{1em}
+\textbf{How do you change the working directory to your home directory?}
+\vspace{0.5em}
+
+\inlinecode{cd} will change the working directory to the home directory.
+
+\vspace{1em}
+\textbf{What is the unix command to delete a file?}
+\vspace{0.5em}
+
+\inlinecode{rm filename} is the unix command to delete a file.
+
+\vspace{1em}
+\textbf{How does the implementation of deleting a file work? Does it remove the file's contents from the storage medium?}
+\vspace{0.5em}
+
+When you delete a file using \inlinecode{rm}, the file's metadata, including its directory entry in the parent directory, is removed, but the data on disk remains until it is overwritten by new data.
+
+\section*{Processes}
+\textbf{How do you redirect standard (out, in) of bash command to a file? for instance, I want to redirect grep's (out, in) to the file grep.txt what do I type?}
+\vspace{0.5em}
+
+Use the \inlinecode{>} command to redirect the output of a command, \inlinecode{grep ``pattern'' filename > grep.txt}
+
+\vspace{1em}
+\textbf{How do you redirect standard out from one command to another command's standard in? for instance, let's say I want to count the results of find with wc, what do I type?}
+\vspace{0.5em}
+
+Use the pipe \inlinecode{|} command to redirect the standard out from one command to another command's standard in. \inlinecode{find . | wc -l}
+
+\section*{Editor}
+\textbf{How do you edit files in vim or emacs (pick one)?}
+\vspace{0.5em}
+
+Use \inlinecode{vim filename} to open and edit a file in vim. Inside vim, you can press \inlinecode{i} to enter insert mode to edit the file.
+
+\vspace{1em}
+\textbf{How do you quit the editor in vim or emacs (pick one)?}
+\vspace{0.5em}
+
+Press \inlinecode{Esc} to leave insert mode, then type \inlinecode{:q} to quit.
+
+\section*{Build automation}
+\textbf{What does the (target, recipe, prerequisite) of a makefile rule do.}
+\vspace{0.5em}
+
+Target is the output that the Makefile rule produces, the prerequisites are the files required to build the target, and the recipe includes the commands to execute to build the target
+
+\vspace{1em}
+\textbf{By convention, what does the clean target do?}
+\vspace{0.5em}
+
+The clean target removes any generated files.
+
+\vspace{1em}
+\textbf{Here is a makefile, add a clean target to remove the binaries.}
+\vspace{0.5em}
+
+\begin{verbatim}
+clean:
+    rm -f *.o target
+\end{verbatim}
+
 \end{document}
