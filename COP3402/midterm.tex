@@ -16,7 +16,8 @@
 \textbf{What makes the unix file system ``hierarchical''?}
 \vspace{0.5em}
 
-It organizes files and directories in a tree-like structure, where there is a root directory and each directory can contain subdirectories and files, forming a parent-child relationship.
+It organizes files and directories in a tree-like structure, where there is a root directory and
+each directory contains a list of other directories and files.
 
 \vspace{1em}
 \textbf{What is the difference between absolute vs.\ relative paths?}
@@ -34,79 +35,88 @@ Parent directories are referenced using \inlinecode{..} in the filepath.
 \textbf{What is the working directory and how do you display it?}
 \vspace{0.5em}
 
-The working directory is the directory that a program is currently in and can be displayed with the \inlinecode{pwd} command.
+The working directory is the directory that a program is currently in and can be displayed with the
+\inlinecode{pwd} command.
 
 \vspace{1em}
 \textbf{What is the unix standard command to rename a file?}
-\vspace{0.5em}
 
-The unix command to rename a file is \inlinecode{mv old-file-name new-file-name}.
+\begin{verbatim}
+mv old-file-name new-file-name
+\end{verbatim}
 
-\vspace{1em}
 \textbf{What is tab-completion?}
 \vspace{0.5em}
 
-Tab completion is a feature that automatically completes commands and file/directory names when Tab is pressed.
+Tab completion is a feature that automatically completes commands and file/directory.
 
 \vspace{1em}
 \textbf{What unix standard will show you the text of a file?}
-\vspace{0.5em}
 
-\texttt{cat filename} will show the text of a file.
+\begin{verbatim}
+cat filename
+\end{verbatim}
 
-\vspace{1em}
 \textbf{What does grep do?}
 \vspace{0.5em}
 
-\inlinecode{grep} searches through text for a phrase. For example, \inlinecode{grep ``this phrase'' filename} will search for ``this phrase'' in the file.
+\inlinecode{grep} searches through text for a phrase. For example,
+\inlinecode{grep "this phrase" filename} will search for "this phrase" in the file. If a filename
+is not provided, it will search through standard in.
 
 \vspace{1em}
 \textbf{How do you change the working directory to your home directory?}
-\vspace{0.5em}
 
-\inlinecode{cd} will change the working directory to the home directory.
+\begin{verbatim}
+cd
+\end{verbatim}
 
-\vspace{1em}
 \textbf{What is the unix command to delete a file?}
+
+\begin{verbatim}
+rm filename
+\end{verbatim}
+
+\textbf{How does the implementation of deleting a file work? Does it remove the file's contents
+from the storage medium?}
 \vspace{0.5em}
 
-\inlinecode{rm filename} is the unix command to delete a file.
-
-\vspace{1em}
-\textbf{How does the implementation of deleting a file work? Does it remove the file's contents from the storage medium?}
-\vspace{0.5em}
-
-When you delete a file using \inlinecode{rm}, the file's metadata, including its directory entry in the parent directory, is removed, but the data on disk remains until it is overwritten by new data.
+When you delete a file using \inlinecode{rm}, the file's metadata, including its directory entry in
+the parent directory, is removed, but the data on disk remains until it is overwritten by new data.
 
 \section*{Processes}
-\textbf{How do you redirect standard (out, in) of bash command to a file? for instance, I want to redirect grep's (out, in) to the file grep.txt what do I type?}
+\textbf{How do you redirect standard (out, in) of bash command to a file? for instance, I want to
+redirect grep's (out, in) to the file grep.txt what do I type?}
 \vspace{0.5em}
 
-Use the \inlinecode{>} command to redirect the output of a command, \inlinecode{grep ``pattern'' filename > grep.txt}
+Use the \inlinecode{>} or \inlinecode{<} command: \inlinecode{grep "pattern" filename > grep.txt}
 
 \vspace{1em}
-\textbf{How do you redirect standard out from one command to another command's standard in? for instance, let's say I want to count the results of find with wc, what do I type?}
+\textbf{How do you redirect standard out from one command to another command's standard in? for
+instance, let's say I want to count the results of find with wc, what do I type?}
 \vspace{0.5em}
 
-Use the pipe \inlinecode{|} command to redirect the standard out from one command to another command's standard in. \inlinecode{find . | wc -l}
+Use the pipe \inlinecode{|} command: \inlinecode{ls | wc}
 
 \section*{Editor}
 \textbf{How do you edit files in vim or emacs (pick one)?}
-\vspace{0.5em}
 
-Use \inlinecode{vim filename} to open and edit a file in vim. Inside vim, you can press \inlinecode{i} to enter insert mode to edit the file.
+\begin{verbatim}
+vim filename
+\end{verbatim}
 
-\vspace{1em}
 \textbf{How do you quit the editor in vim or emacs (pick one)?}
-\vspace{0.5em}
 
-Press \inlinecode{Esc} to leave insert mode, then type \inlinecode{:q} to quit.
+\begin{verbatim}
+:wq
+\end{verbatim}
 
 \section*{Build automation}
 \textbf{What does the (target, recipe, prerequisite) of a makefile rule do.}
 \vspace{0.5em}
 
-Target is the output that the Makefile rule produces, the prerequisites are the files required to build the target, and the recipe includes the commands to execute to build the target
+Target is the output that the Makefile rule produces, the prerequisites are the files required to
+build the target, and the recipe includes the commands to execute to build the target
 
 \vspace{1em}
 \textbf{By convention, what does the clean target do?}
@@ -116,11 +126,296 @@ The clean target removes any generated files.
 
 \vspace{1em}
 \textbf{Here is a makefile, add a clean target to remove the binaries.}
-\vspace{0.5em}
 
 \begin{verbatim}
 clean:
-    rm -f *.o target
+    rm -f *.o target_name
 \end{verbatim}
+
+\textbf{Write a Makefile that will create a program called hello from two source files, main.c and
+hello.c, when make is run.}
+
+\begin{verbatim}
+hello: main.c hello.c
+    gcc -o hello main.c hello.c
+\end{verbatim}
+
+\section*{Version control}
+\textbf{What git command copies commits from the local repository to the remote repository?}
+
+\begin{verbatim}
+git push
+\end{verbatim}
+
+\textbf{What git command copies commits from the remote repository to the local repository?}
+
+\begin{verbatim}
+git pull
+\end{verbatim}
+
+\textbf{What git command stages a new file?}
+
+\begin{verbatim}
+git add filename
+\end{verbatim}
+
+\textbf{What git command creates a log of the change to a staged file to the local repository?}
+
+\begin{verbatim}
+git commit -m "commit message"
+\end{verbatim}
+
+\section*{File syscalls}
+\textbf{Using the open syscall (man 2 open, not fopen) to open a path given in the string char
+*filepath variable.}
+
+\begin{verbatim}
+int fd = open(filepath, O_RDWR);
+\end{verbatim}
+
+\textbf{How do you check for and terminate the program on an error with opening a file?}
+
+\begin{verbatim}
+if (fd == -1) {
+    perror("open");
+    exit(EXIT_FAILURE);
+}
+\end{verbatim}
+
+\textbf{Using the read syscall (man 2 read, not fopen), you already have an open file with the file
+descriptor stored in fd, read the first 200 bytes of the file and print it to stdout}
+
+\begin{verbatim}
+char buffer[200];
+int bytes = read(fd, buffer, 200);
+if (bytes == -1) {
+    perror("read");
+    exit(EXIT_FAILURE);
+}
+for (int i = 0; i < bytes; i++) {
+    printf("%c", buffer[i]);
+}
+\end{verbatim}
+
+\textbf{Write a program that uses the opendir/readdir syscalls to list the names of files in the
+current working directory.}
+
+\begin{verbatim}
+#include <dirent.h>
+#include <stdio.h>
+
+int main() {
+    DIR *dirp = opendir(".");
+    if (dirp == NULL) {
+        perror("opendir");
+        exit(EXIT_FAILURE);
+    }
+
+    struct dirent *curdir;
+
+    while ((curdir = readdir(dirp)) != NULL)
+        printf("%s\n", curdir->d_name);
+    
+    if (closedir(dirp) == -1) {
+        perror("closedir");
+        exit(EXIT_FAILURE);
+    }
+
+    return 0;
+}
+\end{verbatim}
+
+\textbf{What syscall can you use to find the (size, number of hard-links) of a file?}
+
+\begin{verbatim}
+stat
+\end{verbatim}
+
+\textbf{What syscall can you use the find the name of a file?}
+
+\begin{verbatim}
+readdir
+\end{verbatim}
+
+\section*{Process, pipe, syscalls}
+\textbf{Write code that uses unix standard syscalls to create a new process that runs the ls
+command.}
+
+\begin{verbatim}
+pid_t pid;
+switch (pid = fork()) {
+    case -1:
+        perror("fork");
+        exit(EXIT_FAILURE);
+        break;
+    case 0:
+        execlp("ls", "ls", NULL);
+        break;
+    default:
+        break;
+}
+\end{verbatim}
+
+\textbf{Write code that creates a new process, where the original process writes ``parent'' and the
+new process writes ``child'', both to stdout.}
+
+\begin{verbatim}
+pid_t pid;
+switch (pid = fork()) {
+    case -1:
+        perror("fork");
+        exit(EXIT_FAILURE);
+        break;
+    case 0:
+        puts("child");
+        sleep(10);
+        _exit(EXIT_SUCCESS);
+        break;
+    default:
+        printf("parent\n");
+        sleep(10);
+        exit(EXIT_SUCCESS);
+        break;
+}
+\end{verbatim}
+
+\textbf{Write code that replaces the current processes running program with the stat/ls command
+(not the stat syscall).}
+
+\begin{verbatim}
+execlp("ls", "ls", NULL);
+\end{verbatim}
+
+\pagebreak
+
+\textbf{Write a program that opens a pipe and reads to and writes from it.}
+
+\begin{verbatim}
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+    int pipefd[2];
+    char buffer[8];
+
+    if (pipe(pipefd) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+
+    write(pipefd[1], "message", 7);
+    read(pipefd[0], buffer, 7);
+    buffer[7] = '\0';
+    printf("%s\n", buffer);
+
+    close(pipefd[0]);
+    close(pipefd[1]);
+    return 0;
+}
+\end{verbatim}
+
+\textbf{Write a program that redirects the standard output to a file called ``output.txt''.}
+
+\begin{verbatim}
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+int main() {
+    int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+    if (dup2(fd, STDOUT_FILENO) < 0) {
+        perror("dup2");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+    close(fd);
+    return 0;
+}
+\end{verbatim}
+
+\section*{Common Syscalls in C}
+
+\begin{itemize}
+
+    \item \texttt{int open(const char *pathname, int flags);}
+    
+    Opens a file specified by \texttt{pathname} and returns a file descriptor.
+
+    \item \texttt{int close(int fd);}
+    
+    Closes the file descriptor \texttt{fd}, freeing the resources associated with it.
+
+    \item \texttt{ssize\_t read(int fd, void *buf, size\_t count);}
+    
+    Reads up to \texttt{count} bytes from the file descriptor \texttt{fd} into the buffer
+    \texttt{buf}.
+
+    \item \texttt{ssize\_t write(int fd, const void *buf, size\_t count);}
+    
+    Writes up to \texttt{count} bytes from the buffer \texttt{buf} to the file descriptor
+    \texttt{fd}.
+
+    \item \texttt{DIR *opendir(const char *name);}
+    
+    Opens the directory named \texttt{name} and returns a pointer to the directory stream.
+
+    \item \texttt{struct dirent *readdir(DIR *dirp);}
+    
+    Reads the next directory entry from the directory stream \texttt{dirp}.
+
+    \item \texttt{int closedir(DIR *dirp);}
+    
+    Closes the directory stream \texttt{dirp}.
+
+    \item \texttt{int dup2(int oldfd, int newfd);}
+    
+    Duplicates the file descriptor \texttt{oldfd} to the descriptor \texttt{newfd}, closing
+    \texttt{newfd} first if necessary.
+
+    \item \texttt{pid\_t fork(void);}
+    
+    Creates a new process by duplicating the calling process, returning 0 to the child and the
+    child's PID to the parent.
+
+    \item \texttt{pid\_t wait(int *wstatus);}
+    
+    Waits for the termination of a child process, returning its PID and storing its status in
+    \texttt{wstatus}.
+
+    \item \texttt{int execvp(const char *file, char *const argv[]);}
+    
+    Replaces the current process image with a new process image specified by \texttt{file} and
+    arguments \texttt{argv}.
+
+    \item \texttt{int pipe(int pipefd[2]);}
+    
+    Creates a unidirectional data channel (pipe) with one end for reading and one for writing,
+    stored in \texttt{pipefd}.
+
+    \item \texttt{int stat(const char *path, struct stat *buf);}
+    
+    Retrieves file information (like size, permissions) for the file at \texttt{path} and stores it
+    in \texttt{buf}.
+
+    \item \texttt{int lseek(int fd, off\_t offset, int whence);}
+    
+    Repositions the file offset of the open file descriptor \texttt{fd} to \texttt{offset} based on
+    \texttt{whence}.
+
+    \item \texttt{int chmod(const char *pathname, mode\_t mode);}
+    
+    Changes the permissions of the file at \texttt{pathname} to the mode specified by \texttt{mode}.
+
+    \item \texttt{int unlink(const char *pathname);}
+    
+    Deletes the file specified by \texttt{pathname} by removing its directory entry.
+
+\end{itemize}
 
 \end{document}
