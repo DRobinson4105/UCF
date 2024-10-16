@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{txfonts}
+
+\title{Chapter 4 Vector Spaces}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Eigenvalues and Eigenvectors}
+
+An \textbf{eigenvector} of an $n\times n$ matrix $A$ is a nonzero vector $\mathbf{x}$ such that $A\mathbf{x}=\lambda\mathbf{x}$ for some scalar $\lambda$. A scalar $\lambda$ is called an \textbf{eigenvalue} of $A$ if there is a nontrivial solution $\mathbf{x}$ of $A\mathbf{x}=\lambda\mathbf{x}$; such an $\mathbf{x}$ is called an \textit{eigenvector corresponding to $\lambda$.}
+
+\subsubsection*{Theorem 1}
+The eigenvalues of a triangular matrix are the entries on its main diagonal.
+
+\subsubsection*{Theorem 2}
+If $\mathbf{v}_1, \ldots, \mathbf{v}_r$ are eigenvectors that correspond to distinct eigenvalues $\lambda_1, \ldots, \lambda_r$ of an $n\times n$ matrix $A$, then the set $\{\mathbf{v}_1, \ldots, \mathbf{v}_r\}$ is linearly independent.
+
+\subsection*{Validating an Eigenvalue}
+\begin{enumerate}
+    \item Start with the equation $A\mathbf{x}=\lambda \mathbf{x}$
+    \item Form the matrix $A-\lambda I$
+    \item If the columns are linearly dependent, $\lambda$ is an eigenvalue
+    \item Reduce the matrix to reduced echelon form and each column vector in terms of the free variables is a corresponding eigenvector and a part of the basis for the eigenspace
+\end{enumerate}
+
+\subsection*{Validating an Eigenvector}
+\begin{enumerate}
+    \item Start with the equation $A\mathbf{x}=\lambda\mathbf{x}$
+    \item Compute the product of $A\mathbf{x}$
+    \item If $A\mathbf{x}$ is proportional to $\mathbf{x}$, then $\mathbf{x}$ is an eigenvector and the scaling factor is the eigenvalue
+\end{enumerate}
+
+\subsection*{Key Points}
+\begin{itemize}
+    \item If the columns of $A$ are linearly dependent, one eigenvalue of $A$ is $\lambda=0$
+    \item If $A$ is the zero matrix, then the only eigenvalue of $A$ is $0$
+\end{itemize}
+
+\end{document}
