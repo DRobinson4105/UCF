@@ -3,7 +3,7 @@
 \usepackage{amssymb}
 \usepackage{txfonts}
 
-\title{Chapter 4 Vector Spaces}
+\title{Chapter 5 Eigenvalues and Eigenvectors}
 \author{David Robinson}
 \date{}
 \setlength{\parindent}{0pt}
@@ -50,4 +50,28 @@ $\{\mathbf{v}_1, \ldots, \mathbf{v}_r\}$ is linearly independent.
     \item If $A$ is the zero matrix, then the only eigenvalue of $A$ is $0$
 \end{itemize}
 
+\section*{The Characteristic Equation}
+The scalar equation $\det (A-\lambda I) = 0$ is called the characteristic equation. The
+characteristic polynomial is the simplified polynomial in the characteristic equation and the
+eigenvalues are the values for $\lambda$.
+\subsubsection*{Theorem 3 --- Properties of Determinants}
+Let $A$ and $B$ be $n\times n$ matrices.
+\begin{enumerate}
+    \item $A$ is invertible if and only if $\det A \neq 0$.
+    \item $\det AB=(\det A)(\det B)$.
+    \item $\det A^T = \det A$.
+    \item If $A$ is triangular, then $\det A$ is the product of the entries on the main diagonal of
+    $A$.
+    \item A row replacement operation on $A$ does not change the determinant. A row interchange
+    changes the sign of the determinant. A row scaling also scales the determinant by the same
+    scalar factor.
+\end{enumerate}
+
+\subsubsection*{The Invertible Matrix Theorem (continued)}
+Let $A$ be an $n\times n$ matrix. Then $A$ is invertible if and only if, the number $0$ is
+\textbf{not} an eigenvalue of $A$.
+
+\subsubsection*{Theorem 4}
+If $n\times n$ matrices $A$ and $B$ are similar, then they have the same characteristic polynomial
+and hence the same eigenvalues (with the same multiplicities).
 \end{document}
