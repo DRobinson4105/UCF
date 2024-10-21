@@ -74,4 +74,49 @@ Let $A$ be an $n\times n$ matrix. Then $A$ is invertible if and only if, the num
 \subsubsection*{Theorem 4}
 If $n\times n$ matrices $A$ and $B$ are similar, then they have the same characteristic polynomial
 and hence the same eigenvalues (with the same multiplicities).
+
+\pagebreak
+
+\section*{Diagonalization}
+\subsubsection*{Theorem 5 --- The Diagonalization Theorem}
+An $n\times n$ matrix $A$ is diagonalizable if and only if $A$ has $n$ linearly independent
+eigenvectors.
+
+In fact, $A=PDP^{-1}$, with $D$ a diagonal matrix, if and only if the columns of $P$ are $n$
+linearly independent eigenvectors of $A$. In this case, the diagonal entries of $D$ are eigenvalues
+of $A$ that correspond, respectively, to the eigenvectors in $P$.
+
+\vspace{1em}
+\textbf{In other words, $A$ is diagonalizable if and only if there are enough eigenvectors to form
+a basis of $\mathbb{R}^n$, known as an eigenvector basis of $\mathbb{R}^n$.}
+
+\subsubsection*{Theorem 6}
+An $n\times n$ matrix with $n$ distinct eigenvalues is diagonalizable.
+
+\subsubsection*{Theorem 7}
+Let $A$ be an $n\times n$ matrix whose distinct eigenvalues are $\lambda_1, \ldots, \lambda_p$.
+\begin{enumerate}
+    \item For $1 \leq k \leq p$, the dimension of the eigenspace for $\lambda_k$ is less than or
+    equal to the multiplicity of the eigenvalue $\lambda_k$.
+    \item The matrix $A$ is diagonalizable if and only if the sum of the dimensions of the
+    eigenspaces equals $n$, and this happens if and only if the characteristic polynomial factors
+    completely into linear factors and the dimension of the eigenspace for each $\lambda_k$ equals
+    the multiplicity of $\lambda_k$.
+    \item If $A$ is diagonalizable and $\mathcal{B}_k$ is a basis for the eigenspace corresponding
+    to $\lambda_k$ for each $k$, then the total collection of vectors in the sets
+    $\mathcal{B}_1, \ldots, \mathcal{B}_p$ forms an eigenvector basis for $\mathbb{R}^n$.
+\end{enumerate}
+
+\subsection*{Key Points}
+\begin{itemize}
+    \item $A=PDP^{-1}, A^2 = PD^2 P^{-1}, \ldots, A^k=PD^k P^{-1}$
+    \item If $A$ is both diagonalizable and invertible, then so is $A^{-1}$.
+        \begin{enumerate}
+            \item If $A$ is diagonalizable, then $A=PDP^{-1}$ for some invertible $P$ and diagonal
+            $D$.
+            \item Zero is not an eigenvalue of $A$, so the diagonal entries in $D$ are not zero, so
+            $D$ is invertible.
+            \item $A^{-1}=PD^{-1}P^{-1}$, therefore $A^{-1}$ is also diagonalizable.
+        \end{enumerate}
+\end{itemize}
 \end{document}
