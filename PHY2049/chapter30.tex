@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bigints}
+\usepackage{amssymb}
+
+\title{Chapter 30 Electromagnetic Induction}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Motional emf}
+The magnetic force on the charge carriers in a moving conductor creates an electric field $E=vB$
+inside the conductor. The charge separation also creates an electric potential difference between
+the two ends of the moving conductor.
+\[\Delta V=V_\text{top} - V_\text{bottom} = -\int_0^l E_y dy =-\int_0^l (-vB)dy=vlB\]
+So, the motion of the wire through a magentic field induces a potential difference $vlB$ between
+the ends of the conductor.
+
+\vspace{1em}
+The positive charges are 90 degrees in the counter-clockwise direction from the velocity, while the
+negative charges are 90 degrees in the clockwise direction from the velocity.
+
+\vspace{1em}
+The \textbf{motional emf} of a conductor moving with velocity $\vec{v}$ perpendicular to a magnetic
+field $\vec{B}$ is \[\varepsilon=vlB\]
+
+A current is induced in the circuit as the wire moves through a magnetic field. The current in the
+circuit is an induced current. If the total resistance of the circuit is $R$, the induced current
+is \[I=\frac{\varepsilon}{R}=\frac{vlB}{R}\]
+
+The magnitude of the magnetic force on a current-carrying wire is
+\[F_\text{mag}=F_\text{pull}=IlB=\Big(\frac{vlB}{R}\Big)lB=\frac{vl^2B^2}{R}\]
+
+The power provided to the circuit by pulling on the wire is
+\[P_\text{input}=F_\text{pull} v=\frac{v^2 l^2 B^2}{R}\]
+
+but the circuit also dissipates energy by transforming electric energy into the thermal energy.
+\[P_\text{dissipated}=I^2 R=\frac{v^2 l^2 B^2}{R}\]
+
+The rate at which work is done on the circuit exactly balances the rate at which energy is
+dissipated.
+
+\subsection*{Eddy Currents}
+Eddy currents are induced when a metal sheet is pulled through a magnetic field. THe magnetic force
+on the eddy currents is oppose to the direction of $\vec{v}$.
+
+\section*{Magnetic Flux}
+\[A_\text{eff}=ab\cos\theta = A \cos\theta\]
+\[\Phi_m = \vec{A}\cdot\vec{B}\]
+
+In a nonuniform magnetic field,
+\[\Phi_m = \int \vec{B}\cdot d \vec{A}\]
+
+\section*{Lenz's Law}
+There is an induced current in a closed, conducting loop if and only if the magnetic flux through
+the loop is changing. The direction of the induced current is such that the induced magnetic field
+opposes the change in the flux.
+
+\begin{enumerate}
+    \item Determine the direction of the applied magnetic field.
+    \item Determine how the flux is changing.
+    \item Determine the direction of an induced magnetic field that will oppose the change in flux.
+    \begin{itemize}
+        \item Increasing flux: The induced magnetic field points opposite the applied magnetic
+        field.
+        \item Decreasing flux: The induced magnetic field points in the same direction as the
+        applied magnetic field.
+        \item Steady flux: There is no induced magnetic field.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Faraday's Law}
+An emf $\varepsilon$ is induced around a closed loop if the magnetic flux through the loop changes.
+The magnitude of the emf is
+\[\varepsilon=\Big|\frac{d\Phi_m}{dt}\Big|\]
+and the direction of the emf is such as to drive an induced current in the direction given by
+Lenz's law.
+
+\vspace{1em}
+The induced emf is the emf associated with a changing magnetic flux.
+\[I_\text{induced} = \frac{\varepsilon}{R}\]
+
+\section*{Induced Fields}
+An induced electric field is present whether there's a conducting loop or not.
+
+\section*{Inductors}
+A coil is called an inductor because the potential difference across an inductor is an induced emf.
+
+The inductance $L$ of a coil is the flux-to-current ratio:
+\[L=\frac{\Phi_m}{I}\] with a unit of \textbf{henry},
+$1 \text{ henry} = 1\: H \equiv 1\: Wb\: /\: A = 1\: T\: m^2\: /\: A$.
+
+\vspace{1em}
+Inductors become important circuit elements when currents are changing.
+
+\vspace{1em}
+The potential difference across an inductor, measured along the direction of the current, is
+\[\Delta V_L = -L\frac{dI}{dt}\]
+
+The total energy stored in an inductor is
+\[U_L = L\int_0^I I dI = \frac{1}{2}LI^2\]
+
+\section*{LC Circuits}
+An LC circuit is a circuit consisting of an inductor and a capacitor.
+
+\section*{LR Circuits}
+An LR circuit is a circuit consisting of an inductor, a resistor, and sometimes a battery.
+\end{document}
