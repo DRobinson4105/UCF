@@ -58,4 +58,47 @@ space of $A$, and the orthogonal complement of the column space of $A$ is the nu
     $c\|\mathbf{v}\|$ is negative if $c$ is negative.
 \end{enumerate}
 
+\section*{Orthogonal Sets}
+
+\subsubsection*{Theorem 4}
+If $S=\{\mathbf{u}_1, \ldots, \mathbf{u}_p\}$ is an orthogonal set of nonzero vectors in
+$\mathbb{R}^n$, then $S$ is linearly independent and hence is a basis for the subspace spanned by
+$S$.
+
+\subsubsection*{Orthogonal Basis}
+An \textbf{orthogonal basis} for a subspace $W$ of $\mathbb{R}^n$ is a basis for $W$ that is also
+an orthogonal set.
+
+\subsubsection*{Theorem 5}
+Let $\{\mathbf{u}_1, \ldots, \mathbf{u}_p\}$ be an orthogonal basis for a subspace $W$ of
+$\mathbb{R}^n$. For each $\mathbf{y}$ in $W$, the weights in the linear combination are
+\[\mathbf{y}=c_1\mathbf{u}_1 + \cdots + c_p\mathbf{c}_p\text{\quad given by \quad} c_j=
+\frac{\mathbf{y}\cdot\mathbf{u}_j}{\mathbf{u}_j\cdot \mathbf{u}_j}\quad (j=1, \ldots, p)\]
+
+\subsubsection*{Theorem 6}
+An $m\times n$ matrix $U$ has orthonormal columns if and only if $U^T U=I$.
+
+\subsubsection*{Theorem 7}
+Let $U$ be an $m\times n$ matrix with orthonormal columns, and let $\mathbf{x}$ and $\mathbf{y}$ be
+in $\mathbb{R}^n$. Then
+\begin{enumerate}
+    \item $\|U\mathbf{x}\|=\|\mathbf{x}\|$
+    \item $(U\mathbf{x})\cdot(U\mathbf{y})=\mathbf{x}\cdot\mathbf{y}$
+    \item $(U\mathbf{x})\cdot(U\mathbf{y})=0$ if and only if $\mathbf{x}\cdot\mathbf{y}=0$
+\end{enumerate}
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item A set of vectors is orthogonal if each pair of distinct vectors from the set is
+    orthogonal.
+    \item The vector $\mathbf{\hat{y}}$ is the orthogonal projection of $\mathbf{y}$ onto
+    $\mathbf{u}$.
+    \[\mathbf{\hat{y}}=\Bigg(\frac{\mathbf{y\cdot u}}{\mathbf{u\cdot u}}\Bigg)\mathbf{u}\]
+    \item $\mathbf{y}$ can be writtena s the sum of a vector in $\text{Span}\{\mathbf{u}\}$ and a
+    vector orthogonal to $\mathbf{u}$.
+    \[\mathbf{y}=\mathbf{\hat{y}}+\mathbf{z}\]
+    \item An orthonormal set is an orthogonal set where all of the vectors are unit vectors.
+    \item If $A$ is a matrix with orthonormal columns, then $\|A\mathbf{x}\|=\|\mathbf{x}\|$.
+    \item If $U$ is an orthogonal matrix, $U^T=U^{-1}$.
+\end{enumerate}
 \end{document}
