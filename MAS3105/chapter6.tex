@@ -101,4 +101,43 @@ in $\mathbb{R}^n$. Then
     \item If $A$ is a matrix with orthonormal columns, then $\|A\mathbf{x}\|=\|\mathbf{x}\|$.
     \item If $U$ is an orthogonal matrix, $U^T=U^{-1}$.
 \end{enumerate}
+
+\section*{Orthogonal Projections}
+
+\subsubsection*{Theorem 8 --- The Orthogonal Decomposition Theorem}
+
+Let $W$ be a subspace of $\mathbb{R}^n$. Then each $\mathbf{y}$ in $\mathbb{R}^n$ can be written
+uniquely in the form
+\[\mathbf{y}=\mathbf{\hat{y}}+\mathbf{z}\]
+where $\mathbf{\hat{y}}$ is in $W$ and $\mathbf{z}$ is in $W^\perp$. In fact, if
+$\{\mathbf{u}_1, \ldots, \mathbf{u}_p\}$ is any orthogonal basis of $W$, then
+\[\mathbf{\hat{y}}=\frac{\mathbf{y}\cdot\mathbf{u}_1}{\mathbf{u}_1\cdot\mathbf{u}_1}\mathbf{u}_1+
+\cdots+\frac{\mathbf{y}\cdot\mathbf{u}_p}{\mathbf{u}_p\cdot\mathbf{u}_p}\mathbf{u}_p\]
+and $\mathbf{z}=\mathbf{y}-\mathbf{\hat{y}}$
+
+\subsubsection*{Theorem 9 --- The Best Approximation Theorem}
+
+Let $W$ be a subspace of $\mathbb{R}^n$, let $\mathbf{y}$ be any vector in $\mathbb{R}^n$, and let
+$\mathbf{\hat{y}}$ be the orthogonal projection of $\mathbf{y}$ onto $W$. Then $\mathbf{\hat{y}}$
+is the closest point in $W$ to $\mathbf{y}$, in the sense that
+\[\|\mathbf{y}-\mathbf{\hat{y}}\|<\|\mathbf{y}-\mathbf{v}\|\]
+for all $\mathbf{v}$ in $W$ distinct from $\mathbf{\hat{y}}$.
+
+\subsubsection*{Theorem 10}
+If $\{\mathbf{u}_1, \ldots, \mathbf{u}_p\}$ is an orthonormal basis for a subspace $W$ of
+$\mathbb{R}^n$, then
+\[\text{proj}_W \mathbf{y}=(\mathbf{y}\cdot\mathbf{u}_1)\mathbf{u}_1+(\mathbf{y}\cdot\mathbf{u}_2)
+\mathbf{u}_2+\cdots +(\mathbf{y}\cdot\mathbf{u}_p)\mathbf{u}_p\]
+
+If $U=\begin{bmatrix}\mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_p \end{bmatrix}$, then
+\[\text{proj}_W\mathbf{y}=U U^T \mathbf{y}\quad\text{for all \textbf{y} in }\mathbb{R}^n\]
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item If $\mathbf{u}_1$ and $\mathbf{u}_2$ are orthogonal but $\mathbf{u}_3$ is not orthogonal
+    to $\mathbf{u}_1$ or $\mathbf{u}_2$, a nonzero vector $\mathbf{v}$ in $\mathbb{R}^3$ that is
+    orthogonal to $\mathbf{u}_1$ and $\mathbf{u}_2$ can be constructed through
+    $\mathbf{v}=\mathbf{\hat{u}}_3-\mathbf{u}_3$.
+\end{enumerate}
+
 \end{document}
