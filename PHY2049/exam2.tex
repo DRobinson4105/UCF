@@ -1,5 +1,6 @@
 \documentclass[twocolumn]{article}
 \usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in, left=0.75in, right=0.75in]{geometry}
 
 \setlength{\parindent}{0pt}
 
@@ -16,7 +17,8 @@ Elementary charge: $e = 1.602\cdot 10^{-19}$
 \[C=\frac{\epsilon_0 A}{d}\quad\text{(parallel-plate capacitor)}\]
 \[Q=\frac{\epsilon_0 A}{d}\Delta V_C\quad\text{(parallel-plate capacitor)}\]
 \[C_\text{eq}=C_1 + C_2 + C_3 + \cdots\quad (\text{parallel capacitors})\]
-\[\frac{1}{C_\text{eq}}=\frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + \cdots\quad (\text{sequential capacitors})\]
+\[\frac{1}{C_\text{eq}}=\frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3} + \cdots\quad
+(\text{sequential capacitors})\]
 \[C=\kappa C_0\]
 Wires in series have the same current
 \[i_e = n_e Av_d\]
@@ -44,7 +46,7 @@ Wires in series have the same current
 \begin{center}
     \begin{tabular}{|c c c|} 
         \hline
-        Metal & Resistivity ($\Omega m$) & Conductivity ($\Omega^{-1} m^{-1}$) \\ [0.5ex]
+        Metal & Resistivity & Conductivity \\ [0.5ex]
         \hline
         Aluminum & $2.8\times 10^{-8}$ & $3.5\times 10^7$ \\
         \hline
@@ -70,14 +72,37 @@ If one branch in a parallel circuit is opened, the current through the other sta
 \[\tau = RC\]
 \[Q=Q_0 e^{-t/\tau}\]
 \[\Delta V_C=\Delta V_0 e^{-t/\tau}\]
-Right-hand rule for magnetic field
+Right-hand rule for wire
 \begin{enumerate}
     \item Thumb is in direction of current
-    \item Fingers are curled around the wire
+    \item If from wire, fingers are curled around the wire
     \item Fingers point in the direction of magnetic field
+\end{enumerate}
+Right-hand rule for magnetic field
+\begin{enumerate}
+    \item Thumb is in direction of force
+    \item Palm is facing the magnetic field
+    \item Fingers point in the direction of motion
 \end{enumerate}
 \[\oint B\cdot dl = Bl = \frac{mu_0 I}{2\pi r}\times 2\pi r = \mu_0 I_\text{enc}\]
 \[\Phi_b = BA\cos\theta\]
 \[F_B=qv\times B\]
+\[\vec{B}_\text{point charge}=\Big(\frac{\mu_0}{4\pi}\frac{qv\sin \theta}{r^2},
+\text{direction given by the right-hand rule}\Big)\]
+\begin{enumerate}
+    \item An infinite wire: $B=\frac{\mu_0}{2\pi}\frac{I}{r}$ if \textbf{outside} of the wire and
+    $B=\frac{\mu_0}{2\pi}\frac{Ir}{R^2}$ if \textbf{inside} the wire where $r$ is the distance from
+    the center and $R$ is the radius of the wire
+    \item A current loop: $B_\text{center}=\frac{\mu_0}{2}\frac{NI}{R}$
+    \item A solenoid: $B=\mu_0 nI\quad(\text{where }n=N/L)$
+\end{enumerate}
 
-\end{document}  
+\[\vec{B}_\text{current segment}=\frac{\mu_0}{4\pi}\frac{I\Delta \vec{s}\times \hat{r}}{r^2}\]
+\quad(magnetic field of a very short segment of current)
+\vspace{1em}
+
+Magnetic dipole moment $\vec{m}=$ ($AI$, from the south pole to the north pole)
+\[\vec{B}_\text{dipole}=\frac{\mu_0}{2\pi}\frac{\vec{m}}{z^3}\quad
+\text{(on the axis of a magnetic dipole)}\]
+
+\end{document}
