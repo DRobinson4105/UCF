@@ -72,7 +72,7 @@ an orthogonal set.
 \subsubsection*{Theorem 5}
 Let $\{\mathbf{u}_1, \ldots, \mathbf{u}_p\}$ be an orthogonal basis for a subspace $W$ of
 $\mathbb{R}^n$. For each $\mathbf{y}$ in $W$, the weights in the linear combination are
-\[\mathbf{y}=c_1\mathbf{u}_1 + \cdots + c_p\mathbf{c}_p\text{\quad given by \quad} c_j=
+\[\mathbf{y}=c_1\mathbf{u}_1 + \cdots + c_p\mathbf{u}_p\text{\quad given by \quad} c_j=
 \frac{\mathbf{y}\cdot\mathbf{u}_j}{\mathbf{u}_j\cdot \mathbf{u}_j}\quad (j=1, \ldots, p)\]
 
 \subsubsection*{Theorem 6}
@@ -100,6 +100,8 @@ in $\mathbb{R}^n$. Then
     \item An orthonormal set is an orthogonal set where all of the vectors are unit vectors.
     \item If $A$ is a matrix with orthonormal columns, then $\|A\mathbf{x}\|=\|\mathbf{x}\|$.
     \item If $U$ is an orthogonal matrix, $U^T=U^{-1}$.
+    \item A matrix with orthogonal columns is an orthonormal matrix if the matrix is also square.
+    \item If $U$ is a $m\times n$ matrix with orthonormal columns, $\mathbf{x}$ is in $\mathbb{R}^n$, $\|U\mathbf{x}\|={(U\mathbf{x})}^T(U\mathbf{x})$
 \end{enumerate}
 
 \section*{Orthogonal Projections}
