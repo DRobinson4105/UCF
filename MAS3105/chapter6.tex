@@ -142,4 +142,33 @@ If $U=\begin{bmatrix}\mathbf{u}_1 & \mathbf{u}_2 & \cdots & \mathbf{u}_p \end{bm
     $\mathbf{v}=\mathbf{\hat{u}}_3-\mathbf{u}_3$.
 \end{enumerate}
 
+\section*{The Gram-Schmidt Process}
+
+\subsubsection*{Theorem 11 --- The Gram-Schmidt Process}
+Given a basis $\{\mathbf{x}_1, \ldots, \mathbf{x}_p\}$ for a nonzero subspace $W$ of
+$\mathbb{R}^n$, define
+\[\begin{array}{l}
+    \mathbf{v}_1 = \mathbf{x}_1 \\
+    \mathbf{v}_2 = \mathbf{x}_2 - \frac{\mathbf{x}_2\cdot \mathbf{v}_1}{\mathbf{v}_1\cdot
+    \mathbf{v}_1} \mathbf{v}_1 \\
+    \mathbf{v}_3 = \mathbf{x}_3 - \frac{\mathbf{x}_3\cdot \mathbf{v}_1}{\mathbf{v}_1\cdot
+    \mathbf{v}_1} \mathbf{v}_1 - \frac{\mathbf{x}_3\cdot \mathbf{v}_2}{\mathbf{v}_2\cdot
+    \mathbf{v}_2} \mathbf{v}_2 \\
+    \vdots \\
+    \mathbf{v}_p = \mathbf{x}_p - \frac{\mathbf{x}_p\cdot \mathbf{v}_1}{\mathbf{v}_1\cdot
+    \mathbf{v}_1} \mathbf{v}_1 - \frac{\mathbf{x}_p\cdot \mathbf{v}_2}{\mathbf{v}_2\cdot
+    \mathbf{v}_2} \mathbf{v}_2 - \cdots \frac{\mathbf{x}_p\cdot \mathbf{v}_{p-1}}
+    {\mathbf{v}_{p-1}\cdot \mathbf{v}_{p-1}} \mathbf{v}_{p-1} \\
+\end{array}\]
+
+Then $\{\mathbf{v}_1, \ldots, \mathbf{v}_p\}$ is an orthogonal basis for $W$. In addition
+\[\text{Span}\{\mathbf{v}_1, \ldots, \mathbf{v}_k\} = \text{Span}\{\mathbf{x}_1, \ldots,
+\mathbf{x}_k\}\quad \text{for } 1 \leq k \leq p\]
+
+\subsubsection*{Theorem 12 --- The QR Factorization}
+If $A$ is an $m\times n$ matrix with linearly independent columns, then $A$ can be factored as
+$A=QR$, where $Q$ is an $m\times n$ matrix whose columns form an orthonormal basis for
+$\text{Col } A$ and $R$ is an $n\times n$ upper triangular invertible matrix with positive entries
+on its diagonal.
+
 \end{document}
