@@ -101,7 +101,8 @@ in $\mathbb{R}^n$. Then
     \item If $A$ is a matrix with orthonormal columns, then $\|A\mathbf{x}\|=\|\mathbf{x}\|$.
     \item If $U$ is an orthogonal matrix, $U^T=U^{-1}$.
     \item A matrix with orthogonal columns is an orthonormal matrix if the matrix is also square.
-    \item If $U$ is a $m\times n$ matrix with orthonormal columns, $\mathbf{x}$ is in $\mathbb{R}^n$, $\|U\mathbf{x}\|={(U\mathbf{x})}^T(U\mathbf{x})$
+    \item If $U$ is a $m\times n$ matrix with orthonormal columns, $\mathbf{x}$ is in
+    $\mathbb{R}^n$, $\|U\mathbf{x}\|={(U\mathbf{x})}^T(U\mathbf{x})$
 \end{enumerate}
 
 \section*{Orthogonal Projections}
@@ -171,4 +172,42 @@ $A=QR$, where $Q$ is an $m\times n$ matrix whose columns form an orthonormal bas
 $\text{Col } A$ and $R$ is an $n\times n$ upper triangular invertible matrix with positive entries
 on its diagonal.
 
+\pagebreak
+\section*{Least-Squares Problems}
+
+If $A$ is $m\times n$ and $\mathbf{b}$ is in $\mathbb{R}^m$, a \textbf{least-squares solution} of
+$A\mathbf{x}=\mathbf{b}$ is an $\mathbf{\hat{x}}$ in $\mathbb{R}^n$ such that
+\[\|\mathbf{b}-A\mathbf{\hat{x}}\|\leq \|\mathbf{b} - A\mathbf{x}\|\]
+for all $\mathbf{x}$ in $\mathbf{R}^n$.
+
+\subsubsection*{Theorem 13}
+The set of least-squares solutions of $A\mathbf{x}=\mathbf{b}$ coincides with the nonempty set of
+solutions of the normal equations $A^T A\mathbf{x}=A^T\mathbf{b}$.
+
+\subsubsection*{Theorem 14}
+Let $A$ be an $m\times n$ matrix. The following statements are logically equivalent:
+\begin{enumerate}
+    \item The equation $A\mathbf{x}=\mathbf{b}$ has a unique least-squares solution for each
+    $\mathbf{b}$ in $\mathbb{R}^m$.
+    \item The columns of $A$ are linearly independent.
+    \item The matrix $A^T A$ is invertible.
+\end{enumerate}
+
+When these statements are true, the least-squares solution $\mathbf{\hat{x}}$ is given by
+\[\mathbf{\hat{x}}={(A^T A)}^{-1} A^T \mathbf{b}\]
+
+\subsubsection*{Theorem 15}
+Given an $m\times n$ matrix $A$ with linearly independent columns, let $A=QR$ be a $QR$
+factorization of $A$. Then, for each $\mathbf{b}$ in $\mathbb{R}^m$, the equation
+$A\mathbf{x}=\mathbf{b}$ has a unique least-squares solution, given by
+\[\mathbf{\hat{x}}=R^{-1}Q^T \mathbf{b}\]
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item The least-squares error is the distance from $\mathbf{b}$ to $A\mathbf{\hat{x}}$,
+    $\|\mathbf{b}-A\mathbf{\hat{x}}\|$.
+    \item If $A$ is an orthogonal set, the weights that form the orthogonal projection of
+    $\mathbf{b}$ onto $\text{Col }A$, $\frac{\mathbf{y}\cdot\mathbf{u}_j}{\mathbf{u}_j\cdot
+    \mathbf{u}_j}$, form the least-squares solution of $A\mathbf{x}=\mathbf{b}$.
+\end{enumerate}
 \end{document}
