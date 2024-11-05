@@ -210,4 +210,27 @@ $A\mathbf{x}=\mathbf{b}$ has a unique least-squares solution, given by
     $\mathbf{b}$ onto $\text{Col }A$, $\frac{\mathbf{y}\cdot\mathbf{u}_j}{\mathbf{u}_j\cdot
     \mathbf{u}_j}$, form the least-squares solution of $A\mathbf{x}=\mathbf{b}$.
 \end{enumerate}
+
+\pagebreak
+
+\section*{Machine Learning and Linear Models}
+
+To find the equation $y=\beta_0 + \beta_1 X$ of the least-squares line that best fits data points
+$(x_1, y_1), \ldots, (x_n, y_n)$, find the least-squares solution of $X\mathbf{\beta}=\mathbf{y}$,
+where the design matrix $X$, the parameter vector $\mathbf{\beta}$, and observation vector
+$\mathbf{y}$ are
+\[X=\begin{bmatrix}
+    1 & x_1 \\ 
+    \vdots & \vdots \\
+    1 & x_n
+\end{bmatrix}\quad \mathbf{\beta} = \begin{bmatrix}
+    \beta_0 \\
+    \beta_1
+\end{bmatrix}\quad \mathbf{y} = \begin{bmatrix}
+    y_1 \\
+    \vdots \\
+    y_n
+\end{bmatrix}\]
+\[\mathbf{\beta}={(X^T X)}^{-1} X^T \mathbf{y}\]
+
 \end{document}
