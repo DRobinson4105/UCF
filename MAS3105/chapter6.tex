@@ -267,4 +267,15 @@ For all $\mathbf{u}, \mathbf{v}$ in $V$,
     \mathbf{p_1}\rangle} \mathbf{p_1} + \cdots + \frac{\langle\mathbf{q},\mathbf{p_n}\rangle}
     {\langle\mathbf{p_n}, \mathbf{p_n}\rangle} \mathbf{p_n}\]
 \end{enumerate}
+
+\section*{Applications of Inner Product Spaces}
+
+Let $C\:[0,2\pi]$ be a space with the inner product
+$\langle f, g \rangle = \int_0^{2\pi} f(t)g(t)dt$. The function which approximates as closely as
+desired for any function in $C\:[0,2\pi]$ is 
+\[\frac{a_0}{2} + a_1\cos t + \cdots a_n \cos nt + b_1 \sin t + \cdots + b_n \sin nt\]
+
+where $\frac{a_0}{2} = \frac{1}{2\pi}\int_0^{2\pi} f(t) \: dt$,
+$a_k=\frac{1}{\pi}\int_0^{2\pi}f(t)\cos kt \: dt$, and
+$b_k=\frac{1}{\pi}\int_0^{2\pi}f(t)\sin kt \: dt$
 \end{document}
