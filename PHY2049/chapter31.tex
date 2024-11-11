@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bigints}
+\usepackage{amssymb}
+
+\title{Chapter 31 Electromagnetic Fields and Waves}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{The Transformation of Electric and Magnetic Fields}
+There is a single electromagnetic field that presents different faces, in terms of $\vec{E}$ and
+$\vec{B}$, to different viewers.
+
+\[\vec{E}_B = \vec{E}_A + \vec{v}_{BA}\times \vec{B}_A\]
+\[\vec{B}_B = \vec{B}_A - \frac{1}{c^2}\vec{v}_{BA}\times \vec{E}_A\]
+where $\vec{v}_{BA}$ is the velocity of reference frame $B$ relative to frame $A$ and where the
+fields are measured at the same point in space. (Only valid if $\vec{v}_{BA} \ll c$)
+
+\section*{The Displacement Current}
+\[\oint\vec{B}\cdot d \vec{s}=\mu_0 \Big(I_\text{through} + I_\text{disp}\Big) = \mu_0
+\Big(I_\text{through} + \epsilon_0 \frac{d\Phi _ e}{dt}\Big)\]
+
+A changing magnetic field causes an induced electric field and vice versa.
+
+\pagebreak
+
+\section*{Maxwell's Equations}
+\[\begin{aligned}
+    \oint\vec{E}\cdot d\vec{A}=\frac{Q_\text{in}}{\epsilon_0}\quad & \text{Gauss's Law} \\ 
+    \oint\vec{B}\cdot d\vec{A}=0\quad & \text{Gauss's Law for Magnetism} \\
+    \oint\vec{E}\cdot d\vec{s} = -\frac{d\Phi_m}{dt}\quad & \text{Faraday's Law} \\ 
+    \oint\vec{B}\cdot d\vec{s} = \mu_0 I_\text{through} + \epsilon_0 \mu_0 \frac{d\Phi_e}{dt}\quad
+    & \text{Ampere-Maxwell Law}
+\end{aligned}\]
+
+\subsubsection*{General Force Equation}
+\[\vec{F}=q(\vec{E} + \vec{v} \times \vec{B})\quad\text{Lorentz Force Law}\]
+
+\begin{enumerate}
+    \item \textbf{Gauss's Law}: Charged particles create an electric field.
+    \item \textbf{Gauss's Law for Magnetism}: There are no isolated magnetic poles.
+    \item \textbf{Faraday's Law}: An electric field can also be created by a changing magnetic
+    field.
+    \item \textbf{Ampere-Maxwell Law}: Currents and a changing electric field can each create a
+    magnetic field.
+    \item \textbf{Lorentz Force Law}: An electric force is exerted on a charged particle in an
+    electric field and a magnetic force is exerted on a charge moving in a magnetic field.
+\end{enumerate}
+
+\section*{Electromagnetic Waves}
+\[\frac{\partial^2 E_y}{\partial t^2}=\frac{1}{\epsilon_0 \mu_0} \frac{\partial^2 E_y}
+{\partial x^2}\quad\text{(the wave equation for electromagnetic waves)}\]
+\[v_\text{em}=\frac{1}{\sqrt{\epsilon_0 \mu_0}} = 3\times 10^8 \text{ m/s} = c\]
+
+\begin{enumerate}
+    \item $\vec{E}$ and $\vec{B}$ are perpendicular to each other and each to the direction of
+    travel.
+    \item $E=cB$ at any point on the wave.
+\end{enumerate}
+
+\subsubsection*{Right-hand rule}:
+\begin{enumerate}
+    \item Point index finger in the direction of electric field
+    \item Point middle finger in the direction of magnetic field
+    \item Point thumb in the direction of motion
+\end{enumerate}
+
+\section*{Properties of Electromagnetic Waves}
+The intensity, average energy transfer, of an electromagnetic wave is
+\[I=\frac{P}{A}=S_\text{avg}=\frac{1}{2c\mu_0}{E_0}^2 = \frac{c\epsilon_0}{2}{E_0}^2\]
+\[\frac{E_1}{E_2}=\frac{d_2}{d_1}\]
+
+\section*{Polarization}
+\[I_\text{transmitted}=I_0 \cos^2 \theta\]
+
+\end{document}
