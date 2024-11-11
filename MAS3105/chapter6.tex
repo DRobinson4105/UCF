@@ -233,4 +233,38 @@ $\mathbf{y}$ are
 \end{bmatrix}\]
 \[\mathbf{\beta}={(X^T X)}^{-1} X^T \mathbf{y}\]
 
+\section*{Inner Product Spaces}
+
+An \textbf{inner product} on a vector space $V$ is a function that, to each pair of vectors
+$\mathbf{u}$ and $\mathbf{v}$ in $V$, associates a real number
+$\langle\mathbf{u},\mathbf{v}\rangle$ and satisfies the following axioms, for all $\mathbf{u}$,
+$\mathbf{v}$, and $\mathbf{w}$ in $V$ and all scalars $c$:
+\begin{enumerate}
+    \item $\langle\mathbf{u},\mathbf{v}\rangle=\langle\mathbf{v},\mathbf{u}\rangle$
+    \item $\langle\mathbf{u+v},\mathbf{w}\rangle=\langle\mathbf{u},\mathbf{w}\rangle+\langle
+    \mathbf{v},\mathbf{w}\rangle$
+    \item $\langle c\mathbf{u},\mathbf{v}\rangle=c\langle\mathbf{u},\mathbf{v}\rangle$
+    \item $\langle\mathbf{u},\mathbf{u}\rangle\geq 0\quad\text{and}\quad\langle\mathbf{u},
+    \mathbf{u}\rangle=0\text{ if and only if }\mathbf{u=0}$
+\end{enumerate}
+
+A vector space with an inner product is called an \textbf{inner product space}.
+
+\subsubsection*{Theorem 16 --- The Cauchy-Shwarz Inequality}
+For all $\mathbf{u}, \mathbf{v}$ in $V$,
+\[|\langle\mathbf{u},\mathbf{v}\rangle |\leq\|\mathbf{u}\|\:\|\mathbf{v}\|\]
+
+\subsubsection*{Theorem 17 --- The Triangle Inequality}
+For all $\mathbf{u}, \mathbf{v}$ in $V$,
+\[\|\mathbf{u} + \mathbf{v}\| \leq \|\mathbf{u}\| + \|\mathbf{v}\|\]
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item $\langle\mathbf{p},\mathbf{q}\rangle=\mathbf{p}(t_1)\mathbf{q}(t_1) + \cdots +
+    \mathbf{p}(t_n)\mathbf{q}(t_n)$
+    \item The orthogonal projection of a polynomial in an inner product space is 
+    \[\mathbf{\hat{q}}=\frac{\langle\mathbf{q},\mathbf{p_1}\rangle}{\langle\mathbf{p_1},
+    \mathbf{p_1}\rangle} \mathbf{p_1} + \cdots + \frac{\langle\mathbf{q},\mathbf{p_n}\rangle}
+    {\langle\mathbf{p_n}, \mathbf{p_n}\rangle} \mathbf{p_n}\]
+\end{enumerate}
 \end{document}
