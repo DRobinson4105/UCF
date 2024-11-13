@@ -209,6 +209,9 @@ $A\mathbf{x}=\mathbf{b}$ has a unique least-squares solution, given by
     \item If $A$ is an orthogonal set, the weights that form the orthogonal projection of
     $\mathbf{b}$ onto $\text{Col }A$, $\frac{\mathbf{y}\cdot\mathbf{u}_j}{\mathbf{u}_j\cdot
     \mathbf{u}_j}$, form the least-squares solution of $A\mathbf{x}=\mathbf{b}$.
+    \item If $\mathbf{b}$ is in the column space of $A$, then every solution of
+    $A\mathbf{x}=\mathbf{b}$ is a least-squares solution.
+    \item A least-squares solution of $A\mathbf{x}=\mathbf{b}$ is a list of weights that, when applied to the columns of $A$, produces the orthogonal projection of $\mathbf{b}$ onto Col $A$.
 \end{enumerate}
 
 \pagebreak
