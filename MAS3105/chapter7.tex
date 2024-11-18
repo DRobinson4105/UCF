@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{txfonts}
+
+\title{Chapter 6 Symmetric Matrices and Quadratic Forms}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{Diagonalization of Symmetric Matrices}
+
+A \textbf{symmetric} matrix is a matrix $A$ such that $A^T = A$.
+
+\subsubsection*{Theorem 1}
+If $A$ is symmetric, then any two eigenvectors from different eigenspaces are orthogonal.
+
+\subsubsection*{Theorem 2}
+An $n\times n$ matrix $A$ is orthogonally diagonalizable if and only if $A$ is a symmetric matrix.
+
+\subsubsection*{Theorem 3 --- The Spectral Theorem for Symmetric Matrices}
+An $n\times n$ symmetric matrix $A$ has the following properties:
+\begin{enumerate}
+    \item $A$ has $n$ real eigenvalues, counting multiplicities.
+    \item The dimension of the eigenspace for each eigenvalue $\lambda$ equals the multiplicity of
+    $\lambda$ as a root of the characteristic equation.
+    \item The eigenspaces are mutually orthogonal, in the sense that eigenvectors corresponding to
+    different eigenvalues are orthogonal.
+    \item $A$ is orthogonally diagonalizable.
+\end{enumerate}
+
+\subsubsection*{Spectral Decomposition}
+\[A=\lambda_1\mathbf{u}_1\mathbf{u}_1^T+\lambda_2\mathbf{u}_2\mathbf{u}_2^T+\cdots +\lambda_n
+\mathbf{u}_n\mathbf{u}_n^T\]
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item A matrix $U$ is orthogonal if $U^T U = I$, and if so, $U^T=U^{-1}$.
+    \item A matrix $A$ can be orthogonally diagonalized by finding the $n$ eigenvalues and forming
+    $D$ as a diagonal matrix of the eigenvalues and $P$ as the normalized orthogonal eigenvectors
+    for the eigenvalues. (Use Gram-Schmidt Process to form orthogonal basis from eigenvectors).
+    \item Multiplying a column vector $u$ of $\mathbb{R}^n$ on the right by $u^T x$ is the same as
+    multiplying the column vector by the scalar $u\cdot x$.
+\end{enumerate}
+
+\end{document}
