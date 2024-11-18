@@ -36,6 +36,8 @@ An $n\times n$ symmetric matrix $A$ has the following properties:
 \[A=\lambda_1\mathbf{u}_1\mathbf{u}_1^T+\lambda_2\mathbf{u}_2\mathbf{u}_2^T+\cdots +\lambda_n
 \mathbf{u}_n\mathbf{u}_n^T\]
 
+\pagebreak
+
 \subsection*{Key Points}
 \begin{enumerate}
     \item A matrix $U$ is orthogonal if $U^T U = I$, and if so, $U^T=U^{-1}$.
@@ -44,6 +46,55 @@ An $n\times n$ symmetric matrix $A$ has the following properties:
     for the eigenvalues. (Use Gram-Schmidt Process to form orthogonal basis from eigenvectors).
     \item Multiplying a column vector $u$ of $\mathbb{R}^n$ on the right by $u^T x$ is the same as
     multiplying the column vector by the scalar $u\cdot x$.
+\end{enumerate}
+
+\pagebreak
+
+\section*{The Singular Value Decomposition}
+Let $A$ be an $m\times n$ matrix. The singular values of $A$ are the square roots of the
+eigenvalues of $A^T A$, and they are arranged in decreasing order.
+
+\subsubsection*{Theorem 9}
+
+Suppose $\{\mathbf{v}_1, \ldots, \mathbf{v}_n\}$ is an orthonormal basis of $\mathbb{R}^n$
+consisting of eigenvectors of $A^T A$, arranged so that the corresponding eigenvalues of $A^T A$
+satisfy $\lambda_1 \geq \cdots \geq \lambda_n$, and suppose $A$ has $r$ nonzero singular values.
+Then $\{A\mathbf{v}_1, \ldots, A\mathbf{v}_r\}$ is an orthogonal basis for Col $A$, and rank $A=r$.
+
+\subsubsection*{Theorem 10 --- The Singular Value Decomposition}
+
+Let $A$ be an $m\times n$ matrix with rank $r$. Then there exists an $m\times n$ matrix $\Sigma$ as
+in
+\[\Sigma = \begin{bmatrix}
+    D & 0 & \cdots & 0 \\ 0 & 0 & \cdots & 0 \\ \vdots & \vdots & \ddots & 0 \\ 0 & 0 & 0 & 0
+\end{bmatrix}\]
+
+for which the diagonal entries in $D$ are the first $r$ singular values of $A$,
+$\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0$, and there exist an $m\times m$ orthogonal
+matrix $U$ and an $n\times n$ orthogonal matrix $V$ such that
+\[A=U\Sigma V^T\]
+\begin{enumerate}
+    \item $U=\{u_1, \ldots, u_r\}$ where $u_i=\frac{1}{\sigma_i}Av_i$.
+    \item $V$ contains the unit eigenvectors for $A^T A$.
+\end{enumerate}
+
+\subsubsection*{The Invertible Matrix Theorem (concluded)}
+Let $A$ be an $n\times n$ matrix. Then the following statements are each equivalent to the
+statement that $A$ is an invertible matrix:
+
+\begin{enumerate}
+    \item ${(\text{Col }A)}^\perp = \{\mathbf{0}\}$.
+    \item ${(\text{Nul }A)}^\perp = \mathbb{R}^n$.
+    \item $\text{Row }A=\mathbb{R}^n$.
+    \item $A$ has $n$ nonzero singular values.
+\end{enumerate}
+
+\subsection*{Key Points}
+\begin{enumerate}
+    \item Let $A$ be an $m\times n$ matrix. If there are more columns than rows, $m<n$, then the
+    singular value decomposition can be solved by first calculating the singular value
+    decomposition of $A^T$. $A^T=U\Sigma V^T\rightarrow {(A^T)}^T={(U\Sigma V^T)}^T=V\Sigma^T U^T$.
+    \item $\text{det }A=(\text{det }U)(\text{det }\Sigma)(\text{det }V^T)$.
 \end{enumerate}
 
 \end{document}
