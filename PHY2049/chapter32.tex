@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{bigints}
+\usepackage{amssymb}
+
+\title{Chapter 32 AC Circuits}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{AC Sources and Phasors}
+
+The instantaneous emf an AC oscillator can be written as $\varepsilon = \varepsilon_0\cos\omega t$
+where $\varepsilon_0$ is the maximum emf and $\omega = 2\pi f$ is the angular frequency.
+\vspace{1em}
+
+The value of the emf is decreasing when $0 < \omega t < \pi$ and increasing when
+$\pi < \omega t < 2\pi$.
+\vspace{1em}
+
+The resistor voltage is an AC circuit is $v_R = V_R\cos\omega t$ where $V_R$ is the maximum
+voltage.
+\[v_R=i_R R\]
+
+\section*{Capacitor Circuits}
+\[v_C = V_C \cos\omega t\] where $V_C$ is the maximum voltage across the capacitor.
+
+\[q=Cv_C = CV_C \cos\omega t\]
+
+The current is the rate of charge, $i_C = dq/dt$.
+\[i_C=\frac{dq}{dt}=\frac{d}{dt}(CV_C\cos\omega t) = -\omega CV_C \sin\omega t=\omega CV_C\cos
+(\omega t + \frac{\pi}{2})\]
+
+\textbf{The AC current of a capacitor leads the capacitor voltage by $\pi / 2$ rad, or $90^\circ$.}
+\vspace{1em}
+
+Capacitive reactance, $X_C\equiv \frac{1}{\omega C}$, is represented with ohms and shows the
+relationship between peak voltage and peak current.
+\[I_C = \frac{V_C}{X_C}\quad\text{or}\quad V_C=I_C X_C\]
+
+\pagebreak
+
+\section*{RC Filter Circuits}
+
+$V_R$ will increase steadily from $0$ to $\varepsilon_0$ as $\omega$ is increased from $0$ to very
+high frequencies.
+
+\[\omega_c = \frac{1}{RC}\]
+
+\section*{Inductor Circuits}
+\[i_L = I_L\cos(\omega t - \frac{\pi}{2})\]
+where $I_L = V_L / \omega L$ and $V_L = I_L X_L$ is maximum inductor current and voltage.
+\vspace{1em}
+
+\textbf{The AC current through an inductor lags the inductor voltage by $\pi / 2$ rad, or
+$90^\circ$.}
+
+\pagebreak
+
+\section*{The Series $RLC$ Circuit}
+A circuit where a resistor, inductor, and capacitor are in series.
+\begin{enumerate}
+    \item The instantaneous current of all three elements is the same: $i=i_R = i_L = i_C$.
+    \item The sum of the instantaneous voltages matches the emf: $\varepsilon = v_R + v_L + v_C$.
+\end{enumerate}
+
+The peak current in the $RLC$ circuit is
+\[I=\frac{\varepsilon_0}{\sqrt{R^2 + {(X_L - X_C)}^2}} = \frac{\varepsilon_0}{\sqrt{R^2 + {(\omega
+L - 1 / \omega C)}^2}}\]
+
+The three peak voltags are then found from $V_R = IR$, $V_L = IX_L$, and $V_C = IX_C$.
+\vspace{1em}
+
+The denominator in the peak current equation is the impedance, $Z$, of the circuit (measured in
+ohms):
+\[\sqrt{R^2 + {(X_L - X_C)}^2}\]
+
+The current is not in phase with the emf and the phase angle $\phi$ between the emf and the current
+is
+\[\phi = \tan^{-1}\Bigg(\frac{X_L - X_C}{R}\Bigg)\]
+
+The resonance frequency is the frequency for the maximum current,
+$I_\text{max} = \varepsilon_0 / R$, in the series $RLC$ circuit,
+\[\omega_0 = \frac{1}{\sqrt{LC}}\]
+
+\begin{itemize}
+    \item At resonance, the capacitive reactance ($X_C$) and inductive reactance ($X_L$) cancel
+    each other out, meaning $V_C=V_L$.
+    \item If $V_C > V_L$, the circuit operates below resonance frequency.
+    \item If $V_L > V_C$, the circuit operates above resonance frequency.
+\end{itemize}
+
+\section*{Power in AC Circuits}
+The emf supplies energy to a circuit at the rate $p=i\varepsilon$ where $i$ and $\varepsilon$ are
+the instantaneous current from and potential difference across the emf.
+
+\subsection*{Resistors}
+For a resistor,
+\[p_R = i_R v_R = i_R^2 R = I_R^2 R \cos^2 \omega t\]
+
+The average power, $P$, is the total energy dissipated per second.
+\[P_R = I_R^2 R \cos^2 \omega t = I_R^2 R \Big[\frac{1}{2}(1 + \cos 2\omega t)\Big] = \frac{1}{2}
+I_R^2 R + \frac{1}{2}I_R^2 R \cos 2\omega t\]
+
+The average of $\cos 2\omega t$ is zero so
+\[P_R = \frac{1}{2} I_R^2 R\]
+\[P_R = {(I_\text{rms})}^2 R = \frac{{(V_\text{rms})}^2}{R} = I_\text{rms}V_\text{rms}\]
+where $I_\text{rms} = \frac{I_R}{\sqrt{2}}$ is the root-mean-square current.
+
+\subsection*{Capacitors and Inductors}
+The capacitor's and inductor's average power are zero.
+
+\subsection*{The Power Factor}
+\[P_\text{source} =  \frac{1}{2} I \varepsilon_0 \cos\phi = I_\text{rms}\varepsilon_\text{rms}\cos
+\phi\]
+where $\cos\phi$ is the called the power factor and $\phi$ is the phase between the current and
+emf.
+
+\[P_\text{source} = P_\text{max}\cos^2 \phi\]
+where $P_\text{max} = \frac{1}{2} I_\text{max} \varepsilon_0$.
+
+\end{document}
