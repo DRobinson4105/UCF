@@ -52,8 +52,9 @@ high frequencies.
 
 \section*{Inductor Circuits}
 \[i_L = I_L\cos(\omega t - \frac{\pi}{2})\]
-where $I_L = V_L / \omega L$ and $V_L = I_L X_L$ is maximum inductor current and voltage.
-\vspace{1em}
+where $I_L = V_L / X_L$ and $V_L = I_L X_L$ is maximum inductor current and voltage.
+
+\[X_L\equiv \omega L\]
 
 \textbf{The AC current through an inductor lags the inductor voltage by $\pi / 2$ rad, or
 $90^\circ$.}
@@ -76,7 +77,7 @@ The three peak voltags are then found from $V_R = IR$, $V_L = IX_L$, and $V_C = 
 
 The denominator in the peak current equation is the impedance, $Z$, of the circuit (measured in
 ohms):
-\[\sqrt{R^2 + {(X_L - X_C)}^2}\]
+\[Z=\sqrt{R^2 + {(X_L - X_C)}^2}\]
 
 The current is not in phase with the emf and the phase angle $\phi$ between the emf and the current
 is
@@ -121,5 +122,11 @@ emf.
 
 \[P_\text{source} = P_\text{max}\cos^2 \phi\]
 where $P_\text{max} = \frac{1}{2} I_\text{max} \varepsilon_0$.
+
+\section*{Key Points}
+\begin{enumerate}
+    \item The root-mean-square of a value is the maximum value of the quantity divided by
+    $\sqrt{2}$.
+\end{enumerate}
 
 \end{document}
