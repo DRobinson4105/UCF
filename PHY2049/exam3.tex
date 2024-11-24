@@ -1,17 +1,25 @@
-\documentclass[twocolumn]{article}
+\documentclass[8pt,twocolumn]{extarticle}
 \usepackage{amsmath}
 \usepackage[a4paper, top=0.75in, bottom=0.75in, left=0.75in, right=0.75in]{geometry}
 
 \setlength{\parindent}{0pt}
 
 \begin{document}
+Permittivity of free space: $\epsilon_0 = 8.854\times 10^{-12}$
+
+Elementary charge: $e = 1.602\cdot 10^{-19}$
+
+Proton mass: $1.673\cdot 10^{-27}$
+
+Electron mass: $9.11\cdot 10^{-31}$
+
+Speed of light: $c=3\cdot 10^8$
+
+Permeability constant: $\mu_0 = 1.26\times 10^{-6}$
 \subsubsection*{Moving Conductor}
-\[\Delta V = \varepsilon = vlB\]
-\[I = \frac{\varepsilon}{R} = \frac{vlB}{R}\]
+\[I = \frac{\Delta V}{R} = \frac{\varepsilon}{R} = \frac{vlB}{R}\]
 \[F_\text{mag}=F_\text{pull}=IlB=\frac{vl^2 B^2}{R}\]
 \[P_\text{input}=P_\text{dissipated}=I^2 R=\frac{v^2 l^2 B^2}{R}\]
-
-\[\Phi_m=\int\vec{B}\cdot d\vec{A}\]
 \[\Phi_m = \vec{A}\cdot\vec{B}=|A||B|\cos\theta\quad\text{(uniform magnetic field)}\]
 
 \begin{itemize}
@@ -21,21 +29,15 @@
     applied magnetic field.
     \item Steady flux: There is no induced magnetic field.
 \end{itemize}
-
-\[\varepsilon_\text{induced} = \frac{d\Phi_m}{dt}\]
-\[I_\text{induced}=\frac{\varepsilon_\text{induced}}{R}\]
+\[\varepsilon_\text{induced} = \frac{d\Phi_m}{dt}\quad I_\text{induced}=\frac{\varepsilon_\text{induced}}{R}\]
 \[E_\text{inside}=\frac{r}{2}\Big|\frac{dB}{dt}\Big|\quad\text{Solenoid}\]
 \[\frac{V_2}{V_1} = \frac{N_2}{N_1}\quad\text{Transformers}\]
 \subsubsection*{Inductors}
-\[L=\frac{\Phi_m}{I}\text{ henry (H)}\quad\text{Inductance}\]
-\[\Delta V_L = -L\frac{dI}{dt}\]
-\[U_L = L\int_{0}^{I}IdI = \frac{1}{2}LI^2\]
-
+\[L=\frac{\Phi_m}{I}\text{ henry (H)}\]
+\[\Delta V_L = -L\frac{dI}{dt}\quad U_L = L\int_{0}^{I}IdI = \frac{1}{2}LI^2\]
 \subsubsection*{LC Circuits}
-\[I=-\frac{dQ}{dt}\]
-\[Q(t)=Q_0\cos\omega t\]
+\[I=-\frac{dQ}{dt}\quad Q(t)=Q_0\cos\omega t\]
 \[\omega = \frac{1}{\sqrt{LC}}\quad f =\omega / 2\pi \]
-
 \subsubsection*{LR Circuits}
 \[I=I_0 e^{-t/(L / R)}\]
 \[\tau = \frac{L}{R}\quad\text{where current has decreased to }e^{-1}\]
@@ -45,14 +47,38 @@
     \item Point fingers in the direction of magnetic field
     \item Point palm in the face of force on wire
 \end{enumerate}
-
-
+\[\vec{E}_B = \vec{E}_A + \vec{v}_{BA}\times \vec{B}_A\]
+\[\vec{B}_B = \vec{B}_A - \frac{1}{c^2}\vec{v}_{BA}\times \vec{E}_A\]
+\[a\times b = \begin{vmatrix}
+    \hat{\imath} & \hat{\jmath} & \hat{k} \\
+    a_x & a_y & a_z \\
+    b_x & b_y & b_z
+\end{vmatrix}\]
+\[I_\text{disp}=\epsilon_0\frac{d\Phi_e}{dt}=\epsilon_0 \frac{dE\cdot A}{dt}\]
+\[\oint\vec{E}\cdot d\vec{A}=\frac{Q_\text{in}}{\epsilon_0}\quad\text{Gauss's Law}\]
+\[\oint\vec{B}\cdot d\vec{A}=0\quad\text{Gauss's Law for Magnetism}\]
+\[\oint\vec{E}\cdot d\vec{s} = -\frac{d\Phi_m}{dt}\quad\text{Faraday's Law}\]
+\[\oint\vec{B}\cdot d\vec{s} = \mu_0 I_\text{through} + \epsilon_0 \mu_0 \frac{d\Phi_e}{dt}\quad\text{Ampere-Maxwell Law}\]
+\[\vec{F}=q(\vec{E} + \vec{v} \times \vec{B})\quad\text{Lorentz Force Law}\]
+\[E(x, t) = E_0 \cos\left(kx - \omega t + \phi\right)\]
+\begin{enumerate}
+    \item $k=\frac{2\pi}{\lambda}$ where $k$ is wave number and $\lambda$ is wavelength
+    \item $T=\frac{2\pi}{\omega}$ where $T$ is period and $\omega$ is angular frequency
+    \item $f=\frac{1}{T}$ where $f$ is frequency
+    \item $v=f\lambda$ where $v$ is the propagation speed
+    \item $v=\frac{E_0}{B_0}$ where $E_0$ and $B_0$ are the electric and magnetic field components
+\end{enumerate}
+\[E=cB\]
+\[I=\frac{P}{4\pi r^2}=\frac{c\epsilon_0 E_0^2}{2}\]
+\[\langle S \rangle = \frac{1}{\mu_0}EB\sin\theta\]
 \subsubsection*{Right-hand rule (electromagnetic waves)}
 \begin{enumerate}
     \item Point index finger in the direction of electric field
     \item Point middle finger in the direction of magnetic field
     \item Point thumb in the direction of motion
 \end{enumerate}
+\[I_\text{transmitted}=\frac{1}{2} I_0\quad\text{unpolarized}\]
+\[I_\text{transmitted}=I_0\cos^2\theta\quad\text{polarized}\]
 
 \[X_C = \frac{1}{2\pi fC}\] where $X_C$ is the capacitive reactance in ohms, $f$ is the frequency,
 and $C$ is the capacitance.
