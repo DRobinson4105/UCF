@@ -5,13 +5,56 @@
 \setlength{\parindent}{0pt}
 
 \begin{document}
-\subsubsection*{Right-hand rule}
+\subsubsection*{Moving Conductor}
+\[\Delta V = \varepsilon = vlB\]
+\[I = \frac{\varepsilon}{R} = \frac{vlB}{R}\]
+\[F_\text{mag}=F_\text{pull}=IlB=\frac{vl^2 B^2}{R}\]
+\[P_\text{input}=P_\text{dissipated}=I^2 R=\frac{v^2 l^2 B^2}{R}\]
+
+\[\Phi_m=\int\vec{B}\cdot d\vec{A}\]
+\[\Phi_m = \vec{A}\cdot\vec{B}=|A||B|\cos\theta\quad\text{(uniform magnetic field)}\]
+
+\begin{itemize}
+    \item Increasing flux: The induced magnetic field points opposite the applied magnetic
+    field.
+    \item Decreasing flux: The induced magnetic field points in the same direction as the
+    applied magnetic field.
+    \item Steady flux: There is no induced magnetic field.
+\end{itemize}
+
+\[\varepsilon_\text{induced} = \frac{d\Phi_m}{dt}\]
+\[I_\text{induced}=\frac{\varepsilon_\text{induced}}{R}\]
+\[E_\text{inside}=\frac{r}{2}\Big|\frac{dB}{dt}\Big|\quad\text{Solenoid}\]
+\[\frac{V_2}{V_1} = \frac{N_2}{N_1}\quad\text{Transformers}\]
+\subsubsection*{Inductors}
+\[L=\frac{\Phi_m}{I}\text{ henry (H)}\quad\text{Inductance}\]
+\[\Delta V_L = -L\frac{dI}{dt}\]
+\[U_L = L\int_{0}^{I}IdI = \frac{1}{2}LI^2\]
+
+\subsubsection*{LC Circuits}
+\[I=-\frac{dQ}{dt}\]
+\[Q(t)=Q_0\cos\omega t\]
+\[\omega = \frac{1}{\sqrt{LC}}\quad f =\omega / 2\pi \]
+
+\subsubsection*{LR Circuits}
+\[I=I_0 e^{-t/(L / R)}\]
+\[\tau = \frac{L}{R}\quad\text{where current has decreased to }e^{-1}\]
+\subsubsection*{Right-hand rule (wire)}
+\begin{enumerate}
+    \item Point thumb in the direction of current
+    \item Point fingers in the direction of magnetic field
+    \item Point palm in the face of force on wire
+\end{enumerate}
+
+
+\subsubsection*{Right-hand rule (electromagnetic waves)}
 \begin{enumerate}
     \item Point index finger in the direction of electric field
     \item Point middle finger in the direction of magnetic field
     \item Point thumb in the direction of motion
 \end{enumerate}
 
-\[X_C = \frac{1}{2\pi fC}\] where $X_C$ is the capacitive reactance in ohms, $f$ is the frequency, and $C$ is the capacitance.
+\[X_C = \frac{1}{2\pi fC}\] where $X_C$ is the capacitive reactance in ohms, $f$ is the frequency,
+and $C$ is the capacitance.
 
 \end{document}
