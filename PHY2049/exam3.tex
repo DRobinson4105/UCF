@@ -80,7 +80,40 @@ Permeability constant: $\mu_0 = 1.26\times 10^{-6}$
 \[I_\text{transmitted}=\frac{1}{2} I_0\quad\text{unpolarized}\]
 \[I_\text{transmitted}=I_0\cos^2\theta\quad\text{polarized}\]
 
-\[X_C = \frac{1}{2\pi fC}\] where $X_C$ is the capacitive reactance in ohms, $f$ is the frequency,
-and $C$ is the capacitance.
+\[\varepsilon=\varepsilon_0 \cos\omega t\quad \omega=2\pi f\]
+\[v_R = i_R R\quad\text{(AC circuit) and $V_R$ is the maximum voltage}\]
+\subsubsection*{Capacitor circuit}
+\[v_C = V_C\cos\omega t\]
+\[q=Cv_C\]
+\[i_C=-\omega CV_C\sin\omega t=\omega CV_C\cos(\omega t + \frac{\pi}{2})\]
+\[X_C=\frac{1}{\omega C}\quad I_C=\frac{V_C}{X_C}\quad\text{($X_C$ is Capacitive reactance)}\]
+\[\omega_C = \frac{1}{RC}\quad\text{(RC Circuit)}\]
+\subsubsection*{Inductor circuit}
+\[i_L = I_L\cos(\omega t - \frac{\pi}{2})\]
+\[X_L=\omega L\quad I_L=\frac{V_L}{X_L}\quad\text{($X_L$ is Inductive reactance)}\]
+\subsubsection*{Series RLC Circuit}
+\[Z=\sqrt{R^2 + {(X_L - X_C)}^2}\quad\text{(impedance)}\]
+\[I_\text{peak}=\frac{\varepsilon_0}{Z}\]
+\[\phi = \tan^{-1}\Big(\frac{X_L - X_C}{R}\Big)\quad\text{(angle between emf and current)}\]
+\[\omega_0 = \frac{1}{\sqrt{LC}}\quad\text{(resonance frequency)}\]
+\begin{itemize}
+    \item If $V_C > V_L$, the circuit operates below resonance frequency
+    \item If $V_L > V_C$, the circuit operates above resonance frequency
+\end{itemize}
+
+\[p=i\varepsilon\quad\text{(AC circuit)}\]
+$i$ and $\varepsilon$ are instantaneous current and potential difference
+\[P_R = \frac{1}{2}I_R^2 R=I_\text{rms}V_\text{rms}\]\
+\[x_\text{rms}=\frac{x}{\sqrt{2}}\]
+\[P_\text{source}=\frac{1}{2}I\varepsilon_0\cos\phi = I_\text{rms}\varepsilon_\text{rms}\cos\phi=
+P_\text{max}\cos^2\phi\]
+$\cos\phi$ is the power factor, $\phi$ is the phase between current and emf, $P_\text{mas}=
+\frac{1}{2}I_\text{max}\varepsilon_0$.
+
+In an AC circuit with a capacitor, the current leads the voltage by $\frac{\pi}{2}$ so current
+reaches maximum $\frac{T}{4}$ before voltage.
+
+In an AC circuit with an inductor, the current lags the voltage by $\frac{\pi}{2}$ so current
+reaches maximum $\frac{T}{4}$ after voltage.
 
 \end{document}
