@@ -1,3 +1,5 @@
+% chktex-file 44
+
 \documentclass[8pt,twocolumn]{extarticle}
 \usepackage{amsmath}
 \usepackage[a4paper, top=0.25in, bottom=0.25in, left=0.25in, right=0.25in]{geometry}
@@ -16,21 +18,141 @@ Permeability constant: $\mu_0 = 1.26\times 10^{-6}$
 
 $k=9\times 10^9$
 \[\lambda = \frac{Q}{L}\quad\eta = \frac{Q}{A}\quad\rho = \frac{Q}{V}\]
-\[E=\frac{kq}{r^2}\quad F=qE=\frac{kq_1 q_2}{r^2}\quad V=\frac{kq}{r}\quad U=qV=\frac{kq_1 q_2}{r}\quad\text{ (point) }\]
+\[E=\frac{kq}{r^2}\quad F=qE=\frac{kq_1 q_2}{r^2}\quad V=\frac{kq}{r}\quad U=qV=\frac{kq_1 q_2}{r}\quad\text{\textbf{(point)}}\]
 \[E_\text{wire}=\frac{2k|\lambda |}{r}=\frac{2kQ r^2}{R^3 L}\quad E_\text{plane}=\frac{\eta}{2\epsilon_0}\quad E_\text{ring}=\frac{kzQ}{{(z^2 + r^2)}^{3/2}}\]
 \[E_\text{disk}=\frac{\eta}{2\epsilon_0}\Big(1-\frac{z}{\sqrt{z^2 + R^2}}\Big)\quad E_\text{sphere}=\begin{cases}
     \frac{kQ}{r^2} & \text{for } r >= R \\ \\
     \frac{kQr}{R^3} & \text{for } r < R
 \end{cases}\]
 \[\text{Dipole}\begin{cases}
-    p=qd\quad E=-\frac{2kp}{r^3}\text{(on axis)}\quad E=-\frac{kp}{r^3}\text{(on bisecting plane)} \\
+    p=qd\quad E=-\frac{2kp}{r^3}\text{(on axis)}\quad E=-\frac{kp}{r^3}\text{\textbf{(on bisecting plane)}} \\
     \tau = pE\sin\theta\quad V = -pE\cos\theta
 \end{cases}\]
 \[\text{Parallel-Plate Capacitor}\begin{cases}
-    E=\frac{V}{d}=\frac{Q}{\epsilon_0 A}\text{(positive to negative plate)} \\
+    E=\frac{V}{d}=\frac{Q}{\epsilon_0 A}\text{\textbf{(positive to negative plate)}} \\
     s=\text{distance from negative plate} \\
     U=qEs=qV \quad V=\frac{s}{d}\Delta V_C
 \end{cases}\]
 \[\Phi_\text{enc}=EA=\frac{Q_\text{in}}{\epsilon_0}\quad E_\text{conductor surface}=\frac{\eta}{\epsilon_0}\]
 \[W=-q\Delta V\quad \Delta V = -Ed\quad V_\text{sphere} = \frac{4}{3}\pi r^3\quad A_\text{sphere}=4\pi r^2\]
+\[W=Q\times V\quad C = \frac{Q}{\Delta V_C}\]
+\[C=\frac{\epsilon_0 A}{d}\quad Q = \frac{\epsilon_0 A}{d} \Delta V_C\quad\text{\textbf{(parallel-plate capacitor)}}\]
+\[C_\text{eq}=\begin{cases}
+    C_1 + C_2 + \cdots & \text{\textbf{(parallel)}} \\
+    {(\frac{1}{C_1} + \frac{1}{C_2} + \cdots)}^{-1} & \text{\textbf{(sequential)}}
+\end{cases}\]
+\[C=\kappa C_0\]
+\[i_e = n_e Av_d\quad I = n\times A\times e\times v_d\quad n=\text{electron density}\]
+\[\text{Current density}=J=\frac{I}{A}=n_e e v_d\quad I = JA = \sigma AE\quad \sigma = \text{conductivity}\]
+\[\rho = \frac{1}{\sigma} = \text{resistivity}\quad R=\rho \frac{L}{A}\quad I=\frac{A}{\rho L}\Delta V\quad \Delta V = IR\]
+\[R_\text{eq}=\begin{cases}
+    {(\frac{1}{R_1} + \frac{1}{R_2} + \cdots)}^{-1} & \text{\textbf{(parallel)}} \\
+    R_1 + R_2 + \cdots & \text{\textbf{(sequential)}}
+\end{cases}\]
+If one branch in a parallel circuit is opened, the current through the other stays the same
+\vspace{1em}
+
+All parts of a sequential wire have the same current
+\[P=\Delta V_R\times I = I^2 \times R = \frac{{(\Delta V_R)}^2}{R}\]
+\[\tau = RC\quad Q=Q_0 e^{-t/\tau}\quad \Delta V_C = \Delta V_0 e^{-t/\tau}\]
+Right-hand rule for wire (wrap fingers around wire): thumb points toward current and fingers point toward magnetic field
+\vspace{1em}
+
+Right-hand rule for magnetic field: thumb points toward force, palm faces magnetic field, fingers point toward motion
+\[\oint B\cdot dl=Bl=\frac{\mu_0 I}{2\pi r}\times 2 \pi r=\mu_0 I\quad \Phi_m = BA\cos\theta\]
+\[F_B = qv\times B = IL\times B\]
+\[B_\text{point charge} = \frac{\mu_0 q (\vec{v}\times\vec{r})}{4\pi r^3} = \frac{\mu_0 qv\sin\theta}{4\pi r^2}\quad B_\text{wire} = \begin{cases}
+    \frac{\mu_0 I}{2\pi r} & r >= R \\
+    \frac{\mu_0 I r}{2\pi R^2} & r < R
+\end{cases}\]
+\[B_\text{center of current loop}=\frac{\mu_0 N I}{2R}\quad B_\text{solenoid}=\mu_0 n I\quad n=N/L\]
+\[\vec{B}_\text{current segment}=\frac{\mu_0 I \Delta \vec{s}\times \hat{r}}{4\pi r^2}\]
+\[\text{Magnetic dipole moment}=\vec{m}=(AI, \text{from south to north pole})\]
+\[\vec{B}_\text{on axis of dipole}=\frac{\mu_0 \vec{m}}{2\pi z^3}\]
+\[A\times B=(A_y B_z - A_z B_y)\mathbf{i} + (A_z B_x - A_x B_z)\mathbf{j} + (A_x B_y - A_y B_x)\mathbf{k}\]
+
+\begin{center}
+    \begin{tabular}{|c c c c|} 
+        \hline
+        Metal & Electron density ($m^{-3}$) & Resistivity & Conductivity \\ [0.5ex]
+        \hline
+        Aluminum & $18\times 10^{28}$ & $2.8\times 10^{-8}$ & $3.5\times 10^7$ \\
+        \hline
+        Iron & $17\times 10^{28}$ & $9.7\times 10^{-8}$ & $1.0\times 10^7$ \\
+        \hline
+        Copper & $8.5\times 10^{28}$ & $1.7 \times 10^{-8}$ & $6.0\times 10^7$ \\
+        \hline
+        Gold & $5.9\times 10^{28}$ & $2.4\times 10^{-8}$ & $4.1\times 10^7$ \\
+        \hline
+        Silver & $5.8\times 10^{28}$ & $1.6\times 10^{-8}$ & $6.2\times 10^7$ \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Kirchhoff's Law: Branch out from one terminal and set up equations for $\sum \Delta V_i = 0$
+\vspace{1em}
+
+There is no current in the ground wire
+
+\[\Delta V = \varepsilon = vlB\quad\text{\textbf{(moving conductor)}}\]
+\pagebreak
+
+Increasing flux: induced magnetic field points opposite to applied
+
+Decreasing flux: induced magnetic field points same direction to applied
+
+Steady flux: no induced magnetic field
+\[\varepsilon_\text{induced} = -\frac{d\Phi_m}{dt}\quad I_\text{induced}=\frac{\varepsilon_\text{induced}}{R}\]
+\[E_\text{inside}=\frac{r}{2}\Big|\frac{dB}{dt}\Big|\quad\text{solenoid}\]
+\[\frac{V_2}{V_1} = \frac{N_2}{N_1}\quad P_1=P_2\quad V_1 I_1 = V_2 I_2\quad\frac{I_1}{I_2}=\frac{N_2}{N_1}\quad\text{\textbf{(transformers)}}\]
+\[L=\frac{\Phi_m}{I}\quad \Delta V_L = -L\frac{dI}{dt}\quad U_L = L\int_{0}^{I}IdI = \frac{1}{2}LI^2\quad\text{\textbf{(inductors)}}\]
+\[I=-\frac{dQ}{dt}\quad Q(t)=Q_0\cos\omega t\quad \omega = \frac{1}{\sqrt{LC}}\quad\text{\textbf{(LC circuits)}}\]
+\[I=I_0 e^{-t/\tau}\quad\tau = \frac{L}{R}\quad\text{\textbf{(LR circuits)}}\]
+\[\vec{E}_B = \vec{E}_A + \vec{v}_{BA}\times \vec{B}_A\quad \vec{B}_B = \vec{B}_A - \frac{1}{c^2}\vec{v}_{BA}\times \vec{E}_A\]
+Displacement current is from changing electric field rather than flow of charges.
+\[I_\text{disp}=\epsilon_0\frac{d\Phi_e}{dt}=\epsilon_0 \cdot A \frac{dE}{dt}\]
+\[\oint\vec{E}\cdot d\vec{A}=\frac{Q_\text{in}}{\epsilon_0}\quad\text{(Gauss's Law)}\]
+\[\oint\vec{B}\cdot d\vec{A}=0\quad\text{(Gauss's Law for Magnetism)}\]
+\[\oint\vec{E}\cdot d\vec{s} = -N\frac{d\Phi_m}{dt}\quad\text{(Faraday's Law)}\]
+\[\oint\vec{B}\cdot d\vec{s} = \mu_0 I_\text{through} + \epsilon_0 \mu_0 \frac{d\Phi_e}{dt}\quad\text{(Ampere-Maxwell Law)}\]
+\[\vec{F}=q(\vec{E} + \vec{v} \times \vec{B})\quad\text{(Lorentz Force Law)}\]
+\[E(x, t) = E_0 \cos\left(kx - \omega t + \phi\right)\quad c=\frac{\omega}{k}=\frac{\omega\lambda}{2\pi}=f\lambda=\frac{E}{B}\]
+\[I=\frac{P}{4\pi r^2}=\frac{c\epsilon_0 E_0^2}{2}\]
+Average value for $\sin\theta$ is $\frac{1}{2}$
+\[\langle S \rangle = \frac{1}{\mu_0}EB\sin\theta\quad\text{(\textbf{Poynting Vector} --- energy flux of an EM wave)}\]
+Right-hand rule for electromagnetic waves: fingers point toward electric field, palm faces magnetic field, thumb points toward motion
+\[I_\text{transmitted}=\frac{1}{2} I_0\quad\text{\textbf{(unpolarized)}}\quad I_\text{transmitted}=I_0\cos^2
+\theta\quad\text{\textbf{(polarized)}}\]
+\[\varepsilon=\varepsilon_0 \cos\omega t\quad \omega=2\pi f\quad X=\text{Reactance}\]
+\[v_R = i_R R = V_\text{max}\sin\omega t\quad p=i\varepsilon\quad\text{\textbf{(AC circuit)}}\]
+\[\text{Capacitor circuit}\begin{cases}
+    v_C = V_C\cos\omega t\quad q=Cv_C\quad X_C=\frac{1}{\omega C}\quad I_C=\frac{V_C}{X_C}\quad \\
+    i_C=-\omega CV_C\sin\omega t=\omega CV_C\cos(\omega t + \frac{\pi}{2})
+\end{cases}\]
+\[\omega_C = \frac{1}{RC}\quad\text{\textbf{(RC Circuit)}}\]
+An inductor is a coil of wire that generates a magnetic field when current flows through it and
+resist changes in current by inducing an emf opposite to the charge.
+\[\text{Inductor circuit}\begin{cases}
+    i_L = I_L\cos(\omega t - \frac{\pi}{2})\quad V=L\cdot \frac{dI}{dt} \\ \\
+    X_L=\omega L\quad I_L=\frac{V_L}{X_L}
+\end{cases}\]
+\[\text{Series RLC Circuit}\begin{cases}
+    Z=\sqrt{R^2 + {(X_L - X_C)}^2}\quad\text{\textbf{(impedance)}} \\
+    V=\sqrt{V_R^2 + {(V_L - V_C)}^2}\quad I_\text{peak}=\frac{\varepsilon_0}{Z} \\
+    \phi_\text{between emf and current} = \tan^{-1}\Big(\frac{X_L - X_C}{R}\Big) \\
+    \omega_0 = \frac{1}{\sqrt{LC}}=\text{\textbf{resonance angular frequency}}
+\end{cases}\]
+Resonance frequency occurs when $X_L=X_C$ and $Z=R$. If $V_C > V_L$, the circuit operates below resonance frequency. If $V_L > V_C$, the circuit operates above resonance frequency.
+\[P_R = \frac{1}{2}I_R^2 R=I_\text{rms}V_\text{rms}\quad x_\text{rms}=\frac{x}{\sqrt{2}}\]
+\[P_\text{source}=\frac{1}{2}I\varepsilon_0\cos\phi = I_\text{rms}\varepsilon_\text{rms}\cos\phi=
+P_\text{max}\cos^2\phi\]
+where $\cos\phi$ is the power factor, $\phi$ is the phase between current and emf, and $P_\text{max}=
+\frac{1}{2}I_\text{max}\varepsilon_0$.
+\begin{itemize}
+    \item AC circuit with capacitor: current leads voltage by $\frac{\pi}{2}$ (current reaches
+    maximum $\frac{T}{4}$ before voltage)
+    \item AC circuit with inductor: current lags voltage by $\frac{\pi}{2}$ (current reaches
+    maximum $\frac{T}{4}$ after voltage)
+    \item AC circuit with resistor: current is in phase with voltage
+\end{itemize}
 \end{document}
