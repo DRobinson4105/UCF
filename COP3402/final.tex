@@ -1,0 +1,641 @@
+% chktex-file 8
+% chktex-file 12
+% chktex-file 26
+% chktex-file 36
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+
+\newcommand{\inlinecode}[1]{\colorbox{gray!20}{\texttt{#1}}}
+
+\title{Final Exam Notes}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\maketitle
+
+\section*{File Systems and Navigation}
+
+\subsubsection*{What makes the unix file system ``hierarchical''?}
+
+It organizes files and directories, which are just special files, in a tree-like structure, where there is a root directory and each directory can contain other directories and files.
+
+\subsubsection*{What is the difference between absolute vs.\ relative paths?}
+
+Absolute paths start from the root directory while relative paths start from the working directory.
+
+\subsubsection*{How are parent directories referenced in the file system?}
+
+Parent directories are referenced with \inlinecode{..} in the filepath.
+
+\subsubsection*{What is the working directory and how do you display it?}
+
+The working directory for a process is the directory where the process is operating and can be displayed with the \inlinecode{pwd} command.
+
+\subsubsection*{What is the unix standard command to rename a file?}
+
+\inlinecode{mv old-filename new-filename}
+
+\subsubsection*{What is tab-completion?}
+
+A feature that automatically completes commands and filepaths if there is only one option.
+
+\subsubsection*{What unix standard will show you the text of a file?}
+
+\inlinecode{cat filename}
+
+\subsubsection*{How do you change the working directory?}
+
+\inlinecode{cd path} in bash and \inlinecode{chdir()} as a system call, and can be used with relative or absolute file paths.
+
+\subsubsection*{What is the unix command to delete a file?}
+
+\inlinecode{rm filename}
+
+\subsubsection*{How does the implementation of deleting a file work? Does it remove the file's contents from the storage medium?}
+
+The file's metadata, including its directory entry in the parent directory, is removed, but the data remains on disk until it is overwritten by new data.
+
+\section*{Version Control}
+
+\subsubsection*{What git command copies commits from the local repository to the remote repository?}
+
+\inlinecode{git push}
+
+\subsubsection*{What git command copies commits from the remote repository to the local repository?}
+
+\inlinecode{git pull}
+
+\subsubsection*{What git command stages a new file?}
+
+\inlinecode{git add filename}
+
+\subsubsection*{What git command creates a log of the change to a staged file to the local repository?}
+
+\inlinecode{git commit}
+
+\section*{Processes, Advanced Processes}
+
+\subsubsection*{How do you redirect standard in or out of bash command to a file?}
+
+Use \inlinecode{<} to redirect standard in and \inlinecode{>} to redirect standard out.
+
+\subsubsection*{How do you redirect standard out from one command to another command's standard in?}
+
+Use the pipe \inlinecode{|} command between the two comamnds.
+
+\section*{Editor}
+
+\subsubsection*{How do you edit files in vim?}
+
+\inlinecode{vim filename}
+
+\subsubsection*{How do you quit the editor in vim?}
+
+\inlinecode{:q}
+
+\section*{Processes, Pipe, Syscalls}
+
+\subsubsection*{How are processes created with unix system calls?}
+
+The \inlinecode{fork()} command creates a new child process by duplicating the calling process.
+
+\begin{verbatim}
+pid_t pid = fork();
+
+switch (pid) {
+case -1:
+    perror("fork");
+    exit(EXIT_FAILURE);
+case 0:
+    // Child process
+    _exit(EXIT_SUCCESS);
+default:
+    // Parent process
+    break;
+}
+\end{verbatim}
+
+\subsubsection*{How are programs executed with unix system calls?}
+
+The current process is forked and the child process is replaced with the new program, using any of the exec system calls (exel, execv, execle, execve, execlp).
+
+\begin{verbatim}
+// cat filename
+char *args[] = {"cat", "filename", NULL};
+execvp("cat", args);
+\end{verbatim}
+
+\subsubsection*{How are standard in, out, and err redirected with system calls?}
+
+\inlinecode{dup2} can be used to redirect the standard in, out, and err to a new file.
+
+\begin{verbatim}
+int fd = open("data.txt", O_RDWR | O_CREAT, 0644);
+dup2(fd, STDOUT_FILENO);
+dup2(fd, STDERR_FILENO);
+dup2(fd, STDIN_FILENO);
+\end{verbatim}
+
+\subsubsection*{How do pipes work and what do they do?}
+
+The pipe system call creates a temporary file in memory with a pair of connected file descriptors where one is used for writing data to the pipe and the other is used for reading data. In the pipe bash command, the stdout of the first process is redirected to the pipe's write end and the stdin of the second process is redirected to the pipe's read end.
+
+\section*{Source Code vs. Executable}
+
+\subsubsection*{How are executables created from source code?}
+
+Starting with the source code (.c), it is preprocessed (.i), compiled into assembly language (.s), converted to machine language (.o), and linked with libaries and other object files to create a binary file that can be executed.
+
+\subsubsection*{What unix utilities are involved in each phase?}
+
+\begin{enumerate}
+    \item \inlinecode{cpp} --- C Preprocessor
+    \item \inlinecode{gcc} --- C Compiler
+    \item \inlinecode{as} --- Assembler
+    \item \inlinecode{ld} --- Linker
+\end{enumerate}
+
+\section*{SimpleIR}
+
+\subsubsection*{What instructions are available?}
+
+\begin{enumerate}
+    \item Local variables --- variable declaration, variable assignment
+    \item Pointer operations --- reference, dereference
+    \item Arithmetic operators --- add, subtract, multiply, divide, modulus
+    \item Branching --- labels, goto statements, if goto statements
+    \item Function calls and return statements
+\end{enumerate}
+
+\pagebreak
+
+\subsubsection*{SimpleIR Grammar}
+
+\begin{verbatim}
+grammar SimpleIR;
+
+unit: function;
+
+function: 'function' NAME localvars? params? statement* return;
+
+localvars: 'localvars' NAME+;
+
+params: 'params' NAME+;
+
+return: 'return' operand=(NAME | NUM);
+
+statement: assign | deref | ref | assignderef | operation | call | label |
+    goto | ifgoto;
+
+operation: NAME ':=' operand1=(NAME | NUM)
+    operator=('+' | '-' | '*' | '/' | '%') operand2=(NAME | NUM);
+
+assign: NAME ':=' operand=(NAME | NUM);
+
+deref: NAME ':=' '*' NAME;
+
+ref: NAME ':=' '&' NAME;
+
+assignderef: '*' NAME ':=' operand=(NAME | NUM);
+
+call: NAME ':=' 'call' NAME NAME*;
+
+label: NAME ':';
+
+goto: 'goto' NAME;
+
+ifgoto: 'if' operand1=(NAME | NUM)
+    operator=('=' | '!=' | '<' | '<=' | '>' | '>=')
+    operand2=(NAME | NUM) 'goto' labelname=NAME;
+
+NAME: [a-zA-Z_] ([a-zA-Z_] | [0-9])* ;
+NUM: [0-9]+ ;
+
+PLUS: '+' ;
+MINUS: '-' ;
+STAR: '*' ;
+SLASH: '/' ;
+PERCENT: '%' ;
+
+EQ: '=' ;
+NEQ: '!=' ;
+LT: '<' ;
+LTE: '<=' ;
+GT: '>' ;
+GTE: '>=' ;
+
+WS:   [ \t\r\n]+ -> skip ;
+
+COMMENT : '#' ~[\r\n]* -> skip ;
+\end{verbatim}
+
+\pagebreak
+
+\subsubsection*{Sample SimpleIR Programs}
+
+main.ir
+\begin{verbatim}
+function main
+localvars a b x y t1 t2 t3
+params a b
+x := 8
+y := 9
+t1 := &x
+t2 := *t1
+*t1 := 11
+t3 := x
+return x
+\end{verbatim}
+
+arithmetic.ir
+
+\begin{verbatim}
+function main
+localvars argc argv x
+params argc argv
+x := 1 + 2  # 3
+x := x * 6  # 18
+x := x - 1  # 17
+x := x % 10 # 7
+x := x / 3  # 2
+return x    # 2
+\end{verbatim}
+
+branching.ir
+
+\begin{verbatim}
+function main
+localvars a b x y t1 t2
+params a b
+x := 9
+y := 4
+if x < 10 goto true1  # true
+t1 := x + y
+goto end1
+true1:
+t1 := x - y  # 5
+end1:
+if x > 10 goto true2  # false
+t2 := x * y  # 36
+goto end2
+true2:
+t2 := x / y
+end2:
+return x  # 9
+\end{verbatim}
+
+\pagebreak
+
+main.s
+
+\begin{verbatim}
+    .file "main.ir"
+    .section .note.GNU-stack,"",@progbits
+    .text
+    .globl main
+    .type main, @function
+main:
+    # prologue, update stack pointer
+    pushq	%rbp # save old base ponter
+    movq	%rsp, %rbp # set new base pointer
+    push	%rbx # %rbx is callee-saved
+    # allocate stack space for locals
+    sub	$56, %rsp
+    # move register parameter a to local variable
+    mov	%rdi, -8(%rbp)
+    # move register parameter b to local variable
+    mov	%rsi, -16(%rbp)
+    # assign 8 to x
+    mov	$8, %rax
+    mov	%rax, -24(%rbp)
+    # assign 9 to y
+    mov	$9, %rax
+    mov	%rax, -32(%rbp)
+    # ref x to t1
+    mov	%rbp, %rax
+    add	$-24, %rax
+    mov	%rax, -40(%rbp)
+    # deref t1 to t2
+    mov	-40(%rbp), %rax
+    mov	(%rax), %rbx
+    mov	%rbx, -48(%rbp)
+    # assignderef 11 to t1
+    mov	-40(%rbp), %rax
+    mov	$11, %rbx
+    mov	%rbx, (%rax)
+    # assign x to t3
+    mov	-24(%rbp), %rax
+    mov	%rax, -56(%rbp)
+    # set return value
+    mov	-24(%rbp), %rax
+    # epilogue
+    pop	%rbx # restore rbx for the caller
+    mov	%rbp, %rsp # restore old stack pointer
+    pop	%rbp # restore old base pointer
+    ret
+\end{verbatim}
+
+\pagebreak
+
+arithmetic.s
+
+\begin{verbatim}
+    .file "arithmetic.ir"
+    .section .note.GNU-stack,"",@progbits
+    .text
+    .globl main
+    .type main, @function
+main:
+    # prologue, update stack pointer
+    pushq	%rbp # save old base ponter
+    movq	%rsp, %rbp # set new base pointer
+    push	%rbx # %rbx is callee-saved
+    # allocate stack space for locals
+    sub	$24, %rsp
+    # move register parameter argc to local variable
+    mov	%rdi, -8(%rbp)
+    # move register parameter argv to local variable
+    mov	%rsi, -16(%rbp)
+    # operation 1 2 to x
+    mov	$1, %rax
+    mov	$2, %rbx
+    add	%rbx, %rax
+    mov	%rax, -24(%rbp)
+    # operation x 6 to x
+    mov	-24(%rbp), %rax
+    mov	$6, %rbx
+    imul	%rbx, %rax
+    mov	%rax, -24(%rbp)
+    # operation x 1 to x
+    mov	-24(%rbp), %rax
+    mov	$1, %rbx
+    sub	%rbx, %rax
+    mov	%rax, -24(%rbp)
+    # operation x 10 to x
+    mov	-24(%rbp), %rax
+    mov	$10, %rbx
+    cdq
+    idiv	%rbx
+    mov	%rdx, %rax
+    mov	%rax, -24(%rbp)
+    # operation x 3 to x
+    mov	-24(%rbp), %rax
+    mov	$3, %rbx
+    cdq
+    idiv	%rbx
+    mov	%rax, -24(%rbp)
+    # set return value
+    mov	-24(%rbp), %rax
+    # epilogue
+    pop	%rbx # restore rbx for the caller
+    mov	%rbp, %rsp # restore old stack pointer
+    pop	%rbp # restore old base pointer
+    ret
+\end{verbatim}
+
+\pagebreak
+
+branching.s
+
+\begin{verbatim}
+main: (skipped metadata and prologue)
+    # allocate stack space for locals
+    sub	$56, %rsp
+    # move register parameter a to local variable
+    mov	%rdi, -8(%rbp)
+    # move register parameter b to local variable
+    mov	%rsi, -16(%rbp)
+    # assign 9 to x
+    mov	$9, %rax
+    mov	%rax, -24(%rbp)
+    # assign 4 to y
+    mov	$4, %rax
+    mov	%rax, -32(%rbp)
+    # ifgoto x 10 to true1
+    mov	-24(%rbp), %rax
+    mov	$10, %rbx
+    cmp	%rbx, %rax
+    jl true1
+    # operation x y to t1
+    mov	-24(%rbp), %rax
+    mov	-32(%rbp), %rbx
+    add	%rbx, %rax
+    mov	%rax, -40(%rbp)
+    # goto
+    jmp	end1
+true1:
+    # operation x y to t1
+    mov	-24(%rbp), %rax
+    mov	-32(%rbp), %rbx
+    sub	%rbx, %rax
+    mov	%rax, -40(%rbp)
+end1:
+    # ifgoto x 10 to true2
+    mov	-24(%rbp), %rax
+    mov	$10, %rbx
+    cmp	%rbx, %rax
+    jg true2
+    # operation x y to t2
+    mov	-24(%rbp), %rax
+    mov	-32(%rbp), %rbx
+    imul	%rbx, %rax
+    mov	%rax, -48(%rbp)
+    # goto
+    jmp	end2
+true2:
+    # operation x y to t2
+    mov	-24(%rbp), %rax
+    mov	-32(%rbp), %rbx
+    cdq
+    idiv	%rbx
+    mov	%rax, -48(%rbp)
+end2:
+    # set return value
+    mov	-24(%rbp), %rax
+    # epilogue
+    pop	%rbx # restore rbx for the caller
+    mov	%rbp, %rsp # restore old stack pointer
+    pop	%rbp # restore old base pointer
+    ret
+\end{verbatim}
+
+\section*{Function Implementation}
+
+\subsubsection*{Stack frames, its contents}
+
+The stack frame stores any remaining parameters after the first six, return address, old base pointer, and local variables, in that order from high address to low address.
+
+\subsubsection*{System V AMD64 ABI}
+
+The Application Binary Interface that defines how software components, such as functions or libraries, interact at the binary level on the AMD64/x86-64 architecture, such as passing parameters and setting up the stack with prologue and epilogue.
+
+\subsubsection*{Parameter passing}
+
+The first six parameters are stored in the registers: RDI, RSI, RDX, RCX, R8, and R9, and the rest are pushed onto the stack.
+
+\subsubsection*{Prologue and epilogue}
+
+The prologue saves the base pointer and sets a new one, allocates space for local variables, and pushes any callee-saved registers onto the stack. The epilogue restores the stack pointer, base pointer, and any registers that the function modified, as well as returning to the caller's instruction pointer.
+
+\subsubsection*{call and ret behavior}
+
+The \inlinecode{call} instruction saves the return address and branches to the function. The \inlinecode{ret} instruction pops the return address and branches to it.
+
+\subsubsection*{Comparison of SimpleIR functions to assembly ``functions''}
+
+An assembly function call is just a branch while a SimpleIR function call includes passing all the parameters to the registers and stack, saves the return address, branches to the function, and executes the function prologue.
+
+\section*{Variables}
+
+\subsubsection*{Local variable layout in the stack frame}
+
+Local variables are stored below the base pointer and the stack pointer (rsp) decreases as more data is pushed onto the stack. In the SimpleIR language the pointer, decreases by 8 so the first variable is stored at \inlinecode{-8(\%rbp)}, second at \inlinecode{-16(\%rbp)}, etc.
+
+\subsubsection*{Assignment, both immediate values and from other variables}
+
+Set the value of the rax register to the immediate value or value of other variable, then assign the value of rax to the new variable.
+
+\begin{verbatim}
+mov	$1, %rax
+mov	%rax, -16(%rbp)
+
+mov	-16(%rbp), %rax
+mov	%rax, -24(%rbp)
+\end{verbatim}
+
+\subsubsection*{The compiler's symbol table}
+
+Maps each variable to its offset from the base pointer in the stack
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Variable} & \textbf{Offset} \\ \hline
+    x & -8 \\ \hline
+    a & -16 \\ \hline
+    b & -24 \\ \hline
+    \end{tabular}
+    \end{table}
+
+\subsubsection*{Assembly instruction support for accessing variables in the stack frame}
+
+\inlinecode{offset(\%rbp)}
+
+\section*{Arithmetic}
+
+\subsubsection*{What x86-64 instructions are used for each arithmetic operator in SimpleIR?}
+
+\begin{enumerate}
+    \item Addition: \inlinecode{add}
+    \item Subtraction: \inlinecode{sub}
+    \item Multiplication: \inlinecode{imul}
+    \item Dividion and Modulus: \inlinecode{cdq} and \inlinecode{idiv}
+\end{enumerate}
+
+\subsubsection*{SimpleIR arithmetic commands vs. x86-64 assembly (number of arguments, behavior)}
+Store the two operands to \%rax and \%rbx, perform the operation, and store the result to the x variable in the stack. Also, SimpleIR command takes in the resulting variable, while the x86-64 command stores the result in one of the registers.
+
+\begin{enumerate}
+    \item Addition: \inlinecode{x := a + b} vs. \inlinecode{add \%rbx \%rax} (sum stored in \%rax)
+    \item Subtraction: \inlinecode{x := a - b} vs. \inlinecode{sub \%rbx \%rax} (difference stored in \%rax)
+    \item Multiplication: \inlinecode{x := a * b} vs. \inlinecode{sub \%rbx \%rax} (product stored in \%rax)
+    \item Division and Modulus: \inlinecode{x := a / b} or \inlinecode{x := a \% b} vs. \inlinecode{cdq}, \inlinecode{idiv \%rbx} (quotient stored in \%rax and remainder stored in \%rdx)
+\end{enumerate}
+\section*{Branching}
+
+\subsubsection*{Unconditional branching in SimpleIR vs. x86-64 assembly}
+
+\inlinecode{goto label} vs. \inlinecode{jmp label}
+
+\subsubsection*{Conditional branching in SimpleIR and x86-64 assembly}
+
+SimpleIR
+\begin{verbatim}
+    if x <= 10 goto falselabel
+    x := 11
+falselabel:
+    x := x + 1
+    return x
+\end{verbatim}
+
+x86-64 Assembly
+\begin{verbatim}
+    # ifgoto x <= 10 to falselabel
+    mov	-8(%rbp), %rax
+    mov	$10, %rbx
+    cmp	%rbx, %rax
+    jle falselabel
+    # assign 11 to x
+    mov	$11, %rax
+    mov	%rax, -8(%rbp)
+falselabel:
+    # operation x + 1 to x
+    mov	-8(%rbp), %rax
+    mov	$1, %rbx
+    add	%rbx, %rax
+    mov	%rax, -8(%rbp)
+\end{verbatim}
+
+\subsubsection*{How if, while, and for can be implemented in SimpleIR}
+
+\begin{enumerate}
+    \item If statement: Set a label at the end of the statement block. Add an \inlinecode{ifgoto} statement at the beginning of the statement block that jumps to the label if the condition is false.
+    \item While loop: Set labels at the beginning and end of the statement block. Right before the start label, add an \inlinecode{ifgoto} statement that jumps to the end label if the condition is false. Right before the end label, add an \inlinecode{ifgoto} statement that jumps to the beginning label if the condition is true.
+    \item For loop: Do the same as while loop but add the initialization code before the beginning ifgoto statement and add the update code before the end ifgoto statement.
+\end{enumerate}
+
+\subsubsection*{Jump instructions in x86-64 assembly}
+
+je, jne, jl, jle, jg, jge
+
+\section*{Pointers}
+
+\subsubsection*{SimpleIR's three pointer operations: reference, dereference, and dereference assignment}
+
+\begin{enumerate}
+    \item Reference: \inlinecode{t1 := \&x}
+    \item Dereference: \inlinecode{t2 := *t1}
+    \item Dereference assignment: \inlinecode{*t1 := 11}
+\end{enumerate}
+
+\subsubsection*{x86-64 mov instructions for performing register indirect stores and loads}
+
+\begin{enumerate}
+    \item Register indirect store: \inlinecode{mov (\%rax), \%rbx} (stores the value in rbx into the memory address stored in rax)
+    \item Register indirect load: \inlinecode{mov \%rax, (\%rbx)} (loads the value at the memory address stored in rbx into rax)
+\end{enumerate}
+
+\subsubsection*{Implementing SimpleIR's pointer operations in x86-64 assembly}
+
+If offset of x is $-24$, offset of t1 is $-40$, and offset of t2 is $-48$.
+
+\begin{enumerate}
+    \item Reference:
+\begin{verbatim}
+mov %rbp, %rax
+add $-24, %rax
+mov %rax, -40(%rbp)
+\end{verbatim}
+    \item Dereference:
+\begin{verbatim}
+mov -40(%rbp), %rax
+mov (%rax), %rbx
+mov %rbx, -48(%rbp)
+\end{verbatim}
+    \item Dreference assignment:
+\begin{verbatim}
+mov -40(%rbp), %rax
+mov $11, %rbx
+mov %rbx, (%rax)
+\end{verbatim}
+\end{enumerate}
+
+\end{document}
