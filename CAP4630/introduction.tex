@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Introduction}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Supervised Learning}
+
+Supervised learning involves training a model on a labeled dataset, where the correct output is provided for each input.
+
+\begin{enumerate}
+    \item Data Collection - Gather labeled data for training
+    \item Model Training - Use algorithms to learn the mapping from inputs to outputs
+    \item Model Evaluation - Test the model on unseen data to evaluate its performance
+\end{enumerate}
+
+\subsection*{Applications}
+
+\begin{enumerate}
+    \item Linear Regression - Finds the line of best fit through the data points to predict output based on input features
+    \item Logistic Regression - Uses the sigmoid function to map predicted values to probabilities between 0 and 1
+    \item Decision Trees
+    \item Splits the data into subsets based on the most informative features, forming a tree-like structure
+\end{enumerate}
+
+\section*{Unsupervised Learning}
+
+Unsupervised learning involves training a model on data without labeled responses, where the model attempts to identify patterns, relationships, or structures within the data.
+
+\begin{enumerate}
+    \item Data Collection - Gather data without labels
+    \item Model Training - Use algorithms to find hidden structures within the data
+    \item Interpretation - Analyze the output to gain insights or make decisions
+\end{enumerate}
+
+\subsection*{Applications}
+
+\begin{enumerate}
+    \item K-Means Clustering - Divides the data into K clusters, where each point belongs to the cluster with the nearest mean
+    \item Principle Component Analysis (PCA) - Transforms the data into a set of linearly uncorrelated components that capture the most variance
+\end{enumerate}
+
+\section*{Reinforcement Learning}
+
+Reinforcement learning involves training a model to learn how to behave in an environment by performing actions and seeing the results.
+
+\subsection*{Applications}
+
+\begin{enumerate}
+    \item Q-Learning - Updates a Q-table that maps state-action pairs to expected future rewards
+    \item Deep Q-Networks (DQN) - Uses a neural network to approximate the Q-function, allowing it to handle large state spaces
+\end{enumerate}
+
+\end{document}
