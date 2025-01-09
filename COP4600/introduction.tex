@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Introduction}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Von Neumann Architecture}
+
+Designed to run a sequence of instructions and required weeks of rewiring to reconfigure the sequence.
+
+\begin{enumerate}
+    \item Fetch - Load an instruction from memory into a CPU register
+    \item Decode - Parse the instruction, determining how this instruction needs to be executed
+    \item Execute - Run the instruction
+    \item Repeat
+\end{enumerate}
+
+\section*{VM/0}
+
+\begin{enumerate}
+    \item Load the address of the next instruction into the memory address register (MAR)
+    \item Increment the program counter
+    \item Load the instruction into the memory data register (MDR)
+    \item Load the instruction into the instruction register
+    \item Decode the instruction
+    \item Execute the instruction
+    \item Repeat
+\end{enumerate}
+
+\subsection*{Incorporating Error Handling}
+
+\begin{itemize}
+    \item An overflow flip-flop bit gets set when an overflow condition occurs.
+    \item The error handling instruction is stored in the NEWPC register.
+    \item Before the next instruction in the sequence, the CPU checks the overflow bit and if it is set, it executes the instruction stored in NEWPC.
+\end{itemize}
+
+\subsection*{Incorporating Memory Protection}
+
+\begin{itemize}
+    \item Memory bounds for a program are stored in a FENCE register.
+    \item An out-of-bounds flip-flop bit gets set when a requested address exceeds the FENCE value.
+\end{itemize}
+
+Instructions are divided between privileged and unprivileged (opcodes above a certain value are considered privileged). The system can also be running in privileged or unprivileged mode. If the system is running in unprivileged mode but the instruction is privileged, the system will throw an error.
+
+\section*{Interrupt Handler Vector}
+\begin{enumerate}
+    \item Address Overflow Handler
+    \item Address Memory Protection (MP) Handler
+    \item Address Program Interrupt (PI) Handler
+    \item Address Timer Handler
+    \item Address I/O Handler
+    \item Address Supervisor Call (SVC) Handler
+\end{enumerate}
+
+\section*{Operating System Principles}
+
+\begin{enumerate}
+    \item \textbf{Virtualization}
+    
+    Processes only have access to virtual representations of resources, but they can operate under the assumption that they have the resource to themselves.
+
+    \item \textbf{Concurrency}
+    
+    Processes and threads can be executed simultaneously. The concurrency must not be exposed to independent processes, but the operating system needs to provide synchronization abstractions and prevent deadlocking.
+
+    \item \textbf{Persistence}
+    
+    Data on disk are abstracted to the files and directories that make up filesystems. Also, some data must be allowed to persist through reboots or system crashes.
+\end{enumerate}
+
+\section*{Operating Systems}
+\begin{enumerate}
+    \item Atlas - Introduced the concept of system calls
+    \item UNIX - Promoted the idea of building small, powerful programs that could be connected together
+    \item DOS - Represented a leap backwards for OS development because it was designed for single-task and single-user, but there were earlier operating systems like UNIX and Multics that supported multitasking and multi-user.
+\end{enumerate}
+
+\end{document}
