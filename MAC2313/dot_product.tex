@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Dot Product}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+The \textbf{dot product} of vectors $\mathbf{u}=\langle u_1, u_2, u_3 \rangle$ and $\mathbf{v}=\langle v_1, v_2, v_3 \rangle$ is given by the sum of the products of the components.
+\[\mathbf{u}\cdot \mathbf{v}=u_1 v_1 + u_2 v_2 + u_3 v_3 = \|\mathbf{u}\| \|\mathbf{v}\| \cos\theta\]
+
+\subsection*{Properties of the Dot Product}
+Let $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ be vectors, and let $c$ be a scalar.
+
+\[
+\begin{array}{ll}
+    \mathbf{u}\cdot\mathbf{v} = \mathbf{v}\cdot\mathbf{u} & \text{Commutative property} \\[5pt]
+    \mathbf{u}\cdot (\mathbf{v}+\mathbf{w}) = \mathbf{u}\cdot\mathbf{v} + \mathbf{u}\cdot\mathbf{w} & \text{Distributive property} \\[5pt]
+    c (\mathbf{u}\cdot\mathbf{v}) = (c\mathbf{u})\cdot\mathbf{v} = \mathbf{u}\cdot (c\mathbf{v}) & \text{Associative property} \\[5pt]
+    \mathbf{v}\cdot\mathbf{v} = {\|\mathbf{v}\|}^2 & \text{Property of magnitude}
+\end{array}
+\]
+
+\subsection*{Orthogonal Vectors}
+The nonzero vectors $\mathbf{u}$ and $\mathbf{v}$ are \textbf{orthogonal vectors} if and only if $\mathbf{u}\cdot\mathbf{v} = 0$.
+
+\subsection*{Direction Angles}
+The angles formed by a nonzero vector and the coordinate axes are called the \textbf{direction angles} for the vector. The cosines for these angles are called the \textbf{direction cosines}.
+
+\subsection*{Projections}
+
+The \textbf{vector projection} of $\mathbf{v}$ onto $\mathbf{u}$ represents the component of $\mathbf{v}$ that acts in the direction of $\mathbf{u}$.
+\[\text{proj}_\mathbf{u} \mathbf{v} = \frac{\mathbf{u}\cdot\mathbf{v}}{{\|\mathbf{u}\|}^2} \mathbf{u} \quad \text{comp}_\mathbf{u} \mathbf{v} = \frac{\mathbf{u}\cdot\mathbf{v}}{\|\mathbf{u}\|}\]
+
+\subsection*{Work}
+When a constant force is applied to an object so the object moves in a straight line from point $P$ to point $Q$, the work $W$ done by the force $\mathbf{F}$, acting at an angle $\theta$ from the line of motion is
+\[W=\mathbf{F}\cdot \overrightarrow{PQ} = \|\mathbf{F}\|\|\overrightarrow{PQ}\|\cos\theta\]
+
+\end{document}
