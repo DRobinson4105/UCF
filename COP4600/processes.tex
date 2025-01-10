@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Processes}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Process}
+An instance of a program that runs in memory.
+
+\subsubsection*{Process Context}
+
+\begin{enumerate}
+    \item \textbf{CPU}
+    
+    Instruction Pointer and Stack Pointer
+
+    \item \textbf{Memory}
+    
+    Set of memory addresses where the process lives \verb|(cat /proc/<PID>/maps)|
+
+    \item \textbf{Disk}
+    
+    Set of open file descriptors \verb|(cat /proc/<PID>/fdinfo)|
+\end{enumerate}
+
+\end{document}
