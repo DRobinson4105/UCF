@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Lines and Planes}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Parametric and Symmetric Equations of a Line}
+
+A line $L$ parallel to vector $\mathbf{v}=\langle a, b, c\rangle$ and passing through point $P = (x_0, y_0, z_0)$ can be described by the following parametric equations.
+\[x = x_0 + ta\quad y=y_0 + tb\quad z=z_0 + tc\]
+
+If the constants $a$, $b$, and $c$ are all nonzero, then $L$ can be described by the symmetric equation of the line.
+\[\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}\]
+
+\subsection*{Distance from a Point to a Line}
+Let $L$ be a line in space passing through point $P$ with direction vector $\mathbf{v}$. If $M$ is any point not on $L$, then the distance from $M$ to $L$ is
+\[d=\frac{\|\overrightarrow{PM}\times\mathbf{v}\|}{\|\mathbf{v}\|}\]
+
+\subsection*{Equations for a Plane}
+\begin{enumerate}
+    \item \textbf{Vector Equation}
+    
+    Given a point $P$ and vector $\mathbf{n}$, the set of all points $Q$ satisfying the following equation forms a plane.
+    \[\mathbf{n}\cdot\overrightarrow{PQ}=0\]
+
+    \item \textbf{Scalar Equation}
+
+    Given a plane containing $P=(x_0, y_0, z_0)$ with normal vector $\mathbf{n}=\langle a, b, c\rangle$.
+    \[a(x-x_0) + b(y-y_0) + c(z-z_0) = 0\]
+
+    \item \textbf{General Form of the Equation}
+    
+    \[ax+by+cz+d=0\] where $d=-ax_0 - by_0 - cz_0$.
+\end{enumerate}
+
+\subsection*{The Distance between a Plane and a Point}
+
+Suppose a plane with normal vector $\mathbf{n}$ passes through point $Q$. The distance $d$ from the plane to a point $P$ not in the plane is given by
+\[d=\|\text{proj}_n\overrightarrow{QP}\|=|\text{comp}_n\overrightarrow{QP}|=\frac{|\overrightarrow{QP}\cdot\mathbf{n}|}{\|\mathbf{n}\|}\]
+
+Let $P = (x_0, y_0, z_0)$ be a point. The distance from $P$ to plane $ax+by+cz+k=0$ is given by
+\[d=\frac{|ax_0 + by_0 + cz_0 + k|}{\sqrt{a^2 + b^2 + c^2}}\]
+
+\subsection*{Line of Intersection}
+
+The direction vector of the line of intersection of two planes is given by the cross product of their normal vectors.
+
+\subsection*{Angle between Two Intersecting Planes}
+
+\[\cos\theta = \frac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{\|\mathbf{n}_1\|\|\mathbf{n}_2\|}\quad \theta = \cos^{-1}\Bigg(\frac{|\mathbf{n}_1\cdot\mathbf{n}_2|}{\|\mathbf{n}_1\|\|\mathbf{n}_2\|}\Bigg)\]
+
+\end{document}
