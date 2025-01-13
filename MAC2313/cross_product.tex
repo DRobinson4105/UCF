@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Cross Product}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+Let $\mathbf{u}=\langle u_1, u_2, u_3 \rangle$ and $\mathbf{v}=\langle v_1, v_2, v_3\rangle$. Then, the \textbf{cross product} $\mathbf{w}$ is a vector that is orthogonal to both $\mathbf{u}$ and $\mathbf{v}$.
+\[\mathbf{w} = \langle u_2 v_3 - u_3 v_2,\: -(u_1 v_3 - u_3 v_1),\: u_1 v_2 - u_2 v_1 \rangle\]
+
+\subsection*{Properties of the Cross Product}
+Let $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ be vectors, and let $c$ be a scalar.
+
+\[
+\begin{aligned}
+    \mathbf{u}\times\mathbf{v} & = -(\mathbf{v}\times\mathbf{u}) \\[5pt]
+    \mathbf{u}\times (\mathbf{v}+\mathbf{w}) & = \mathbf{u}\times\mathbf{v} + \mathbf{u}\times\mathbf{w} \\[5pt]
+    c (\mathbf{u}\times\mathbf{v}) & = (c\mathbf{u})\times\mathbf{v} = \mathbf{u}\times (c\mathbf{v}) \\[5pt]
+    \mathbf{u}\times\mathbf{0} & = \mathbf{0}\times\mathbf{u} = 0 \\[5pt]
+    \mathbf{v}\times\mathbf{v} & = \mathbf{0} \\[5pt]
+    \mathbf{u}\cdot (\mathbf{v}\times\mathbf{w}) & = (\mathbf{u}\times\mathbf{v})\cdot\mathbf{w}
+\end{aligned}
+\]
+
+\subsection*{Magnitude of the Cross Product}
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors, and let $\theta$ be the angle between them. Then,
+\[\|\mathbf{u}\times\mathbf{v}\| = \|\mathbf{u}\|\cdot\|\mathbf{v}\|\cdot\sin\theta\]
+
+\subsection*{Cross Product using Determinant}
+Let $\mathbf{u}=\langle u_1, u_2, u_3 \rangle$ and $\mathbf{v}=\langle v_1, v_2, v_3 \rangle$ be vectors. Then the cross product $\mathbf{w}$ is
+\[\mathbf{w}=\begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+u_1 & u_2 & u_3 \\
+v_1 & v_2 & v_3
+\end{vmatrix}\]
+
+\subsection*{Area of a Parallelogram}
+If we locate vectors $\mathbf{u}$ and $\mathbf{v}$ such that they form adjacent sides of a parallelogram, then the area of the parallelogram is given by $\|\mathbf{u}\times\mathbf{v}\|$
+
+\subsection*{The Triple Scalar Product}
+The \textbf{triple scalar product} of vectors $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ is
+\[\mathbf{u}\cdot (\mathbf{v}\times\mathbf{w})=\begin{vmatrix}
+    u_1 & u_2 & u_3 \\
+    v_1 & v_2 & v_3 \\
+    w_1 & w_2 & w_3
+\end{vmatrix}\].
+
+\subsection*{Volume of a Parallelepiped}
+
+The volume of a parallelepiped with adjacent edges given by the vectors $\mathbf{u}$, $\mathbf{v}$, and $\mathbf{w}$ is the absolute value of the triple scalar product
+\[V=|\mathbf{u}\cdot (\mathbf{v}\times\mathbf{w})|\]
+
+\subsection*{Torque}
+\textbf{Torque}, $\tau$, measures the tendency of a force to produce rotation about an axis of rotation. Let $\mathbf{r}$ be a vector with an initial point located on the axis of rotation and with a terminal point located at the point where the force is applied, and let vector $\mathbf{F}$ represent the force. Then torque is equal to the cross product of $\mathbf{r}$ and $\mathbf{F}$.
+\[\tau = \mathbf{r}\times\mathbf{F}\]
+
+\end{document}
