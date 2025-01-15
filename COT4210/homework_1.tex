@@ -2,6 +2,9 @@
 \usepackage{amsmath}
 \usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
 \usepackage{enumitem}
+\usepackage{graphicx}
+
+\graphicspath{ {./images/} }
 
 \title{Homework 1}
 \author{David Robinson}
@@ -64,7 +67,36 @@ Since there are $n$ nodes but only $n-1$ possible degree values, at least two no
 \subsection*{Problem 4: DFA Construction}
 
 \begin{enumerate}[label=\Alph*.]
-    \item First item
+    \item
+    $q_0$: \textbf{Starting state or when there are an even number of a's and even number of b's, and the last character was `b'.} The string cannot start with `a' because then if `b' is added, it will contain the substring `ab' and there needs to be at least one `b' to have an odd number of `b's.
+    
+    $q_1$: \textbf{Accept state when there are an even number of a's and odd number of b's, and the last character was `a'.} The string cannot follow `a' with `b' or else the string will contain the substring `ab'.
+
+    $q_2$: \textbf{Accept state when there are an even number of a's and odd number of b's, and the last character was `b'.}
+
+    $q_3$: \textbf{When there are an odd number of a's and odd number of b's, and the last character was `a'.} The string cannot follow `a' with `b' or else the string will contain the substring `ab'.
+
+    $q_4$: \textbf{Trap state when the string contains the substring `ab'.}
+    
+    \begin{center}
+        \includegraphics[scale=1]{dfa.png}
+    \end{center}
+
+    \item DFA that recognizes C
+    
+    \begin{center}
+        \includegraphics[scale=0.65]{dfa2.png}
+    \end{center}
+\end{enumerate}
+
+\pagebreak
+
+\subsection*{Problem 5: Regular Language Properties}
+
+\begin{enumerate}[label=\Alph*.]
+    \item You can obtain $\mathbf{M'}$ by swapping the accept and non-accept states in $M$, where all accept states are now non-accept states and all non-accept states are now accept staes.
+    \item The complement of $\mathbf{B}$, contains all strings that are not in $\mathbf{B}$. By swapping the accept and non-accept states in $\mathbf{M}$, all strings that are accepted by $\mathbf{M}$ will be rejected by $\mathbf{M'}$ and all strings that are rejected by $\mathbf{M}$ will be accepted by $\mathbf{M'}$. Since a DFA separates strings into accepted and rejected groups, flipping these groups from $\mathbf{B}$ recognizes the complement of $\mathbf{B}$.
+    \item Since all strings that are not accepted by a DFA recognizing a regular langauge $\mathbf{B}$ are accepted by a DFA recognizing its complement, the class of regular languages is closed under complement.
 \end{enumerate}
 
 \end{document}
