@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Quiz 1}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vectors and Matrices}
+
+\[X=\begin{bmatrix}
+    2 & 4 \\ 1 & 3
+\end{bmatrix}\quad y=\begin{bmatrix}
+    1 \\ 3
+\end{bmatrix}\]
+
+\begin{enumerate}
+    \item \textbf{Compute the Euclidean norm $\|y\|_2$ of the vector $y$.}
+    \[\|y\|_2 = \sqrt{1^2+3^2} = \sqrt{10}\]
+    \item \textbf{Compute the product $Xy$.}
+    \[Xy=\begin{bmatrix}
+        2\cdot 1 + 4 \cdot 3 \\ 1\cdot 1 + 3\cdot 3
+    \end{bmatrix}=\begin{bmatrix}
+        14 \\ 10
+    \end{bmatrix}\]
+    \item \textbf{Determine if $X$ is symmetric. Explain your reasoning.}
+    
+    $X$ is not symmetric because $X$ does not equal $X^T$.
+    \[X=\begin{bmatrix}
+        2 & 4 \\ 1 & 3
+    \end{bmatrix}\quad X^T=\begin{bmatrix}
+        2 & 1 \\ 4 & 3
+    \end{bmatrix}\]
+    \item \textbf{What is the rank of the matrix $X$? Explain your answer.}
+    \[\begin{vmatrix}
+        2 & 4 \\ 1 & 3
+    \end{vmatrix}=6-4=2\]
+    Since the determinant is not zero, the matrix is full rank so the rank is the minimum between the number of columns and rows, which is 2.
+\end{enumerate}
+
+\section*{Calculus}
+\begin{enumerate}
+    \item \textbf{If $f(x)=x^3+2x^2-x$, find the first derivative $f'(x)$.}
+    \[f'(x)=3x^2+4x-1\]
+    \item \textbf{Evaluate the derivative of $f(x)=\sin (x)+x^2$ at $x=\pi / 4$.}
+    \[f'(x)=\cos (x)+2x \rightarrow f'(\pi/4)=\cos(\pi/4)+2(\pi / 4)= \sqrt{2}/2 + \pi / 2\]
+    \item \textbf{Given $g(x_1, x_2)=x_1^2+2x_2^2$, compute the partial derivatives $\frac{\partial g}{\partial x_1}$ and $\frac{\partial g}{\partial x_2}$.}
+    \[\frac{\partial g}{\partial x_1}=2x_1\quad \frac{\partial g}{\partial x_2}=4x_2\]
+\end{enumerate}
+
+\pagebreak
+
+\section*{Probability and Statistics}
+\begin{enumerate}
+    \item \textbf{Given a data set $S=\{2, 4, 6, 8, 10\}$, calculate the mean.}
+    \[\overline{S}=\frac{2+4+6+8+10}{5}=\frac{30}{5}=6\]
+    \item \textbf{Calculate the sample variance of the data set $S=\{2, 4, 6, 8, 10\}$.}
+    \[s^2 = \frac{{(2-6)}^2+{(4-6)}^2+{(6-6)}^2+{(8-6)}^2+{(10-6)}^2}{4}=\frac{16+4+4+16}{4}=\frac{40}{4}=10\]
+    \item \textbf{If you flip a fair coin three times, what is the probability of getting exactly two heads?}
+    \[P=\binom{3}{2}{\Bigg(\frac{1}{2}\Bigg)}^2{\Bigg(1-\frac{1}{2}\Bigg)}^1=\frac{3!}{2!(3-2)!}\frac{1}{4}\cdot\frac{1}{2}=3\cdot \frac{1}{8}=\frac{3}{8}\]
+    \item \textbf{Explain the difference between the mean and median of a data set.}
+    
+    The mean is the average of the values, or the sum of the values divided by the number of values. The median is the  middle value in the ascending order of the data set. In a data set with an even length, the median is the average of the two middle values.
+\end{enumerate}
+
+\section*{Linear Algebra}
+\begin{enumerate}
+    \item \textbf{What is the determinant of the matrix $X=\begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}$?}
+    \[\begin{vmatrix}
+        1 & 2 \\ 3 & 4
+    \end{vmatrix}=1\cdot 4 - 2\cdot 3 = -2\]
+    \item \textbf{Show that the vector $u=\begin{bmatrix}1 \\ -1\end{bmatrix}$ is orthogonal to the vector $v=\begin{bmatrix}1 \\ 1\end{bmatrix}$.}
+    \[u\cdot v = 1 - 1 = 0\]
+    Since the dot product of the two vectors is 0, the vectors are orthogonal.
+\end{enumerate}
+
+\end{document}
