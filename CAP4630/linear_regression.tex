@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Linear Regression}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Simple Linear Regression} involves one independent variable and one dependent variable.
+\[y=\theta_0 + \theta_1x_1\]
+\textbf{Multiple Linear Regression} involves multiple independent variables and one dependent variable.
+\[y=\theta_0+\theta_1x_1+\theta_2x_2+\cdots +\theta_n x_n\]
+
+\section*{Gradient Descent}
+Gradient descent is an iterative optimization algorithm used to minimize the cost function $J(\theta)$ by updating the model parameters $\theta$.
+
+\subsubsection*{Update Rule}
+For each parameter $\theta_j$,
+\[\theta_j := \theta_j - \alpha\frac{\partial}{\partial\theta_j}J(\theta)\]
+
+\subsubsection*{Optimization Process}
+\begin{enumerate}
+    \item Start with random initial values for $\theta$.
+    \item Compute the cost function $J(\theta)$.
+    \item Update $\theta$ using the update rule.
+    \item Repeat until the cost function converges.
+\end{enumerate}
+
+\section*{Normal Equation}
+The \textbf{Normal Equation} is an analytical method to solve for the parameters $\theta$ without using iterative methods like gradient descent.
+\[\theta={(X^T X)}^{-1}X^T y\]
+
+\section*{Gradient Descent vs. Normal Equation}
+\subsubsection*{Gradient Descent}
+\begin{enumerate}
+    \item You need to choose learning rate.
+    \item It is an iterative approach that updates parameters until convergence.
+    \item Works for almost every loss function.
+    \item Efficient for datasets with large numbers of features, as it does not require matrix inversion.
+\end{enumerate}
+
+\subsubsection*{Normal Equation}
+\begin{enumerate}
+    \item No need to choose learning rate.
+    \item It is an analytical method and provides a solution in one shot.
+    \item You need to compute ${(X^T X)}^{-1}$, an $n\times n$ matrix, where $n$ is the number of features.
+    \item Time complexity is $O(n^3)$ so it is computationally expensive for a large $n$.
+    \item Only works for least squares loss.
+\end{enumerate}
+\end{document}
