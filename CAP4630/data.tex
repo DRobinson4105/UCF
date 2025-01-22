@@ -14,9 +14,16 @@
 \section*{Data Processing}
 
 \begin{enumerate}
-    \item Remove features that are irrelevant.
+    \item Remove features that are irrelevant or redundant.
     \item Identify records with missing or outlier data and either drop the records or replace the data with the estimated value based on other information. For example, a human age of 10000 should be dropped or replaced with the mean age.
     \item Engineer new features based on the existing features. For example, a boolean feature, isAdult, can be marked true for records with an age above 17.
+\end{enumerate}
+
+\subsection*{Feature Selection Techniques}
+\begin{enumerate}
+    \item \textbf{Forward Selection}: Start with no variables and add them one by one based on improvement in the model.
+    \item \textbf{Backward Elimination}: Start with all variables and remove the least significant ones one by one.
+    \item \textbf{Lasso Regression}: Regularization method that automatically selects and removes irrelevant features by penalizing large coefficients.
 \end{enumerate}
 
 \end{document}
