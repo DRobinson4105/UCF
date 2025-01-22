@@ -1,0 +1,60 @@
+% chktex-file 13
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Automata}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Finite Automaton}
+
+A finite automaton is a 5-tuple $(Q, \Sigma, \delta, q_0, F)$ that consists of:
+\begin{enumerate}
+    \item $Q$: A finite set of states
+    \item $\Sigma$: An alphabet
+    \item $\delta=Q\times \Sigma\rightarrow P(Q)$: A transition function
+    \item $q_0 \in Q$: A start state
+    \item $F \subseteq Q$: A set of accept states
+\end{enumerate}
+
+\subsection*{Acceptance}
+
+Let $M=(Q,\Sigma, \delta, q_0, F)$ and $w=w_1 w_2 \ldots w_n$ be a string of length $n$ over $\Sigma$.
+\vspace{1em}
+
+$M$ \textbf{accepts} $w$ if there exists a sequence of states in $Q$, $r_0, r_1, \ldots, r_n$ so that:
+\begin{enumerate}
+    \item $r_0=q_0$
+    \item For $i$ from $0$ to $n-1$, $\delta(r_i, w_{i+1})=r+1$
+    \item $r_n \in F$
+\end{enumerate}
+
+\subsection*{Recognition}
+
+A machine $M$ \textbf{recognizes} language $A$ if $A=\{w \mid M \text{ accepts } w\}$.
+
+\subsection*{Regular Language}
+
+A language is \textbf{regular} if and only if it can be recognized by a DFA.
+
+\subsection*{Nondeterminism}
+
+A Nondeterministic Finite Automata (NFA):
+\begin{enumerate}
+    \item Can have more than one possible transition per state per input symbol.
+    \item Doesn't have to have a transition for every state for every input symbol.
+    \item Can transition on the empty string.
+\end{enumerate}
+
+A DFA accepts if \textit{the} path for the input string ends on an accept state, while an NFA accepts if \textit{any} path for the input string ends on an accept state.
+
+
+
+\end{document}
