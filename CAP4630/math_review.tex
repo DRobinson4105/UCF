@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Math Review}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vector}
+
+A \textbf{vector} is a one-dimensional array of ordered real-valued scalars.
+\[\mathbf{x}=\begin{bmatrix}
+    x_1 \\ x_2 \\ \vdots \\ x_n
+\end{bmatrix}\]
+
+\section*{Norm of a Vector}
+A vector \textbf{norm} is a function that maps a vector to a scalar value, measuring the size of the vector. The norm, $f$, should satisfy the following properties.
+\begin{enumerate}
+    \item Scaling: $f(\alpha\mathbf{x})=|\alpha |f(\mathbf{x})$
+    \item Triangle inequality: $f(\mathbf{x}+\mathbf{y})\leq f(\mathbf{x}) + f(\mathbf{y})$
+    \item Must be non-negative: $f(\mathbf{x})\geq 0$
+\end{enumerate}
+
+General equation for the norm of a vector
+\[{\|\mathbf{x}\|}_p={\Bigg(\sum_{i=1}^n{\|x_i\|}^p\Bigg)}^\frac{1}{p}\]
+
+\subsection*{Most Common Norms}
+\begin{enumerate}
+    \item L1 Norm
+    \[{\|\mathbf{x}\|}_1 = \sum_{i=1}^n |x_i|\]
+    \item L2 Norm
+    \[{\|\mathbf{x}\|}_2=\sqrt{\sum_{i=1}^n x_i^2} = \sqrt{\mathbf{x}^T\mathbf{x}}\]
+    \item Max Norm
+    \[{\|\mathbf{x}\|}_\infty=\max |x_i |\]
+\end{enumerate}
+
+\section*{Vector Projection}
+
+\textbf{Orthogonal projection} of a vector $\mathbf{y}$ onto vector $\mathbf{x}$ is represented by
+\[\mathbf{proj}_\mathbf{x}(\mathbf{y})=\frac{\mathbf{x}\cdot\|\mathbf{y}\|\cdot\cos (\theta)}{\|\mathbf{x}\|}\]
+
+\section*{Hyperplanes}
+A \textbf{hyperplane} is a subspace whose dimension is one less than that of its ambient space. For example, a hyperplane in a 2D space is one-dimensional and a hyperplane in a 3D space is two-dimensional. Hyperplanes are decision boundaries used for linear classification.
+
+\section*{Matrices}
+A \textbf{matrix} is a rectangular array of real-valued scalars arranged in $m$ horizontal rows and $n$ vertical columns.
+
+\section*{Gradient}
+The \textbf{gradient} of the multivariate function $f(\mathbf{x})$ with respect to the $n$-dimensional input vector $\mathbf{x}=\begin{bmatrix}
+    x_1 & x_2 & \cdots & x_n
+\end{bmatrix}$, is a vector of $n$ partial derivatives.
+\[\nabla_\mathbf{x} f(\mathbf{x})={\begin{bmatrix}
+    \frac{\partial f(\mathbf{x})}{\partial x_1} \vspace{4pt}\\
+    \frac{\partial f(\mathbf{x})}{\partial x_2} \vspace{4pt}\\
+    \vdots \vspace{4pt}\\
+    \frac{\partial f(\mathbf{x})}{\partial x_n}
+\end{bmatrix}}\]
+
+The gradient descent algorithm relies on the opposite direction of the gradient of the loss function $\mathcal{L}$ with respect to the model parameters $\theta (\nabla_\theta \mathcal{L})$ for minimizing the loss.
+
+\section*{Stationary Points}
+\textbf{Stationary points} of a differentiable function $f(x)$ of one variable are the points where the derivative of the function is zero, such as a minimum or maximum.
+
+\section*{Random Variables}
+A \textbf{probability distribution} is a description of how likely a random variable is to take on each of its possible states. 
+\begin{enumerate}
+    \item \textbf{Joint probability distribution} acts on many variables at the same time.
+    \item \textbf{Marginal probability distribution} acts on a single variable.
+    \item \textbf{Conditional probability distribution} is on one variable when another variable has taken a certain value.
+\end{enumerate}
+
+\subsection*{Bayes' Theorem}
+\textbf{Bayes' Theorem} can calculate conditional probabilities for one variable when conditional probabilities for another variable are known.
+\[P(X\mid Y)=\frac{P(Y\mid X)P(X)}{P(Y)}\]
+
+\subsection*{Independence}
+Two random variables are \textbf{independent} if the occurrence of one of the variables does not affect the occurrence of the other variable.
+
+\subsection*{Expected Value}
+The \textbf{expected value} of a function $f(X)$ with respect to a probability distribution $P(X)$ is the mean when $X$ is drawn from $P(X)$.
+\vspace{1em}
+
+For a discrete random variable,
+\[\mathbb{E}_{X\sim P}[f(X)]=\sum_X P(X)f(X)\]
+For a continuous random variable,
+\[\mathbb{E}_{X\sim P}[f(X)]=\int P(X)f(X)\: dX\]
+
+\subsection*{Variance}
+\textbf{Variance} measures how much the values of the function $f(X)$ deviate from the expected value.
+\[\sigma^2 = \mathbb{E}\Big[{(f(X)-\mathbb{E}[f(x)])}^2\Big]\]
+
+\subsection*{Covariance}
+\textbf{Covariance} measures how much two random variables are linearly related to each other.
+\[\text{Cov}(f(x), g(Y))=\mathbb{E}\Big[(f(X)-\mathbb{E}[f(x)])(g(Y)-\mathbb{E}[g(Y)])\Big]\]
+
+\subsection*{Correlation}
+The \textbf{correlation coefficient} is the covariance normalized by the standard deviations of the two variables.
+\[\rho(X, Y)=\frac{\text{Cov}(X, Y)}{\sigma_x\cdot\sigma_y}\]
+
+\subsection*{Probability Distributions}
+\begin{enumerate}
+    \item \textbf{Bernoulli Distribution}
+    
+    The probability to be 1 is $p$ and the probability to be 0 is $1-p$.
+
+    \item \textbf{Uniform Distribution}
+    
+    The probability of each value $i\in\{1, 2, \ldots, n\}$ is $p_i=\frac{1}{n}$.
+
+    \item \textbf{Binomial Distribution}
+    
+    The probability of getting $k$ successes in $n$ trials is $P(X=k)=\binom{n}{k}p^k {(1-p)}^{n-k}$.
+
+    \item \textbf{Poisson Distribution}
+    
+    A discrete random variable $X$ with states $k\in\{0, 1, 2, \ldots\}$ and a number of events occurring independently in a fixed interval of time with a known rate $\lambda$ has probability
+    \[P(X=k)=\frac{\lambda^X\cdot e^{-\lambda}}{X!}\]
+
+    \item \textbf{Gaussian Distribution}
+    
+    For a random variable $X$ with $n$ independent measurements, the density is
+    \[P_X(x)=\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{{(x-\mu)}^2}{2\sigma^2}}\]
+\end{enumerate}
+\end{document}
