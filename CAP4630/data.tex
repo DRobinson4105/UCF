@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Data}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Data Processing}
+
+\begin{enumerate}
+    \item Remove features that are irrelevant.
+    \item Identify records with missing or outlier data and either drop the records or replace the data with the estimated value based on other information. For example, a human age of 10000 should be dropped or replaced with the mean age.
+    \item Engineer new features based on the existing features. For example, a boolean feature, isAdult, can be marked true for records with an age above 17.
+\end{enumerate}
+
+\end{document}
