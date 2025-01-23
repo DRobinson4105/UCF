@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Calculus of Vector-Valued Functions}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Derivatives of Vector-Valued Functions}
+
+The \textbf{derivative of a vector-valued function} $\mathbf{r}(t)$ is
+\[\mathbf{r}'(t)=\lim_{\Delta t\rightarrow 0} \frac{\mathbf{r}(t+\Delta t)-\mathbf{r}(t)}{\Delta t}\]
+
+provided the limit exists. If $\mathbf{r}'(t)$ exists, then $\mathbf{r}$ is differentiable at $t$. If $\mathbf{r}'(t)$ exists for all $t$ in an open interval $(a, b)$, then $\mathbf{r}$ is differentiable over the interval $(a, b)$. For the function to be differentiable over the closed interval $[a, b]$, the following two limits must exist as well:
+\[\mathbf{r}'(a)=\lim_{\Delta t\rightarrow 0^+}\frac{\mathbf{r}(a+\Delta t)-\mathbf{r}(a)}{\Delta t}\quad\text{and}\quad\mathbf{r}'(b)=\lim_{\Delta t\rightarrow 0^-}\frac{\mathbf{r}(b+\Delta t)-\mathbf{r}(b)}{\Delta t}\]
+
+\subsection*{Differentiation of Vector-Valued Functions}
+
+Let $f$, $g$, and $h$ be differentiable functions of $t$.
+\begin{enumerate}
+    \item If $\mathbf{r}(t)=f(t)\:\mathbf{i}+g(t)\:\mathbf{j}$, then $\mathbf{r}'(t)=f'(t)\:\mathbf{i}+g'(t)\:\mathbf{j}$.
+    \item If $\mathbf{r}(t)=f(t)\:\mathbf{i}+g(t)\:\mathbf{j}+h(t)\:\mathbf{k}$, then $\mathbf{r}'(t)=f'(t)\:\mathbf{i}+g'(t)\:\mathbf{j}+h'(t)\:\mathbf{k}$.
+\end{enumerate}
+
+\subsection*{Properties of the Derivative of Vector-Valued Functions}
+
+Let $\mathbf{r}$ and $\mathbf{u}$ be differentiable vector-valued functions of $t$, let $f$ be a differentiable real-valued function of $t$, and let $c$ be a scalar.
+
+\[\begin{aligned}
+    \frac{d}{dt}[c\mathbf{r}(t)] &= c\mathbf{r}'(t) \quad & \text{Scalar Multiple} \\
+    \frac{d}{dt}[\mathbf{r}(t)\pm \mathbf{u}(t)] &= \mathbf{r}'(t)\pm\mathbf{u}'(t) \quad & \text{Sum and Difference} \\
+    \frac{d}{dt}[f(t)\mathbf{u}(t)] &= f'(t)\mathbf{u}(t)+f(t)\mathbf{u}'(t) \quad & \text{Scalar Product} \\
+    \frac{d}{dt}[\mathbf{r}(t)\cdot\mathbf{u}(t)] &= \mathbf{r}'(t)\cdot\mathbf{u}(t)+\mathbf{r}(t)\cdot\mathbf{u}'(t) \quad & \text{Dot Product} \\
+    \frac{d}{dt}[\mathbf{r}(t)\times\mathbf{u}(t)] &= \mathbf{r}'(t)\times\mathbf{u}(t)+\mathbf{r}(t)\times\mathbf{u}'(t) \quad & \text{Cross Product} \\
+    \frac{d}{dt}[\mathbf{r}(f(t))] &= \mathbf{r}'(f(t))\cdot f'(t) \quad & \text{Chain Rule} \\
+    \text{If }\mathbf{r}(t)\cdot\mathbf{r}(t) &= c\text{, then }\mathbf{r}(t)\cdot\mathbf{r}'(t)=0
+\end{aligned}\]
+
+\section*{Tangent Vectors}
+
+Let $C$ be a curve defined by a vector-valued function $\mathbf{r}$, and assume that $\mathbf{r}'(t)$ exists when $t=t_0$. A tangent vector $\mathbf{v}$ at $t=t_0$ is any vector such that, when the tail of the vector is placed at point $\mathbf{r}(t_0)$ on the graph, vector $\mathbf{v}$ is tangent to curve $C$. Vector $\mathbf{r}'(t_0)$ is an example of a tangent vector at point $t=t_0$. Furthermore, assume that $\mathbf{r}'(t)\neq\mathbf{0}$. The \textbf{principal unit tangent vector} at $t$ is defined to be
+\[\mathbf{T}(t)=\frac{\mathbf{r}'(t)}{\|\mathbf{r}'(t)\|}\quad\text{if}\quad \|\mathbf{r}'(t)\| \neq \mathbf{0}\]
+
+\section*{Integrals of Vector-Valued Functions}
+
+Let $f$, $g$, and $h$ be integrable real-valued functions over the closed interval $[a, b]$.
+\begin{enumerate}
+    \item The \textbf{indefinite integral of a vector-valued function} $\mathbf{r}(t)=f(t)\:\mathbf{i}+g(t)\:\mathbf{j}$ is
+    \[\int [f(t)\:\mathbf{i}+g(t)\:\mathbf{j}]\: dt=\Big[\int f(t)\: dt\Big]\:\mathbf{i}+\Big[\int g(t)\: dt\Big]\:\mathbf{j}\]
+    \item The \textbf{definite integral of a vector-valued function} is
+    \[\int_a^b [f(t)\:\mathbf{i}+g(t)\:\mathbf{j}]\: dt=\Big[\int_a^b f(t)\: dt\Big]\:\mathbf{i}+\Big[\int_a^b g(t)\: dt\Big]\:\mathbf{j}\]
+\end{enumerate}
+\end{document}
