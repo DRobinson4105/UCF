@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Vector-Valued Functions and Space Curves}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+A \textbf{vector-valued function} is a function of the form
+\[\mathbf{r}(t)=f(t)\mathbf{i}+g(t)\mathbf{j}\quad\text{or}\quad\mathbf{r}(t)=f(t)\mathbf{i}+g(t)\mathbf{j}+h(t)\mathbf{k}\]
+where the \textbf{component functions} $f$, $g$, and $h$, are real-valued functions of the parameter $g$. Vector-valued functions are also written in the form
+\[\mathbf{r}(t)=\langle f(t), g(t)\rangle\quad\text{or}\quad\mathbf{r}(t)=\langle f(t), g(t), h(t)\rangle\]
+A two-dimensional vector-valued function traces a \textbf{plane curve}, while a three-dimensional vector-valued function traces a \textbf{space curve}.
+
+\subsection*{Limits and Continuity of a Vector-Valued Function}
+A vector-valued function $\mathbf{r}$ approaches the limit $\mathbf{L}$ as $t$ approaches $a$, written
+\[\lim_{t\rightarrow a}\mathbf{r}(t)=\mathbf{L}\quad\text{provided}\quad\lim_{t\rightarrow a}\|\mathbf{r}(t)-\mathbf{L}\|=0\]
+
+Let $f$, $g$, and $h$ be functions of $t$. Then, the vector-valued function $\mathbf{r}(t)=f(t)\mathbf{i}+g(t)\mathbf{j}$ or $\mathbf{r}(t)=f(t)\mathbf{i}+g(t)\mathbf{j}+h(t)\mathbf{k}$ is continuous at point $t=a$ if the following three conditions hold:
+\begin{enumerate}
+    \item $\mathbf{r}(a)$ exists
+    \item $\lim_{t\rightarrow a}\mathbf{r}(t)$ exists
+    \item $\lim_{t\rightarrow a}\mathbf{r}(t)=\mathbf{r}(a)$
+\end{enumerate}
+
+The curve defined by the vector-valued function $\mathbf{r}(t)=(at+b)\mathbf{i}+(ct+d)\mathbf{j}+(et+f)\mathbf{k}$ is the line in space with the direction vector $\langle a, c, e\rangle$.
+
+\end{document}
