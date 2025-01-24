@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Arc Length and Curvature}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Arc-Length Formulas}
+\begin{enumerate}
+    \item \textbf{Plane curve}: Given a smooth curve $C$ defined by the function $\mathbf{r}(t)=f(t)\:\mathbf{i}+g(t)\:\mathbf{j}$, where $t$ lies within the interval $[a, b]$, the arc length of $C$ over the interval is
+    \[s=\int_a^b\sqrt{{[f'(t)]}^2+{[g'(t)]}^2}\: dt=\int_a^b\|\mathbf{r}'(t)\|\: dt\]
+    \item \textbf{Space curve}: Given a smooth curve $C$ defined by the function $\mathbf{r}(t)=f(t)\:\mathbf{i}+g(t)\:\mathbf{j}+h(t)\:\mathbf{k}$, where $t$ lies within the interval $[a, b]$, the arc length of $C$ over the interval is
+    \[s=\int_a^b\sqrt{{[f'(t)]}^2+{[g'(t)]}^2+{[h'(t)]}^2}\: dt=\int_a^b\|\mathbf{r}'(t)\|\: dt\]
+\end{enumerate}
+
+\subsection*{Arc-Length Function}
+Let $\mathbf{r}(t)$ describes a smooth curve for $t\geq a$. THen the arc-length function is given by
+\[s(t)=\int_a^t\|\mathbf{r}'(u)\|\: du\]
+$\frac{ds}{dt}=\|\mathbf{r}'(t)\|>0$. If $\|\mathbf{r}'(t)\|=1$ for all $t\geq a$, then the parameter $t$ represents the arc length from the starting point at $t=a$.
+
+\section*{Curvature}
+
+Let $C$ be a smooth curve in the plane or in space given by $\mathbf{r}(s)$, where $s$ is the arc-length parameter. The \textbf{curvature} $\kappa$ at $s$ is
+\[\kappa = \bigg\|\frac{d\mathbf{T}}{ds}\bigg\|=\|\mathbf{T}'(s)\|\]
+
+If $C$ is a smooth curve given by $\mathbf{r}(t)$, then the curvature $\kappa$ of $C$ at $t$ is given by
+\[\kappa = \frac{\|\mathbf{T}'(t)\|}{\|\mathbf{r}'(t)\|}\]
+
+If $C$ is a three-dimensional curve, then the curvature can be given by the formula
+\[\kappa = \frac{\|\mathbf{r}'(t)\times \mathbf{r}''(t)}{{\|\mathbf{r}(t)\|}^3}\]
+
+If $C$ is a graph of a function $y=f(x)$ and both $y'$ and $y''$ exist, then the curvature $\kappa$ at point $(x, y)$ is given by
+\[\kappa = \frac{|y''|}{{\Big[1+{(y')}^2\Big]}^\frac{3}{2}}\]
+
+\pagebreak
+
+\section*{Normal and Binormal Vectors}
+
+Let $C$ be a three-dimensional \textbf{smooth} curve represented by $\mathbf{r}$ over an open interval $I$. If $\mathbf{T}'(t)\neq\mathbf{0}$, then the principal unit normal vector at $t$ is defined to be
+\[\mathbf{N}(t)=\frac{\mathbf{T}'(t)}{\|\mathbf{T}'(t)\|}\]
+
+The binormal vector at $t$ is defined as
+\[\mathbf{B}(t)=\mathbf{T}(t)\times\mathbf{N}(t)\]
+where $\mathbf{T}(t)$ is the unit tangent vector.
+
+\subsection*{Equations of the Curve Planes}
+\begin{enumerate}
+    \item The orthogonal vector to the normal plane is $\mathbf{T}(t)$
+    \item The orthogonal vector to the osculating plane is $\mathbf{B}(t)$
+\end{enumerate}
+
+\end{document}
