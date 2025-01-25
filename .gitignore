@@ -14,3 +14,8 @@ test.*
 *.fls
 *.log
 *.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.bbl-SAVE-ERROR

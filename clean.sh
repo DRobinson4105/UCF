@@ -1,0 +1,1 @@
+rm *.aux *.fdb_latexmk *.fls *.log *.synctex.gz *.out *.bbl *.bcf *.blg *.run.xml *.bbl-SAVE-ERROR
