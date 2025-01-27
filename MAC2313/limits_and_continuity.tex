@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Limits and Continuity}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Limit of a Function of Two Variables}
+
+A $\delta$ \textbf{disk} centered at point $(a, b)$ is defined to be an open disk of radius $\delta$ centered at point $(a, b)$.
+\[\{(x, y)\in\mathbb{R}^2 | {(x-a)}^2 + {(y-b)}^2 < \delta^2\}\]
+
+Let $f$ be a function of two variables, $x$ and $y$. The limit of $f(x, y)$ as $(x, y)$ approaches $(a, b)$ is $L$.
+\[\lim_{(x, y)\rightarrow(a, b)}f(x, y)=L\]
+if for any $\varepsilon > 0$, there exists a number $\delta > 0$ such that
+\[|f(x, y)-L| < \varepsilon \quad\text{whenever}\quad 0 < \sqrt{{(x-a)}^2+{(y-b)}^2} < \delta\]
+
+\subsection*{Limit Laws}
+Let $f(x, y)$ and $g(x, y)$ be defined for all $(x, y)\neq(a, b)$ in a neighborhood around $(a, b)$, and assume the neighborhood is contained completely inside the domain of $f$. Assume that $L$ and $M$ are real numbers such that $\lim_{(x, y)\rightarrow(a, b)}f(x, y)=L$ and $\lim_{(x, y)\rightarrow(a, b)}g(x, y)=M$, and let $c$ be a constant.
+\begin{enumerate}
+    \item \textbf{Constant Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}c=c\]
+    \item \textbf{Identity Laws}
+    \[\lim_{(x, y)\rightarrow(a, b)}x=a\]
+    \[\lim_{(x, y)\rightarrow(a, b)}y=b\]
+    \item \textbf{Sum Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}(f(x, y)+g(x, y))=L+M\]
+    \item \textbf{Difference Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}(f(x, y)-g(x, y))=L-M\]
+    \item \textbf{Constant Multiple Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}(cf(x, y))=cL\]
+    \item \textbf{Product Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}(f(x, y)g(x, y))=LM\]
+    \item \textbf{Quotient Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}\frac{f(x, y)}{g(x, y)}=\frac{L}{M}\quad\text{for}\quad M\neq 0\]
+    \item \textbf{Power Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}{(f(x, y))}^n=L^n\]
+    for any positive integer $n$.
+    \item \textbf{Root Law}
+    \[\lim_{(x, y)\rightarrow(a, b)}\sqrt[n]{f(x, y)}=\sqrt[n]{L}\]
+    for all $L$ if $n$ is odd and positive, and for $L\geq 0$ if $n$ is even and positive provided that $f(x, y)\geq 0$ for all $(x, y)\neq(a, b)$ in neighborhood of $(a, b)$.
+\end{enumerate}
+
+\section*{Interior and Boundary Points}
+Let $S$ be a subset of $\mathbb{R}^2$.
+\vspace{1em}
+
+A point $P_0$ is called an \textbf{interior point} of $S$ if there is a $\delta$ disk centered around $P_0$ contained completely in $S$. A point $P_0$ is called a \textbf{boundary point} of $S$ if every $\delta$ disk centered around $P_0$ contains points both inside and outside $S$.
+\vspace{1em}
+
+$S$ is called an \textbf{open set} if every point of $S$ is an interior point. $S$ is called a \textbf{closed set} if it contains all its boundary points.
+\vspace{1em}
+
+An open set $S$ is a \textbf{connected set} if it cannot be represented as the union of two or more disjoint, nonempty open subsets. A set $S$ is a \textbf{region} if it is open, connected, and nonempty.
+
+\section*{Continuity of Functions of Two Variables}
+
+A function $f(x, y)$ is continuous at a point $(a, b)$ in its domain if the following conditions are satisfied:
+\begin{enumerate}
+    \item $f(a, b)$ exists.
+    \item $\lim_{(x, y)\rightarrow(a, b)} f(x, y)$ exists.
+    \item $\lim_{(x, y)\rightarrow(a, b)} f(x, y)=f(a, b)$.
+\end{enumerate}
+
+\subsection*{Continuity Laws}
+\begin{enumerate}
+    \item If $f(x, y)$ is continuous at $(x_0, y_0)$, and $g(x, y)$ is continuous at $(x_0, y_0)$, then $f(x, y)+g(x, y)$ is continuous at $(x_0, y_0)$.
+    \item If $g(x)$ is continuous at $x_0$ and $h(y)$ is continuous at $y_0$, then $f(x, y)=g(x)h(y)$ is continuous at $(x_0, y_0)$.
+    \item Let $g$ be a function of two variables from a domain $D\subseteq\mathbb{R}^2$ to a range $R\subseteq\mathbb{R}$. Suppose $g$ is continuous at some point $(x_0, y_0)\in D$ and defined $z_0=g(x_0, y_0)$. Let $f$ be a function that maps $\mathbb{R}$ to $\mathbb{R}$ such that $z_0$ is in the domain of $f$. Last, assume $f$ is continuous at $z_0$. Then $f \circ g$ is continuous at $(x_0, y_0)$.
+\end{enumerate}
+
+\section*{Functions of Three or More Variables}
+Let $(x_0, y_0, z_0)$ be a point in $\mathbb{R}^3$. Then a $\delta$ \textbf{ball} in three dimensions consists of all points in $\mathbb{R}^3$ lying at a distance of less than $\delta$ from $(x_0, y_0, z_0)$.
+\[\left\{(x, y, z)\in\mathbb{R}^3 \Big| \sqrt{{(x-x_0)}^2+{(y-y_0)}^2+{(z-z_0)}^2}<\delta\right\}\]
+
+To define a $\delta$ ball in higher dimensions, add additional terms under the radical to correspond to each additional dimension.
+
+\section*{Key Points}
+\begin{enumerate}
+    \item If the limit along different paths through a point have different values, then the limit does not exist at that point.
+\end{enumerate}
+
+\end{document}
