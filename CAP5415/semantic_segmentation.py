@@ -1,7 +1,7 @@
 import torch
 import matplotlib.pyplot as plt
 import torch.nn as nn
-from tqdm.auto import tqdm as notebook_tqdm
+from tqdm.auto import tqdm as tqdm
 from torchvision.datasets import VOCSegmentation
 from torch.utils.data import DataLoader, random_split
 from torchvision import transforms
@@ -10,20 +10,16 @@ import torch.optim.lr_scheduler as lr_scheduler
 from PIL import Image
 import numpy as np
 import torchvision.transforms.functional as TF
-import torch.nn.functional as F
-from pathlib import Path
+import os
 
 torch.manual_seed(1234)
 torch.cuda.manual_seed(1234)
 
-# Path to models directory
-MODEL_PATH = Path("models")
-MODEL_PATH.mkdir(parents=True, exist_ok=True)
-MODEL_NAME = "unet_model.pt"
-MODEL_SAVE_PATH = MODEL_PATH / MODEL_NAME
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f'Device: {device}')
+
 NUM_CLASSES=21
+MODEL_NAME = "unet_model.pt"
 
 class UNet(nn.Module):
     def __init__(self, in_channels, out_channels):
@@ -107,6 +103,13 @@ def mIoU(prediction: torch.Tensor, target: torch.Tensor):
 
     return IoU.nanmean()
 
+def pixel_accuracy(prediction: torch.Tensor, target: torch.Tensor):
+    pred = torch.argmax(prediction, dim=1)
+    correct = (pred == target).sum().item()
+    total = target.numel()
+
+    return correct / total
+
 class AugmentData:
     def __call__(self, image, target):
         if torch.rand(1).item() < 0.25:
@@ -117,37 +120,7 @@ class AugmentData:
             image = TF.hflip(image)
             target = TF.hflip(target)
 
-        # rotate = torch.rand(1).item() * 20 - 10
-        # image = TF.rotate(image.unsqueeze(0), rotate).squeeze(0)
-        # target = TF.rotate(target.unsqueeze(0), rotate).squeeze(0)
-
         return image, target
-
-class DiceLoss(nn.Module):
-    def __init__(self):
-        super(DiceLoss, self).__init__()
-
-    def forward(self, input: torch.Tensor, target: torch.Tensor, eps=1e-7):
-        dice = 0.0
-        for c in range(NUM_CLASSES):
-            input_flat = input[:, c].reshape(-1)
-            target_flat = (target == c).float().view(-1)
-            intersection = (input_flat * target_flat).sum()
-            dice += (2. * intersection + eps) / (input.sum() + target_flat.sum() + eps)
-        return 1 - dice / NUM_CLASSES
-    
-class FocalLoss(nn.modules.loss._WeightedLoss):
-    def __init__(self, weight=None, gamma=2, reduction='mean', ignore_index=255):
-        super(FocalLoss, self).__init__(weight, reduction=reduction)
-        self.gamma = gamma
-        self.weight = weight
-        self.ignore_index = ignore_index
-
-    def forward(self, input, target):
-        ce_loss = F.cross_entropy(input, target, reduction=self.reduction, weight=self.weight, ignore_index=self.ignore_index) 
-        pt = torch.exp(-ce_loss)
-        focal_loss = ((1 - pt) ** self.gamma * ce_loss).mean()
-        return focal_loss
 
 class ToTensor:
     def __call__(self, x):
@@ -179,7 +152,7 @@ if __name__ == "__main__":
     BATCH_SIZE = 16
     LEARNING_RATE = 1e-4
     EXTRA_TRANSFORMS = AugmentData()
-    idx = 4
+    idx = 0
 
     print("Loading datasets...")
 
@@ -260,28 +233,32 @@ if __name__ == "__main__":
 
     epochs = 200
     train_loss_values = []
+    train_mIoU_values = []
+    train_pixel_acc_values = []
     test_loss_values = []
-    train_acc_values = []
-    test_acc_values = []
+    test_mIoU_values = []
+    test_pixel_acc_values = []
     last_train, last_test, best_train, best_test = None, None, 0, 0
 
     for epoch in range(epochs):
-        avg_train_loss, avg_test_loss = 0, 0
-        avg_train_acc, avg_test_acc = 0, 0
+        avg_train_loss, avg_train_mIoU, avg_train_pixel_acc = 0, 0, 0
+        avg_test_loss, avg_test_mIoU, avg_test_pixel_acc = 0, 0, 0
 
         model.train()
 
-        for image, target in notebook_tqdm(train_dataloader, desc="Training", leave=False):
+        for image, target in tqdm(train_dataloader, desc="Training", leave=False):
             image, target = image.to(device), target.to(device)
             
             optimizer.zero_grad()
 
             pred = model(image)
             loss = criterion(pred, target.long())
-            acc = mIoU(pred, target)
+            mIoU_acc = mIoU(pred, target)
+            pixel_acc = pixel_accuracy(pred, target)
 
             avg_train_loss += loss.item()
-            avg_train_acc += acc.item()
+            avg_train_mIoU += mIoU_acc.item()
+            avg_train_pixel_acc += pixel_acc
 
             loss.backward()
             optimizer.step()
@@ -289,30 +266,34 @@ if __name__ == "__main__":
         model.eval()
 
         with torch.inference_mode():
-            for image, target in notebook_tqdm(test_dataloader, desc="Testing", leave=False):
+            for image, target in tqdm(test_dataloader, desc="Testing", leave=False):
                 image, target = image.to(device), target.to(device)
 
                 pred = model(image)
 
                 loss = criterion(pred, target.long())
-                acc = mIoU(pred, target)
+                mIoU_acc = mIoU(pred, target)
+                pixel_acc = pixel_accuracy(pred, target)
 
                 avg_test_loss += loss.item()
-                avg_test_acc += acc.item()
+                avg_test_mIoU += mIoU_acc.item()
+                avg_test_pixel_acc += pixel_acc
 
         avg_train_loss /= len(train_dataloader)
+        avg_train_mIoU /= len(train_dataloader)
+        avg_train_pixel_acc /= len(train_dataloader)
         avg_test_loss /= len(test_dataloader)
-        avg_train_acc /= len(train_dataloader)
-        avg_test_acc /= len(test_dataloader)
+        avg_test_mIoU /= len(test_dataloader)
+        avg_test_pixel_acc /= len(test_dataloader)
 
-        last_train = avg_train_acc
-        last_test = avg_test_acc
+        last_train = avg_train_mIoU
+        last_test = avg_test_mIoU
 
-        if avg_test_acc > best_test:
-            best_test = avg_test_acc
-            best_train = avg_train_acc
+        if avg_test_mIoU > best_test:
+            best_test = avg_test_mIoU
+            best_train = avg_train_mIoU
 
-        msg = f"Epoch: {epoch} | Train Loss: {avg_train_loss} | Test Loss: {avg_test_loss} | Train Accuracy: {avg_train_acc} | Test Accuracy: {avg_test_acc}"
+        msg = f"Epoch: {epoch}\n Train Loss: {avg_train_loss} | Test Loss: {avg_test_loss}\n Train mIoU: {avg_train_mIoU} | Test mIoU: {avg_test_mIoU}\n Train Pixel Accuracy: {avg_train_pixel_acc} | Test Pixel Accuracy: {avg_test_pixel_acc}"
 
         with open('train_log.txt', 'a') as file:
             file.write(msg + "\n")
@@ -321,23 +302,31 @@ if __name__ == "__main__":
         scheduler.step(avg_train_loss)
 
         train_loss_values.append(avg_train_loss)
+        train_mIoU_values.append(avg_train_mIoU)
+        train_pixel_acc_values.append(avg_train_pixel_acc)
         test_loss_values.append(avg_test_loss)
-        train_acc_values.append(avg_train_acc)
-        test_acc_values.append(avg_test_acc)
+        test_mIoU_values.append(avg_test_mIoU)
+        test_pixel_acc_values.append(avg_test_pixel_acc)
 
     print("Plotting loss and accuracy curves...")
 
     plt.figure(figsize=(12, 6))
-    plt.subplot(1, 2, 1)
+    plt.subplot(1, 3, 1)
     plt.title("Loss")
     plt.plot(range(epochs), train_loss_values, label="Train")
     plt.plot(range(epochs), test_loss_values, label="Test")
     plt.legend()
-    plt.subplot(1, 2, 2)
-    plt.title("Accuracy")
-    plt.plot(range(epochs), train_acc_values, label="Train")
-    plt.plot(range(epochs), test_acc_values, label="Test")
+    plt.subplot(1, 3, 2)
+    plt.title("Mean Intersection over Union")
+    plt.plot(range(epochs), train_mIoU_values, label="Train")
+    plt.plot(range(epochs), test_mIoU_values, label="Test")
     plt.legend()
+    plt.subplot(1, 3, 3)
+    plt.title("Pixel Accuracy")
+    plt.plot(range(epochs), train_pixel_acc_values, label="Train")
+    plt.plot(range(epochs), test_pixel_acc_values, label="Test")
+    plt.legend()
+    os.makedirs("loss", exist_ok=True)
     plt.savefig(f'loss/loss{idx}.png')
 
     print("Running post-training prediction...")
@@ -366,10 +355,11 @@ if __name__ == "__main__":
     plt.imshow(post_prediction.cpu().numpy())
     plt.axis('off')
     plt.title('Prediction after Training')
+    os.makedirs("predictions", exist_ok=True)
     plt.savefig(f'predictions/predictions{idx}.png')
 
     with open("result.txt", 'a') as file:
         file.write(f"{idx} -> {last_train=} {last_test=} {best_train=} {best_test=}\n")
 
-    print(f"Saving model to: {MODEL_SAVE_PATH}")
-    torch.save(obj=model.state_dict(), f=MODEL_SAVE_PATH)
+    print(f"Saving model to: {MODEL_NAME}")
+    torch.save(obj=model.state_dict(), f=MODEL_NAME)
