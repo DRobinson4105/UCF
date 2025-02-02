@@ -1,0 +1,55 @@
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Linear Regression}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\textbf{Logistic regression} is a supervised learning algorithm that predicts the probability of a binary outcome based on input features.
+
+\subsection*{Sigmoid Function}
+
+The \textbf{sigmoid function} transforms input values into output values that lie between 0 and 1.
+\[\sigma(z)=\frac{1}{1+e^{-z}}\]
+
+\subsection*{Cost Function}
+
+In linear regression, mean squared error is used but will give results with local minima, which will not help with non-linear tasks, like logistic regression. Logistic regression uses log loss which is derived from the maxmimum likelihood estimation method.
+\[\text{Cost}(h_\theta(x),y)=-\log(1-y+(2y-1)h_\theta(x))\]
+
+Loss over a batch size of $m$,
+\[J(\theta)=\frac{1}{m}\sum_{i=1}^m \text{Cost}(h_\theta(x),y)\]
+
+
+At each epoch,
+\[\theta_j := \theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta)\]
+\vspace{1em}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    \textbf{Linear Regression} & \textbf{Logistic Regression} \\
+    \hline
+    Predicts a \textbf{continuous} dependent variable using independent variables. & Predicts a \textbf{categorical} (binary) dependent variable using independent variables. \\
+    \hline
+    Solves \textbf{regression} problems. & Solves \textbf{classification} problems. \\
+    \hline
+    Uses the \textbf{Least Squares} estimation method for accuracy. & Uses the \textbf{Maximum Likelihood} estimation method for accuracy. \\
+    \hline
+    Fits a \textbf{straight line} (best-fit line) to predict the output. & Fits an \textbf{S-curve} (logistic function) to classify the samples. \\
+    \hline
+    Requires a \textbf{linear relationship} between the dependent and independent variables. & Does \textbf{not} require a linear relationship between the dependent and independent variables. \\
+    \hline
+\end{tabularx}
+
+\end{document}
