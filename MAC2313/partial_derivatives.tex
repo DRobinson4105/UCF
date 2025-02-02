@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Partial Derivatives}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+Let $f(x, y)$ be a function of two variables. Then the \textbf{partial derivative} of $f$ with respect to $x$, written as $\partial f / \partial x$, or $f_x$, is defined as
+\[\frac{\partial f}{\partial x}=\lim_{h\rightarrow 0} \frac{f(x+h,y)-f(x,y)}{h}\]
+
+The partial derivative of $f$ with respect to $y$, written as $\partial f / \partial y$, or $f_y$, is defined as
+\[\frac{\partial f}{\partial y}=\lim_{k\rightarrow 0}\frac{f(x,y+k)-f(x,y)}{k}\]
+
+Suppose that $f(x, y)$ is defined on an open desk $D$ that contains the point $(a, b)$. If the functions $f_{xy}$ and $f_{yx}$ are continuous on $D$, then $f_{xy}=f_{yx}$.
+
+\end{document}
