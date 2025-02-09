@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Directional Derivatives and Gradients}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Directional Derivatives}
+
+Let $z=f(x,y)$ be a function of two variables $x$ and $y$, and assume that $f_x$ and $f_y$ exist and $f(x,y)$ is differentiable everywhere. Then, the directional derivative of $f$ in the direction of $\mathbf{u}=\cos\theta\:\mathbf{i}+\sin\theta\:\mathbf{j}$ is given by
+\[D_u f(x,y)=f_x(x,y)\cos\theta + f_y(x,y)\sin\theta\]
+
+Let $f(x,y,z)$ be a differentiable function of three variables and let $\mathbf{u}=\cos\alpha\:\mathbf{i}+\cos\beta\:\mathbf{j}+\cos\gamma\:\mathbf{k}$ be a unit vector. Then, the directional derivative of $f$ in the direction of $\mathbf{u}$ is given by
+\[D_u f(x,y,z)=\nabla f(x,y,z)\cdot\mathbf{u}=f_x(x,y,z)\cos\alpha+f_y(x,y,z)\cos\beta+f_z(x,y,z)\cos\gamma\]
+
+\section*{Gradients}
+
+Let $z=f(x,y)$ be a function of $x$ and $y$ such that $f_x$ and $f_y$ exist. The vector $\nabla f(x,y)$ is called the \textbf{gradient} of $f$ and is defined as
+\[\nabla f(x,y)=f_x(x,y)\:\mathbf{i}+f_y(x,y)\:\mathbf{j}\]
+
+\subsection*{Properties of the Gradient}
+Suppose the function $z=f(x,y)$ is differentiable at $(x_0, y_0)$.
+\begin{enumerate}
+    \item If $\nabla f(x_0, y_0)=0$, then $D_u f(x_0, y_0) = 0$ for any unit vector $u$.
+    \item If $\nabla f(x_0, y_0)\neq 0$, then $D_u f(x_0, y_0)$ is maximized when $u$ points in the same direction as $\nabla f(x_0, y_0)$. The maximum value of $D_u f(x_0, y_0)$ is $\|\nabla f(x_0, y_0)\|$.
+    \item If $\nabla f(x_0, y_0)\neq 0$, then $D_u f(x_0, y_0)$ is minimized when $u$ points in the opposite direction from $\nabla f(x_0, y_0)$. The minimum value of $D_u f(x_0, y_0)$ is $-\|\nabla f(x_0, y_0)\|$.
+\end{enumerate}
+
+\subsection*{Level Curves}
+
+Suppose the function $z=f(x,y)$ has continuous first-order partial derivatives in an open disk centered at a point $(x_0,y_0)$. If $\nabla f(x_0,y_0)\neq 0$, then $\nabla f(x_0, y_0)$ is normal to the level curve of $f$ at $(x_0,y_0)$.
+
+\end{document}
