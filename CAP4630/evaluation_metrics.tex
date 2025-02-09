@@ -1,0 +1,48 @@
+% chktex-file 12
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Evaluation Metrics}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Metrics}
+
+\textbf{Accuracy} measures the number of correct predictions relative to the total predictions.
+\[\textbf{Accuracy}=\frac{TP+TN}{P+N}\]
+\textbf{Precision} measures how many of the predicted positives are actually positive.
+\[\textbf{Precision}=\frac{TP}{TP+FP}\]
+
+\textbf{Recall} measures the ability to identify all relevant instances.
+\[\textbf{Recall}=\frac{TP}{TP+FN}\]
+
+\subsection*{Generalized F\bm{$\beta$}-Measure}
+$F_\beta$ allows you to adjust the balance between precision and recall, where $\beta > 1$ puts more emphasis on recall and $\beta < 1$ puts more emphasis on precision.
+\[F_\beta = (1+\beta^2)\cdot\frac{\text{Precision}\cdot\text{Recall}}{\beta^2\cdot\text{Precision}+\text{Recall}}\]
+
+\textbf{F1-Score} is the harmonic mean of precision and recall, which gives more weight to low values.
+
+\section*{Paired t-Test}
+
+The \textbf{paired t-test} compares two related groups, like scores or results from two different methods applied to the same dataset.
+\begin{enumerate}
+    \item Calculate the difference between each pair of scores
+    \item Calculate the mean of the differences
+    \item Find the standard deviation of the differences
+    \item Calculate the t-statistic
+    \[t=\frac{\bar{d}}{\frac{s_d}{\sqrt{n}}}\]
+    \item Compare the t-statistic to a critical value from a t-distribution table and the difference is significant if the t-statistic is larger than the critical value
+\end{enumerate}
+
+\end{document}
