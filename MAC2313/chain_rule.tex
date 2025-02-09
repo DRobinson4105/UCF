@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Chain Rule}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Chain Rule for One Independent Variable}
+
+Suppose that $x=g(t)$ and $y=h(t)$ are differentiable functions of $t$ and $z=f(x,y)$ is a differentiable function of $x$ and $y$. Then $z=f(x(t),y(t))$ is a differentiable function of $t$ and
+\[\frac{dz}{dt}=\frac{\partial z}{\partial x}\cdot\frac{dx}{dt}+\frac{\partial z}{\partial y}\cdot\frac{dy}{dt}\]
+
+\section*{Chain Rule for Two Independent Variables}
+
+Suppose that $x=g(u,v)$ and $y=h(u,v)$ are differentiable functions of $u$ and $v$, and $z=f(x,y)$ is a differentiable function of $x$ and $y$. Then $z=f(x(u,b),y(u,b))$ is a differentiable function of $u$ and $v$, and
+\[\frac{dz}{du}=\frac{\partial z}{\partial x}\cdot\frac{dx}{du}+\frac{\partial z}{\partial y}\cdot\frac{dy}{du}\quad\text{and}\quad\frac{dz}{dv}=\frac{\partial z}{\partial x}\cdot\frac{dx}{dv}+\frac{\partial z}{\partial y}\cdot\frac{dy}{dv}\]
+
+\section*{Generalized Chain Rule}
+
+Let $w=f(x_1,x_2,\ldots,x_m)$ be a differentiable function of $m$ independent variables, and for each $i\in\{1,\ldots, m\}$, let $x_i=x_i(t_1, t_2,\ldots,t_n)$ be a differentiable function of $n$ independent variables. Then
+\[\frac{\partial w}{\partial t_j}=\frac{\partial w}{\partial x_1}\frac{\partial x_1}{\partial t_j}+\frac{\partial w}{\partial x_2}\frac{\partial x_2}{\partial t_j}+\cdots+\frac{\partial w}{\partial x_m}\frac{\partial x_m}{\partial t_j}\]
+
+\section*{Implicit Differentiation of a Function of Two or More Variables}
+
+Suppose the function $z=f(x,y)$ defines $y$ implicitly as a function $y=g(x)$ of $x$ via the equation $f(x,y)=0$. Then
+\[\frac{dy}{dx}=-\frac{\partial f / \partial x}{\partial f / \partial y}\quad\text{if $f_y(x,y)\neq 0$}\]
+
+If the equation $f(x,y,z)=0$ defines $z$ implicitly as a differentiable function of $x$ and $y$, then
+\[\frac{\partial z}{\partial x}=-\frac{\partial f / \partial x}{\partial f / \partial z}\quad\text{and}\quad\frac{\partial z}{\partial y}=-\frac{\partial f / \partial y}{\partial f / \partial z}\quad\text{if $f_z(x,y,z)\neq 0$}\]
+\end{document}
