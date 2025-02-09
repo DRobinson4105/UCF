@@ -1,0 +1,52 @@
+% chktex-file 13
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Regular Expressions}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Regular Expressions}
+
+Components of a regular expression describing a lnaguage over the alphabet $\Sigma$:
+\begin{itemize}
+    \item A symbol to represent the language containing the string consisting of itself
+    \item $a\cup b$ to represent either of symbols $a$ or $b$
+    \item $a\circ b$ or just $ab$ to represent symbol $a$ concatenated with symbol $b$
+    \item $\Sigma$ to represent any symbol from $\Sigma$
+    \item $a^*$ to represent zero ro more occurences of $a$
+    \item $\Sigma^*$ to represent zero or more occurrences of any symbol from $\Sigma$
+\end{itemize}
+
+$R$ is a \textbf{regular expression} over the alphabet $\Sigma$ if it is:
+\begin{itemize}
+    \item $a$ for some $a\in\Sigma$
+    \item $\varepsilon$
+    \item $\theta$
+    \item $R_1\cup R_2$ where $R_1$ and $R_2$ are both regular expressions
+    \item $R_1\circ R_2$ where $R_1$ and $R_2$ are both regular expressions
+    \item $R_1^*$ where $R_1$ is a regular expression
+\end{itemize}
+
+\section*{Generalized Nondeterministic Finite Automaton}
+
+A generalized nondeterministic finite automaton (GNFA) is a special kind of NFA that uses regular expressions as its transition alphabet. It has a single start state and a single accept state.
+\vspace{1em}
+
+A GNFA is a 5-tuple $G=\{Q,\Sigma,\delta,q_s,q_f\}$ where:
+\begin{itemize}
+    \item $Q$ is the set of states,
+    \item $\Sigma$ is the input alphabet
+    \item $\Delta: (Q-\{q_a\})\times(Q-\{q_s\})\rightarrow\mathbf{R}$ is the transition function with $\mathbf{R}$ being the set of all regular expressions over $\Sigma$
+    \item $q_s$ is the start state
+    \item $q_f$ is the accept state
+\end{itemize}
+
+\end{document}
