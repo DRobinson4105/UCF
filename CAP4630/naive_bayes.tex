@@ -1,0 +1,84 @@
+% chktex-file 12
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Naive Bayes}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Naive Bayes}
+
+\textbf{Naive Bayes} is a classification algorithm based on probability.
+\[P(Y=y|X=(x_1,x_2,\ldots,x_n))\]
+
+\subsection*{Bayes Theorem}
+
+\[P(A|B)=\frac{P(B|A)\cdot P(A)}{P(B)}\]
+
+\begin{itemize}
+    \item $P(A|B)$ is \textbf{posterior probability}: probability of hypothesis $A$ in the event of $B$.
+    \item $P(B|A)$ is \textbf{likelihood probability}: probability of evidence $B$ given that the hypothesis $A$ is true.
+    \item $P(A)$ is \textbf{prior probability}: probability of the hypothesis before observing the evidence.
+    \item $P(B)$ is \textbf{marginal probability}: probability of evidence.
+\end{itemize}
+
+\subsection*{Independence in Probability}
+Two events are \textbf{independent} if the occurrence of one event does not affect the other.
+\[P(A\cap B)=P(A)\cdot P(B)\]
+
+\subsection*{Conditional Independence in Naive Bayes}
+In Naive Bayes, features are assumed to be independent of each other, given the class.
+\[P(X_1,x_2,\ldots,X_n|Y=y)=P(X_1 | Y=y)\cdot P(X_2|Y=y)\cdot\cdots\cdot P(X_n | Y=y)\]
+
+By assuming conditional indepdence, the joint probability can be decomposed into the product of individual conditional probabilities for each feature, reducing the time complexity from $O(2^n)$ to $O(n)$.
+
+\subsection*{Training Phase}
+\begin{enumerate}
+    \item Estimate the prior probabilities for each class from the training data.
+    \[P(y=y)\]
+    \item Estimate the conditional probabilities for each feature and each class label. For continuous features, a normal distribution is built from the mean and variance from the training data. For categorical features, the probabilities are based on the frequency of each feature value in the training data.
+    \[P(x_i | Y=y)\]
+\end{enumerate}
+
+\subsection*{Prediction Phase}
+\begin{enumerate}
+    \item For a new instance with features, compute the posterior probability for each class.
+    \item Select the class that maximizes this posterior probability.
+\end{enumerate}
+
+\subsection*{Smoothing}
+If a category was not observed in the training dataset, the Naive Bayes classifier assigns a zero probability to that category. The solution is to add a small value to the count of each feature combination.
+
+\subsection*{Advantages of Naive Bayes Classifier}
+\begin{enumerate}
+    \item Fast and Efficient: Quick and easy to use for classification tasks
+    \item Performs Well with Limited Data: When the independence assumption holds, Naive Bayes can outperform more complex models like logistic regression
+    \item Effective with Categorical Data: Tends to perform better with categorical input variables as it does not rely heavily on numerical distribution assumptions
+    \item Handles High-Dimensional Data: Can efficiently handle high-dimensional datasets, making it ideal for tasks like text classification (e.g. spam detection)
+\end{enumerate}
+
+\subsection*{Disadvantages of Naive Bayes Classifier}
+\begin{enumerate}
+    \item Assumption of Independent Predictors: In real-world scenarios, it's rare for features to be completely independent
+    \item Zero Frequency Problem: If a categorical variable in the test dataset contains a category not present in the training dataset, the model assigns a zero probability and fails to make a prediction
+    \item Sensitivity to Numerical Assumptions: Often assumes that the features follow a normal distribution even when they may not
+\end{enumerate}
+
+\subsection*{Types of Naive Bayes Algorithms}
+\begin{enumerate}
+    \item Gaussian Naive Bayes: assumes that the features follow a normal distribution
+    \item Multinomial Naive Bayes: assumes that the data follows a multinomial distribution, which is good for discrete count data
+    \item Bernoulli Naive Bayes: assumes that the features are binary, meaning each predictor represents whether a specific attribute is present or absent
+\end{enumerate}
+\end{document}
