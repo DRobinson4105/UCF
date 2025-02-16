@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Extrema}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Critical Points}
+
+Let $z=f(x,y)$ be a function of two variables that is defined on an open set containing the point $(x_0,y_0)$. The point $(x_0,y_0)$ is called a \textbf{critical point of a function of two variables} $f$ if one of the two following conditions holds:
+\begin{enumerate}
+    \item $f_x(x_0,y_0)=f_y(x_0,y_0)=0$
+    \item Either $f_x(x_0,y_0)$ or $f_y(x_0,y_0)$ does not exist.
+\end{enumerate}
+
+Let $z=f(x,y)$ be a function of two variables that is defined and continuous on an open set containing the point $(x_0,y_0)$. Then $f$ has a \textbf{local maximum} at $(x_0,y_0)$ if
+\[f(x_0,y_0)\geq f(x,y)\]
+for all points $(x,y)$ within some disk centered at $(x_0,y_0)$. The number $f(x_0,y_0)$ is called a local maximum value. If the preceding inequality holds for every point $(x,y)$ in the domain of $f$, then $f$ has a global maximum at $(x_0,y_0)$.
+\vspace{1em}
+
+THe function $f$ has a \textbf{local minimum} at $(x_0,y_0)$ if
+\[f(x_0,y_0)\leq f(x,y)\]
+for all points $(x,y)$ within some disk centered at $(x_0,y_0)$. The number $f(x_0,y_0)$ is called a local minimum value. If the preceding inequality holds for every point $(x,y)$ in the domain of $f$, then $f$ has a global minimum at $(x_0,y_0)$.
+\vspace{1em}
+
+If $f(x_0,y_0)$ is either a local maximum or local minimum value, then it is called a local extremum.
+
+\subsection*{Fermat's Theorem for Functions of Two Variables}
+
+Let $z=f(x,y)$ be a function of two variables that is defined and continuous on an open set containing the point $(x_0,y_0)$. Suppose $f_x$ and $f_y$ each exists at $(x_0,y_0)$. If $f$ has a local extremum at $(x_0,y_0)$, then $(x_0,y_0)$ is a critical point of $f$.
+
+\section*{Second Derivative Test}
+Given the function $z=f(x,y)$, the point $(x_0,y_0,f(x_0,y_0))$ is a saddle point if both $f_x(x_0,y_0)=0$ and $f_y(x_0,y_0)=0$, but $f$ does not have a local extremum at $(x_0,y_0)$.
+
+Let $z=f(x,y)$ be a function of two variables for which the first and second-order partial derivatives are continuous on some disk containing the point $(x_0,y_0)$. Suppose $f_x(x_0,y_0)=0$ and $f_y(x_0,y_0)=0$.
+\[D=f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-{(f_{xy}(x_0,y_0))}^2\]
+\begin{enumerate}
+    \item If $D>0$ and $f_{xx}(x_0,y_0)>0$, then $f$ has a local minimum at $(x_0,y_0)$.
+    \item If $D>0$ and $f_{xx}(x_0,y_0)<0$, then $f$ has a local maximum at $(x_0,y_0)$.
+    \item If $D<0$, then $f$ has a saddle point at $(x_0,y_0)$.
+    \item If $D=0$, then the test is inconclusive.
+\end{enumerate}
+
+\section*{Absolute Maxima and Minima}
+
+A continuous function $f(x,y)$ on a closed and bounded set $D$ in the plane attains an absolute maximum value at some point of $D$ and an absolute minimum value at some point of $D$.
+\vspace{1em}
+
+Assume $z=f(x,y)$ is a differentiable function of two variables defined on a closed and bounded set $D$. Then $f$ will attain the absolute maximum value and the absolute minimum value, which are, respectively, the largest and smallest values found among the following:
+\begin{enumerate}
+    \item The values of $f$ at the critical points of $f$ in $D$.
+    \item The values of $f$ on the boundary of $D$.
+\end{enumerate}
+
+\subsection*{Finding Critical Points on Boundary}
+Consider a line segment connecting $(a,c)$ and $(b,c)$. It can be parameterized by the equations $x(t)=t$, $y(t)=c$ for $a\leq t\leq b$. Define $g(t)=f(x(t),y(t))$. The critical points are where $g'(t)=0$.
+
+\end{document}
