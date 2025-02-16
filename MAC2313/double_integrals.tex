@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Double Integrals}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{General Regions of Integration}
+
+A region $D$ in the $(x,y)$-plane is of \textbf{Type I} if it lies between two vertical lines and the graphs of two continuous functions $g_1(x)$ and $g_2(x)$.
+\[D=\{(x,y)|a\leq x\leq b, g_1(x)\leq y\leq g_2(x)\}\]
+
+A region $D$ in the $(x,y)$-plane is of \textbf{Type II} if it lies between two horizontal lines and the graphs of two continuous functions $h_1(y)$ and $h_2(y)$.
+\[D=\{(x,y)|c\leq y\leq d, h_1(y)\leq x\leq h_2(y)\}\]
+
+\subsection*{Double Integrals over Nonrectangular Regions}
+
+Suppose $g(x,y)$ is the extension to the rectangle $R$ of the integrable function $f(x,y)$ defined on the region $D$, where $D$ is inside $R$. Then $g(x,y)$ is integrable and we define the double integral of $f(x,y)$ over $D$ by
+\[\iint\limits_D f(x, y)\: dA=\iint\limits_R g(x,y)\: dA\]
+
+\subsection*{Fubini's Theorem}
+
+For a function $f(x,y)$ that is continuous on a region $D$ of Type I, we have
+\[\iint\limits_D f(x,y)\: dA=\iint\limits_D f(x,y)\: dy\: dx=\int_a^b\Bigg[\int_{g_1(x)}^{g_2(x)}f(x,y)\: dy\Bigg]\: dx\]
+Similarly, for a function $f(x,y)$ that is continuous on a region $D$ of Type II, we have
+\[\iint\limits_D f(x,y)\: dA=\iint\limits_D f(x,y)\: dx\: dy=\int_c^d\Bigg[\int_{h_1(y)}^{h_2(y)}f(x,y)\: dx\Bigg]\: dy\]
+
+Suppose the region $D$ can be expressed as $D=D_1\cup D_2$ where $D_1$ and $D_2$ do not overlap except at their boundaries. Then
+\[\iint\limits_D f(x,y)\: dA=\iint\limits_{D_1} f(x,y)\: dA + \iint\limits_{D_2} f(x,y)\: dA\]
+
+The area of a plane-bounded region $D$ is defined as the double integral $\iint\limits_D 1\: dA$.
+\vspace{1em}
+
+If $f(x,y)$ is integrable over a plane-bounded region $D$ with positive area $A(D)$, then the average value of the function is
+\[f_\text{ave}=\frac{1}{A(D)}\iint\limits_D f(x,y)\: dA\]
+
+\subsection*{Fubini's Theorem for Improper Integrals}
+
+If $D$ is a bounded rectangle or simple region in the plane defined by $\{(x,y): a\leq x\leq b, g(x)\leq y\leq h(x)\}$ and also by $\{(x,y): c\leq y\leq d, j(y)\leq x\leq k(y)\}$ and $f$ is a nonnegative function on $D$ with finitely many discontinuities in the interior of $D$, then
+\[\iint\limits_D f\: dA=\int_{x=a}^{x=b}\int_{y=g(x)}^{y=h(x)} f(x,y)\: dy\: dx=\int_{y=c}^{y=d}\int_{x=j(y)}^{x=k(y)} f(x,y)\: dx\: dy\]
+
+\subsection*{Improper Integrals on an Unbounded Region}
+
+If $R$ is an unbounded rectangle such as $R=\{(x,y): a\leq x < \inf, c\leq y < \inf\}$, then when the limit exists, we have
+\[\iint\limits_R f(x,y)\: dA=\lim_{(b,d)\rightarrow(\inf,\inf)}\int_a^b\Bigg(\int_c^d f(x,y)\: dy\Bigg)\: dx=\lim_{(b,d)\rightarrow(\inf,\inf)}\int_c^d\Bigg(\int_a^b f(x,y)\: dx\Bigg)\: dy\]
+
+Consider a pair of continuous random variables $X$ and $Y$, such as the birthdays of two people or the number of sunny and rainy days in a month. The joint density function $f$ of $X$ and $Y$ satisfies the probability that $(X,y)$ lies in a certain region $D$:
+\[P((X,Y)\in D)=\iint\limits_D f(x,y)\: dA\]
+Since the probabilities can never be negative and must lie between 0 and 1, the joint density function satisfies the following inequality and equation:
+\[f(x,y)\geq 0\quad\text{and}\quad\iint\limits_{R^2}f(x,y)\: dA=1\]
+The variables $X$ and $Y$ are said to be independent random variables if their joint density function is the product of their individual density functions:
+\[f(x,y)=f_1(x)f_2(y)\]
+
+In probability theory, we denote the ex pected values $E(X)$ and $E(Y)$, respectively, as the most likely outcomes of the events. The expected values $E(X)$ and $E(Y)$ are given by
+\[E(X)=\iint\limits_S xf(x,y)\: dA\quad\text{and}\quad E(Y)=\iint\limits_S yf(x,y)\: dA\]
+where $S$ is the sample sapce of the random variables $X$ and $Y$.
+\end{document}
