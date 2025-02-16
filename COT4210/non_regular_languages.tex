@@ -1,0 +1,71 @@
+% chktex-file 13
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Non-Regular Languages}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+
+\subsection*{Pigeonhole Principle}
+
+If $n$ items are put into $m$ containers with $n>m$, at least one container contains more than one item.
+
+\section*{Pumping Lemma}
+
+If $A$ is a regular language, then there is a number $p$, the pumping length, so that if $s$ is a string in $A$ with length of at least $p$, then $s=xyz$, so that
+\begin{enumerate}
+    \item $xy^i z$ is a string in $A$ for all $i\geq 0$, where $y^i$ is $y$ concatenated to itself $i$ times
+    \item $|y| > 0$
+    \item $|xy| \leq p$
+\end{enumerate}
+
+\subsection*{Proof}
+
+Let $M=(Q, \Sigma, \delta, q_0, F)$ be a DFA recognizing language $A$, and let $p=|Q|$.
+\begin{itemize}
+    \item Consider $s\in A$ so that $|s|=n$, with $n\geq p$.
+    \item Show that $s=xyz$ so that $xy^i z$ is a string in $A$ for all $i\geq 0$, with $|y|>0$ and $|xy|\leq p$.
+\end{itemize}
+
+Let $s=s_1 s_2\cdots s_n$ be a string accepted by $M$, with $n\geq p$.
+\vspace{1em}
+
+Let $r_1 r_2 \cdots r_{n+1}$ be the sequence of states that $M$ enters while computing $S$. Observe that:
+\begin{itemize}
+    \item The state sequence has length $n+1$, which is at least $p+1$
+    \item Within the first $p+1$ states in the sequence, two different points in the sequence have to be the same state, by the pigeonhole principle
+    \item Call the first one $r_j$ and the second one $r_k$
+\end{itemize}
+
+Now let $x=s_1\cdots s_{j-1}$, $y=s_j\cdots s_{k-1}$, and $z=s_k\cdots s_n$.
+\vspace{1em}
+
+Observe that:
+\begin{itemize}
+    \item $x$ takes $M$ from $r_1$ to $r_j$
+    \item $y$ takes $M$ from $r_j$ to $r_k$
+    \item $z$ takes $M$ from $r_k$ to $r_{n+1}$
+    \item Therefore, $M$ must accept $xy^i z$ for all $i\geq 0$
+\end{itemize}
+
+Observe that:
+\begin{itemize}
+    \item Since $j\neq k, |y|>0$
+\end{itemize}
+
+Finally, observe that:
+\begin{itemize}
+    \item Since $k\leq p+1, |xy|\leq p$
+\end{itemize}
+
+We have shown that all three conditions of the pumping lemma hold.
+
+\end{document}
