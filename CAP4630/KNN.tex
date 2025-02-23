@@ -1,0 +1,44 @@
+% chktex-file 12
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{KNN}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{KNN}
+
+\textbf{K-Nearest Neighbors (KNN)} is a simple and effective algorithm that can be used for both classification and regression tasks in machine learning. The algorithm uses the training data to classify new data points based on how similar they are to their nearest neighbors, measured by distance.
+
+\begin{enumerate}
+    \item Select the number of neighbors $K$
+    \item Calculate the distance between the query point and all data points in the dataset
+    \item Identify the K nearest neighbors based on the calculated distance
+    \item For classification, count the number of neighbors in each class
+    \item Assign the query point to the class with the majority vote
+\end{enumerate}
+
+\subsection*{Euclidean Distance}
+\textbf{Euclidean distance} is the straight-line distance between two points in space.
+\[d(x, X_i)=\sqrt{\sum_{j=1}^d{(x_j-X_{ij})}^2}\]
+
+\subsection*{Manhattan Distance}
+\textbf{Manhattan distance} is the sum of the absolute differences between the coordinates of the points in each dimension.
+\[d(x, X_i)=\sum_{j=1}^d|x_j - X_{ij}|\]
+
+\subsection*{Minkowski Distance}
+\textbf{Minkowski distance} involves a parameter that adjusts the mix between Euclidean and Manhattan distance where the distance is simplified to Euclidean distance when $p=2$ and the distance is simplified to Manhattan distance when $p=1$.
+\[d(x, X_i)={\Bigg(\sum_{j=1}^d {|x_j - X_{ij}|}^p\Bigg)}^\frac{1}{p}\]
+
+\end{document}
