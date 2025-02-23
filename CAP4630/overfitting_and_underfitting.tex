@@ -1,0 +1,86 @@
+% chktex-file 12
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Overfitting and Underfitting}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Underfitting}
+
+\textbf{Underfitting} occurs when a machine learning model is too simple to capture the underlying patterns in the data. This leads to poor performance both on the training and testing data.
+
+\subsection*{Causes of Underfitting}
+
+\begin{itemize}
+    \item \textbf{Model is too simple}: The model lacks complexity to capture data relationships
+    \item \textbf{Inadequate features}: Input features do not adequately represent the factors influencing the target variable
+    \item \textbf{Small training dataset}: Insufficient data may prevent the model from learning key patterns
+    \item \textbf{Excessive regularization}: Too much regularization restricts the model's ability to learn effectively.
+\end{itemize}
+
+\subsection*{Solutions to Underfitting}
+
+\begin{itemize}
+    \item \textbf{Increase model complexity}: Use more advanced algorithms to capture data complexities
+    \item \textbf{Add more features}: Perform feature engineering to improve representation
+    \item \textbf{Remove noise}: Clean the dataset to enhance model accuracy
+    \item \textbf{Train longer}: Increase the number of epochs or training time to allow the model to better learn from the data
+\end{itemize}
+
+\subsection*{Bias in Machine Learning}
+
+\textbf{Bias} is the error introduced by overly simplistic assumptions made by the learning algorithm. A model with high bias is too simplified, failing to represent the relationship between input and output accurately and usually leads to underfitting.
+
+\section*{Overfitting}
+
+\textbf{Overfitting} occurs when a model learns not only the underlying patterns in the training data but also the noise and random fluctuations. This leads to poor generalization to unseen data even if performance is good on the training data.
+
+\subsection*{Causes of Overfitting}
+
+\begin{itemize}
+    \item \textbf{Model complexity}: The model is too complex, capturing noise and irrelevant patterns in the training data
+    \item \textbf{Insufficient data}: Small training datasets can lead to models that overfit due to learning irrelevant details
+    \item \textbf{Excessive training}: Training for too many epochs can cause the model to fit the data too closely
+\end{itemize}
+
+\subsection*{Solutions to Overfitting}
+
+\begin{itemize}
+    \item \textbf{Increase training data}: Provide more examples to help the model learn better generalizations
+    \item \textbf{Reduce model complexity}: Use simpler models or limit the parameters
+    \item \textbf{Regularization techniques}: Lasso (L1) or Ridge (L2) regularization
+    \item \textbf{Early stopping}: Stop training when the performance on validation data begins to degrade
+    \item \textbf{Dropout}: Randomly drop neurons during training to avoid over-reliance on specific features
+\end{itemize}
+
+\subsection*{Variance in Machine Learning}
+
+\textbf{Variance} is the model's sensitivity to small changes or fluctuations in the training data. A model with high variance are typically very complex, capturing random noise in the training data and usually leads to overfitting.
+
+\section*{Regularization}
+
+\textbf{Regularization} is used to reduce overfitting by penalizing overly complex models and encouraging simpler, more generalizable patterns, striking a balance between bias and variance.
+
+\subsection*{Common Techniques}
+
+\begin{itemize}
+    \item \textbf{Lasso (L1)}: Adds a penalty proportional to the absolute value of coefficients, encouraging sparsity
+    \[\text{Cost}=\frac{1}{n}\sum_{i=1}^n{(y_i-\hat{y}_i)}^2+\lambda\sum_{i=1}^m|\theta_i|\]
+    \item \textbf{Ridge (L2)}: Adds a penalty proportional to the square of the coefficients, shrinking them
+    \[\text{Cost}=\frac{1}{n}\sum_{i=1}^n{(y_i-\hat{y}_i)}^2+\lambda\sum_{i=1}^m{\theta^2_i}\]
+    \item \textbf{Elastic Net (L1 + L2)}: Combines both Lasso and Ridge regularization, balancing between shrinking and sparsity
+\end{itemize}
+
+\end{document}
