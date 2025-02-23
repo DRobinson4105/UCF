@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Double Integrals in Polar Coordinates}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+The double integral of the function $f(r,\theta)$ over the poalr rectangular region $R$ in the $r\theta$-plane is defined as
+\[\iint\limits_R f(r,\theta)\: dA=\lim_{m,n\rightarrow\inf}\sum_{i=1}^m\sum_{j=1}^n f(r^*_{ij}, \theta^*_{ij})\:\Delta A=\lim_{m,n\rightarrow\inf}\sum_{i=1}^m\sum_{j=1}^n f(r^*_{ij}, \theta^*_{ij})r^*_{ij}\:\Delta r\:\Delta\theta\]
+
+If $f(r,\theta)$ is continuous on a general polar region $D$, then
+\[\iint\limits_D f(r,\theta)r\: dr\: d\theta=\int_{\theta=\alpha}^{\theta=\beta}\int_{r=h_1(\theta)}^{r=h_2(\theta)} f(r,\theta)r\: dr\: d\theta\]
+
+\end{document}
