@@ -1,0 +1,46 @@
+% chktex-file 13
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Turing Machines}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Turing Machine}
+
+A \textbf{Turing Machine} is like a finite automaton with an infinite tape that is used as memory. At every step, a Turing Machine can:
+\begin{itemize}
+    \item Transition based on the current state and the tape symbol at the current position, like a DFA
+    \item Write a symbol to the tape at the current position if it wishes
+    \item Move its head either left or right on the tape
+\end{itemize}
+
+A Turing Machine is defined by $M=(Q,\Sigma,\Gamma,\delta,q_0, q_\text{accept}, q_\text{reject})$ where:
+\begin{itemize}
+    \item $Q$ is a finite set of states
+    \item $\Sigma$ is the input alphabet, not containing the blank symbol $\square$
+    \item $\Gamma$ is the tape alphabet, a superset of $\Sigma$ and contains $\square$
+    \item $q_0$ is the start state
+    \item $q_\text{accept}$ is the accept state
+    \item $q_\text{reject}$ is the reject state, where $q_\text{accept}\neq q_\text{reject}$
+\end{itemize}
+
+An \textbf{enumerator} is a Turing machine with a printer. Instead of accepting input, it generates all strings accepted by its language.
+\vspace{1em}
+
+A \textbf{multitape Turing machine} has a finite $k$ number of tapes, each with its own read-write head.
+\[\delta: Q\times\Gamma^k\rightarrow Q\times\Gamma^k\times{\{L, R\}}^k\]
+\vspace{1em}
+
+A \textbf{nondeterministic Turing machine} has a finite number of nondeterministic choices.
+\[\delta: Q\times\Gamma\rightarrow\mathbf{P}(Q\times\Gamma\times\{L,R\})\]
+
+\end{document}
