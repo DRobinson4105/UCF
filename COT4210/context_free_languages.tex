@@ -1,0 +1,79 @@
+% chktex-file 13
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Context Free Languages}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Context Free Grammar (CFG)}
+
+A \textbf{context-free grammar} is a serios of subsitution rules or productions, where each rule is a transition from one variable to any combination of variables and terminal symbols. The start symbol can be $S$ or the left-hand side of the topmost rule if it is not explcit.
+\vspace{1em}
+
+A context-free grammar is defined by $G=(V,\Sigma, R, S)$ where:
+\begin{itemize}
+    \item $V$ is a finite set called the variables
+    \item $\Sigma$ is a finite set, disjoint from $V$, called the terminals
+    \item $R$ is a finite set of rules, each rule allowing a variable to be rewritten as a string of variables and terminals
+    \item $S\in V$ is the start variable
+\end{itemize}
+
+The chain to follow to get the string is called a \textbf{derivation}. A \textbf{leftmost derivation} is a derivation where the leftmost remaining variable is the one replaced. A string $w$ is derived ambiguously in grammar $G$ if it has two or more different leftmost derivations. A grammar $G$ is \textbf{ambiguous} if it generates some string ambiguously.
+
+\subsection*{Chomsky Normal Form}
+
+A context-free grammar is in \textbf{Chomsky Normal Form} if every rule is in one of the following forms:
+\begin{itemize}
+    \item $A\rightarrow BC$
+    \item $A\rightarrow\mathbf{a}$
+    \item $S\rightarrow\varepsilon$
+\end{itemize}
+where $\mathbf{a}$ is a terminal and $A$, $B$, and $C$ are variables.
+
+\subsection*{Pumping Lemma for Context-Free Languages}
+If $A$ is a CFL, there is a pumping length $p$ where, if $s\in A$ and $|s|\geq p$, $s=uvxyz$ so that:
+\begin{enumerate}
+    \item $uv^i xy^i z\in A$ for all non-negative integers $i$
+    \item $|vy|>0$
+    \item $|vxy|\leq p$
+\end{enumerate}
+
+\section*{Pushdown Automata (PDA)}
+A \textbf{pushdown automaton} is an NFA with a stack, where on any transition:
+\begin{itemize}
+    \item Push if $a, \varepsilon\rightarrow a$
+    \item Pop if $a, a\rightarrow\varepsilon$
+    \item Both if $a, a\rightarrow b$
+    \item Neither if $a, \varepsilon\rightarrow\varepsilon$
+\end{itemize}
+
+A pushdown automaton is defined by $M=(Q,\Sigma, \Gamma, \delta, q_0, F)$ where:
+\begin{itemize}
+    \item $Q$ is the set of states
+    \item $\Sigma$ is the input alphabet
+    \item $\Gamma$ is the stack alphabet
+    \item $\delta: Q\times\Sigma_\varepsilon\times\Gamma_\varepsilon\rightarrow P(Q\times\Gamma_\varepsilon)$ is the transition function
+    \item $q_0\in Q$ is the start state
+    \item $F\subseteq Q$ is the accept states
+\end{itemize}
+
+Most PDAs will push \$ to the bottom of the stack to determine if the stack is empty.
+
+\section*{Deterministic Context Free Language (DCFL)}
+A deterministic pushdown automaton (DPDA) is like a PDA, but it only has one legal move in any situation. A \textbf{deterministic context free language} is a language that can be recognized by a DPDA.
+
+\subsection*{Key Points}
+\begin{itemize}
+    \item PDAs and CFGs are equal in power
+    \item Every regular language is also a context-free language since a PDA is just an NFA with a stack.
+\end{itemize}
+
+\end{document}
