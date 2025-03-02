@@ -1,0 +1,71 @@
+% chktex-file 12
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Perceptron}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+A \textbf{perceptron} classifies data into one of two categories by finding a decision boundary that separates the two classes.
+
+\subsection*{Training Process}
+
+\begin{enumerate}
+    \item Sees a data point and makes a prediction
+    \item Checks if the prediction was correct
+    \item Adjusts its weights to be more accurate next time if the prediction was wrong
+\end{enumerate}
+
+\subsection*{Applications}
+\begin{itemize}
+    \item Spam Detection
+    \item Recommendation Systems
+    \item Predicting User Interest
+\end{itemize}
+
+A \textbf{linear decision surface} is a line (or hyperplane for higher dimensions) that separates data into two categories.
+\[h_1(x)=w_1\cdot x + w_0\]
+
+\subsection*{Algorithm}
+
+\begin{itemize}
+    \item \textbf{Initial conditions}: Initialize the $w_1$ weight vector to be a vector of all zeros.
+    \item \textbf{Mistake on a positive example}: If the algorithm predicts that the example is negative but it's actually positive, the weight vector is increased.
+    \[w_{t+1}=w_t + x\]
+    \item \textbf{Mistake on a negative example}: If the algorithm predicts that the example is positive but it's actually negative, the weight vector is decreased.
+    \[w_{t+1}=w_t - x\]
+\end{itemize}
+
+\subsection*{Geometric Margin}
+
+The \textbf{geometric margin} is how far the closest point is to the decision boundary. A larger margin usually shows a more confident and accurate classification, while a smaller margin makes the classification less confident.
+
+\subsection*{Mistake Bound}
+
+If the data has margin $\gamma$ and all points are inside a ball of radius $R$, then the perceptron makes less than ${(R/\gamma)}^2 + 1$ mistakes.
+
+\subsection*{Strengths of the Perceptron}
+\begin{itemize}
+    \item \textbf{Simplicity}: The perceptron is easy to understand and implement.
+    \item \textbf{Guaranteed Convergence}: If the data is linearly separable, the perceptron is guaranteed to find a correct decision boundary.
+    \item \textbf{Online Learning}: The perceptron can be used for online learning, where data points are passed in one by one and the weights are continuously learned.
+\end{itemize}
+
+\subsection*{Limitations of the Perceptron}
+\begin{itemize}
+    \item \textbf{Linearly Separable Data}: The perceptron works only when the data is linearly separable.
+    \item \textbf{No Confidence Scores}: Unlike more advanced algorithms, the perceptron doesn't provide confidence or probability estimates for its predictions.
+    \item \textbf{Sensitive to Noisy Data}: If the data contains outliers or mislabeled points, the perceptron may struggle to find a good boundary.
+\end{itemize}
+\end{document}
