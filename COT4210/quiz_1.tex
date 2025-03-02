@@ -1,0 +1,28 @@
+% chktex-file 13
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{graphicx}
+
+\graphicspath{ {./images/} }
+
+\title{Quiz 1}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+Since $L$ is regular, there exists a DFA $M$ that recognizes it.
+\vspace{1em}
+
+To construct an NFA $M'$ that recognizes $L^R$, first reverse all transition directions in $M$. Convert the original start state into an accept state. Introduce a new start state with an $\varepsilon$-transition to each of the original accept states, and convert those accept states into normal states.
+\vspace{1em}
+
+Since $M'$ is an NFA that recognizes $L^R$, and every NFA has an equivalent DFA, $L^R$ is also regular. Thus, the class of regular languages is closed under reversal.
+
+\end{document}
