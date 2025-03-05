@@ -61,6 +61,12 @@ Assume $z=f(x,y)$ is a differentiable function of two variables defined on a clo
     \item The values of $f$ on the boundary of $D$.
 \end{enumerate}
 
+A set $E\subseteq\mathbb{R}^n$ is called \textbf{compact} if every sequence of elements ${\{R_k\}}^\infty_{k=1}\subseteq E$ has a convergent subsequence ${\{R_m\}}^\infty_{m=1}$. A subset $E\subseteq\mathbb{R}^n$ is compact if and only if:9
+\begin{itemize}
+    \item $E$ is closed (containg all its boundary points)
+    \item $E$ is bounded ($\exists R > 0, E\subseteq B_R(0)$)
+\end{itemize}
+
 \subsection*{Finding Critical Points on Boundary}
 Consider a line segment connecting $(a,c)$ and $(b,c)$. It can be parameterized by the equations $x(t)=t$, $y(t)=c$ for $a\leq t\leq b$. Define $g(t)=f(x(t),y(t))$. The critical points are where $g'(t)=0$.
 
