@@ -1,4 +1,4 @@
-\documentclass[10pt,twocolumn]{extarticle}
+\documentclass{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[a4paper, top=0.25in, bottom=0.25in, left=0.25in, right=0.25in]{geometry}
@@ -28,9 +28,6 @@ Elliptic Paraboloid: $\frac{x^2}{a^2} + \frac{y^2}{b^2} = z$
 Hyperbolic Paraboloid: $\frac{x^2}{a^2} - \frac{y^2}{b^2} = z$
 \vspace{1em}
 
-Hyperbolic Cylinder: $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$
-\vspace{1em}
-
 Clairaut's Theorem: Suppose that $f(x, y)$ is defined on an open desk $D$ that contains the point $(a, b)$. If the functions $f_{xy}$ and $f_{yx}$ are continuous on $D$, then $f_{xy}=f_{yx}$.
 
 \[\nabla f(x,y)=f_x(x,y)\:\mathbf{i}+f_y(x,y)\:\mathbf{j}\]
@@ -55,5 +52,12 @@ Second Derivative Test: If the first and second-order partial derivatives are co
     \item If $D>0$ and $f_{xx}(x_0,y_0)<0$, then $f$ has a local maximum at $(x_0,y_0)$.
     \item If $D<0$, then $f$ has a saddle point at $(x_0,y_0)$.
     \item If $D=0$, then the test is inconclusive.
+\end{enumerate}
+
+Finding local extema in a bounded region:
+\begin{enumerate}
+    \item Test extreme points on boundary
+    \item Test all boundary lines: Consider a line segment connecting $(a,c)$ and $(b,c)$. It can be parameterized by the equations $x(t)=t$, $y(t)=c$ for $a\leq t\leq b$. Define $g(t)=f(x(t),y(t))$. The critical points are where $g'(t)=0$.
+    \item Test whole bounded region
 \end{enumerate}
 \end{document}
