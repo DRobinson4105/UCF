@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Triple Integrals}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Triple Integrals}
+
+The \textbf{triple integral} of a function $f(x,y,z)$ over a rectangular box $B$ is defined as
+\[\lim_{l,m,n\rightarrow\infty}\sum_{i=1}^l\sum_{j=1}^m\sum_{k=1}^n f(x_{ijk}^*, y_{ijk}^*, z_{ijk}^*)\Delta x\Delta y\Delta z=\iiint\limits_B f(x,y,z)\: dV\] if this limit exists.
+
+\subsection*{Fubini's Theorem}
+If $f(x,y,z)$ is continuous on a rectangular box $B=[a,b]\times[c,d]\times[e,f]$, then
+\[\iiint\limits_B f(x,y,z)\: dV=\int_e^f\int_c^d\int_a^b f(x, y, z)\: dx\: dy\: dz\]
+
+\subsection*{Triple Integral over a General Region}
+The triple integral of a continuous function $f(x,y,z)$ over a general three-dimensional region
+\[E=\{(x,y,z)|(x,y)\in D, u_1 (x,y)\leq z\leq u_2 (x,y)\}\]
+in $\mathbb{R}^3$, where $D$ is the projection of $E$ onto the $xy$-plane, is
+\[\iiint\limits_E f(x,y,z)\: dV=\iint\limits_D \Bigg[\int_{u_1 (x,y)}^{u_2(x,y)} f(x,y,z)\: dz\Bigg]\: dA\]
+
+\subsection*{Average Value of a Function of Three Variables}
+If $f(x,y,z)$ is integrable over a solid bounded region $E$ with positive volume $V(E)$, then the average value of the function is
+\[f_{ave}=\frac{1}{V(E)}\iiint\limits_E f(x,y,z)\: dV\] where $V(E)=\iiint\limits_E 1\: dV$
+\end{document}
