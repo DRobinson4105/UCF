@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Triple Integrals in Cylindrical and Spherical Coordinates}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Integration in Cylindrical Coordinates}
+
+Consider the cylindrical box
+\[B=\{(r,\theta,z)|a\leq r\leq b, \alpha\leq\theta\leq\beta, c\leq z\leq d\}\]
+
+If the function $f(r,\theta,z)$ is continuous on $B$ and if $(r_{ijk}^*,\theta_{ijk}^*,z_{ijk}^*)$ is any sample point in the cylindrical subbox $B_{ijk}=[r_{i-1},r_i]\times [\theta_{j-1},\theta_j]\times [z_{k-1},z_k]$, then we can define the \textbf{triple integral in cylindrical coordinates} as the limit of a triple Riemann sum, provided the following limit exists.
+\[\lim_{l,m,n\rightarrow\infty}\sum_{i=1}^l\sum_{j=1}^m\sum_{k=1}^n f(r_{ijk}^*,\theta_{ijk}^*,z_{ijk}^*)r_{ijk}^*\Delta r\Delta\theta\Delta z\]
+
+\subsection{Fubini's Theorem for Cylindrical Coordinates}
+Suppose that $g(x,y,z)$ is continuous on a portion of a circular cylinder $B$, which when described in cylindrical coordinates looks like $B=\{(r,\theta,z)|a\leq r\leq b,\alpha\leq\theta\leq\beta,c\leq z\leq d\}$.
+\vspace{1em}
+
+Then $g(x,y,z)=g(r\cos\theta,r\sin\theta,z)=f(r,\theta,z)$ and
+\[\iiint\limits_B g(x,y,z)\: dV=\int_c^d\int_\alpha^\beta\int_a^b f(r,\theta,z)r\: dr\: d\theta\: dz\]
+
+\section{Integration in Spherical Coordinates}
+\[x=\rho\sin\varphi\cos\theta\quad y=\rho\sin\varphi\sin\theta\quad z=\rho\cos\varphi\]
+
+The \textbf{triple integral in spherical coordinates} is the limit of a triple Riemann sum if the limit exists.
+\[\lim_{l,m,n\rightarrow\infty}\sum_{i=1}^l\sum_{j=1}^m\sum_{k=1}^n f(\rho_{ijk}^*,\theta_{ijk}^*,\varphi_{ijk}^*){(\rho_{ijk}^*)}^2\sin\varphi_{ijk}^*\Delta\rho\Delta\theta\Delta\varphi\]
+
+\subsection{Fubini's Theorem for Spherical Coordinates}
+If $f(\rho,\theta,\varphi)$ is continuous on a spherical solid box $B=[a,b]\times[\alpha,\beta]\times[\gamma,\psi]$, then
+\[\iiint\limits_B f(\rho,\theta,\varphi)\rho^2\sin\varphi\: d\rho\: d\varphi\: d\theta=\int_{\theta=\alpha}^{\theta=\beta}\int_{\varphi=\gamma}^{\varphi=\psi}\int_{\rho=a}^{\rho=b} f(\rho,\theta,\varphi)\rho^2\sin\varphi\: d\rho\: d\varphi\: d\theta\]
+\end{document}
