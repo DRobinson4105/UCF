@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[twocolumn]{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[a4paper, top=0.25in, bottom=0.25in, left=0.25in, right=0.25in]{geometry}
@@ -11,7 +11,9 @@
 
 \[\textbf{Gini Index}=1-\sum_j p_j^2\] where $p_j$ is the probability of a sample belonging to class $j$.
 
-\[\textbf{Accuracy}=\frac{TP+TN}{P+N}\quad\textbf{Precision}=\frac{TP}{TP+FP}\quad\textbf{Recall}=\frac{TP}{TP+FN}\]
+\[\textbf{Accuracy}=\frac{TP+TN}{P+N}\]
+
+\[\textbf{Precision}=\frac{TP}{TP+FP}\quad\textbf{Recall}=\frac{TP}{TP+FN}\]
 
 \[F_\beta = (1+\beta^2)\cdot\frac{\text{Precision}\cdot\text{Recall}}{\beta^2\cdot\text{Precision}+\text{Recall}}\]
 
@@ -52,11 +54,13 @@ Logistic regression handles multi-class classification by using multiple one-vs-
 
 \[\text{Bayes' Theorem: }P(X\mid Y)=\frac{P(Y\mid X)P(X)}{P(Y)}\]
 
-\[\text{Covariance: }\text{Cov}(f(x), g(Y))=\mathbb{E}\Big[(f(X)-\mathbb{E}[f(x)])(g(Y)-\mathbb{E}[g(Y)])\Big]\]
+\[\text{Covariance}(f(x), g(Y))=\mathbb{E}\Big[(f(X)-\mathbb{E}[f(x)])(g(Y)-\mathbb{E}[g(Y)])\Big]\]
 
 \[\text{Correlation: }\rho(X, Y)=\frac{\text{Cov}(X, Y)}{\sigma_x\cdot\sigma_y}\]
 
 \[\text{L1 Regularization: }\text{Cost}=\frac{1}{n}\sum_{i=1}^n{(y_i-\hat{y}_i)}^2+\lambda\sum_{i=1}^m|\theta_i|\]
 
 \[\text{L2 Regularization: }\text{Cost}=\frac{1}{n}\sum_{i=1}^n{(y_i-\hat{y}_i)}^2+\lambda\sum_{i=1}^m{\theta^2_i}\]
+
+\[\text{Silhouette Score: }S(i)=\frac{b(i)-a(i)}{\max(a(i),b(i))}\] where $a(i)$ is the average distance between that point and all other points in its cluster and $b(i)$ is the average distance between that point and all points in the neareast different cluster.
 \end{document}
