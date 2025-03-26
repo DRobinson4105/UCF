@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Vector Fields}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Vector Field}
+
+A \textbf{vector field F} in $\mathbb{R}^2$ is an assignment of a two-dimensional vector $\mathbf{F}(x,y)$ to each point $(x,y)$ of a subset $D$ of $\mathbb{R}^2$. The subset $D$ is the domain of the vector field.
+\[\mathbf{F}(x,y)=\langle P(x,y), Q(x,y)\rangle\]
+
+A vector field $\mathbf{F}$ in $\mathbb{R}^3$ is an assignment of a three-dimensional vector $\mathbf{F}(x,y,z)$ to each point $(x,y,z)$ of a subset $D$ of $\mathbb{R}^3$. The subset $D$ is the domain of the vector field.
+\[\mathbf{F}(x,y,z)=\langle P(x,y,z), Q(x,y,z), R(x,y,z)\rangle\]
+
+In a \textbf{radial field}, all vectors either point directly toward or directly away from the origin. In a \textbf{rotational field}, the vector at point $(x,y)$ is tangent to a circle with radius $r=\sqrt{x^2+y^2}$.
+
+
+
+\subsection*{Gradient Fields}
+A vector field $\mathbf{F}$ in $\mathbb{R}^2$ or $\mathbb{R}^3$ is a \textbf{gradient field}, also called a conservative field, if there exists a scalar function $f$ such that $\nabla f = F$.
+
+\subsubsection*{Uniqueness of Potential Functions}
+Let $\mathbf{F}$ be a conservative vector field on an open and connected domain and let $f$ and $g$ be functions such that $\nabla f=\mathbf{F}$ and $\nabla g=\mathbf{G}$. Then, there is a constant $C$ such that $f=g+C$.
+
+\subsubsection*{The Cross-Partial Property of Conservative Vector Fields}
+Let $\mathbf{F}$ be a vector field in two or three dimensions such that the component functions of $\mathbf{F}$ have continuous first-order partial derivatives on the domain of $\mathbf{F}$.
+\vspace{1em}
+
+If $\mathbf{F}(x,y)=\langle P(x,y),Q(x,y)\rangle$ is a conservative vector field in $\mathbb{R}^2$, then
+\[\frac{\partial P}{\partial y}=\frac{\partial Q}{\partial x}\]
+
+If $\mathbf{F}(x,y,z)=\langle P(x,y,z),Q(x,y,z),R(x,y,z)\rangle$ is a conservative vector field in $\mathbb{R}^3$, then
+\[\frac{\partial P}{\partial y}=\frac{\partial Q}{\partial x}\quad\quad\frac{\partial Q}{\partial z}=\frac{\partial R}{\partial y}\quad\quad\frac{\partial R}{\partial x}=\frac{\partial P}{\partial z}\]
+\end{document}
