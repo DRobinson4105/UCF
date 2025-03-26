@@ -1,0 +1,50 @@
+% chktex-file 12
+% chktex-file 44
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\graphicspath{{./images/}}
+
+\title{Ensemble Models}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Ensemble Models}
+
+\textbf{Ensemble modeling} is a technique in machine learning that combines multiple models to achieve better predictive performance.
+
+\subsection*{Common Ensemble Techniques}
+\begin{itemize}
+    \item \textbf{Bagging} reduces variance by training models on different random samples and averaging their predictions, such as random forest.
+    \item \textbf{Boosting} reduces bias by sequentially building models that correct errors made by the previous one, such as AdaBoost and Gradient Boosting.
+    \item \textbf{Stacking} combines preditions from different types of strong learners by training a meta-model on their outputs to improve final prediction accuracy.
+\end{itemize}
+
+\subsection*{Expected Test Error}
+\[\mathbb{E}_{D\sim P_n(x,y)\sim P}[{(f_D(x)-y)}^2]=\text{Variance}+\text{Bias}+\text{Noise}\] where
+\begin{itemize}
+    \item \textbf{Variance} $=\mathbb{E}_{x,D}[{(f_D(x)-\bar{f}(x))}^2]$ measures the variability of the predictions from model trained on subset $D$, $f_D(x)$, around the average prediction $\bar{f}(X)$.
+    \item \textbf{Bias} $=\mathbb{E}_x [{(\bar{f}(x)-\bar{y}(x))}^2]$ measures the difference between the average model prediction $\bar{f}(x)$ and the true value $\bar{y}(x)$.
+    \item \textbf{Noise} $=\mathbb{E}_{x,y} [{(\bar{y}(x)-y)}^2]$ represents the randomness in the data.
+\end{itemize}
+
+\subsection*{Random Forest}
+Random Forest is a bagging-based ensemble method.
+\begin{enumerate}
+    \item Draw $m$ samples from the original dataset $D$.
+    \item Train an independent decision tree for each sample.
+    \item At each node split within a tree, randomly select a subset of $k\leq d$ features, where $d$ is the total number of features, and choose the best split only from this subset
+\end{enumerate}
+
+\end{document}
