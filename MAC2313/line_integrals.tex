@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[a4paper, top=0.75in, bottom=0.75in]{geometry}
+
+\title{Line Integrals}
+\author{David Robinson}
+\date{}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\maketitle
+
+A \textbf{line integral} integrates multivariable functions and vector fields over arbitrary curves in a plane or in space.
+
+\section*{Scalar Line Integrals}
+
+A \textbf{scalar line integral} is an integral of a scalar function over a curve in a plane or in space. Let $f$ be a function with a domain that includes the smooth curve $C$ that is parameterized by $\mathbf{r}(t)=\langle x(t),y(t),z(t)\rangle,a\leq t\leq b$. The scalar line integral of $f$ along $C$ is
+\[\int_C f(x,y,z)\: ds=\lim_{n\rightarrow\infty}\sum^n_{i=1}f(P_i^*)\:\Delta s_i\] if that limit exists, where $n+1$ points $P_0,\ldots,P_n$ divide curve $C$ into $n$ pieces, with lengths $\Delta s_1,\Delta s_2, \ldots, \Delta s_n$.
+\vspace{1em}
+
+If $C$ is a planar curve, then $C$ can be represented by the parametric equations $x=x(t)$,$y=y(t)$, and $a\leq t\leq b$. If $C$ is smooth and $f(x,y)$ is a function of two variables, then the scalar line integral of $f$ along $C$ is defined similarly as
+\[\int_C f(x,y)\: ds=\lim_{n\rightarrow\infty}\sum^n_{i=1}f(P_i^*)\:\Delta s_i\] if that limit exists.
+\vspace{1em}
+
+Let $f$ be a continuous function with a domain that includes the smooth curve $C$ with parameterization $\mathbf{r}(t),a\leq t\leq b$. Then
+\[\int_C f\: ds=\int_a^b f(\mathbf{r}(t))\:\|\mathbf{r}^\prime (t)\|\: dt\]
+
+\section*{Vector Line Integrals}
+
+A \textbf{vector line integral} is an integral of a vector field over a curve in a place or in space. The vector line integral of vector field $F$ along oriented smooth curve $C$ is
+\[\int_C \mathbf{F}\cdot\mathbf{T}\: ds=\lim_{n\rightarrow\infty}\sum^n_{i=1}\mathbf{F}(P_i^*)\cdot\mathbf{T}(P_i^*)\:\Delta s_i\] if that limit exists.
+\vspace{1em}
+
+Let $\mathbf{F}$ and $\mathbf{G}$ be continuous vector fields with domains that include the oriented smooth curve $C$. Then
+\begin{enumerate}
+    \item $\int_C(\mathbf{F}+\mathbf{G})\cdot d\mathbf{r}=\int_C\mathbf{F}\cdot d\mathbf{r}+\int_C\mathbf{G}\cdot d\mathbf{r}$
+    \item $\int_C k\mathbf{F}\cdot d\mathbf{r}=k\int_C\mathbf{F}\cdot d\mathbf{r}$, where $k$ is a constant
+    \item $\int_{-C}\mathbf{F}\cdot d\mathbf{r}=-\int_C\mathbf{F}\cdot d\mathbf{r}$
+    \item Suppose instead that $C$ is a piecewise smooth curve in the domains of $\mathbf{F}$ and $\mathbf{F}$ and $\mathbf{G}$, where $C=C_1+C_2+\cdots+C_n$ and $C_1,C_2,\ldots,C_n$ are smooth curves such that the endpoint of $C_i$ is the starting point of $C_{i+1}$. Then
+    \[\int_C\mathbf{F}\cdot d\mathbf{r}=\int_{C_1}\mathbf{F}\cdot d\mathbf{r}+\int_{C_2}\mathbf{F}\cdot d\mathbf{r}+\cdots+\int_{C_n}\mathbf{F}\cdot d\mathbf{r}\]
+\end{enumerate}
+
+\section*{Flux and Circulation}
+
+The \textbf{flux} of $\mathbf{F}$ across $C$ is line integral $\int_C\mathbf{F}\cdot\frac{\mathbf{n}(t)}{\|\mathbf{n}(t)\|}\: ds$.
+\vspace{1em}
+
+Let $\mathbf{F}$ be a vector field and let $C$ be a smooth curve with parameterization $\mathbf{r}(t)=\langle x(t),y(t)\rangle,a\leq t\leq b$. Let $\mathbf{n}(t)=\langle y^\prime(t),-x^\prime(t)\rangle$. The flux of $\mathbf{F}$ across $C$ is
+\[\int_C\mathbf{F}\cdot\mathbf{N}\: ds=\int_a^b\mathbf{F}(\mathbf{r}(t))\cdot\mathbf{n}(t)\: dt\]
+
+The \textbf{circulation} of $\mathbf{F}$ along $C$ is the line integral of $\mathbf{F}$ along an oriented closed curve.
+\end{document}
